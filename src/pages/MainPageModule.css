@@ -1,0 +1,23 @@
+.container {
+    width: 60%;
+    margin: 100px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .description {
+    margin: 20px 0;
+    line-height: 1.5;
+    font-size: 18px;
+  }
+  
+  .linkButton {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
