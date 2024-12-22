@@ -2,7 +2,7 @@ import React from 'react';
 import LeftSidebar from '../components/Chat/LeftSidebar';
 import RightSidebar from '../components/Chat/RightSidebar';
 import ChatMain from '../components/Chat/ChatMain';
-import styles from './ChatPageModule.css';
+import styles from './ChatPage.module.css';
 
 function ChatPage() {
   return (
