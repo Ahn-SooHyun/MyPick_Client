@@ -1,11 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Typography } from 'antd';
+import { Typography, Carousel, Card, Row, Col } from "antd";
 import styles from './MainPage.module.css';
 
 const { Title } = Typography;
+const { MainCard } = Card ;
+
+
 
 function MainPage() {
+
+  const containerStyle = {
+    display: 'flex',
+    flexWrap: 'nowrap',     // 한 줄에 강제로 배치
+    overflowX: 'auto',      // 가로 스크롤 활성화
+    gap: '16px',            // 카드 간 간격
+    width: '600px',         // 스크롤이 필요한 만큼 적절한 고정 폭(예시)
+    border: '1px solid #ccc'
+  };
+
+  const contentStyle = {
+    height: '200px',
+    color: '#fff',
+    textAlign: 'center',
+    background: '#364d79',
+    lineHeight: '200px',
+  };
+
+
+
+  const cardStyle = {
+    width: 300,
+    minWidth: 300,          // 혹은 'flex: 0 0 auto' 처럼 고정 폭 지정
+  };
+
   return (
     <>
     <div className={styles.imageContainer}>
@@ -18,6 +46,41 @@ function MainPage() {
         <Title level={2} className={styles.text}>Project MyPick</Title>
       </div>
     </div>
+    <div>
+      <h1>이런 기능들 있다~ 주저리주저리</h1>
+    </div>
+    <Row gutter={[16, 16]}>
+      <Col span={6}>
+        <Card title="음악" bordered={false} style={{ width: '100%' }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </Col>
+      <Col span={6}>
+        <Card title="영화" bordered={false} style={{ width: '100%' }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </Col>
+      <Col span={6}>
+        <Card title="도서" bordered={false} style={{ width: '100%' }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </Col>
+      <Col span={6}>
+        <Card title="게임" bordered={false} style={{ width: '100%' }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </Col>
+    </Row>
+
+
     
     </>
     // <>

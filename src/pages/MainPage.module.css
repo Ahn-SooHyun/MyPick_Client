@@ -2,7 +2,7 @@
 
 .imageContainer {
   position: relative;
-  width: 600px; /* 이미지 너비에 맞게 조절 */
+  width: 100%; /* 이미지 너비에 맞게 조절 */
   height: 400px; /* 이미지 높이에 맞게 조절 */
   margin: 0 auto; /* 중앙 정렬을 위해 추가 */
 }
