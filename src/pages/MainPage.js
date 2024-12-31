@@ -34,6 +34,8 @@ function MainPage() {
     minWidth: 300,          // 혹은 'flex: 0 0 auto' 처럼 고정 폭 지정
   };
 
+  
+
   return (
     <>
     <div className={styles.imageContainer}>

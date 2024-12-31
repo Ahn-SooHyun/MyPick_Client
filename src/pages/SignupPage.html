@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: 0;
+        }
+        .join-container {
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .join-container .join_area {
+            width: 75vw;
+            height: 80vh;
+
+            display: flex;
+            justify-content: space-between;
+            border: 3px solid #000;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        
+        .join-container .join_area .img_ham {
+            width: 50%;
+            background-image: url('../assets/img/joinImg.jpg');
+            background-size: 100% 100%;
+        }
+        .join-container .join_area .joinForm-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .join-container .join_area .joinForm-container .joinForm {
+            border: 2px solid #000;
+            width: 420px;
+            height: 600px;
+        }
+
+        
+
+        /**
+        회원가입 input 창
+        */
+        .join-container .join_area .joinForm-container .joinForm .ham-area {
+            width: 220px;
+            position: relative; /* ham-area label 추가할 때 추가, position 위치 잡기 */
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        /* 첫 번째 input은 margin 없애기 */
+        .join-container .join_area .joinForm-container .joinForm  .ham-area:first-child {
+            margin-top: 0;
+        }
+
+        
+        .join-container .join_area .joinForm-container .joinForm  .ham-area input {
+            width: 100%;
+            padding: 20px 10px 10px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #999;
+            font-size: 18px;
+            color: #ffc800;
+            outline: none;  /* click 상쇄하기 */
+            cursor: pointer;
+        }
+
+
+        .join-container .join_area .joinForm-container .joinForm  .ham-area label {
+            position: absolute;
+            left: 10px;
+            top: 15px;
+            font-size: 18px;
+            color: #999;
+            transition: all .5s ease; /* input 클릭했을 때, label 올리기 */
+        }
+        /* input 클릭했을 때, label 올리기 */
+        .join-container .join_area .joinForm-container .joinForm  .ham-area input:focus + label,
+        .join-container .join_area .joinForm-container .joinForm  .ham-area input:valid + label {
+            top: -2px;      /* 0에서 -2로 변경. */
+            font-size: 13px;
+            color: #166cea;
+        }
+        .join-container .join_area .joinForm-container .joinForm  .ham-area label.warning {
+            color: red !important;
+            animation: warning .3s ease;
+            animation-iteration-count: 3;
+        }
+        @keyframes warning {
+            0% { transform: translateX(-8px);}
+            25% { transform: translateX(8px);}
+            50% { transform: translateX(-8px);}
+            75% { transform: translateX(8px);}
+        }
+
+        .joinForm-container .btn-idCheck {
+            position: absolute;
+            right: -150px;
+            top: 2px;
+            width: 100px;
+            height: 30px;
+            padding: 10px;
+
+            cursor: pointer;
+        }
+
+        .joinForm-container .btn-idCheck .sunFlowerImg {
+            background-image: url('../assets/img/sunflowerSeed.png');
+            height: 100%;
+            width: 14px;
+            background-size: 100% 100%;
+            display: inline-block;
+        }
+
+        .joinForm-container .btn-idCheck span {
+            font-weight: bold;
+            font-size: 19px;
+            text-align: center;
+            align-items: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="join-container">
+            <div class="join_area">
+                <div class="img_ham"></div>
+                <div class="joinForm-container">
+                    <div>
+                        <form>
+                            <div class="joinForm">
+                                <div class="ham-area">
+                                    <input type="text" name="id" id="id" autocomplete="off" required>
+                                    <label for="id">ID 입력</label>
+                                    <div class="btn-idCheck"><div class="sunFlowerImg">&nbsp;</div><span>중복 확인</span></div>
+                                </div>
+                                <div class="ham-area">
+                                    <input type="password" name="pw1" id="pw2" autocomplete="off" required>
+                                    <label for="id">PASSWORD 입력</label>
+                                </div>
+                                <div class="ham-area">
+                                    <input type="password" name="pw1" id="pw2" autocomplete="off" required>
+                                    <label for="id">PASSWORD 입력</label>
+                                </div>
+                                <div class="ham-area">
+                                    <input type="text" name="name" id="name" autocomplete="off" required>
+                                    <label for="id">NAME 입력</label>
+                                </div>
+                                <div class="ham-area">
+                                    <input type="text" name="NickName" id="NickName" autocomplete="off" required>
+                                    <label for="id">NickName 입력</label>
+                                </div>
+                                <div class="ham-area">
+                                    <select>
+                                        <option>1999</option>
+                                        <option>1998</option>
+                                        <option>1997</option>
+                                    </select>년
+                                    
+                                    <select>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                    </select>월
+                                    <select>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                    </select>일
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
