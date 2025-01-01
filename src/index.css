@@ -1,3 +1,7 @@
+/* index.css */
+
+/* 기본 Reset & Body 설정은 동일, 아래는 폰트 선언 부분만 수정 예시 */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,6 +15,7 @@ body {
   color: #333;
 }
 
+/* 기본 스타일 초기화 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -27,45 +32,49 @@ caption {
   vertical-align: baseline;
 }
 
-
+/*
+  @font-face 설정:
+  src/ 폴더 내 assets/fonts 로 옮겼다고 가정하면,
+  index.css와 폰트 폴더 간 상대 경로 사용
+*/
 @font-face {
   font-family: 'The Jamsil';
-  src: url('/public/assets/fonts/The\ Jamsil\ 1\ Thin.ttf') format('truetype');
+  src: url('./assets/fonts/The_Jamsil_1_Thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'The Jamsil';
-  src: url('/public/assets/fonts/The\ Jamsil\ 2\ Light.ttf') format('truetype');
+  src: url('./assets/fonts/The_Jamsil_2_Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'The Jamsil';
-  src: url('/public/assets/fonts/The Jamsil 3 Regular.ttf') format('truetype');
+  src: url('./assets/fonts/The_Jamsil_3_Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'The Jamsil';
-  src: url('/public/assets/fonts/The Jamsil 4 Medium.ttf') format('truetype');
+  src: url('./assets/fonts/The_Jamsil_4_Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'The Jamsil';
-  src: url('/public/assets/fonts/The Jamsil 5 Bold.ttf') format('truetype');
+  src: url('./assets/fonts/The_Jamsil_5_Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'The Jamsil';
-  src: url('/public/assets/fonts/The Jamsil 6 ExtraBold.ttf') format('truetype');
+  src: url('./assets/fonts/The_Jamsil_6_ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
@@ -83,4 +92,3 @@ body {
   background: #fff;
   color: #333;
 }
-

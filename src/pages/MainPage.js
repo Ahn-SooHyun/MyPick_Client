@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// 기존에 MainIMG.module.css 로 불리던 스타일
 import styles from './MainPage.module.css';    
 
-// Ant Design 관련
 import { 
   Layout, Row, Col, Button, Typography, Card, Tag, Carousel, Divider, Avatar 
 } from 'antd';
@@ -13,27 +11,25 @@ const { Header, Content, Footer } = Layout;
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
 
-// 색상 팔레트
 const COLORS = {
-  backgroundLight: '#FFF0DC', // 주 배경
-  accent: '#F0BB78',         // 포인트(버튼, 강조)
-  darkText: '#543A14',       // 본문 텍스트, 강조 텍스트
-  headerBg: '#131010',       // 헤더/진한 컬러
+  backgroundLight: '#FFF0DC', 
+  accent: '#F0BB78',         
+  darkText: '#543A14',       
+  headerBg: '#131010',       
 };
 
 function CombinedPage() {
-  // ----- MainIMG 관련 상태 & 스크롤 로직 ----- 
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const [overlayOpacity, setOverlayOpacity] = useState(0);
+
+  // 로그인 여부 가정
+  const [isLoggedIn] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-
-      // 헤더 표시/숨김
       setIsHeaderVisible(scrollTop !== 0);
 
-      // 오버레이 불투명도 (0 ~ 1)
       const fadeDistance = 1080;
       let newOpacity = scrollTop / fadeDistance;
       if (newOpacity < 0) newOpacity = 0;
@@ -45,30 +41,54 @@ function CombinedPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ----- MainPage(기존) 관련 로직 -----
   const navigate = useNavigate();
+
+  // 채팅 버튼 로직
+  const handleChatButtonClick = () => {
+    if (isLoggedIn) {
+      navigate('/chat');
+    } else {
+      navigate('/login');
+    }
+  };
 
   return (
     <div className={styles.container}>
       {/* --- (1) 스크롤 시 나타나는 헤더 --- */}
       <header
         className={`${styles.header} ${!isHeaderVisible ? styles.headerHidden : ''}`}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',  // 좌측 문구, 우측 버튼
+          padding: '0 1rem',
+        }}
       >
-        스크롤을 내리면 나타나는 헤더
+        {/* 왼쪽 영역: 문구 */}
+        <div>스크롤을 내리면 나타나는 헤더</div>
+
+        {/* 오른쪽 영역: 채팅 버튼 */}
+        <Button 
+          type="primary"
+          style={{
+            borderRadius: '8px',
+            backgroundColor: COLORS.accent,
+            borderColor: COLORS.accent,
+            marginRight: '30px'
+          }}
+          onClick={handleChatButtonClick}
+        >
+          채팅하러 가기
+        </Button>
       </header>
 
       {/* --- (2) 고정 배경 이미지 + 오버레이 + 중앙 텍스트 --- */}
       <div className={styles.imageContainer}>
-        {/* 
-          (중요) public 폴더 파일은 import 하지 않고
-          '/assets/images/hamster_wallpaper.jpg' 로 직접 경로만 작성 
-        */}
         <img
           src="/assets/images/hamster_wallpaper.jpg"
           alt="Hamster Wallpaper"
           className={styles.myImage}
         />
-
         <div
           className={styles.overlay}
           style={{ opacity: overlayOpacity }}
@@ -76,36 +96,9 @@ function CombinedPage() {
         <h1 className={styles.centerText}>MyPick Project</h1>
       </div>
 
-      {/*
-        (3) MainIMG의 '본문' 역할이 여기부터 시작됩니다.
-        이 부분 아래로 스크롤하면 MainPage(프로젝트 소개) 콘텐츠가 이어짐 
-      */}
+      {/* (3) 본문 (MainIMG) 아래로 MainPage 콘텐츠가 이어짐 */}
       <main className={styles.content}>
-
-        {/* ========================= */}
-        {/* === MainPage 영역 시작 === */}
-        {/* ========================= */}
         <Layout style={{ backgroundColor: COLORS.backgroundLight, minHeight: '100vh' }}>
-          
-          {/* 
-            -- MainPage의 Header(원하면 삭제 가능) --
-            주석 처리된 상태
-          */}
-          {/*
-          <Header
-            style={{
-              backgroundColor: COLORS.headerBg,
-              display: 'flex',
-              alignItems: 'center',
-              padding: '0 24px'
-            }}
-          >
-            <div style={{ color: COLORS.backgroundLight, fontSize: 24, fontWeight: 'bold' }}>
-              My Cute Project
-            </div>
-          </Header>
-          */}
-
           <Content style={{ padding: '30px', margin: '0 auto' }}>
             {/* Hero 섹션 */}
             <Row gutter={[24, 24]}>
@@ -292,7 +285,7 @@ function CombinedPage() {
                   height: 40,
                   fontWeight: 'bold',
                 }}
-                onClick={() => navigate('/chat')} // 예: /chat 경로로 이동
+                onClick={() => navigate('/chat')} 
               >
                 채팅하러 가기
               </Button>
@@ -337,13 +330,10 @@ function CombinedPage() {
             </section>
           </Content>
 
-          {/* MainPage의 Footer (원하면 제거 가능) */}
           <Footer style={{ backgroundColor: COLORS.headerBg, textAlign: 'center', color: COLORS.backgroundLight }}>
             My Cute Project ©2024 Created by Our Team
           </Footer>
         </Layout>
-        {/* === MainPage 영역 끝 === */}
-        
       </main>
     </div>
   );
