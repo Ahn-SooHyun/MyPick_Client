@@ -185,7 +185,7 @@ function NoticeList() {
         renderItem={(item) => {
           let preview = item.content;
           if (preview.length > MAX_LENGTH) {
-            preview = preview.slice(0, MAX_LENGTH) + '...';
+            preview = preview.slice(0, MAX_LENGTH) + '...';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
           }
 
           return (

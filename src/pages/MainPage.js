@@ -7,10 +7,11 @@ import {
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-const { Header, Content, Footer } = Layout;
+import hamsterImg from '../assets/images/hamster_wallpaper.jpg'; 
+
+const { Header, Content, Footer } = Layout;  // Header도 실제 사용
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
-
 const COLORS = {
   backgroundLight: '#FFF0DC', 
   accent: '#F0BB78',         
@@ -30,7 +31,7 @@ function CombinedPage() {
       const scrollTop = window.scrollY;
       setIsHeaderVisible(scrollTop !== 0);
 
-      const fadeDistance = 1080;
+      const fadeDistance = window.innerHeight;
       let newOpacity = scrollTop / fadeDistance;
       if (newOpacity < 0) newOpacity = 0;
       if (newOpacity > 1) newOpacity = 1;
@@ -85,7 +86,7 @@ function CombinedPage() {
       {/* --- (2) 고정 배경 이미지 + 오버레이 + 중앙 텍스트 --- */}
       <div className={styles.imageContainer}>
         <img
-          src="/assets/images/hamster_wallpaper.jpg"
+          src={hamsterImg}
           alt="Hamster Wallpaper"
           className={styles.myImage}
         />
