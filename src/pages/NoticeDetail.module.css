@@ -1,0 +1,36 @@
+/* NoticeDetail.module.css */
+
+/* 상세 페이지 전체 컨테이너 */
+.noticeDetailContainer {
+    background-color: #FFF0DC; /* MainPage와 동일 배경 */
+    min-height: 80vh;
+    padding: 24px;
+  }
+  
+  /* 상세 카드 자체 */
+  .noticeDetailCard {
+    background-color: #F0BB78; /* 포인트 색상 */
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  
+  /* 제목 */
+  .noticeDetailTitle {
+    color: #543A14; /* 갈색 텍스트 */
+    margin-bottom: 8px;
+  }
+  
+  /* 날짜 표시 */
+  .noticeDetailDate {
+    color: #543A14;
+    opacity: 0.9;
+  }
+  
+  /* 상세 내용 */
+  .noticeDetailContent {
+    color: #543A14;
+    line-height: 1.5;
+    white-space: pre-line; /* 예시로 줄바꿈 보존 */
+  }
+  
