@@ -52,6 +52,8 @@ function CombinedPage() {
     }
   };
 
+  
+
   return (
     <div className={styles.container}>
       {/* --- (1) 스크롤 시 나타나는 헤더 --- */}
