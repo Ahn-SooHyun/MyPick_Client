@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, Typography, Input } from 'antd';
+import { List, Typography, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { SoundOutlined } from '@ant-design/icons';
 import styles from './NoticeList.module.css';
@@ -9,6 +9,11 @@ const { Search } = Input;
 
 function NoticeList() {
   const navigate = useNavigate();
+
+  // [가상의 관리자 판단 로직] 실제로는 로그인/토큰 등으로부터 관리자 여부를 받아와야 함.
+  // 여기서는 예시로 true / false 를 직접 지정
+  const [isAdmin] = useState(true); 
+  // ↑ 실제 구현 시에는 서버에서 권한 정보를 받아오거나, 전역 상태 관리에서 가져올 수 있습니다.
 
   const notices = [
     {
@@ -155,6 +160,26 @@ function NoticeList() {
     navigate(`/notice/${id}`);
   };
 
+  // 관리자용 신규 등록 버튼 (예시로 콘솔로깅)
+  const handleCreateNotice = () => {
+    message.info('공지 등록 기능은 아직 구현되지 않았습니다.');
+    // TODO: 실제 구현 시, 등록 페이지로 이동 or Modal 오픈 등 처리
+  };
+
+  // 공지 수정 버튼
+  const handleEditNotice = (e, id) => {
+    e.stopPropagation(); // 상위 onClick(공지 상세보기) 이벤트가 실행되지 않도록
+    message.info(`공지 수정 기능(공지 ID: ${id})은 아직 구현되지 않았습니다.`);
+    // TODO: 실제 구현 시, 수정 페이지 or Modal 등으로 이동
+  };
+
+  // 공지 삭제 버튼
+  const handleDeleteNotice = (e, id) => {
+    e.stopPropagation(); // 상위 onClick(공지 상세보기) 이벤트가 실행되지 않도록
+    message.info(`공지 삭제 기능(공지 ID: ${id})은 아직 구현되지 않았습니다.`);
+    // TODO: 실제 구현 시, 서버 요청 후 목록 갱신
+  };
+
   // content 미리보기
   const MAX_LENGTH = 40;
 
@@ -172,6 +197,17 @@ function NoticeList() {
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ width: 300 }}
         />
+
+        {/* 관리자 전용: 공지 등록 버튼 */}
+        {isAdmin && (
+          <Button
+            type="primary"
+            style={{ marginLeft: 16 }}
+            onClick={handleCreateNotice}
+          >
+            공지 등록
+          </Button>
+        )}
       </div>
 
       <List
@@ -185,13 +221,34 @@ function NoticeList() {
         renderItem={(item) => {
           let preview = item.content;
           if (preview.length > MAX_LENGTH) {
-            preview = preview.slice(0, MAX_LENGTH) + '...';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+            preview = preview.slice(0, MAX_LENGTH) + '...';
           }
 
           return (
             <List.Item
               className={styles.noticeItem}
               onClick={() => handleItemClick(item.id)}
+              actions={
+                isAdmin
+                  ? [
+                      <Button
+                        type="link"
+                        onClick={(e) => handleEditNotice(e, item.id)}
+                        key="edit"
+                      >
+                        수정
+                      </Button>,
+                      <Button
+                        type="link"
+                        danger
+                        onClick={(e) => handleDeleteNotice(e, item.id)}
+                        key="delete"
+                      >
+                        삭제
+                      </Button>,
+                    ]
+                  : []
+              }
             >
               <List.Item.Meta
                 avatar={
@@ -204,8 +261,12 @@ function NoticeList() {
                     }}
                   />
                 }
-                title={<span className={styles.noticeItemTitle}>{item.title}</span>}
-                description={<span className={styles.noticeItemDesc}>{preview}</span>}
+                title={
+                  <span className={styles.noticeItemTitle}>{item.title}</span>
+                }
+                description={
+                  <span className={styles.noticeItemDesc}>{preview}</span>
+                }
               />
             </List.Item>
           );

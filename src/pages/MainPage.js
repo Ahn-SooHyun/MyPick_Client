@@ -1,36 +1,76 @@
 import React, { useState, useEffect } from 'react';
-import styles from './MainPage.module.css';    
+import styles from './MainPage.module.css';
 
-import { 
-  Layout, Row, Col, Button, Typography, Card, Tag, Carousel, Divider, Avatar 
+import {
+  Layout, Row, Col, Button, Typography, Card, Tag, Carousel, Divider, Avatar
 } from 'antd';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-import hamsterImg from '../assets/images/hamster_wallpaper.jpg'; 
+import hamsterImg from '../assets/images/hamster_wallpaper.jpg';
 
-const { Header, Content, Footer } = Layout;  // Header도 실제 사용
+const { Header, Content, Footer } = Layout;
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
+
+// 메인 페이지에서 사용될 색상 정의
 const COLORS = {
-  backgroundLight: '#FFF0DC', 
-  accent: '#F0BB78',         
-  darkText: '#543A14',       
-  headerBg: '#131010',       
+  backgroundLight: '#FFF0DC',
+  accent: '#F0BB78',
+  darkText: '#543A14',
+  headerBg: '#131010',
 };
 
 function CombinedPage() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const [overlayOpacity, setOverlayOpacity] = useState(0);
 
-  // 로그인 여부 가정
+  // 로그인 여부 (예시로 가정)
   const [isLoggedIn] = useState(false);
 
+  // 공지 데이터 (NoticeList.js와 동일한 배열 일부만 가져옴)
+  // 실제로는 API 호출 또는 Context/Redux 등을 통해 받아올 수 있습니다.
+  const notices = [
+    {
+      id: 1,
+      title: '새해 맞이 이벤트 안내',
+      date: '2024-01-01',
+      content: '안녕하세요. 새해 맞이 이벤트에 대한 상세 안내 내용이 들어갑니다. 많은 관심 부탁드립니다!'
+    },
+    {
+      id: 2,
+      title: '서버 점검 일정 안내',
+      date: '2024-01-15',
+      content: '서버 점검이 예정되어 있으니 이용에 참고 부탁드립니다. 점검 상세 사항은 홈페이지를 확인하세요.'
+    },
+    {
+      id: 3,
+      title: '설 연휴 고객센터 운영 안내',
+      date: '2024-02-02',
+      content: '설 연휴 기간 동안 고객센터 운영 시간이 변경됩니다. 자세한 내용은 이후 공지를 통해 안내해 드리겠습니다.'
+    },
+    {
+      id: 4,
+      title: '신규 기능 업데이트',
+      date: '2024-02-10',
+      content: '신규 기능이 추가되었습니다. 자세한 내용은 공지 사항을 확인하세요.'
+    },
+    {
+      id: 5,
+      title: '보안 패치 안내',
+      date: '2024-02-15',
+      content: '보안 패치가 적용될 예정입니다. 서비스 이용에 참고 부탁드립니다.'
+    },
+    // 필요에 따라 추가...
+  ];
+
+  // (1) 스크롤 시 헤더 노출 여부와 오버레이 투명도 설정
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setIsHeaderVisible(scrollTop !== 0);
 
+      // 스크롤 비례 오버레이 투명도 계산
       const fadeDistance = window.innerHeight;
       let newOpacity = scrollTop / fadeDistance;
       if (newOpacity < 0) newOpacity = 0;
@@ -44,13 +84,22 @@ function CombinedPage() {
 
   const navigate = useNavigate();
 
-  // 채팅 버튼 로직
+  // (2) 로그인 여부에 따라 채팅 버튼 클릭 시 이동할 페이지 결정
   const handleChatButtonClick = () => {
     if (isLoggedIn) {
       navigate('/chat');
     } else {
       navigate('/login');
     }
+  };
+
+  // (3) 날짜 기준 내림차순 정렬 후, 최신 4개 공지 추출
+  const sortedNotices = [...notices].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const latestNotices = sortedNotices.slice(0, 4);
+
+  // (4) 공지 카드 클릭 시 해당 NoticeDetail로 이동
+  const handleNoticeCardClick = (id) => {
+    navigate(`/notice/${id}`);
   };
 
   return (
@@ -61,15 +110,12 @@ function CombinedPage() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',  // 좌측 문구, 우측 버튼
+          justifyContent: 'space-between',
           padding: '0 1rem',
         }}
       >
-        {/* 왼쪽 영역: 문구 */}
         <div>스크롤을 내리면 나타나는 헤더</div>
-
-        {/* 오른쪽 영역: 채팅 버튼 */}
-        <Button 
+        <Button
           type="primary"
           style={{
             borderRadius: '8px',
@@ -97,7 +143,7 @@ function CombinedPage() {
         <h1 className={styles.centerText}>MyPick Project</h1>
       </div>
 
-      {/* (3) 본문 (MainIMG) 아래로 MainPage 콘텐츠가 이어짐 */}
+      {/* (3) 본문 영역 */}
       <main className={styles.content}>
         <Layout style={{ backgroundColor: COLORS.backgroundLight, minHeight: '100vh' }}>
           <Content style={{ padding: '30px', margin: '0 auto' }}>
@@ -108,7 +154,7 @@ function CombinedPage() {
                   귀여운 프로젝트
                 </Title>
                 <Paragraph style={{ color: COLORS.darkText, fontSize: '1rem' }}>
-                  이 프로젝트는 <strong>React</strong>와 <strong>Ant Design</strong>을 활용해 
+                  이 프로젝트는 <strong>React</strong>와 <strong>Ant Design</strong>을 활용해
                   깜찍하고 사랑스러운 디자인을 구현한 예시입니다.
                   <br />
                   밝은 색상을 통해 유저에게 아기자기한 느낌을 전달하고,
@@ -197,6 +243,32 @@ function CombinedPage() {
                 이곳은 프로젝트와 관련된 공지사항을 보여주는 공간입니다.
                 업데이트 소식, 이벤트, 버전 변경 등 중요한 정보를 여기에 작성할 수 있습니다.
               </Paragraph>
+
+              {/* (4) 최신 공지 4개 카드 형태 표시 */}
+              <Row gutter={[16, 16]}>
+                {latestNotices.map((notice) => (
+                  <Col key={notice.id} xs={24} sm={12} md={6}>
+                    <Card
+                      hoverable
+                      title={notice.title}
+                      style={{
+                        borderColor: COLORS.accent,
+                        borderRadius: '10px',
+                      }}
+                      onClick={() => handleNoticeCardClick(notice.id)}
+                    >
+                      <p style={{ marginBottom: 4, color: COLORS.darkText }}>
+                        작성일: {notice.date}
+                      </p>
+                      <p style={{ color: COLORS.darkText }}>
+                        {notice.content.length > 30
+                          ? notice.content.slice(0, 30) + '...'
+                          : notice.content}
+                      </p>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
             </section>
 
             <Divider style={{ borderColor: COLORS.darkText, opacity: 0.4 }} />
@@ -286,7 +358,7 @@ function CombinedPage() {
                   height: 40,
                   fontWeight: 'bold',
                 }}
-                onClick={() => navigate('/chat')} 
+                onClick={() => navigate('/chat')}
               >
                 채팅하러 가기
               </Button>

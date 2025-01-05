@@ -7,51 +7,55 @@
   font-family: sans-serif;
 }
 
-/* 이미지 컨테이너 수정:
-   - 고정 위치, 화면 전체(100vw x 100vh) 차지 */
+/* 
+  - 배경 이미지 영역을 고정 
+  - z-index: 0으로 조정하여, 
+    오버레이와 본문(content) 레이어 사이에서 정상적으로 동작하도록 함 
+*/
 .imageContainer {
-  position: fixed;      /* 화면에 고정 */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;        /* 브라우저 높이(뷰포트)만큼 차지 */
-  z-index: -2;          /* 가장 뒤로 */
-  overflow: hidden;     /* 혹시 이미지가 넘칠 때 잘라내기 */
+  height: 100vh;    
+  z-index: 0;       /* (수정) -2에서 0으로 변경 */
+  overflow: hidden;
 }
 
-/* 고정 배경 이미지 수정:
-   - 부모 .imageContainer가 전체 화면을 차지하므로,
-   - 여기서는 폭/높이를 100%로, object-fit: cover 설정 */
+/* 고정 배경 이미지 */
 .myImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;     /* 비율 유지하며 공간 가득 채우기 */
-  /* position: fixed; --> 제거 (이제 부모 컨테이너가 고정) */
-  /* top, left 등도 제거 */
-  z-index: -2;           /* 컨테이너 뒤로 가지 않도록, 부모와 같은 z-index도 괜찮 */
+  object-fit: cover;
+  z-index: 0;       /* 이미지 레벨 */
 }
 
-/* 검정 오버레이 */
+/* 검정 오버레이 
+   - z-index를 1로 하여 이미지보다 위에 오도록 설정 
+   - opacity는 JS에서 scroll 이벤트에 따라 동적으로 변경됨
+*/
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;         /* 전체 화면 높이 */
+  height: 100vh;
   background-color: #000;
-  z-index: -1; 
+  z-index: 1;        /* (수정) -1에서 1로 변경 */
   pointer-events: none;
   transition: opacity 0.3s ease-out;
-  opacity: 0; /* 스크롤 양에 따라 변경 */
+  opacity: 0;
 }
 
 /* 중앙 텍스트 (MyPick Project)
-   - 위치는 고정, 중앙 배치 */
+   - 오버레이 위에 위치하려면 z-index >= 1 이상이어야 하지만
+     position: fixed로 별도 레이어가 생김
+*/
 .centerText {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* 중앙정렬 보편값 */
+  transform: translate(-50%, -50%);
   z-index: 0;
   color: #fff;
   font-size: 3rem;
@@ -72,7 +76,7 @@
   background-color: #333;
   color: #fff;
   transition: transform 0.3s ease;
-  z-index: 999;
+  z-index: 999; /* 헤더는 항상 맨 위 */
 }
 
 /* 헤더를 숨길 때 위로 이동 */
@@ -80,11 +84,14 @@
   transform: translateY(-100%);
 }
 
-/* 본문 영역 */
+/* 본문 영역 
+   - z-index를 2로 지정해 오버레이(1) 위에 위치시키고,
+     화면 맨 위에서 100vh 만큼 아래로 시작 (배경 이미지를 전부 보여주기 위함)
+*/
 .content {
   position: relative;
-  z-index: 1;
-  margin-top: 100vh;
+  z-index: 2;         /* (수정) 1 → 2 */
+  margin-top: 100vh;  /* 고정 배경 이미지 영역을 지나서 본문 시작 */
   width: 100%;
   background-color: #fff;
   font-size: 1rem;
