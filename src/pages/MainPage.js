@@ -1,25 +1,27 @@
+// MainPage.js
 import React, { useState, useEffect } from 'react';
-import styles from './MainPage.module.css';    
+import styles from './MainPage.module.css';
 
-import { 
-  Layout, Row, Col, Button, Typography, Card, Tag, Carousel, Divider, Avatar 
+import {
+  Layout, Row, Col, Button, Typography, Card, Tag, Carousel, Divider, Avatar
 } from 'antd';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-import hamsterImg from '../assets/images/hamster_wallpaper.jpg'; 
+import hamsterImg from '../assets/images/hamster_wallpaper.jpg';
 
-const { Header, Content, Footer } = Layout;  // Header도 실제 사용
+const { Header, Content, Footer } = Layout;
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
+
 const COLORS = {
-  backgroundLight: '#FFF0DC', 
-  accent: '#F0BB78',         
-  darkText: '#543A14',       
-  headerBg: '#131010',       
+  backgroundLight: '#FFF0DC',
+  accent: '#F0BB78',
+  darkText: '#543A14',
+  headerBg: '#131010',
 };
 
-function CombinedPage() {
+function MainPage() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const [overlayOpacity, setOverlayOpacity] = useState(0);
 
@@ -27,10 +29,14 @@ function CombinedPage() {
   const [isLoggedIn] = useState(false);
 
   useEffect(() => {
+    // window 전체 스크롤에 대한 이벤트
     const handleScroll = () => {
       const scrollTop = window.scrollY;
+
+      // (1) 스크롤이 0보다 크면 헤더 표시, 아니면 숨김
       setIsHeaderVisible(scrollTop !== 0);
 
+      // (2) 화면 높이에 비례해 오버레이 불투명도 계산
       const fadeDistance = window.innerHeight;
       let newOpacity = scrollTop / fadeDistance;
       if (newOpacity < 0) newOpacity = 0;
@@ -53,25 +59,20 @@ function CombinedPage() {
     }
   };
 
-  
-
   return (
     <div className={styles.container}>
-      {/* --- (1) 스크롤 시 나타나는 헤더 --- */}
+      {/* --- (A) 스크롤 시 나타나는 헤더 --- */}
       <header
         className={`${styles.header} ${!isHeaderVisible ? styles.headerHidden : ''}`}
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',  // 좌측 문구, 우측 버튼
+          justifyContent: 'space-between', 
           padding: '0 1rem',
         }}
       >
-        {/* 왼쪽 영역: 문구 */}
         <div>스크롤을 내리면 나타나는 헤더</div>
-
-        {/* 오른쪽 영역: 채팅 버튼 */}
-        <Button 
+        <Button
           type="primary"
           style={{
             borderRadius: '8px',
@@ -85,7 +86,7 @@ function CombinedPage() {
         </Button>
       </header>
 
-      {/* --- (2) 고정 배경 이미지 + 오버레이 + 중앙 텍스트 --- */}
+      {/* --- (B) 고정 배경 이미지 + 오버레이 + 중앙 텍스트 --- */}
       <div className={styles.imageContainer}>
         <img
           src={hamsterImg}
@@ -99,9 +100,10 @@ function CombinedPage() {
         <h1 className={styles.centerText}>MyPick Project</h1>
       </div>
 
-      {/* (3) 본문 (MainIMG) 아래로 MainPage 콘텐츠가 이어짐 */}
+      {/* (C) 본문 (MainIMG) 아래로 MainPage 콘텐츠가 이어짐 */}
       <main className={styles.content}>
-        <Layout style={{ backgroundColor: COLORS.backgroundLight, minHeight: '100vh' }}>
+        {/* (1) Layout에서 minHeight 제거 → window가 스크롤 담당 */}
+        <Layout style={{ backgroundColor: COLORS.backgroundLight }}>
           <Content style={{ padding: '30px', margin: '0 auto' }}>
             {/* Hero 섹션 */}
             <Row gutter={[24, 24]}>
@@ -110,7 +112,7 @@ function CombinedPage() {
                   귀여운 프로젝트
                 </Title>
                 <Paragraph style={{ color: COLORS.darkText, fontSize: '1rem' }}>
-                  이 프로젝트는 <strong>React</strong>와 <strong>Ant Design</strong>을 활용해 
+                  이 프로젝트는 <strong>React</strong>와 <strong>Ant Design</strong>을 활용해
                   깜찍하고 사랑스러운 디자인을 구현한 예시입니다.
                   <br />
                   밝은 색상을 통해 유저에게 아기자기한 느낌을 전달하고,
@@ -142,6 +144,7 @@ function CombinedPage() {
                   Contact Us
                 </Button>
               </Col>
+
               <Col xs={24} md={12} style={{ textAlign: 'center' }}>
                 <div
                   style={{
@@ -288,7 +291,7 @@ function CombinedPage() {
                   height: 40,
                   fontWeight: 'bold',
                 }}
-                onClick={() => navigate('/chat')} 
+                onClick={() => navigate('/chat')}
               >
                 채팅하러 가기
               </Button>
@@ -342,4 +345,4 @@ function CombinedPage() {
   );
 }
 
-export default CombinedPage;
+export default MainPage;
