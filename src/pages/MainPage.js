@@ -22,26 +22,17 @@ const COLORS = {
 };
 
 function MainPage() {
+  // 헤더 표시/숨김 상태만 유지
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const [overlayOpacity, setOverlayOpacity] = useState(0);
 
-  // 로그인 여부 가정
+  // 로그인 여부 (가정)
   const [isLoggedIn] = useState(false);
 
   useEffect(() => {
-    // window 전체 스크롤에 대한 이벤트
+    // 스크롤 시 헤더 노출/숨김만 처리
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-
-      // (1) 스크롤이 0보다 크면 헤더 표시, 아니면 숨김
       setIsHeaderVisible(scrollTop !== 0);
-
-      // (2) 화면 높이에 비례해 오버레이 불투명도 계산
-      const fadeDistance = window.innerHeight;
-      let newOpacity = scrollTop / fadeDistance;
-      if (newOpacity < 0) newOpacity = 0;
-      if (newOpacity > 1) newOpacity = 1;
-      setOverlayOpacity(newOpacity);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -61,13 +52,13 @@ function MainPage() {
 
   return (
     <div className={styles.container}>
-      {/* --- (A) 스크롤 시 나타나는 헤더 --- */}
+      {/* 헤더 (스크롤 시 숨김/표시) */}
       <header
         className={`${styles.header} ${!isHeaderVisible ? styles.headerHidden : ''}`}
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between', 
+          justifyContent: 'space-between',
           padding: '0 1rem',
         }}
       >
@@ -86,23 +77,17 @@ function MainPage() {
         </Button>
       </header>
 
-      {/* --- (B) 고정 배경 이미지 + 오버레이 + 중앙 텍스트 --- */}
+      {/* 고정 배경 이미지 + 중앙 텍스트 (오버레이 제거) */}
       <div className={styles.imageContainer}>
         <img
           src={hamsterImg}
           alt="Hamster Wallpaper"
           className={styles.myImage}
         />
-        <div
-          className={styles.overlay}
-          style={{ opacity: overlayOpacity }}
-        />
         <h1 className={styles.centerText}>MyPick Project</h1>
       </div>
 
-      {/* (C) 본문 (MainIMG) 아래로 MainPage 콘텐츠가 이어짐 */}
       <main className={styles.content}>
-        {/* (1) Layout에서 minHeight 제거 → window가 스크롤 담당 */}
         <Layout style={{ backgroundColor: COLORS.backgroundLight }}>
           <Content style={{ padding: '30px', margin: '0 auto' }}>
             {/* Hero 섹션 */}
