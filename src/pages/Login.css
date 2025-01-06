@@ -86,7 +86,5 @@
   .right-inductor img {
     max-width: 100%;
     height: auto;
-    background-image: url('../assets/img2/joinImg.jpg');  /* 배경 이미지 경로 추가 */
-    background-size: cover;
-    background-position: center;
   }
+  
