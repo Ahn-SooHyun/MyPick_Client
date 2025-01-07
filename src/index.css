@@ -39,7 +39,9 @@ caption {
   font-size: 100%;
   vertical-align: baseline;
 }
-
+pre{
+  font-family: 'The Jamsil', sans-serif; 
+}
 /*
   @font-face 설정:
   src/ 폴더 내 assets/fonts 로 옮겼다고 가정하면,

@@ -1,40 +1,55 @@
 /* ChatMain.module.css */
 
-/* (1) optional: antd CSS import (주석으로 남김)
+/* (선택) antd CSS import
 @import 'antd/dist/antd.css';
 */
 
+/* The Jamsil 폰트 불러오기 (예시)
+@font-face {
+  font-family: "The Jamsil";
+  src: url("../../assets/fonts/The_Jamsil_3_Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+/* (1) 전체 컨테이너(채팅 영역) */
 .container {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  height: 100vh; /* 높이를 100vh로 고정 */
+  font-family: "The Jamsil", sans-serif; /* 폰트 적용 */
 }
 
+/* (2) 채팅 메시지를 보여주는 영역 */
 .chatWindow {
-  flex: 1;
-  overflow-y: auto;
+  flex: 1;           /* 남은 공간을 채팅창이 차지 */
+  overflow-y: auto;  /* 내용이 길어지면 여기서만 스크롤 */
   padding: 20px;
   background: #f9f9f9;
 }
 
-/* (2) margin-left: 20% => User */
+/* 사용자 메시지 */
 .userMessage {
   margin-bottom: 10px;
   margin-left: 20%;
   background: #fff9c4;
   padding: 10px;
   border-radius: 5px;
+  font-family: "The Jamsil", sans-serif;
 }
 
-/* (3) margin-right: 20% => AI */
+/* AI 메시지 */
 .aiMessage {
   margin-bottom: 10px;
   margin-right: 20%;
   background: #e0f7fa;
   padding: 10px;
   border-radius: 5px;
+  font-family: "The Jamsil", sans-serif;
 }
 
+/* 입력영역 */
 .inputArea {
   display: flex;
   border-top: 1px solid #ccc;
