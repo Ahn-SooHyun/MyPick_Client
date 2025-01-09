@@ -4,63 +4,24 @@
 .container {
   position: relative;
   width: 100%;
-  /* font-family: sans-serif; */
 }
 
-/* 이미지 컨테이너 수정:
-   - 고정 위치, 화면 전체(100vw x 100vh) 차지 */
+/* 배경 이미지 컨테이너 */
 .imageContainer {
-  position: fixed;      /* 화면에 고정 */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;        /* 브라우저 높이(뷰포트)만큼 차지 */
-  z-index: -2;          /* 가장 뒤로 */
-  overflow: hidden;     /* 혹시 이미지가 넘칠 때 잘라내기 */
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
 }
 
-/* 고정 배경 이미지 수정:
-   - 부모 .imageContainer가 전체 화면을 차지하므로,
-   - 여기서는 폭/높이를 100%로, object-fit: cover 설정 */
 .myImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;     /* 비율 유지하며 공간 가득 채우기 */
-  /* position: fixed; --> 제거 (이제 부모 컨테이너가 고정) */
-  /* top, left 등도 제거 */
-  z-index: -2;           /* 컨테이너 뒤로 가지 않도록, 부모와 같은 z-index도 괜찮 */
-}
-
-/* 검정 오버레이 */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;         /* 전체 화면 높이 */
-  background-color: #000;
-  z-index: -1; 
-  pointer-events: none;
-  transition: opacity 0.3s ease-out;
-  opacity: 0; /* 스크롤 양에 따라 변경 */
-}
-
-/* 중앙 텍스트 (MyPick Project)
-   - 위치는 고정, 중앙 배치 */
-.centerText {
-  position: fixed;
-  top: 60%;
-  left: 40%;
-  transform: translate(-50%, -50%); /* 중앙정렬 보편값 */
-  z-index: 0;
-  color: #fff;
-  font-size: 5rem;
-  font-weight: bold;
-  pointer-events: none;
-  text-align: center;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color:#333;
-  
+  object-fit: cover;
+  z-index: -2;
 }
 
 /* 헤더 */
@@ -78,12 +39,27 @@
   z-index: 999;
 }
 
-/* 헤더를 숨길 때 위로 이동 */
 .headerHidden {
   transform: translateY(-100%);
 }
 
-/* 본문 영역 */
+/* 중앙 텍스트 */
+.centerText {
+  position: fixed;
+  top: 60%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  color: #fff;
+  font-size: 5rem;
+  font-weight: bold;
+  pointer-events: none;
+  text-align: center;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #333;
+}
+
+/* 본문 내용 (기본 흰 배경) */
 .content {
   position: relative;
   z-index: 1;
@@ -93,4 +69,16 @@
   font-size: 1rem;
   line-height: 1.5;
   color: #333;
+}
+
+.innerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 구분선 스타일 */
+.sectionDivider {
+  border-color: #543A14;
+  opacity: 0.4;
 }
