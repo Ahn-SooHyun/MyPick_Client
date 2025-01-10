@@ -2,7 +2,7 @@
 
 /* 기본 Reset & Body 설정은 동일, 아래는 폰트 선언 부분만 수정 예시 */
 
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -13,7 +13,15 @@ body {
   font-family: Arial, sans-serif;
   background: #fff;
   color: #333;
+} */
+
+body {
+  font-family: 'The Jamsil', sans-serif; 
+  line-height: 1.5;
+  background: #fff;
+  color: #333;
 }
+
 
 /* 기본 스타일 초기화 */
 html, body, div, span, applet, object, iframe,
@@ -31,7 +39,9 @@ caption {
   font-size: 100%;
   vertical-align: baseline;
 }
-
+pre{
+  font-family: 'The Jamsil', sans-serif; 
+}
 /*
   @font-face 설정:
   src/ 폴더 내 assets/fonts 로 옮겼다고 가정하면,
@@ -84,6 +94,7 @@ html, body, #root {
   margin: 0;
   padding: 0;
   height: 100%;
+  
 }
 
 body {

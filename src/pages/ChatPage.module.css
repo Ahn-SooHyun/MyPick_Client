@@ -1,3 +1,4 @@
+/* ChatPage.module.css */
 .container {
   display: flex;
   flex-direction: row;
@@ -5,6 +6,8 @@
   box-sizing: border-box;
 }
 
+/* 왼쪽, 오른쪽 사이드바는 ChatPage에서 배치,
+   각각 200px 고정 너비, 높이는 100%. */
 .sidebar {
   flex: 0 0 200px;
   border-right: 1px solid #ccc;

@@ -4,64 +4,24 @@
 .container {
   position: relative;
   width: 100%;
-  font-family: sans-serif;
 }
 
-/* 
-  - 배경 이미지 영역을 고정 
-  - z-index: 0으로 조정하여, 
-    오버레이와 본문(content) 레이어 사이에서 정상적으로 동작하도록 함 
-*/
+/* 배경 이미지 컨테이너 */
 .imageContainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;    
-  z-index: 0;       /* (수정) -2에서 0으로 변경 */
+  height: 100vh;
+  z-index: -2;
   overflow: hidden;
 }
 
-/* 고정 배경 이미지 */
 .myImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;       /* 이미지 레벨 */
-}
-
-/* 검정 오버레이 
-   - z-index를 1로 하여 이미지보다 위에 오도록 설정 
-   - opacity는 JS에서 scroll 이벤트에 따라 동적으로 변경됨
-*/
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #000;
-  z-index: 1;        /* (수정) -1에서 1로 변경 */
-  pointer-events: none;
-  transition: opacity 0.3s ease-out;
-  opacity: 0;
-}
-
-/* 중앙 텍스트 (MyPick Project)
-   - 오버레이 위에 위치하려면 z-index >= 1 이상이어야 하지만
-     position: fixed로 별도 레이어가 생김
-*/
-.centerText {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  color: #fff;
-  font-size: 3rem;
-  font-weight: bold;
-  pointer-events: none;
-  text-align: center;
+  z-index: -2;
 }
 
 /* 헤더 */
@@ -76,25 +36,49 @@
   background-color: #333;
   color: #fff;
   transition: transform 0.3s ease;
-  z-index: 999; /* 헤더는 항상 맨 위 */
+  z-index: 999;
 }
 
-/* 헤더를 숨길 때 위로 이동 */
 .headerHidden {
   transform: translateY(-100%);
 }
 
-/* 본문 영역 
-   - z-index를 2로 지정해 오버레이(1) 위에 위치시키고,
-     화면 맨 위에서 100vh 만큼 아래로 시작 (배경 이미지를 전부 보여주기 위함)
-*/
+/* 중앙 텍스트 */
+.centerText {
+  position: fixed;
+  top: 60%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  color: #fff;
+  font-size: 5rem;
+  font-weight: bold;
+  pointer-events: none;
+  text-align: center;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #333;
+}
+
+/* 본문 내용 (기본 흰 배경) */
 .content {
   position: relative;
-  z-index: 2;         /* (수정) 1 → 2 */
-  margin-top: 100vh;  /* 고정 배경 이미지 영역을 지나서 본문 시작 */
+  z-index: 1;
+  margin-top: 100vh;
   width: 100%;
   background-color: #fff;
   font-size: 1rem;
   line-height: 1.5;
   color: #333;
+}
+
+.innerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 구분선 스타일 */
+.sectionDivider {
+  border-color: #543A14;
+  opacity: 0.4;
 }
