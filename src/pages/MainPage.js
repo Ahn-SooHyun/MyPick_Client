@@ -9,9 +9,8 @@ import { GithubOutlined, MailOutlined, SoundOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 import hamsterImg from '../assets/images/hamster_wallpaper.jpg';
-
-// NoticeList.js에서 export 한 notices 배열
-import { notices } from './NoticeList';
+// NoticeList.js에서 export 한 notices 배열 import
+import { notices } from './NoticeList'; 
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -34,20 +33,24 @@ function MainPage() {
       setIsHeaderVisible(scrollTop !== 0);
     };
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // (B) 최신 공지 4개만 가져오기 (날짜 내림차순)
+  // 최신 공지 4개만 가져오기 (날짜 내림차순)
   const sortedNotices = [...notices].sort((a, b) => new Date(b.date) - new Date(a.date));
   const top4Notices = sortedNotices.slice(0, 4);
 
-  // (C) 공지 클릭 시 이동
+  // 공지 클릭 시 상세보기로 이동
   const handleNoticeClick = (id) => {
     navigate(`/notice/${id}`);
   };
 
-  // 채팅 버튼
+  // 공지사항 섹션 클릭 시 전체 공지사항 리스트 페이지로 이동
+  const handleNoticeSectionClick = () => {
+    navigate('/notice');
+  };
+
+  // 채팅 버튼 클릭 시 이동
   const handleChatButtonClick = () => {
     if (isLoggedIn) {
       navigate('/chat');
@@ -83,7 +86,7 @@ function MainPage() {
         </Button>
       </header>
 
-      {/* 고정 배경 + 중앙 텍스트 */}
+      {/* 배경 이미지 + 중앙 텍스트 */}
       <div className={styles.imageContainer}>
         <img src={hamsterImg} alt="Hamster Wallpaper" className={styles.myImage} />
         <h1 className={styles.centerText}>MyPick Project</h1>
@@ -92,18 +95,19 @@ function MainPage() {
       {/* 메인 (흰색) 영역 */}
       <main className={styles.content}>
 
-        {/* 베이지색 섹션 */}
+        {/* 첫 번째 베이지색 섹션 */}
         <Card
           bodyStyle={{ padding: 40 }}
           style={{
             position: 'relative',
-            left: '50%',
+            left: '50%', 
             transform: 'translateX(-50%)',
-            width: '100vw',
+            width: '100%',  // '100vw'에서 '100%'로 변경
             backgroundColor: '#FFF0DC',
             borderRadius: 50,
             boxShadow: '0 8px 16px rgba(0,0,0,0.1)',
-            marginBottom: 40
+            marginBottom: 40,
+            overflow: 'hidden',  // 내용이 넘치지 않도록
           }}
         >
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -120,6 +124,7 @@ function MainPage() {
                   심플하지만 포근한 인터페이스를 제공합니다.
                 </Paragraph>
                 <Space>
+                  {/* GitHub Repo 버튼: 서버 */}
                   <Button
                     type="primary"
                     icon={<GithubOutlined />}
@@ -129,9 +134,25 @@ function MainPage() {
                       borderRadius: 10,
                       fontWeight: 'bold',
                     }}
+                    onClick={() => window.open('https://github.com/Ahn-SooHyun/MyPick_Server', '_blank')}
                   >
-                    GitHub Repo
+                    MyPick_Server GitHub
                   </Button>
+                  {/* GitHub Repo 버튼: 클라이언트 */}
+                  <Button
+                    type="primary"
+                    icon={<GithubOutlined />}
+                    style={{
+                      backgroundColor: COLORS.accent,
+                      borderColor: COLORS.accent,
+                      borderRadius: 10,
+                      fontWeight: 'bold',
+                    }}
+                    onClick={() => window.open('https://github.com/Ahn-SooHyun/MyPick_Client', '_blank')}
+                  >
+                    MyPick_Client GitHub
+                  </Button>
+                  {/* Contact Us 버튼 */}
                   <Button
                     icon={<MailOutlined />}
                     style={{
@@ -141,6 +162,7 @@ function MainPage() {
                       borderRadius: 10,
                       fontWeight: 'bold'
                     }}
+                    onClick={() => window.open('mailto:ahn.soohyun@example.com', '_blank')}  // 실제 이메일 주소로 변경
                   >
                     Contact Us
                   </Button>
@@ -196,7 +218,25 @@ function MainPage() {
           </section>
 
           <Divider className={styles.sectionDivider} />
-          <section>
+          
+          {/* 공지사항 섹션을 클릭 가능하게 설정 */}
+          <section
+            onClick={handleNoticeSectionClick}
+            style={{ 
+              cursor: 'pointer', 
+              padding: '20px', 
+              backgroundColor: '#f5f5f5', 
+              borderRadius: '8px',
+              marginBottom: '20px', // 공지사항 섹션과 리스트 사이 간격
+            }}
+            role="button"
+            tabIndex="0"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleNoticeSectionClick();
+              }
+            }}
+          >
             <Title level={3} style={{ color: COLORS.darkText }}>
               공지사항(Notice)
             </Title>
@@ -204,44 +244,47 @@ function MainPage() {
               이곳은 프로젝트와 관련된 공지사항을 보여주는 공간입니다.
               업데이트 소식, 이벤트, 버전 변경 등 중요한 정보를 여기에 작성할 수 있습니다.
             </Paragraph>
-
-            {/* 최신 공지 4개 리스트 (미리보기) */}
-            <List
-              itemLayout="horizontal"
-              dataSource={top4Notices}
-              renderItem={(item) => {
-                const preview = item.content.length > 40
-                  ? item.content.slice(0, 40) + '...'
-                  : item.content;
-
-                return (
-                  <List.Item onClick={() => handleNoticeClick(item.id)}>
-                    <List.Item.Meta
-                      avatar={
-                        <SoundOutlined
-                          style={{
-                            marginLeft: 15,
-                            fontSize: 24,
-                            color: COLORS.darkText
-                          }}
-                        />
-                      }
-                      title={
-                        <span style={{ color: COLORS.darkText, fontWeight: 'bold' }}>
-                          {item.title}
-                        </span>
-                      }
-                      description={
-                        <span style={{ color: COLORS.darkText }}>
-                          {preview}
-                        </span>
-                      }
-                    />
-                  </List.Item>
-                );
-              }}
-            />
           </section>
+
+          {/* 최신 공지 4개 리스트 (미리보기) */}
+          <List
+            itemLayout="horizontal"
+            dataSource={top4Notices}
+            renderItem={(item) => {
+              const preview = item.content.length > 40
+                ? item.content.slice(0, 40) + '...'
+                : item.content;
+
+              return (
+                <List.Item
+                  onClick={() => handleNoticeClick(item.id)}
+                  style={{ cursor: 'pointer', padding: '10px 0' }}  // 리스트 아이템에도 포인터 커서
+                >
+                  <List.Item.Meta
+                    avatar={
+                      <SoundOutlined
+                        style={{
+                          marginLeft: 15,
+                          fontSize: 24,
+                          color: COLORS.darkText
+                        }}
+                      />
+                    }
+                    title={
+                      <span style={{ color: COLORS.darkText, fontWeight: 'bold' }}>
+                        {item.title}
+                      </span>
+                    }
+                    description={
+                      <span style={{ color: COLORS.darkText }}>
+                        {preview}
+                      </span>
+                    }
+                  />
+                </List.Item>
+              );
+            }}
+          />
 
           <Divider className={styles.sectionDivider} />
           <section>
@@ -281,12 +324,13 @@ function MainPage() {
             position: 'relative',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '100vw',
+            width: '100%',  // '100vw'에서 '100%'로 변경
             backgroundColor: '#FFF0DC',
             borderRadius: 50,
             boxShadow: '0 8px 16px rgba(0,0,0,0.1)',
             margin: '40px 0',
             textAlign: 'center',
+            overflow: 'hidden',  // 내용이 넘치지 않도록
           }}
         >
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>

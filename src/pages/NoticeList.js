@@ -9,8 +9,8 @@ const { Title } = Typography;
 const { Search } = Input;
 
 /** 
- * notices 배열
- * 날짜 내림차순 정렬, 검색 기능, 페이지네이션 등을 수행
+ * notices 배열을 export
+ * 다른 파일에서 import하여 사용할 수 있도록 함
  */
 export const notices = [
   {
@@ -146,9 +146,7 @@ function NoticeList() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // 날짜 내림차순 정렬
-  const sortedNotices = [...notices].sort((a, b) => {
-    return new Date(b.date) - new Date(a.date);
-  });
+  const sortedNotices = [...notices].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // 검색 (content 포함 여부)
   const filteredNotices = sortedNotices.filter((notice) =>
