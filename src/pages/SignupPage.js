@@ -17,7 +17,7 @@ function MinWow() {
     const pw2Ref = useRef(null);
     const nameRef = useRef(null);
     const nickNameRef = useRef(null);
-    const birthRef = useRef(null); // 생년월일 날짜 입력 필드 추가
+    const birthRef = useRef(null); 
 
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,6 +46,7 @@ function MinWow() {
         }
 
         // PW 유효성 검사
+        
         if (pwRef.current.value === '') {
             setPwCheck(true);
             alert('비밀번호를 입력하세요.');
