@@ -1,0 +1,84 @@
+body, html {
+    background-color: #FFF0DC; /* 페이지 전체 배경색 */
+    margin: 0;
+    padding: 0;
+}
+  
+.App-header {
+    background-color: #FFF0DC !important; /* 섹션 배경색 */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    color: #000; /* 텍스트 색상: 검정 */
+    padding: 20px;
+}
+  
+.search-section {
+    margin-bottom: 20px;
+}
+  
+.search-section input {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #F0BB78; /* 테두리 색상 */
+}
+  
+.search-section button {
+    padding: 10px 15px;
+    background-color: #F0BB78; /* 버튼 배경색 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #543A14; /* 버튼 텍스트 색상 */
+}
+  
+.search-section button:hover {
+    background-color: #E69A50; /* 호버 시 버튼 배경색 */
+}
+  
+.user-detail, .user-list {
+    width: 80%;
+    margin: 20px 0;
+    background: #F0BB78; /* 카드 배경색 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+  
+.user-detail h2, .user-list h2 {
+    margin-bottom: 10px;
+    color: #543A14; /* 제목 텍스트 색상 */
+}
+  
+.user-list table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #543A14; /* 테이블 텍스트 색상 */
+}
+  
+.user-list th, .user-list td {
+    padding: 10px;
+    border: 1px solid #F0BB78; /* 셀 테두리 색상 */
+    text-align: center;
+}
+  
+.user-list th {
+    background-color: #E69A50; /* 헤더 배경색 */
+    color: white; /* 헤더 텍스트 색상 */
+}
+  
+.user-list button {
+    padding: 5px 10px;
+    background-color: #FF7777; /* 정지 버튼 배경색 */
+    border: none;   
+    border-radius: 5px;
+    cursor: pointer;
+    color: white; /* 정지 버튼 텍스트 색상 */
+}
+  
+.user-list button:hover {
+    background-color: #FF5555; /* 호버 시 정지 버튼 배경색 */
+}
