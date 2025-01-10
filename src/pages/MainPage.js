@@ -1,13 +1,17 @@
+// MainPage.js
 import React, { useState, useEffect } from 'react';
 import styles from './MainPage.module.css';
 
 import {
-  Row, Col, Button, Typography, Card, Tag, Carousel, Divider, Avatar, Space
+  Row, Col, Button, Typography, Card, Tag, Carousel, Divider, Avatar, Space, List
 } from 'antd';
-import { GithubOutlined, MailOutlined } from '@ant-design/icons';
+import { GithubOutlined, MailOutlined, SoundOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 import hamsterImg from '../assets/images/hamster_wallpaper.jpg';
+
+// NoticeList.js에서 export 한 notices 배열
+import { notices } from './NoticeList';
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -23,15 +27,27 @@ function MainPage() {
   const [isLoggedIn] = useState(false);
   const navigate = useNavigate();
 
+  // 스크롤 감지 → 헤더 표시/숨김
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setIsHeaderVisible(scrollTop !== 0);
     };
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // (B) 최신 공지 4개만 가져오기 (날짜 내림차순)
+  const sortedNotices = [...notices].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const top4Notices = sortedNotices.slice(0, 4);
+
+  // (C) 공지 클릭 시 이동
+  const handleNoticeClick = (id) => {
+    navigate(`/notice/${id}`);
+  };
+
+  // 채팅 버튼
   const handleChatButtonClick = () => {
     if (isLoggedIn) {
       navigate('/chat');
@@ -67,7 +83,7 @@ function MainPage() {
         </Button>
       </header>
 
-      {/* 배경 이미지 + 중앙 텍스트 */}
+      {/* 고정 배경 + 중앙 텍스트 */}
       <div className={styles.imageContainer}>
         <img src={hamsterImg} alt="Hamster Wallpaper" className={styles.myImage} />
         <h1 className={styles.centerText}>MyPick Project</h1>
@@ -76,12 +92,12 @@ function MainPage() {
       {/* 메인 (흰색) 영역 */}
       <main className={styles.content}>
 
-        {/* (A) 첫 번째 베이지색 섹션 */}
+        {/* 베이지색 섹션 */}
         <Card
           bodyStyle={{ padding: 40 }}
           style={{
             position: 'relative',
-            left: '50%', 
+            left: '50%',
             transform: 'translateX(-50%)',
             width: '100vw',
             backgroundColor: '#FFF0DC',
@@ -150,7 +166,7 @@ function MainPage() {
           </div>
         </Card>
 
-        {/* (B) 일반 섹션 (중앙 정렬) */}
+        {/* 일반 섹션 (중앙 정렬) */}
         <div className={styles.innerContainer}>
           <Divider className={styles.sectionDivider} />
           <section>
@@ -188,6 +204,43 @@ function MainPage() {
               이곳은 프로젝트와 관련된 공지사항을 보여주는 공간입니다.
               업데이트 소식, 이벤트, 버전 변경 등 중요한 정보를 여기에 작성할 수 있습니다.
             </Paragraph>
+
+            {/* 최신 공지 4개 리스트 (미리보기) */}
+            <List
+              itemLayout="horizontal"
+              dataSource={top4Notices}
+              renderItem={(item) => {
+                const preview = item.content.length > 40
+                  ? item.content.slice(0, 40) + '...'
+                  : item.content;
+
+                return (
+                  <List.Item onClick={() => handleNoticeClick(item.id)}>
+                    <List.Item.Meta
+                      avatar={
+                        <SoundOutlined
+                          style={{
+                            marginLeft: 15,
+                            fontSize: 24,
+                            color: COLORS.darkText
+                          }}
+                        />
+                      }
+                      title={
+                        <span style={{ color: COLORS.darkText, fontWeight: 'bold' }}>
+                          {item.title}
+                        </span>
+                      }
+                      description={
+                        <span style={{ color: COLORS.darkText }}>
+                          {preview}
+                        </span>
+                      }
+                    />
+                  </List.Item>
+                );
+              }}
+            />
           </section>
 
           <Divider className={styles.sectionDivider} />
@@ -221,7 +274,7 @@ function MainPage() {
           </section>
         </div>
 
-        {/* (C) 두 번째 베이지색 섹션 (프로젝트 화면 예시) */}
+        {/* 베이지색 섹션 (프로젝트 화면 예시) */}
         <Card
           bodyStyle={{ padding: 40 }}
           style={{
@@ -297,11 +350,10 @@ function MainPage() {
 
           <Divider className={styles.sectionDivider} />
 
-          {/* (D) 팀 정보 부분 - 아래쪽으로 60px 여백을 주고 싶은 경우,
-              margin이 아닌 padding을 써서 배경을 함께 늘림 */}
+          {/* 팀 정보 */}
           <section
             style={{
-              paddingBottom: 60, // 내부를 늘려 배경 확장
+              paddingBottom: 60,
             }}
           >
             <Title level={3} style={{ color: COLORS.darkText }}>
