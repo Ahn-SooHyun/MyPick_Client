@@ -4,7 +4,9 @@ body, html, #root {
   padding: 0;
   height: 100%;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #74b9ff, #0984e3); /* 그라데이션 배경 */
+  /* background: linear-gradient(135deg, #74b9ff, #0984e3); 그라데이션 배경 */
+  background: linear-gradient(135deg, #f9fcff, #fbfdff); /* 그라데이션 배경 */
+
   display: flex;
   justify-content: center;
   align-items: center;

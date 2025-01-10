@@ -51,6 +51,7 @@ function LoginPage() {
       if (response.data.code == "200") {
         document.cookie = `CT_AT=${response.data.data.ct_AT}; path=/; secure`;
         alert(`아이디: ${response.data.email}`);
+        console.log(response)
         setStep("login"); // 로그인 화면으로 이동
       } else {
         alert("해당 정보를 가진 사용자가 없습니다.");
@@ -63,15 +64,18 @@ function LoginPage() {
 
   const handleFindPw = async (e) => {
     e.preventDefault();
-    console.log()
     try {
-      const response = await axios.post("http://192.168.20.23:8081/api/Found/pwFoundCheck", {
+      const response = await axios.post("http://192.168.20.23:8081/api/Found/pwFound", {
         id,
         name,
         birth,
       });
-      if (response.data.success) {
-        setGeneratedCode(response.data.code);
+      if (response.data.code === "200") {
+        // 성공 시 CT_AT 쿠키 저장
+        document.cookie = `CT_AT=${response.data.data.ct_AT}; path=/; secure`;
+  
+        alert("인증 코드가 생성되었습니다. 인증 단계를 진행하세요.");
+        setGeneratedCode(response.data.data.code); // 인증 코드 저장
         setStep("verifyCode"); // 인증 코드 입력 단계로 이동
       } else {
         alert("해당 정보를 가진 사용자가 없습니다.");
@@ -82,27 +86,48 @@ function LoginPage() {
     }
   };
 
-  const handleVerifyCode = (e) => {
+  const handleVerifyCode = async (e) => {
     e.preventDefault();
-    if (verificationCode === generatedCode) {
-      setStep("resetPassword"); // 새 비밀번호 설정 단계로 이동
-    } else {
-      alert("식별 코드가 일치하지 않습니다.");
+  
+    try {
+      // 서버로 인증 코드 검증 요청
+      const response = await axios.post("http://192.168.20.23:8081/api/Found/pwFoundCheck", {
+        id,    // 사용자 이메일 또는 ID
+        code: verificationCode, // 입력한 인증 코드
+      });
+  
+      // 서버 응답 코드 확인
+      if (response.data.code === "200") {
+        alert("인증 성공! 비밀번호 변경 페이지로 이동합니다.");
+        setStep("resetPassword"); // 새 비밀번호 설정 단계로 이동
+      } else {
+        alert("인증 실패! 식별 코드가 일치하지 않습니다.");
+      }
+    } catch (error) {
+      console.error("인증 코드 확인 오류:", error);
+      alert("인증 코드 확인 중 문제가 발생했습니다.");
     }
   };
+  
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
+    
+    // 비밀번호 확인 일치 여부 체크
     if (newPassword !== confirmPassword) {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
       return;
     }
+  
     try {
+      // 비밀번호 변경 요청
       const response = await axios.post("http://192.168.20.23:8081/api/Found/pwChange", {
         id,
         newPassword,
       });
-      if (response.data.success) {
+  
+      // 응답 코드 확인
+      if (response.data.code === "200") {
         alert("비밀번호가 성공적으로 변경되었습니다.");
         setStep("login"); // 로그인 화면으로 이동
       } else {
@@ -113,7 +138,7 @@ function LoginPage() {
       alert("비밀번호 변경 중 문제가 발생했습니다.");
     }
   };
-
+  
   const handleLogout = () => {
     try {
       // 로컬 스토리지에서 사용자 정보 삭제
