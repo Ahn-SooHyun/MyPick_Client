@@ -46,17 +46,17 @@
 /* 중앙 텍스트 */
 .centerText {
   position: fixed;
-  top: 60%;
-  left: 40%;
+  top: 40%;
+  left: 20%;
   transform: translate(-50%, -50%);
   z-index: 0;
   color: #fff;
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: bold;
   pointer-events: none;
   text-align: center;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #333;
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #333; */
 }
 
 /* 본문 내용 (기본 흰 배경) */

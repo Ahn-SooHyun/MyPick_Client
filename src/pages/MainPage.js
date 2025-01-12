@@ -8,7 +8,7 @@ import {
 import { GithubOutlined, MailOutlined, SoundOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-import hamsterImg from '../assets/images/hamster_wallpaper.jpg';
+import hamsterImg from '../assets/images/wallpaper_photo_beige.jpeg';
 // NoticeList.js에서 export 한 notices 배열 import
 import { notices } from './NoticeList'; 
 
@@ -445,7 +445,7 @@ function MainPage() {
           padding: '16px 0',
         }}
       >
-        My Cute Project ©2024 Created by Our Team
+        MyPick Project 2025 Created by Team Hamsik's party
       </footer>
     </div>
   );
