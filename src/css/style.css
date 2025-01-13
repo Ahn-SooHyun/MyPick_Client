@@ -9,9 +9,10 @@ body
 	min-height: 100vh;
 	background: #000;
 }
-.container
+.main-container .main-content .hexagon-container
 {
-	position: relative;
+	top:300px;
+	position: absolute;
 	height: 100vh;
 	overflow: hidden;
 	animation: animate 4s linear infinite;
