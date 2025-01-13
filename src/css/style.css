@@ -454,7 +454,7 @@
 	padding: 20px;
 }
 
-.list .notice-item {
+.list .main-item {
 	margin-bottom: 10px;
 	width: 100%;
 	height: 100px;
@@ -470,17 +470,24 @@
 	cursor: pointer;
 }
 
-.list .notice-item .notice-icon {
+.list .main-item .icon {
 	margin: 20px;
 	width: 60px;
 	height: 60px;
-	background-image: url('./icon/notice-white.png');
 	background-size: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
-.list .notice-item .notice-content {
+.list .main-item .icon.notice {
+	background-image: url('./icon/notice-white.png');
+}
+
+.list .main-item .icon.board {
+	background-image: url('./icon/board-white.png');
+}
+
+.list .main-item .content {
 
 	padding-right: 20px;
 	width: 90%;
@@ -496,7 +503,7 @@
 	font-weight: bold;
 }
 
-.list .notice-item .notice-content .notice-title {
+.list .main-item .content .title {
 	width: 80%;
 	text-overflow: ellipsis;
 	white-space: nowrap;
