@@ -1,0 +1,40 @@
+/* ChatBefore.module.css */
+.container {
+    height: 100vh;               /* 화면 전체 높이 고정 */
+    display: flex;               /* Flex 컨테이너 */
+    flex-direction: column;
+    justify-content: center;     /* 수직 중앙 정렬 */
+    align-items: center;         /* 수평 중앙 정렬 */
+    box-sizing: border-box;
+    overflow: hidden;            /* 스크롤 없음(넘쳐도 숨김) */
+  
+    /* 상하단 여백처럼 보이게 하려면 padding 활용 (내용 많으면 일부가 잘릴 수 있음) */
+    padding: 20px 0;
+    margin: 0;                   /* margin 초기화 */
+    background-color: #f0f2f5;   /* 예시로 밝은 배경 */
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .exampleArea {
+    margin: 20px 0;
+    text-align: left;
+  }
+  
+  .inputArea {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  
+  .input {
+    flex: 1;
+  }
+  
