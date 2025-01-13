@@ -92,6 +92,21 @@
 							<div class="content">content</div>
 						</div>
 						<div class="list">
+                            <div class="main-chat">
+                                <div class="chat-img"></div>
+                                <div class="chat-content">
+                                    <!--  사용자에게 채팅을 받아서 알맞은 컨텐츠로 안내하는 기능이야, 여기에 대한 멘트를 작성해줘-->
+                                    <div class="chat-description">
+                                        안녕하세요! 저는 당신의 편리한 사이트 이용을 도와드릴 AI 채팅 도우미입니다.
+                                        원하시는 정보나 기능을 자연스럽게 말씀해 주시면, 최적의 컨텐츠로 안내해 드리겠습니다.
+                                        공지사항, 게시판, 소개 등 궁금하신 점을 편하게 물어보세요!
+                                    </div>
+                                    <div class="btn">
+                                        <span>Chatting</span>
+                                        <div class="dot"></div>
+                                      </div>
+                                </div>
+                            </div>
 
                             <!-- 공지사항 보이기 -->
 
@@ -246,7 +261,7 @@
 
         mainActionList();
 
-        noticeEvent(); // 공지사항 보이기
+        //noticeEvent(); // 공지사항 보이기
 
         function mainActionListEvent(e) {
             const type = e.target.getAttribute('data-type');
@@ -258,6 +273,7 @@
                 case 'intro':
                     break;
                 case 'chat':
+                    chatEvent();
                     break;
                 case 'board':
                     boardEvent();
@@ -366,6 +382,34 @@
 
         }
 
+
+        function chatEvent() {
+
+            let chat = document.querySelector('.main-action-area-list .list');
+            const title = document.querySelector('.main-action-area-list .calout .title');
+            title.innerHTML = '채팅';
+
+            let html = `
+            <div class="main-chat">
+                <div class="chat-img"></div>
+                <div class="chat-content">
+                    <!--  사용자에게 채팅을 받아서 알맞은 컨텐츠로 안내하는 기능이야, 여기에 대한 멘트를 작성해줘-->
+                    <div class="chat-description">
+                        안녕하세요! 저는 당신의 편리한 사이트 이용을 도와드릴 AI 채팅 도우미입니다.
+                        원하시는 정보나 기능을 자연스럽게 말씀해 주시면, 최적의 컨텐츠로 안내해 드리겠습니다.
+                        공지사항, 게시판, 소개 등 궁금하신 점을 편하게 물어보세요!
+                    </div>
+                    <div class="btn">
+                        <span>Chatting</span>
+                        <div class="dot"></div>
+                        </div>
+                </div>
+            </div>
+            `;
+
+            chat.innerHTML = html;
+
+        }
         
     </script>
 	
