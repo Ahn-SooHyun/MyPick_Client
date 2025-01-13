@@ -325,7 +325,7 @@
 	position: absolute;
 	margin-top: var(--baner-height);
 	width: 100vw;
-	height: 100%;
+	height: 600px;
 	background-color: rgba(0, 0, 0, 0.15);
 	z-index:3;
 
@@ -334,7 +334,7 @@
 
 .main-container .main-content .main-page .main-action-area {
 	width: 100%;
-	height: 650px;
+	height: 600px;
 	background-color: rgba(0, 0,0,0.8);
 }
 
@@ -428,7 +428,7 @@
 
 .main-container .main-content .main-page .main-action-area .main-action-area-list {
 	width: 100%;
-	height: 100%;
+	height: 850px;
 
 	display: flex;
 	flex-direction: column;
