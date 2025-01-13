@@ -325,7 +325,7 @@
 	position: absolute;
 	margin-top: var(--baner-height);
 	width: 100vw;
-	height: 600px;
+	height: 1550px;
 	background-color: rgba(0, 0, 0, 0.15);
 	z-index:3;
 
@@ -334,14 +334,20 @@
 
 .main-container .main-content .main-page .main-action-area {
 	width: 100%;
-	height: 600px;
+	height: 1300px;
 	background-color: rgba(0, 0,0,0.8);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
 }
 
 .main-container .main-content .main-page .main-action-area .main-action-area-title {
 	justify-content: start;
 	width: 100%;
-	background-color: black;
+	height: 100px;
+	background-color: red;
 	color: #fff;
 	font-size: 50px;
 	font-weight: bold;
@@ -349,8 +355,11 @@
 	line-height: 100px;
 }
 
+/* 높이가 600px 필요한데, 100% 조차 적용이 안되는거 같아.*/
+
 .main-container .main-content .main-page .main-action-area .main-action-area-content {
 	width: 100%;
+	height: 600px;
 	background-color: var(--background-color);
 	display: flex;
 	flex-direction: row;
@@ -428,11 +437,11 @@
 
 .main-container .main-content .main-page .main-action-area .main-action-area-list {
 	width: 100%;
-	height: 850px;
+	height: 1050px;
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	background-color: var(--background-color);
 }
@@ -440,6 +449,7 @@
 .main-container .main-content .main-page .main-action-area .main-action-area-list .calout{
 	padding: 20px;
 	width: 50%;
+	height: 150px;
 	color: #fff;
 }
 
@@ -451,6 +461,7 @@
 
 .main-container .main-content .main-page .main-action-area .main-action-area-list .list {
 	width: 50%;
+	height: 100%;
 	padding: 20px;
 }
 
