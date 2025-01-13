@@ -378,14 +378,15 @@
 
 .main-container .main-content .main-page .main-action-area .main-action-area-content .main-action-area-content-item:hover {
 	border: 2px solid #000;
-	transform: translate(-60px, -60px);
-	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15),
-	40px 40px 0 #fff,
-	50px 50px 20px rgba(0, 0, 0, 0.15),
-	80px 80px 0 #fff,
-	80px 80px 40px rgba(0, 0, 0, 0.15),
-	120px 120px 0px rgba(0, 0, 0, 0.1);
+	transform: translate(-30px, -30px); /* 30px에서 15px로 이동 거리 감소 */
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15),
+	20px 20px 0 #fff, /* 40px에서 20px로 간격 감소 */
+	25px 25px 10px rgba(0, 0, 0, 0.15), /* 50px에서 25px로 간격 감소 */
+	40px 40px 0 #fff, /* 80px에서 40px로 간격 감소 */
+	40px 40px 20px rgba(0, 0, 0, 0.15), /* 80px에서 40px로 간격 감소 */
+	60px 60px 0px rgba(0, 0, 0, 0.1); /* 120px에서 60px로 간격 감소 */
 }
+
 
 .main-container .main-content .main-page .main-action-area .main-action-area-content .main-action-area-content-item .icon {
 	width: 100px;
@@ -433,6 +434,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: var(--background-color);
 }
 
 .main-container .main-content .main-page .main-action-area .main-action-area-list .calout{
