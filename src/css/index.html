@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hexagon Shape Using CSS Clip-path</title>
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+		.main-container {
+			position: absolute;
+			top:0;
+			left:0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #000;
+			z-index: 1;
+		}
+
+		/* 상단 배너 영역 */
+		.main-container .main-baner {
+			position: absolute;
+			top:0;
+			left:0;
+
+			display: flex;
+			flex-direction: column;
+			width: 100vw;
+			height: 800px;
+			z-index: 2;
+		}
+
+		.main-container .main-baner .first-row {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			height: 400px;
+		}
+
+		.main-container .main-baner .second-row {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			height: 400px;
+		}
+
+		.main-container .main-baner .first-row .main-baner-left {
+			width: 100%;
+			background-color: #fff;
+		}
+
+		.main-container .main-baner .first-row .main-baner-center {
+			width: 100%;
+			background-image: url('./img/main1.gif');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.main-container .main-baner .first-row .main-baner-right {
+			width:100%;
+			background-image: url('./img/main2.gif');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.main-container .main-baner .second-row .main-baner-left {
+			width: 100%;
+			background-image: url('./img/main3.gif');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.main-container .main-baner .second-row .main-baner-center {
+			width:100%;
+			background-image: url('./img/main4.gif');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.main-container .main-baner .second-row .main-baner-right {
+			width: 100%;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="main-container">
+		<!-- 상단 배너 영역-->
+		<div class="main-baner">
+			<div class="first-row">
+				<div class="main-baner-left"></div>
+				<div class="main-baner-center"></div>
+				<div class="main-baner-right"></div>
+			</div>
+			<div class="second-row">
+				<div class="main-baner-left"></div>
+				<div class="main-baner-center"></div>
+				<div class="main-baner-right"></div>
+			</div>
+		</div>
+		<div class="main-content">
+
+		</div>
+	</div>
+
+	<!-- hexagon 영역 -->
+	<div class="container">
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+		<div class="row">
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div>
+			<div class="hexagon"></div><!---16time)-->
+		</div>
+	</div>
+</body>
+</html>
+
+
