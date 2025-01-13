@@ -329,11 +329,12 @@
 	position: absolute;
 	margin-top: var(--baner-height);
 	width: 100vw;
-	height: 1550px;
+	height: 2550px;
 	background-color: rgba(0, 0, 0, 0.15);
 	z-index:3;
 
 	display: flex;
+	flex-direction: column;
 }
 
 .main-container .main-content .main-page .main-action-area {
@@ -617,3 +618,149 @@
 	80% {transform: translateX(0) rotate(180deg);}
 	100% {transform: translateX(0) rotate(360deg);}
   }
+
+
+  /** main - 영화, 도서, 음악 등 컨첸츠 list 영역 */
+  .main-container .main-content .main-page .main-page-content {
+	width: 100%;
+	height: 800px;
+	background-color: var(--background-color);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: start;
+  }
+
+  .main-container .main-content .main-page .main-page-content .main-page-content-box {
+	
+	width: 100%;
+	height: 400px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: start;
+  }
+
+  .main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-title {
+	padding-left: 100px;
+	width: 100%;
+	height: 100px;
+	color: #fff;
+	font-size: 50px;
+	font-weight: bold;
+	line-height: 100px;
+  }
+
+
+  .main-page-content-box .main-page-content-box-content {
+	/* width: 100%; */
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+
+	flex-wrap: nowrap;
+	overflow-x: initial;
+  }
+/*** 영화, 도서, 음악 등 컨첸츠 item box 영역 */
+.mainPage-content-box
+{
+	margin: 20px;
+    position: relative;
+    width: 300px;
+    height: 200px;
+
+    border: 1px solid #000;
+    border-radius: 15px;
+    overflow: hidden;
+
+	cursor: pointer;
+}
+.mainPage-content-box .imgBx
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1.5s ease-in-out;
+}
+.mainPage-content-box:hover .imgBx
+{
+    transform: translateY(-100%);
+}
+.mainPage-content-box img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: inherit;
+}
+.mainPage-content-box .layer
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1.5s ease-in-out;
+}
+.mainPage-content-box .layer.layer1
+{
+    background: #555;
+    transform: translateY(100%);
+}
+.mainPage-content-box:hover .layer.layer1
+{
+    transform: translateY(-100%);
+}
+.mainPage-content-box .layer.layer2
+{
+    background: red;
+    transform: translateY(200%);
+}
+.mainPage-content-box:hover .layer.layer2
+{
+    transform: translateY(-100%);
+}
+.mainPage-content-box .contentBx
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transition: 1.5s ease-in-out;
+    transform: translateY(300%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+.mainPage-content-box:hover .contentBx
+{
+    transform: translateY(0);
+}
+.mainPage-content-box .contentBx div
+{
+    transition: 2s ease-in-out;
+    transform: translateY(400%);
+}
+.mainPage-content-box:hover .contentBx div
+{
+    transform: translateY(0);
+}
+.mainPage-content-box .contentBx div h2
+{
+    color: #000;
+}
+.mainPage-content-box .contentBx div p
+{
+    color: #000;
+}
