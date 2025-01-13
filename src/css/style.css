@@ -243,9 +243,34 @@
 .main-content .main-content-introduction .content {
 	width: 110%;
 	height: 100%;
-	background-color: black;
+	background-color: #000;
 	z-index: 3;
 	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-content .main-content-introduction .content .title {
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+}
+
+.main-content .main-content-introduction .content .subtitle {
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+}
+
+.main-content .main-content-introduction .content .description {
+	font-size: 20px;
+	text-align: center;
+	color: #fff;
 }
 
 .main-content .main-content-introduction .content-image {
@@ -265,7 +290,7 @@
 	right: 500px;
 	width: 900px;
 	height: 600px;
-	background-color: black;
+	background-color: #000;
 
 	transform-origin: center;
 	transform: rotate(115deg);
