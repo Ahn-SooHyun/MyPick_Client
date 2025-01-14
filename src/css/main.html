@@ -575,7 +575,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-content">
-                <div class="footer-subject">
+                <div class="footer-subject" onClick="footerSubjectActionBar()">
                     <div class="footer-subject-img"></div>
                     <div class="footer-subject-loadingbar">
                         <div class="loading-hr">
@@ -600,6 +600,12 @@
                             <span style="--i:19;"></span>
                             <span style="--i:20;"></span>
                         </div>
+                    </div>
+
+                    
+                    <div class="footer-subject-v">
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
                 <p class="footer-content">Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
@@ -824,6 +830,25 @@
             `;
 
             chat.innerHTML = html;
+
+        }
+
+        /** footer-subject-v 클릭 시, action-bar 클래스 추가 */
+        /* on 일 경우, action-bar 추가, 아닐 경우 제거 */
+        function footerSubjectActionBar() {
+            let footerSubjectV = document.querySelector('.footer-subject-v');
+            footerSubjectV.classList.toggle('action-bar');
+
+            let footerSubject = document.querySelector('.loading-hr');
+            footerSubject.classList.toggle('action-bar');
+
+            if(footerSubjectV.classList.contains('action-bar')) {
+                console.log('action-bar 추가');
+                footerSubject.classList.add('action-bar');
+            } else {
+                console.log('action-bar 제거');
+                footerSubject.classList.remove('action-bar');
+            }
 
         }
         
