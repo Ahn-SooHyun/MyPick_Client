@@ -617,9 +617,25 @@
             </div>
 
             <div class="footer-content-btn">
-                <div class="footer-content-btn-item">
+                <div class="btn-left">
+                    <div class="footer-content-btn-item">
+                        <div class="footer-content-btn-item-img"></div>
+                        <div class="footer-content-btn-item-text">
+                            <span>Server</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-content-btn-item">
+                        <div class="footer-content-btn-item-img"></div>
+                        <div class="footer-content-btn-item-text">
+                            <span>Front</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-right">
 
                 </div>
+                
             </div>
             
         </div>
@@ -848,11 +864,10 @@
             footerSubject.classList.toggle('action-bar');
 
             if(footerSubjectV.classList.contains('action-bar')) {
-                console.log('action-bar 추가');
-                footerSubject.classList.add('action-bar');
+                document.querySelector('p.footer-content').classList.add('action-bar');
             } else {
                 console.log('action-bar 제거');
-                footerSubject.classList.remove('action-bar');
+                document.querySelector('p.footer-content').classList.remove('action-bar');
             }
 
         }
