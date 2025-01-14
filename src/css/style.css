@@ -921,12 +921,12 @@ footer .footer-container .footer-content .footer-btn {
 
 .footer-subject-v span:nth-child(1) {
 	transform: rotate(45deg) translate( 0px, 0px);
-	transition: 0.5s ease-in-out;
+	transition: 0.2s ease-in-out;
 }
 
 .footer-subject-v span:nth-child(2) {
 	transform: rotate(-45deg) translate( 10px, 10px);
-	transition: 0.5s ease-in-out;
+	transition: 0.2s ease-in-out;
 }
 
 .footer-subject-v.action-bar span:nth-child(1) {
@@ -941,10 +941,11 @@ footer .footer-container .footer-content .footer-btn {
 
 .footer-container .footer-content p.footer-content {
 	margin-top: 20px;
-	height: 0;
+	width: 1300px;
+	height: 0px;
 	opacity: 0;
 	transition: 0.8s ease-in-out;
-	transform: translateY(-100%);
+	transform: translateY(-250px);
 }
 
 .footer-container .footer-content p.footer-content.action-bar {
@@ -966,8 +967,8 @@ footer .footer-container .footer-content-btn {
 	align-items: center;
 }
 
-footer .footer-container .footer-content-btn .btn-left {
-	width: 60%;
+footer .footer-container .footer-content-btn .btn-area {
+	width: 40%;
 	height: 100%;
 
 	display: flex;
@@ -976,7 +977,7 @@ footer .footer-container .footer-content-btn .btn-left {
 	align-items: center;
 }
 
-footer .footer-container .footer-content-btn .btn-left .footer-content-btn-item {
+footer .footer-container .footer-content-btn .btn-area .footer-content-btn-item {
 	margin: 20px;
 	width: 100px;
 	height: 150px;
@@ -995,26 +996,47 @@ footer .footer-container .footer-content-btn .btn-left .footer-content-btn-item 
 	cursor: pointer;
 }
 
-footer .footer-container .footer-content-btn .btn-left .footer-content-btn-item:hover {
-	transition: 0.5s ease-in-out;
+footer .footer-container .footer-content-btn .btn-area .footer-content-btn-item:hover {
+	transition: 0.2s ease;
 
 	box-shadow: 0 0 10px #fff,
 	0 0 20px #fff,
 	0 0 30px #fff;
 }
 
-.footer-content-btn-item-img {
+.btn-area .footer-content-btn-item-img {
 	width: 40px;
 	height: 40px;
 	border: 3px solid #fff;
-	background-image: url('./icon/github.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
-.footer-content-btn-item-text {
+.btn-area .footer-content-btn-item-text {
 	font-size: 20px;
 	font-weight: 600;
 	color: #777;
+	text-align: center;
 }
+
+.btn-area.btn-left .footer-content-btn-item-img {
+	background-image: url('./icon/github.png');
+}
+
+
+/* 충남 도립대 */
+.btn-area.btn-right .footer-content-btn-item:nth-child(1) .footer-content-btn-item-img {
+	background-image: url('./icon/github.png');
+}
+
+/* 한국정보 교육원 */
+.btn-area.btn-right .footer-content-btn-item:nth-child(2) .footer-content-btn-item-img {
+	background-image: url('./icon/github.png');
+}
+
+/* 만든 이 */
+.btn-area.btn-right .footer-content-btn-item:nth-child(3) .footer-content-btn-item-img {
+	background-image: url('./icon/user_creater.png');
+}
+
