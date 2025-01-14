@@ -531,17 +531,8 @@
                 <div class="background-container">
                     <div class="cube"  style="--z: -20;">
 
-                        <div style="--x: -15; --y: 0"></div>
-                        <div style="--x: -14; --y: 0"></div>
-                        <div style="--x: -13; --y: 0"></div>
-                        <div style="--x: -12; --y: 0"></div>
-                        <div style="--x: -11; --y: 0"></div>
-                        <div style="--x: -10; --y: 0"></div>
-                        <div style="--x: -9; --y: 0"></div>
-                        <div style="--x: -8; --y: 0"></div>
-                        <div style="--x: -7; --y: 0"></div>
-                        <div style="--x: -6; --y: 0"></div>
-                        <div style="--x: -5; --y: 0"></div>
+
+
                         <div style="--x: -4; --y: 0"></div>
                         <div style="--x: -3; --y: 0"></div>
                         <div style="--x: -2; --y: 0"></div>
@@ -551,17 +542,8 @@
                         <div style="--x: 2; --y: 0"></div>
                         <div style="--x: 3; --y: 0"></div>
                         <div style="--x: 4; --y: 0"></div>
-                        <div style="--x: 5; --y: 0"></div>
-                        <div style="--x: 6; --y: 0"></div>
-                        <div style="--x: 7; --y: 0"></div>
-                        <div style="--x: 8; --y: 0"></div>
-                        <div style="--x: 9; --y: 0"></div>
-                        <div style="--x: 10; --y: 0"></div>
-                        <div style="--x: 11; --y: 0"></div>
-                        <div style="--x: 12; --y: 0"></div>
-                        <div style="--x: 13; --y: 0"></div>
-                        <div style="--x: 14; --y: 0"></div>
-                        <div style="--x: 15; --y: 0"></div>
+
+   
 
                     </div>
                 </div>
@@ -617,7 +599,7 @@
             </div>
 
             <div class="footer-content-btn">
-                <div class="btn-area btn-left">
+                <div class="btn-area-first">
                     <div class="footer-content-btn-item">
                         <div class="footer-content-btn-item-img"></div>
                         <div class="footer-content-btn-item-text">
@@ -632,18 +614,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="btn-area btn-right">
+
+                <div class="btn-area-second">
                     <div class="footer-content-btn-item">
                         <div class="footer-content-btn-item-img"></div>
                         <div class="footer-content-btn-item-text">
-                            <span>충남도립 대학교</span>
+                            <span>충남 도립 대학교</span>
                         </div>
                     </div>
 
                     <div class="footer-content-btn-item">
                         <div class="footer-content-btn-item-img"></div>
                         <div class="footer-content-btn-item-text">
-                            <span>한국정보 교육원</span>
+                            <span>한국 정보 교육원</span>
                         </div>
                     </div>
 
@@ -654,6 +637,7 @@
                         </div>
                     </div>
                 </div>
+                
                 
             </div>
             
@@ -671,13 +655,13 @@
         function cubes() {
             let container = document.querySelector('.background-container');
 
-            let zValues = Array.from({length: 27}, (_, i) => i - 22);
+            let zValues = Array.from({length: 9}, (_, i) => i - 10);
             zValues.forEach(z => {
                 let cube = document.createElement('div');
                 cube.classList.add('cube');
                 cube.style.setProperty('--z', z);
 
-                for (let x = -23; x <= 7; x++) {
+                for (let x = -18; x <= 0; x++) {
                     let div = document.createElement('div');
                     div.style.setProperty('--x', x);
                     div.style.setProperty('--y', 0);
@@ -705,7 +689,7 @@
                 setTimeout(() => {
                     randomSpan.classList.remove('active');
                 }, 2000);
-            }, 50);
+            }, 100);
         }
 
         cubes();
