@@ -238,7 +238,7 @@
 	position: relative;
 	margin-top: 800px; /* first-row + second-row height */
 	width: 100vw;
-	height: 3000px;
+	height: 3500px;
 
 	display: flex;
 	justify-content: center;
@@ -344,7 +344,6 @@
 	margin-top: var(--baner-height);
 	width: 100vw;
 	height: 2550px;
-	background-color: rgba(0, 0, 0, 0.15);
 	z-index:3;
 
 	display: flex;
@@ -636,7 +635,7 @@
 
   /** main - 영화, 도서, 음악 등 컨첸츠 list 영역 */
   .main-container .main-content .main-page .main-page-content {
-	height: 1200px;
+	height: 1600px;
 	background-color: var(--background-color);
 
 	display: flex;
@@ -701,9 +700,59 @@
 
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1;
+  }
+
+  .main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .list {
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
 	justify-content: start;
 	align-items: center;
 	z-index: 1;
+  }
+
+  .main-page-content-box-content .main-list-button {
+	width: 65px;
+	height: 180px;
+
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+
+  .main-page-content-box-content .main-list-button button {
+	content: '>';
+	padding: 10px;
+	height: 100%;
+	background-color: var(--black-color);
+	border-radius: 10px;
+
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+
+	cursor: pointer;
+  }
+
+  .main-page-content-box-content .main-list-button button:hover {
+	content: '>';
+	padding: 10px;
+	height: 100%;
+	background-color: var(--black-color);
+	border-radius: 10px;
+
+	box-shadow: inset 5px 5px 10px 5px var(--black-color);
+
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+
+	cursor: pointer;
   }
 
  

@@ -154,46 +154,67 @@
 
 
 
-                    <!-- 음악 영역  style="background-image: url('./img/music/dna.jpg');" -->
+                    <!-- 음악 영역,  style로 배경 지정하기 -->
                     <div class="main-page-content-box music" style="background-image: url('./img/music/dna.jpg');">
                         <div class="main-page-content-box-title">음악</div>
 
                         <div class="main-page-content-box-content">
 
-                            <!-- item,  music-->
-                            <div class="mainPage-content-box music" onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
-                                <div class="imgBx">
-                                    <img src="./img/music/300MILLION.jpg">
-                                </div>
+                            <!-- prev button -->
+                            <div class="main-list-button">
+                                <button><</button>
                             </div>
 
-                            <!-- item,  music-->
-                            <div class="mainPage-content-box music action"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
-                                <div class="imgBx">
-                                    <img src="./img/music/300MILLION.jpg">
-                                </div>
-                                <div class="content">
-                                    <div class="title">300MILLION</div>
-                                </div>
-                                <div class="img-area">
-                                    <img src="./icon/play.png">
-                                </div>
-                            </div>
+                            <!-- js, List 출력 부분-->
+                            <div class="list">
 
-                            <div class="mainPage-content-box music"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
-                                <div class="imgBx">
-                                    <img src="./img/music/300MILLION.jpg">
+
+                                <!-- item,  music, action 있음 -->
+                                <div class="mainPage-content-box music action"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
+                                    <div class="imgBx">
+                                        <img src="./img/music/300MILLION.jpg">
+                                    </div>
+                                    <div class="content">
+                                        <div class="title">300MILLION</div>
+                                    </div>
+                                    <div class="img-area">
+                                        <img src="./icon/play.png">
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <div class="title">300MILLION</div>
+
+                                <!-- item, music, action 없음 -->
+                                <div class="mainPage-content-box music"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
+                                    <div class="imgBx">
+                                        <img src="./img/music/300MILLION.jpg">
+                                    </div>
+                                    <div class="content">
+                                        <div class="title">300MILLION</div>
+                                    </div>
+                                    <div class="img-area">
+                                        <img src="./icon/play.png">
+                                    </div>
                                 </div>
-                                <div class="img-area">
-                                    <img src="./icon/play.png">
-                                </div>
+
+                                
                             </div>
+                            
+                            <!-- next button -->
+                            <div class="main-list-button">
+                                <button>></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 게임 영역, style로 배경 지정하기 -->
+                    <div class="main-page-content-box game">
+                        <div class="main-page-content-box-title">게임</div>
+                        <div class="main-page-content-box-content">
+
 
                         </div>
                     </div>
+
+
 
 
 
@@ -387,7 +408,7 @@
 
         mainActionList();
 
-        
+
         noticeEvent(); // 공지사항 보이기
 
         function mainActionListEvent(e) {
@@ -569,7 +590,7 @@
 
         musicList();
         function musicList() {
-            let musicList = document.querySelector('.main-page-content-box.music .main-page-content-box-content');
+            let musicList = document.querySelector('.main-page-content-box.music .main-page-content-box-content .list');
             musicList.innerHTML = '';
 
             muslicList.forEach(item => {
