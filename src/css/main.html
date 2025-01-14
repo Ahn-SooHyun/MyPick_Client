@@ -154,21 +154,33 @@
 
 
 
-                    <!-- 음악 영역 -->
-                    <div class="main-page-content-box">
+                    <!-- 음악 영역  style="background-image: url('./img/music/dna.jpg');" -->
+                    <div class="main-page-content-box music" style="background-image: url('./img/music/dna.jpg');">
                         <div class="main-page-content-box-title">음악</div>
 
                         <div class="main-page-content-box-content">
 
                             <!-- item,  music-->
-                            <div class="mainPage-content-box music">
+                            <div class="mainPage-content-box music" onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
                                 <div class="imgBx">
                                     <img src="./img/music/300MILLION.jpg">
                                 </div>
                             </div>
 
                             <!-- item,  music-->
-                            <div class="mainPage-content-box music action">
+                            <div class="mainPage-content-box music action"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
+                                <div class="imgBx">
+                                    <img src="./img/music/300MILLION.jpg">
+                                </div>
+                                <div class="content">
+                                    <div class="title">300MILLION</div>
+                                </div>
+                                <div class="img-area">
+                                    <img src="./icon/play.png">
+                                </div>
+                            </div>
+
+                            <div class="mainPage-content-box music"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
                                 <div class="imgBx">
                                     <img src="./img/music/300MILLION.jpg">
                                 </div>
@@ -541,6 +553,55 @@
                 document.querySelector('p.footer-content').classList.remove('action-bar');
             }
 
+        }
+
+
+        /** 음악 리스트*/
+        const muslicList = [
+            {title: '300MILLION', img: './img/music/300MILLION.jpg'},
+            {title: 'DNA', img:'./img/music/dna.jpg'},
+            {title: '그래도돼', img:'./img/music/그래도돼.jpg'},
+            {title: '답을 줘', img: './img/music/답을줘.jpg'},
+            {title: '레블하트', img: './img/music/레블하트.jpg'},
+            {title: '아이돌', img: './img/music/아이돌.jpg'}
+        ]
+
+        musicList();
+        function musicList() {
+            let musicList = document.querySelector('.main-page-content-box.music .main-page-content-box-content');
+            musicList.innerHTML = '';
+
+            muslicList.forEach(item => {
+                let html = `
+                    <div class="mainPage-content-box music" onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
+                        <div class="imgBx">
+                            <img src="${item.img}">
+                        </div>
+                        <div class="content">
+                            <div class="title">${item.title}</div>
+                        </div>
+                        <div class="img-area">
+                            <img src="./icon/play.png">
+                        </div>
+                    </div>
+                `;
+                musicList.innerHTML += html;
+            });
+        }
+
+        /** 음악 클릭 확인하기 - 마우스 오버 시, 클래스 추가 */
+        function musicOverOpen(e) {
+            e.classList.add('action');
+            //this의 자식 div class=imgBx에 있는 img src 경로 불러오기
+            let img = e.querySelector('.imgBx img');
+
+            const target = document.querySelector('.main-page-content-box.music');
+            target.style.backgroundImage = `url(${img.src})`;
+        }
+
+        /** 음악 클릭 확인하기 - 마우스 아웃 시, 클래스 제거 */
+        function musicOverClose(e) {
+            e.classList.remove('action');
         }
         
     </script>
