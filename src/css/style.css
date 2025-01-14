@@ -17,6 +17,18 @@
   	--tr-X: calc(var(--btn-w) - var(--dot-w));
 }
 
+.test-board-blue {
+	border: 3px solid #00f;
+}
+
+.test-board-red {
+	border: 3px solid #f00;
+}
+
+.test-board-green {
+	border: 3px solid #0f0;
+}
+
 .main-content .back-area {
     position: absolute;
     top: 0;
@@ -631,10 +643,11 @@
 	align-items: start;
   }
 
+  /** main page, 각 행 영역*/
   .main-container .main-content .main-page .main-page-content .main-page-content-box {
 	
 	width: 100%;
-	height: 400px;
+	height: 800px;
 
 	display: flex;
 	flex-direction: column;
@@ -652,117 +665,86 @@
 	line-height: 100px;
   }
 
-
-  .main-page-content-box .main-page-content-box-content {
-	padding: 0 20px;
-	/* width: 100%; */
+  .main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content {
+	width: 100%;
 	height: 100%;
 
 	display: flex;
 	flex-direction: row;
 	justify-content: start;
-
-	flex-wrap: nowrap;
-	overflow-x: auto;
+	align-items: center;
   }
-/*** 영화, 도서, 음악 등 컨첸츠 item box 영역 */
-.mainPage-content-box
-{
-	margin: 20px;
-    position: relative;
-    width: 300px;
-    height: 200px;
 
-    border: 1px solid #000;
-    border-radius: 15px;
-    overflow: hidden;
+
+  /** music item, click - before */
+  .main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music {
+	margin: 20px;
+	width: 300px;
+	height: 300px;
+  }
+
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music .imgBx {
+	width: 300px;
+	height: 300px;
+}
+
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music .imgBx img {
+	width: 300px;
+	height: 300px;
 
 	cursor: pointer;
 }
-.mainPage-content-box .imgBx
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: 1.5s ease-in-out;
+
+
+/** music item, click- after */
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action {
+	width: 400px;
+	height: 600px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #fff;
 }
-.mainPage-content-box:hover .imgBx
-{
-    transform: translateY(-100%);
+
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .imgBx {
+	margin-top: 20px;
 }
-.mainPage-content-box img
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: inherit;
+
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .content {
+
+	margin: 5px 0;
+	width: 100%;
+	height: 30px;
+
+	font-size: 30px;
+	font-weight: bold;
 }
-.mainPage-content-box .layer
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: 1.5s ease-in-out;
+
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .content .title {
+	width: 100%;
+	height: 100%;
+
+	padding-left: 40px;
 }
-.mainPage-content-box .layer.layer1
-{
-    background: #555;
-    transform: translateY(100%);
+
+/***/
+
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .img-area {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
-.mainPage-content-box:hover .layer.layer1
-{
-    transform: translateY(-100%);
-}
-.mainPage-content-box .layer.layer2
-{
-    background: red;
-    transform: translateY(200%);
-}
-.mainPage-content-box:hover .layer.layer2
-{
-    transform: translateY(-100%);
-}
-.mainPage-content-box .contentBx
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    transition: 1.5s ease-in-out;
-    transform: translateY(300%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-}
-.mainPage-content-box:hover .contentBx
-{
-    transform: translateY(0);
-}
-.mainPage-content-box .contentBx div
-{
-    transition: 2s ease-in-out;
-    transform: translateY(400%);
-}
-.mainPage-content-box:hover .contentBx div
-{
-    transform: translateY(0);
-}
-.mainPage-content-box .contentBx div h2
-{
-    color: #000;
-}
-.mainPage-content-box .contentBx div p
-{
-    color: #000;
+
+.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .img-area img {
+	width: 150px;
+	height: 150px;
 }
 
 /** footter 영역 */
