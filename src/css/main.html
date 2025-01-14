@@ -218,6 +218,24 @@
 
                             <div class="list">
 
+                                
+                                <div class="mainPage-content-box game">
+                                    <div class="imgBx">
+                                        <img src="./img/music/300MILLION.jpg">
+                                    </div>
+                                    <div class="content">
+                                        <div class="title">GAME NAME</div>
+                                    </div>
+                                </div>
+
+                                <div class="mainPage-content-box game action">
+                                    <div class="imgBx">
+                                        <img src="./img/music/300MILLION.jpg">
+                                    </div>
+                                    <div class="content">
+                                        <div class="title">GAME NAME</div>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- next button -->
@@ -595,7 +613,7 @@
 
 
         /** 음악 리스트*/
-        const muslicList = [
+        const musicMenuList = [
             {title: '300MILLION', img: './img/music/300MILLION.jpg'},
             {title: 'DNA', img:'./img/music/dna.jpg'},
             {title: '그래도돼', img:'./img/music/그래도돼.jpg'},
@@ -608,7 +626,7 @@
             let musicList = document.querySelector('.main-page-content-box.music .main-page-content-box-content .list');
             musicList.innerHTML = '';
 
-            muslicList.forEach(item => {
+            musicMenuList.forEach(item => {
                 let html = `
                     <div class="mainPage-content-box music" onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
                         <div class="imgBx">
@@ -641,6 +659,49 @@
             e.classList.remove('action');
         }
         
+
+
+        const gameMenuList = [
+            {title: '발로란트', img: './img/game/val.png'},
+            {title: 'League of Legends', img: './img/game/lol.jpg'},
+            {title: 'Batle Ground', img: './img/game/batleground.jpeg'},
+            {title: '슈퍼 마리오', img: './img/game/supermario.jpeg'},
+            {title: '메이플스토리', img: './img/game/maple.jpg'}
+        ];
+
+
+        gameViewList();
+        function gameViewList() {
+            let gameContentList = document.querySelector('.main-page-content-box.game .main-page-content-box-content .list');
+            gameContentList.innerHTML = '';
+
+            gameMenuList.forEach(item => {
+                let html = `
+                    <div class="mainPage-content-box game" onmouseover="gameOverOpen(this)" onmouseout="gameOverClose(this)">
+                        <div class="imgBx">
+                            <img src="${item.img}">
+                        </div>
+                        <div class="content">
+                            <div class="title">${item.title}</div>
+                        </div>
+                    </div>
+                `;
+                gameContentList.innerHTML += html;
+            });
+
+        }
+
+        
+        /** 게임 mouse 확인하기 - 마우스 오버 시, 클래스 추가 */
+        function gameOverOpen(e) {
+            e.classList.add('action');
+
+        }
+
+        /** 게임 mouse 확인하기  - 마우스 아웃 시, 클래스 제거 */
+        function gameOverClose(e) {
+            e.classList.remove('action');
+        }
     </script>
 	
 </body>
