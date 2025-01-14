@@ -11,6 +11,8 @@
 :root {
 	--background-color: rgba(0, 0, 0, 0.5);
 	--baner-height: 450px;
+	--black-color: #4D4D4D;
+	--red-color: #FF4948;
 
 	--btn-w: 10em;
   	--dot-w: calc(var(--btn-w)*.2);
@@ -1061,6 +1063,6 @@ footer .footer-container .footer-content-btn {
 .footer-container .footer-content-btn div .footer-content-btn-item .footer-content-btn-item-text {
 	margin-left: 10px;
 	font-size: 25px;
-	color: #fff;
+	color: var(--black-color);
 	font-weight: bold;
 }
