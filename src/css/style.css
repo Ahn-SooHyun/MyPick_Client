@@ -11,6 +11,7 @@
 :root {
 	--background-color: rgba(0, 0, 0, 0.5);
 	--baner-height: 450px;
+	--main-top-banner-height: 100vh;
 	--black-color: #4D4D4D;
 	--red-color: #FF4948;
 
@@ -233,10 +234,55 @@
 }
 
 
+
+/** new - 상단 배너 영역 **/
+.main-top-video {
+	top:0;
+	left:0;
+	width: 100vw;
+	height: 200vh;
+	background-color: #000;
+}
+
+.main-top-video video {
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1;
+}
+
+.main-top-video section {
+	position: relative;
+	z-index: 2;
+}
+
+section {
+	width: 100%;
+	height: 100vh;
+}
+
+
+.main-top-video section .main-top-banner-text {
+	position: relative;
+	opacity: 0;
+	width: 80%;
+	margin: 100px auto;
+	padding: 50px;
+	font-size: 50px;
+	color: #fff;
+
+	z-index: 2;
+}
+.main-top-video section.action .main-top-banner-text {
+	opacity: 1;
+}
+
 /** main content 영역*/
 .main-container .main-content {
 	position: relative;
-	margin-top: 800px; /* first-row + second-row height */
+	margin-top: var(--main-top-banner-height);
 	width: 100vw;
 	height: 5550px; /** main-content-height 매우 중요 */
 
@@ -247,6 +293,7 @@
 	z-index: 4;
 }
 
+/** 사용 안 함 */
 .main-content .main-content-introduction {
 	width: 100%;
 	height:var(--baner-height);
@@ -258,12 +305,12 @@
 	overflow: hidden;
 }
 
-
+/** 사용 안 함 */
 
 .main-content .main-content-introduction .content {
     position: relative;
 }
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .content::after {
     content: '';
     position: absolute;
@@ -273,7 +320,7 @@
     height: 100%;
     background: linear-gradient(to right, transparent, rgba(0, 0, 0, 1));
 }
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .content {
 	width: 110%;
 	height: 100%;
@@ -291,31 +338,31 @@
 	justify-content: center;
 	align-items: start;
 }
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .content > div {
 	margin-bottom: 20px;
 	margin-left: 100px;
 }
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .content .title {
 	font-size: 50px;
 	font-weight: bold;
 	color: #fff;
 }
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .content .subtitle {
 	font-size: 30px;
 	font-weight: bold;
 	color: #fff;
 }
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .content .description {
 	margin-left: 300px;
 	font-size: 20px;
 	text-align: center;
 	color: #fff;
 }
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .content-image {
 	width: 1700px;
 	height: 100%;
@@ -326,7 +373,7 @@
 	overflow: hidden;
 }
 
-
+/** 사용 안 함 */
 .main-content .main-content-introduction .main-content-introduction-right {
 	position: absolute;
 	top: -190px;
@@ -341,7 +388,6 @@
 
 .main-container .main-content .main-page {
 	position: absolute;
-	margin-top: var(--baner-height);
 	width: 100vw;
 	z-index:3;
 
@@ -486,8 +532,7 @@
 	margin-bottom: 10px;
 	width: 100%;
 	height: 100px;
-	border-radius: 20px;
-	border: 2px solid #fff;
+	border-bottom: 2px solid #fff;
 
 	display: flex;
 	flex-direction: row;

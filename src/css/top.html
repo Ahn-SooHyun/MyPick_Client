@@ -39,6 +39,16 @@
 </head>
 <body>
 
+<!-- 상단 영역 -->
+<viedo class="inline-video" data-prioritized-video playsinline="true" loop autoplay src="./img/mainTopVideo.mp4"></viedo>
+
+<video class="bg-video__content" autoplay muted loop>
+    <source src="./img/mainTopVideo.mp4" type="video/mp4" />
+</video>
+
+
+
+
   <!-- 첫 번째 섹션 -->
   <section>
     <h2>첫 번째 섹션</h2>
@@ -76,7 +86,7 @@
 
     // Intersection Observer 옵션 (threshold는 요소가 50% 보였을 때 트리거)
     const options = {
-      threshold: 0.5
+      threshold: 0.1
     };
 
     // Observer 생성
