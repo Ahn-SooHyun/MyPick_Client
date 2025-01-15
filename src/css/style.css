@@ -238,7 +238,7 @@
 	position: relative;
 	margin-top: 800px; /* first-row + second-row height */
 	width: 100vw;
-	height: 4500px; /** main-content-height 매우 중요 */
+	height: 5800px; /** main-content-height 매우 중요 */
 
 	display: flex;
 	justify-content: center;
@@ -634,7 +634,7 @@
 
   /** main - 영화, 도서, 음악 등 컨첸츠 list 영역 */
   .main-container .main-content .main-page .main-page-content {
-	height: 3200px;
+	height: 3500px;
 	background-color: var(--background-color);
 
 	display: flex;
@@ -1012,6 +1012,80 @@ z-index: 0;
 
 
 
+/** movie 영역 */
+.main-page-content-movie-box {
+	position: relative;
+	background-image: url('./img/movie-bg.webp');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	width: 100%;
+	height: 800px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-page-content-movie-box .main-page-content-box-title {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-left: 100px;
+	width: 100%;
+	height: 100px;
+	color: #fff;
+
+	font-size: 50px;
+	font-weight: bold;
+	line-height: 100px;
+	z-index: 4;
+}
+
+.main-page-content-movie-box .screen {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 600px;
+}
+
+.main-page-content-movie-box .screen iframe {
+	width: 100%;
+	height: 100%;
+}
+
+.main-page-content-movie-box .main-page-content-box-content {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	cursor: pointer;
+}
+
+.main-page-content-movie-box .main-page-content-box-content .list {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-page-content-movie-box .main-page-content-box-content .list .mainPage-content-box.movie {
+	width: 200px;
+	height: 300px;
+
+	margin: 20px;
+}
+
+.main-page-content-movie-box .main-page-content-box-content .list .mainPage-content-box.movie .imgBx img {
+	width: 200px;
+	height: 300px;
+}
 
 
 /** footter 영역 */

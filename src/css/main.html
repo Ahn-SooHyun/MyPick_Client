@@ -246,7 +246,7 @@
                     </div>
 
 
-                    <!-- 게임 영역, style로 배경 지정하기 -->
+                    <!-- 도서 영역, style로 배경 지정하기 -->
                     <div class="main-page-content-box book">
                         <div class="main-page-content-box-book-title">도서</div>
                         <div class="main-page-content-box-content">
@@ -263,9 +263,6 @@
                                     <div class="imgBx">
                                         <img src="./img/book/기록이라는세계.jpg">
                                     </div>
-
-
-
                                 </div>
 
                                 <section id="pageSection" class="mainPage-content-box book">
@@ -288,6 +285,48 @@
                             
                         </div>
                     </div>
+
+
+                    <!-- 영화 영역, style로 배경 지정하기 -->
+
+            
+
+                     <!-- 영화 영역, 영화 컨텐츠 영역-->
+                     <div class="main-page-content-movie-box movie">
+                        <div class="main-page-content-box-title">영화</div>
+                                            <!-- screen 영역 -->
+                    <div class="screen">
+                    <!-- 자동시작 &mute=1&autoplay=1 -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xjqwsRanSls?si=Bf1m1RZ-jqVQhAmE&mute=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                        <div class="main-page-content-box-content">
+
+                                <!-- prev button -->
+                                <div class="main-list-button">
+                                    <button><</button>
+                                </div>
+    
+    
+                                <div class="list">
+
+                                    <div class="mainPage-content-box movie">
+                                        <div class="imgBx">
+                                            <img src="./img/movie/백두산.jpg">
+                                        </div>
+    
+                                    </div>
+
+                                </div>
+
+                            
+                            <!-- next button -->
+                            <div class="main-list-button">
+                                <button>></button>
+                            </div>
+                            
+                        </div>
+                     </div>
 
 
 
@@ -773,8 +812,44 @@
             });
         }
 
+        const movieMenuList = [
+            {title: '반도', img: './img/movie/반도.jpg', src: 'https://www.youtube.com/embed/fcueArgm800?si=sa3lOeHg1XVKwt2z'},
+            {title: '테넷', img: './img/movie/테넷.jpg',  src:'https://www.youtube.com/embed/IW_khaePCBE?si=tcC87egqF7PLrfz3'},
+            {title: '여름이끝날무렵', img: './img/movie/여름이끝날무렵.jpg', src:'https://www.youtube.com/embed/3tem5-yksss?si=PH23zxTPq8oYccSe'},
+            {title: '트랜스포머one', img: './img/movie/트랜스포머one.jpg', src:'https://www.youtube.com/embed/wKiwHP3s5hI?si=BVfYtJRttD1EvEE0'},
+            {title: '래시', img: './img/movie/래시.jpg', src:'https://www.youtube.com/embed/UQ7ZA0cDwMk?si=4upr8A5r7PIkdqQz'},
+        ];
 
-        //gameBackImgRandom();
+        movieViewList();
+        function movieViewList() {
+            let movieContentList = document.querySelector('.main-page-content-movie-box .main-page-content-box-content .list');
+            movieContentList.innerHTML = '';
+
+            movieMenuList.forEach((item, index) => {
+                let html = `
+                <div class="mainPage-content-box movie" onmouseover="movieOverOpen(this)" onmouseout="movieOverClose(this)" data-src="${item.src}">
+                    <div class="imgBx">
+                        <img src="${item.img}">
+                    </div>
+
+                </div>
+                `;
+                movieContentList.innerHTML += html;
+            });
+        }
+
+        function movieOverOpen(e) {
+            e.classList.add('action');
+
+            //screen 영역
+            const target = document.querySelector('.main-page-content-movie-box .screen iframe');
+            target.src = e.getAttribute('data-src')+'&mute=1&autoplay=1';
+        }
+
+        function movieOverClose(e) {
+            e.classList.remove('action');
+
+        }
 
     </script>
 	
