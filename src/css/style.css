@@ -20,6 +20,17 @@
   	--tr-X: calc(var(--btn-w) - var(--dot-w));
 }
 
+html {
+	font-size: 62.5%;
+}
+
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .test-border-blue {
 	border: 3px solid #00f;
 }
@@ -169,10 +180,11 @@
 
 /** new - 상단 배너 영역 **/
 .main-top-video {
+	font-family: 'SBAggroB';
 	top:0;
 	left:0;
 	width: 100vw;
-	height: 200vh;
+	height: 400vh;
 	background-color: #000;
 }
 
@@ -208,30 +220,34 @@
 
 .main-top-video section.action .main-top-banner-text {
 	opacity: 1;
-	transition: 0.5s;
+	transition: 1s;
 }
 
 
-.main-top-video section.action .main-top-banner-text.section-second {
-	margin-top:50vh;
+.main-top-video section.action .main-top-banner-text.section-first {
+	margin-top:40vh;
 	
 }
 
-.main-top-video section.action .main-top-banner-text.section-second span {
-	font-size: 40px;
+.main-top-video section.action .main-top-banner-text.section-first span {
+	display: inline-block;
+	font-size: 48px;
+	line-height: 1.171875;
+	word-break: keep-all;
+	letter-spacing: -0.02em;
+	font-size: 64px;
 	font-weight: bold;
 }
 
-.main-top-video section.action .main-top-banner-text.section-second span.second-text {
+.main-top-video section.action .main-top-banner-text.section-first span.second-text {
 	margin-top: 20px;
-	margin-left: 100px;
 
-	font-size: 30px;
+	font-size: 50px;
 	font-weight: bold;
 }
 
-.main-top-video section.action .main-top-banner-text.section-second span.second-title {
-	font-size: 50px;
+.main-top-video section.action .main-top-banner-text.section-first span.second-title {
+	font-size: 150px;
 	font-weight: bold;
 	color: var(--red-color);
 }
@@ -239,7 +255,6 @@
 /** main content 영역*/
 .main-container .main-content {
 	position: relative;
-	margin-top: var(--main-top-banner-height);
 	width: 100vw;
 	height: 5550px; /** main-content-height 매우 중요 */
 
