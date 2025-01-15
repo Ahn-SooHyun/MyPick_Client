@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css'; // 기존 style.css 경로에 맞게 수정해주세요.
 import mainTopVideo from '../../assets/img/mainTopVideo.mp4';
+import 메인큐브 from '../../assets/img/back/cube.mp4';
 import musicPlayIcon from '../../assets/icon/play.png';
 import 게임컨텐츠배경 from '../../assets/img/back/packman.mp4';
 
@@ -213,50 +214,6 @@ export default function Main() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ------------------------------------------------------------
-  // ⑥ 배경 cube(단순 예시) - 기존 코드를 간소화.
-  //    실제로는 DOM 조작 없이 CSS 애니메이션이나 3D로 구현하는 방식을 권장합니다.
-  // ------------------------------------------------------------
-  const backgroundContainerRef = useRef(null);
-  useEffect(() => {
-    // 간단히 span 몇 개 만들어서 랜덤하게 active 주는 예시
-    if (!backgroundContainerRef.current) return;
-
-    // cube와 span 생성
-    const cubes = [];
-    for (let i = 0; i < 1; i++) {
-      // 원본 코드에서는 여러 개 zIndex를 만들었지만 간소화
-      const cube = document.createElement('div');
-      cube.className = 'cube';
-      cube.style.setProperty('--z', '-20');
-
-      for (let x = -4; x <= 4; x++) {
-        const div = document.createElement('div');
-        div.style.setProperty('--x', x);
-        div.style.setProperty('--y', 0);
-        cube.appendChild(div);
-      }
-      cubes.push(cube);
-    }
-
-    cubes.forEach((cube) => backgroundContainerRef.current.appendChild(cube));
-
-    const allDivs = backgroundContainerRef.current.querySelectorAll('.cube div');
-    const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * allDivs.length);
-      const randomDiv = allDivs[randomIndex];
-      randomDiv.classList.add('active');
-      setTimeout(() => {
-        randomDiv.classList.remove('active');
-      }, 2000);
-    }, 100);
-
-    return () => {
-      clearInterval(interval);
-      // cleanup
-      backgroundContainerRef.current.innerHTML = '';
-    };
-  }, []);
 
   // ------------------------------------------------------------
   // ⑦ 실제 렌더링
@@ -682,7 +639,10 @@ export default function Main() {
 
         {/* 배경 cube */}
         <div className="back-area">
-          <div className="background-container" ref={backgroundContainerRef}></div>
+          {/* <div className="background-container" ref={backgroundContainerRef}></div> */}
+          <video className="background-container" autoPlay muted loop>
+            <source src={메인큐브} type="video/mp4"/>
+        </video>
         </div>
       </div>
 
