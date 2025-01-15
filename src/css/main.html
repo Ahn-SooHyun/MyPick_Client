@@ -41,7 +41,6 @@
 
             // 모든 타이핑할 요소를 가져옴
             const typewriterSections = document.querySelectorAll(".main-top-video section");
-            console.log(typewriterSections.length);
 
              // Intersection Observer 콜백 함수
     const onIntersect = (entries, observer) => {
@@ -50,7 +49,6 @@
         if (entry.isIntersecting) {
           // 해당 섹션의 타이핑을 시작
           startTyping(entry.target);
-          console.log('test');
           // 한 번만 실행하기 위해(중복 실행 방지) 관찰 중지
           observer.unobserve(entry.target);
         }
@@ -72,7 +70,6 @@
 
     // 실제 타이핑 함수
     function startTyping(element) {
-        console.log('start');
         // 실제로 텍스트를 출력할 div에 typewriter 클래스를 추가 (커서 애니메이션 등)
         element.classList.add('action');
 
@@ -223,29 +220,134 @@
                             <div class="list">
 
 
-                                <!-- item,  music, action 있음 -->
-                                <div class="mainPage-content-box music action"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
+                                <!-- 2.0 version Musli List
+                                <div class="mainPage-content-item music"  onmouseover="musicOverOpen(this)">
+                                    
                                     <div class="imgBx">
                                         <img src="./img/music/300MILLION.jpg">
                                     </div>
-                                    <div class="content">
-                                        <div class="title">300MILLION</div>
+
+
+                                    <div class="mainPage-content-item-over" onmouseout="musicOverClose(this)">
+                                        <div class="imgBx">
+                                            <img src="./img/music/300MILLION.jpg">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">300MILLION</div>
+                                        </div>
+                                        <div class="img-area">
+                                            <img src="./icon/play.png">
+                                        </div>
                                     </div>
-                                    <div class="img-area">
-                                        <img src="./icon/play.png">
+
+                                  
+                                </div> -->
+
+                                <!-- 2.0 music List -->
+                                <div class="mainPage-content-item music"  onmouseover="musicOverOpen(this)">
+                                    <!-- 2.0 mouse out 시 보이는 영역-->
+                                    <div class="before-imgBx">
+                                        <img src="./img/music/300MILLION.jpg">
+                                    </div>
+
+                                    <!-- 2.0 mouse over 시 보이는 영역-->
+                                    <div class="mainPage-content-item-over" onmouseout="musicOverClose(this)">
+                                        <div class="imgBx">
+                                            <img src="./img/music/300MILLION.jpg">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">300MILLION</div>
+                                        </div>
+                                        <div class="img-area">
+                                            <img src="./icon/play.png">
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!-- item, music, action 없음 -->
-                                <div class="mainPage-content-box music"  onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
-                                    <div class="imgBx">
+                                
+
+                                <!-- 2.0 music List -->
+                                <div class="mainPage-content-item music"  onmouseover="musicOverOpen(this)">
+                                    <!-- 2.0 mouse out 시 보이는 영역-->
+                                    <div class="before-imgBx">
+                                        <img src="./img/music/dna.jpg">
+                                    </div>
+
+                                    <!-- 2.0 mouse over 시 보이는 영역-->
+                                    <div class="mainPage-content-item-hover" onmouseout="musicOverClose(this)">
+                                        <div class="imgBx">
+                                            <img src="./img/music/dna.jpg">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">그래도 돼</div>
+                                        </div>
+                                        <div class="img-area">
+                                            <img src="./icon/play.png">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="mainPage-content-item music"  onmouseover="musicOverOpen(this)">
+                                    <!-- 2.0 mouse out 시 보이는 영역-->
+                                    <div class="before-imgBx">
                                         <img src="./img/music/300MILLION.jpg">
                                     </div>
-                                    <div class="content">
-                                        <div class="title">300MILLION</div>
+
+                                    <!-- 2.0 mouse over 시 보이는 영역-->
+                                    <div class="mainPage-content-item-over" onmouseout="musicOverClose(this)">
+                                        <div class="imgBx">
+                                            <img src="./img/music/300MILLION.jpg">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">300MILLION</div>
+                                        </div>
+                                        <div class="img-area">
+                                            <img src="./icon/play.png">
+                                        </div>
                                     </div>
-                                    <div class="img-area">
-                                        <img src="./icon/play.png">
+                                </div>
+
+
+                                <div class="mainPage-content-item music"  onmouseover="musicOverOpen(this)">
+                                    <!-- 2.0 mouse out 시 보이는 영역-->
+                                    <div class="before-imgBx">
+                                        <img src="./img/music/300MILLION.jpg">
+                                    </div>
+
+                                    <!-- 2.0 mouse over 시 보이는 영역-->
+                                    <div class="mainPage-content-item-over" onmouseout="musicOverClose(this)">
+                                        <div class="imgBx">
+                                            <img src="./img/music/300MILLION.jpg">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">300MILLION</div>
+                                        </div>
+                                        <div class="img-area">
+                                            <img src="./icon/play.png">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="mainPage-content-item music"  onmouseover="musicOverOpen(this)">
+                                    <!-- 2.0 mouse out 시 보이는 영역-->
+                                    <div class="before-imgBx">
+                                        <img src="./img/music/300MILLION.jpg">
+                                    </div>
+
+                                    <!-- 2.0 mouse over 시 보이는 영역-->
+                                    <div class="mainPage-content-item-over" onmouseout="musicOverClose(this)">
+                                        <div class="imgBx">
+                                            <img src="./img/music/300MILLION.jpg">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">300MILLION</div>
+                                        </div>
+                                        <div class="img-area">
+                                            <img src="./icon/play.png">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -714,7 +816,6 @@
 
         //board event처리하기
         function boardEvent() {
-            console.log('boardEvent');
             let board = document.querySelector('.main-action-area-list .list');
             const title = document.querySelector('.main-action-area-list .calout .title');
             title.innerHTML = '게시판';
@@ -803,7 +904,6 @@
             if(footerSubjectV.classList.contains('action-bar')) {
                 document.querySelector('p.footer-content').classList.add('action-bar');
             } else {
-                console.log('action-bar 제거');
                 document.querySelector('p.footer-content').classList.remove('action-bar');
             }
 
@@ -826,25 +926,39 @@
 
             musicMenuList.forEach(item => {
                 let html = `
-                    <div class="mainPage-content-box music" onmouseover="musicOverOpen(this)" onmouseout="musicOverClose(this)">
-                        <div class="imgBx">
-                            <img src="${item.img}">
-                        </div>
-                        <div class="content">
-                            <div class="title">${item.title}</div>
-                        </div>
-                        <div class="img-area">
-                            <img src="./icon/play.png">
-                        </div>
-                    </div>
+                                
+                                <div class="mainPage-content-item music"  onmouseover="musicOverOpen(this)">
+                                
+                                    <div class="before-imgBx">
+                                        <img src="${item.img}">
+                                    </div>
+
+                                    
+                                    <div class="mainPage-content-item-over" onmouseout="musicOverClose(this)">
+                                        <div class="imgBx">
+                                            <img src="${item.img}">
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">${item.title}</div>
+                                        </div>
+                                        <div class="img-area">
+                                            <img src="./icon/play.png">
+                                        </div>
+                                    </div>
+                                </div>
                 `;
                 musicList.innerHTML += html;
             });
         }
 
-        /** 음악 클릭 확인하기 - 마우스 오버 시, 클래스 추가 */
+        /** 음악  마우스 오버 시, 클래스 추가 */
         function musicOverOpen(e) {
-            e.classList.add('action');
+            const hoverTarget = e.querySelector('.mainPage-content-item-over');
+
+
+            hoverTarget.classList.add('mainPage-content-item-hover');
+            hoverTarget.classList.remove('mainPage-content-item-over');
+
             //this의 자식 div class=imgBx에 있는 img src 경로 불러오기
             let img = e.querySelector('.imgBx img');
 
@@ -854,7 +968,8 @@
 
         /** 음악 클릭 확인하기 - 마우스 아웃 시, 클래스 제거 */
         function musicOverClose(e) {
-            e.classList.remove('action');
+            e.classList.add('mainPage-content-item-over');
+            e.classList.remove('mainPage-content-item-hover');
         }
         
 

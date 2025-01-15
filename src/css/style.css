@@ -802,41 +802,34 @@ section {
  
 
 
-  /** music item, click - before */
-  .main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music {
+
+
+/** 2.0 version Music List**/
+.mainPage-content-item.music {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	cursor: pointer;
+	z-index: 4;
 	margin: 20px;
-	width: 300px;
-	height: 300px;
-	
-	transition: 0.2s all;
-	cursor: pointer;
-  }
+}
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music .imgBx {
+.mainPage-content-item.music .before-imgBx {
 	width: 300px;
 	height: 300px;
 }
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music .imgBx img {
+.mainPage-content-item.music .before-imgBx img {
 	width: 300px;
 	height: 300px;
-
-	cursor: pointer;
 }
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music .content {
-	display: none;
-  }
-
-  .main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music .img-area {
-	display: none;
-  }
-
-
-/** music item, click- after */
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action {
-	width: 400px;
-	height: 600px;
+.mainPage-content-item-over {
+	position: relative;
+	top: -450px;
+	left: 0;
+	width: 300px;
+	height: 500px;
 
 	display: flex;
 	flex-direction: column;
@@ -848,17 +841,79 @@ section {
 	border-radius: 10px;
 	box-shadow: 0 0 15px #000,
 	0 0 30px #000;
-
-	transition: 0.2s ease;
-	opacity: 0.9;
+	
+	transform: scale(0.5);
+	opacity: 0;
+	transition: 1s ease;
 	cursor: pointer;
 }
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .imgBx {
+
+.mainPage-content-item.music .mainPage-content-item-over .imgBx {
 	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+
+	opacity: 0;
 }
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .content {
+.mainPage-content-item.music .mainPage-content-item-over .imgBx {
+	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+	opacity: 0;
+}
+.mainPage-content-item-over .img-area {
+	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+
+	opacity: 0;
+}
+
+/** 2.0 version Music List - hover 영역**/
+.mainPage-content-item-hover {
+	
+	position: relative;
+	top: -450px;
+	left: 0;
+	width: 300px;
+	height: 500px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #fff;
+
+	border-radius: 10px;
+	box-shadow: 0 0 15px #000,
+	0 0 30px #000;
+	opacity: 0.9;
+
+	transition: 1s ease;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.mainPage-content-item.music .mainPage-content-item-hover .imgBx {
+	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+
+}
+
+.mainPage-content-item-hover .imgBx img {
+	width: 100%;
+	height: 100%;
+
+	opacity: 1;
+	transition: 1s ease;
+
+}
+
+.mainPage-content-item-hover .content {
 
 	margin: 15px 0 10px 0;
 	width: 100%;
@@ -869,7 +924,7 @@ section {
 	display: flex;
 }
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .content .title {
+.mainPage-content-item-hover .content .title {
 	width: 100%;
 	height: 100%;
 
@@ -877,11 +932,14 @@ section {
 
 }
 
-/***/
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .img-area {
-	width: 100%;
-	height: 100%;
+
+
+.mainPage-content-item-hover .img-area {
+	width: 150px;
+	height: 150px;
+
+	margin-top: 70px;
 
 	display: flex;
 	flex-direction: row;
@@ -891,11 +949,14 @@ section {
 	transition-delay: 0.5s;
 }
 
-.main-container .main-content .main-page .main-page-content .main-page-content-box .main-page-content-box-content .mainPage-content-box.music.action .img-area img {
-	width: 150px;
-	height: 150px;
+.mainPage-content-item-hover .img-area img {
+	width: 100%;
+	height: 100%;
 }
 
+
+
+/* Game BackGround**/
 .main-page-content-box.game {
 	position: relative;
 
