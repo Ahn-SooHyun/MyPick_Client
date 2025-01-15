@@ -7,6 +7,7 @@ import ChatPage from './pages/ChatPage';
 import SignupPage from './pages/SignupPage';
 import NoticeList from './pages/NoticeList';
 import NoticeDetail from './pages/NoticeDetail';
+import Main from './pages/main/Main';
 
 // (추가) MyPage import
 import MyPage from './pages/MyPage';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/notice" element={<NoticeList />} />
           <Route path="/notice/:noticeId" element={<NoticeDetail />} />
+          <Route path="/main" element={<Main />} />
 
           {/* (추가) MyPage 라우트 */}
           <Route path="/mypage" element={<MyPage />} />
