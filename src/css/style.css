@@ -223,7 +223,7 @@ html {
 	transition: 1s;
 }
 
-
+/** 첫 번째 광고 문구*/
 .main-top-video section.action .main-top-banner-text.section-first {
 	margin-top:40vh;
 	
@@ -251,6 +251,34 @@ html {
 	font-weight: bold;
 	color: var(--red-color);
 }
+
+.main-top-video section.action .main-top-banner-text.section-second {
+	margin-top: 40vh;
+
+	text-align: right;
+}
+
+.main-top-video section.action .main-top-banner-text.section-second span.first-text {
+	font-size: 40px;
+	line-height: 1.171875;
+	word-break: keep-all;
+	letter-spacing: -0.02em;
+}
+
+.main-top-video section.action .main-top-banner-text.section-second span.second-text {
+	font-size: 40px;
+	line-height: 1.171875;
+	word-break: keep-all;
+	letter-spacing: -0.02em;
+}
+
+.main-top-video section.action .main-top-banner-text.section-second span.third-text {
+	font-size: 40px;
+	line-height: 1.171875;
+	word-break: keep-all;
+	letter-spacing: -0.02em;
+}
+
 
 /** main content 영역*/
 .main-container .main-content {
