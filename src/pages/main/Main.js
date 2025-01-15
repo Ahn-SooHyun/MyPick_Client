@@ -219,9 +219,11 @@ export default function Main() {
   // ⑦ 실제 렌더링
   // ------------------------------------------------------------
   return (
+    <>
     <div className="main-container">
       {/* 상단 영역 */}
       <div className="main-top-video">
+        
         <video className="bg-video__content" autoPlay muted loop>
           <source src={mainTopVideo} type="video/mp4" />
         </video>
@@ -644,80 +646,81 @@ export default function Main() {
         </video>
         </div>
       </div>
-
+    </div>
       {/* footer */}
-      <footer>
-        <div className="footer-container">
-          <div className="footer-content">
-            <div className="footer-subject" onClick={toggleFooter}>
-              <div className="footer-subject-img"></div>
-              <div className="footer-subject-loadingbar">
-                <div className={`loading-hr ${isFooterOpen ? 'action-bar' : ''}`}>
-                  {Array.from({ length: 20 }, (_, i) => (
-                    <span key={i} style={{ '--i': i + 1 }}></span>
-                  ))}
-                </div>
-              </div>
-
-              <div className={`footer-subject-v ${isFooterOpen ? 'action-bar' : ''}`}>
-                <span></span>
-                <span></span>
+    <footer>
+      <div className="footer-container">
+        <div className="footer-content">
+          <div className="footer-subject" onClick={toggleFooter}>
+            <div className="footer-subject-img"></div>
+            <div className="footer-subject-loadingbar">
+              <div className={`loading-hr ${isFooterOpen ? 'action-bar' : ''}`}>
+                {Array.from({ length: 20 }, (_, i) => (
+                  <span key={i} style={{ '--i': i + 1 }}></span>
+                ))}
               </div>
             </div>
 
-            <p className={`footer-content ${isFooterOpen ? 'action-bar' : ''}`}>
-              Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
-              Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
-              Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
-              Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
-              Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
-              Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
-              Project 간단 소개
-            </p>
+            <div className={`footer-subject-v ${isFooterOpen ? 'action-bar' : ''}`}>
+              <span></span>
+              <span></span>
+            </div>
           </div>
 
-          <div className="footer-content-btn">
-            <div className="btn-area-first">
-              <div className="footer-content-btn-item">
-                <div className="footer-content-btn-item-img"></div>
-                <div className="footer-content-btn-item-text">
-                  <span>Server</span>
-                </div>
-              </div>
+          <p className={`footer-content ${isFooterOpen ? 'action-bar' : ''}`}>
+            Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
+            Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
+            Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
+            Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
+            Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
+            Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개 Project 간단 소개
+            Project 간단 소개
+          </p>
+        </div>
 
-              <div className="footer-content-btn-item">
-                <div className="footer-content-btn-item-img"></div>
-                <div className="footer-content-btn-item-text">
-                  <span>Front</span>
-                </div>
+        <div className="footer-content-btn">
+          <div className="btn-area-first">
+            <div className="footer-content-btn-item">
+              <div className="footer-content-btn-item-img"></div>
+              <div className="footer-content-btn-item-text">
+                <span>Server</span>
               </div>
             </div>
 
-            <div className="btn-area-second">
-              <div className="footer-content-btn-item">
-                <div className="footer-content-btn-item-img"></div>
-                <div className="footer-content-btn-item-text">
-                  <span>충남 도립 대학교</span>
-                </div>
+            <div className="footer-content-btn-item">
+              <div className="footer-content-btn-item-img"></div>
+              <div className="footer-content-btn-item-text">
+                <span>Front</span>
               </div>
+            </div>
+          </div>
 
-              <div className="footer-content-btn-item">
-                <div className="footer-content-btn-item-img"></div>
-                <div className="footer-content-btn-item-text">
-                  <span>한국 정보 교육원</span>
-                </div>
+          <div className="btn-area-second">
+            <div className="footer-content-btn-item">
+              <div className="footer-content-btn-item-img"></div>
+              <div className="footer-content-btn-item-text">
+                <span>충남 도립 대학교</span>
               </div>
+            </div>
 
-              <div className="footer-content-btn-item">
-                <div className="footer-content-btn-item-img"></div>
-                <div className="footer-content-btn-item-text">
-                  <span>만든 이</span>
-                </div>
+            <div className="footer-content-btn-item">
+              <div className="footer-content-btn-item-img"></div>
+              <div className="footer-content-btn-item-text">
+                <span>한국 정보 교육원</span>
+              </div>
+            </div>
+
+            <div className="footer-content-btn-item">
+              <div className="footer-content-btn-item-img"></div>
+              <div className="footer-content-btn-item-text">
+                <span>만든 이</span>
               </div>
             </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
+    
+    </>
   );
 }
