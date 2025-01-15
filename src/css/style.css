@@ -1172,7 +1172,7 @@ opacity: 0.4;
 
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 }
 
@@ -1260,6 +1260,53 @@ opacity: 0.4;
 	display: block;
 	transition: 0.5s ease-in-out;
 }
+
+
+/** 히어카드 영역 */
+.faq-box-hero-area {
+	margin-top: 150px;
+	position: relative;
+	width: 40%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: start;
+}
+
+.faq-box-hero-area .faq-box-hero {
+	position: relative;
+	width: 200px;
+	height: 300px;
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+}
+
+.faq-box-hero-area .faq-box-hero span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	transform: rotateY(calc(var(--i) * 45deg)) translateZ(240px);
+	--webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0002);
+}
+
+.faq-box-hero-area .faq-box-hero span::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.faq-box-hero-area .faq-box-hero span img {
+	width: 200px;
+	height: 300px;
+}
+
 
 
 /** footter 영역 */

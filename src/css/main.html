@@ -489,7 +489,7 @@
 
                 <!-- 자주하는 질문 -->
 
-                <div class="content-faq" class="">
+                <div class="content-faq">
 
                     <div class="faq-box">
                         <div class="faq-list">
@@ -549,6 +549,40 @@
                             </div>
                            
                         </div>
+
+
+                        <!-- 히어카드 영역 -->
+                         <div class="faq-box-hero-area">
+                            <div class="faq-box-hero">
+                                <span style="--i:1">
+                                    <img src="./img/hero/hero1.jpeg">
+                                </span>
+                                <span style="--i:2">
+                                    <img src="./img/hero/hero2.jpeg">
+                                </span>
+                                <span style="--i:3">
+                                    <img src="./img/hero/hero3.jpeg">
+                                </span>
+                                <span style="--i:4">
+                                    <img src="./img/hero/hero4.jpeg">
+                                </span>
+                                <span style="--i:5">
+                                    <img src="./img/hero/hero5.jpeg">
+                                </span>
+                                <span style="--i:6">
+                                    <img src="./img/hero/hero6.jpeg">
+                                </span>
+                                <span style="--i:7">
+                                    <img src="./img/hero/hero7.jpeg">
+                                </span>
+                                <span style="--i:8">
+                                    <img src="./img/hero/hero8.jpeg">
+                                </span>
+                            </div>
+                         </div>
+                        
+
+
                     </div>
                 </div>
 
@@ -1081,6 +1115,21 @@
             e.classList.remove('action');
 
         }
+
+            // 스크롤 이벤트 리스너 생성
+
+    window.addEventListener('scroll', (e) => {
+        const box = document.querySelector('.faq-box-hero-area .faq-box-hero');
+        // 마우스 x좌표를 기준으로 회전 각도 계산
+        // window.innerWidth로 나누어 0~1 사이 값으로 정규화
+        // 현재 스크롤 위치를 기준으로 회전 각도 계산
+
+        // 마우스 움직임은 무시하고 스크롤 위치만 사용
+        console.log(window.scrollY);
+        let scrollRotation = window.scrollY * 0.5; // 스크롤 속도 조절을 위해 0.5를 곱함
+        box.style.transform = `perspective(1000px) rotateY(${scrollRotation}deg)`;
+    });
+
 
     </script>
 	
