@@ -364,53 +364,7 @@ html {
 	justify-content: center;
 	align-items: start;
 }
-/** 사용 안 함 */
-.main-content .main-content-introduction .content > div {
-	margin-bottom: 20px;
-	margin-left: 100px;
-}
-/** 사용 안 함 */
-.main-content .main-content-introduction .content .title {
-	font-size: 50px;
-	font-weight: bold;
-	color: #fff;
-}
-/** 사용 안 함 */
-.main-content .main-content-introduction .content .subtitle {
-	font-size: 30px;
-	font-weight: bold;
-	color: #fff;
-}
-/** 사용 안 함 */
-.main-content .main-content-introduction .content .description {
-	margin-left: 300px;
-	font-size: 20px;
-	text-align: center;
-	color: #fff;
-}
-/** 사용 안 함 */
-.main-content .main-content-introduction .content-image {
-	width: 1700px;
-	height: 100%;
-	background-image: url('./img/main1.gif');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	overflow: hidden;
-}
 
-/** 사용 안 함 */
-.main-content .main-content-introduction .main-content-introduction-right {
-	position: absolute;
-	top: -190px;
-	right: 500px;
-	width: 900px;
-	height: 600px;
-	background-color: #000;
-
-	transform-origin: center;
-	transform: rotate(115deg);
-}
 
 .main-container .main-content .main-page {
 	position: absolute;
