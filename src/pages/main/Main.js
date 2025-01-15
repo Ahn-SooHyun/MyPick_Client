@@ -639,7 +639,6 @@ export default function Main() {
 
         {/* 배경 cube */}
         <div className="back-area">
-          {/* <div className="background-container" ref={backgroundContainerRef}></div> */}
           <video className="background-container" autoPlay muted loop>
             <source src={메인큐브} type="video/mp4"/>
         </video>
