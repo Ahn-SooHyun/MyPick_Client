@@ -313,7 +313,7 @@
 .main-container .main-content {
 	position: relative;
 	width: 100vw;
-	height: calc(400vh + 1300px); /** main-content-height 매우 중요 */
+	height: calc(400vh + 1900px); /** main-content-height 매우 중요 */
 
 	display: flex;
 	justify-content: center;
@@ -982,7 +982,6 @@
 	height: 100px;
 	color: #000;
 
-	background-color: #c8bfb8;
 	font-size: 50px;
 	font-weight: bold;
 	line-height: 100px;
@@ -1003,6 +1002,11 @@
 .main-page-content-box.book .main-page-content-box-content {
 	width: 100%;
 	height: 100%;
+
+	background-image: url('./img/bookBg.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 
 	display: flex;
 	flex-direction: row;
@@ -1183,17 +1187,16 @@ opacity: 0.4;
 }
 
 .main-page .content-faq .faq-box .faq-list .faq-item {
+	margin-top: 15px;
 	position: relative;
 	width: 80%;
 	height: 70px;
 
-	margin: 10px;
 	padding: 10px;
 	background-color: var(--black-color);
 	color: #fff;
 
-	border: 1px #000 solid;
-	border-radius: 15px;
+	
 
 
 	display: flex;
@@ -1206,7 +1209,7 @@ opacity: 0.4;
 }
 
 .main-page .content-faq .faq-box .faq-list .faq-item:hover {
-	margin-bottom: 100px;
+	margin-bottom: 60px;
 	background-color: #5D5D5D;
 	color: #fff;
 	transition: 0.5s ease-in-out;
@@ -1223,6 +1226,7 @@ opacity: 0.4;
 }
 
 .main-page .content-faq .faq-box .faq-list .faq-item .title {
+	
 	font-size: 25px;
 	font-weight: bold;
 	vertical-align: middle;
@@ -1234,7 +1238,7 @@ opacity: 0.4;
 
 .main-page .content-faq .faq-box .faq-list .faq-item .content {
 	position: absolute;
-	top: 90px;
+	top: 65px;
 	left: 0;
 
 	display: none;
@@ -1242,10 +1246,10 @@ opacity: 0.4;
 
 	padding: 20px;
 
-	border-radius: 15px;
 	background-color: #2D2D2D;
 	width: 100%;
 
+	border: 1px #000 solid;
 	font-size: 15px;
 	font-weight: bold;
 
