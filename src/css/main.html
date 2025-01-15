@@ -258,13 +258,17 @@
 
 
                             <div class="list">
+                                
                                 <div class="mainPage-content-box book">
                                     <div class="imgBx">
                                         <img src="./img/book/기록이라는세계.jpg">
                                     </div>
+
+
+
                                 </div>
 
-                                <section id="pageSection">
+                                <section id="pageSection" class="mainPage-content-box book">
                                     <div class="page" id="page1">
                                         <img src="./img/book/기록이라는세계.jpg">
                                     </div>
@@ -738,24 +742,37 @@
         }
 
 
-        
-        const gameBackGroundImgList = [
-            {img: './img/gameback/mario.gif', sec: 1000},
-            {img: './img/gameback/muda.gif', sec: 1000},
-            {img: './img/gameback/oramuda.gif', sec: 1000},
-            {img: './img/gameback/starcraft.gif', sec: 1000}
+
+        const bookMenuList = [
+            {title: '기록이라는세계', img: './img/book/기록이라는세계.jpg'},
+            {title: '머큐리테일', img: './img/book/머큐리테일.jpg'},
+            {title: '바다를말하는하얀고래', img: './img/book/바다를말하는하얀고래.jpg'},
+            {title: '사소한불행', img: './img/book/사소한불행.jpg'},
+            {title: '어떤어른', img: './img/book/어떤어른.jpg'},
         ];
 
-        function gameBackImgRandom() {
-            let randomIndex = Math.floor(Math.random() * gameBackGroundImgList.length);
-            let randomImg = gameBackGroundImgList[randomIndex];
-            let target = document.querySelector('.main-page-content-box.game');
-            target.style.backgroundImage = `url(${randomImg.img})`;
+        bookViewList();
+        function bookViewList() {
+            const bookContentList = document.querySelector('.main-page-content-box.book .main-page-content-box-content .list');
+            bookContentList.innerHTML = '';
 
-            setTimeout(() => {
-                gameBackImgRandom();
-            }, randomImg.sec);
+            bookMenuList.forEach(item => {
+                let html = `
+                    <section id="pageSection" class="mainPage-content-box book">
+                                    <div class="page" id="page1">
+                                        <img src="${item.img}">
+                                    </div>
+                                
+                                    <div class="page" id="page2">
+                                      <h2>${item.title}</h2>
+                                      <span>This is second page...</span>
+                                    </div>
+                                </section>
+                `;
+                bookContentList.innerHTML += html;
+            });
         }
+
 
         //gameBackImgRandom();
 

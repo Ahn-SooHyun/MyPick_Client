@@ -915,6 +915,8 @@
 	width: 100%;
 	height: 100px;
 	color: #000;
+
+	background-color: #c8bfb8;
 	font-size: 50px;
 	font-weight: bold;
 	line-height: 100px;
@@ -950,11 +952,13 @@
 	flex-direction: row;
 	align-items: center;
 }
-
+/* 
 .main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book {
 	position: relative;
 	width: 300px;
 	height: 400px;
+
+	margin: 20px;
 
 
 	transition: all 0.3s ease;
@@ -962,60 +966,47 @@
 	box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.08);
 
 	cursor: pointer;
+} */
+
+
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book {
+	margin: 20px;
+	position: relative;
+	width: 300px;
+	height: 400px;
+	perspective: 1000px;
+
+	cursor: pointer;
 }
 
-.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book .imgBx {
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book > .page {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #f5dec1;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), -2px 0 2px rgba(0, 0, 0, 0.4);
 	width: 100%;
 	height: 100%;
 }
 
-.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book .imgBx img {
-	width: 100%;
-	height: 100%;
-}
-
-
-#book {
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book >.page img {
 	width: 300px;
 	height: 400px;
 }
 
-#pageSection {
-position: relative;
-width: 300px;
-height: 400px;
-margin-left: 250px;
-perspective: 1000px;
-}
-
-.page {
-position: absolute;
-top: 0;
-left: 0;
-background-color: #f5dec1;
-box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), -2px 0 2px rgba(0, 0, 0, 0.4);
-width: 100%;
-height: 100%;
-}
-
-.page img {
-	width: 300px;
-	height: 400px;
-}
-
-#page1 {
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book > .page:nth-child(1) {
 z-index: 1;
 transform-origin: top center;
 transition-duration: 1s;
 transition-timing-function: ease-in;
 }
 
-#page1:hover {
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book:hover .page:nth-child(1) {
 transform: rotateX(180deg);
 opacity: 0.4;
 }
 
-#page2 {
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book .page:nth-child(2) {
 z-index: 0;
 }
 
