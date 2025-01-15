@@ -818,7 +818,7 @@
 	height: 300px;
 }
 
-.mainPage-content-item-ov {
+.mainPage-content-item.music .mainPage-content-hoverItem {
 	position: relative;
 	top: -450px;
 	left: 0;
@@ -842,7 +842,7 @@
 	cursor: pointer;
 }
 
-.mainPage-content-item.music .mainPage-content-item-ov .imgBx {
+.mainPage-content-item.music .mainPage-content-hoverItem .imgBx {
 	margin-top: 30px;
 	width: 200px;
 	height: 200px;
@@ -851,26 +851,26 @@
 	transition: 1s ease;
 }
 
-.mainPage-content-item.music .mainPage-content-item-ov .imgBx img {
+.mainPage-content-item.music .mainPage-content-hoverItem .imgBx img {
 	width: 200px;
 	height: 200px;
 	transform: scale(0.5);
 	transition: 1s ease;
 }
 
-.mainPage-content-item-ov .img-area {
+.mainPage-content-hoverItem .img-area {
 	margin: 20px 0;
 	width: 200px;
 	height: 200px;
 }
 
-.mainPage-content-item-ov .img-area img {
+.mainPage-content-hoverItem .img-area img {
 	transform: scale(0.5);
 	width: 150px;
 	height: 150px;
 }
 
-.mainPage-content-item-ov .img-area {
+.mainPage-content-hoverItem .img-area {
 	width: 150px;
 	height: 150px;
 
@@ -882,13 +882,13 @@
 	align-items: center;
 }
 
-.mainPage-content-item-ov .img-area img {
+.mainPage-content-hoverItem .img-area img {
 	width: 150px;
 	height: 150px;
 }
 
 /** 2.0 version Music List - hover 영역**/
-.mainPage-content-item-hover {
+.mainPage-content-item.music.action .mainPage-content-hoverItem {
 	
 	position: relative;
 	top: -450px;
@@ -913,14 +913,14 @@
 	z-index: 10;
 }
 
-.mainPage-content-item.music .mainPage-content-item-hover .imgBx {
+.mainPage-content-item.music.action .mainPage-content-hoverItem .imgBx {
 	margin-top: 30px;
 	width: 200px;
 	height: 200px;
 
 }
 
-.mainPage-content-item-hover .imgBx img {
+.mainPage-content-item.music.action .imgBx img {
 	width: 200px;
 	height: 200px;
 
@@ -930,7 +930,7 @@
 
 }
 
-.mainPage-content-item-hover .content {
+.mainPage-content-item.music.action .content {
 
 	margin: 15px 0 60px 0;
 	width: 100%;
@@ -941,7 +941,7 @@
 	display: flex;
 }
 
-.mainPage-content-item-hover .content .title {
+.mainPage-content-item.music.action .mainPage-content-hoverItem .content .title {
 	width: 100%;
 	height: 100%;
 
@@ -952,7 +952,7 @@
 
 
 
-.mainPage-content-item-hover .img-area {
+.mainPage-content-item.music.action .mainPage-content-hoverItem .img-area {
 	width: 150px;
 	height: 150px;
 
@@ -966,7 +966,7 @@
 	transition-delay: 0.5s;
 }
 
-.mainPage-content-item-hover .img-area img {
+.mainPage-content-item.music.action .mainPage-content-hoverItem .img-area img {
 	width: 150px;
 	height: 150px;
 }

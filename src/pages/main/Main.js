@@ -437,35 +437,31 @@ export default function Main() {
 
                 <div className="list">
                   {musicMenuList.map((music, idx) => (
+
+
                     <div
                       className="mainPage-content-item music"
                       key={idx}
                       onMouseOver={(e) => {
                         // 배경 교체
                         e.currentTarget.parentNode.parentNode.parentNode.style.backgroundImage = `url('${music.img}')`;
-                        // .mainPage-content-item-over 클래스로 전환
-                        e.currentTarget
-                          .querySelector('.mainPage-content-item-over')
-                          ?.classList.add('mainPage-content-item-hover');
-                        e.currentTarget
-                          .querySelector('.mainPage-content-item-over')
-                          ?.classList.remove('mainPage-content-item-over');
+                        // .mainPage-content-item-ov 클래스로 전환
+                        console.log(e.currentTarget);
+                        
+                        e.currentTarget.classList.add('action');
+
+
                       }}
                       onMouseOut={(e) => {
                         // 원복
-                        e.currentTarget
-                          .querySelector('.mainPage-content-item-hover')
-                          ?.classList.remove('mainPage-content-item-hover');
-                        e.currentTarget
-                          .querySelector('.mainPage-content-item-over')
-                          ?.classList.add('mainPage-content-item-over');
+                        e.currentTarget.classList.remove('action');
                       }}
                     >
                       <div className="before-imgBx">
                         <img src={music.img} alt={music.title} />
                       </div>
 
-                      <div className="mainPage-content-item-over">
+                      <div className="mainPage-content-hoverItem">
                         <div className="imgBx">
                           <img src={music.img} alt={music.title} />
                         </div>
