@@ -238,7 +238,7 @@
 	position: relative;
 	margin-top: 800px; /* first-row + second-row height */
 	width: 100vw;
-	height: 3500px;
+	height: 4500px; /** main-content-height 매우 중요 */
 
 	display: flex;
 	justify-content: center;
@@ -343,7 +343,6 @@
 	position: absolute;
 	margin-top: var(--baner-height);
 	width: 100vw;
-	height: 2550px;
 	z-index:3;
 
 	display: flex;
@@ -635,7 +634,7 @@
 
   /** main - 영화, 도서, 음악 등 컨첸츠 list 영역 */
   .main-container .main-content .main-page .main-page-content {
-	height: 1600px;
+	height: 3200px;
 	background-color: var(--background-color);
 
 	display: flex;
@@ -874,7 +873,7 @@
 	position: absolute;
 
 	top:0;
-	left:-500px;
+	left:-400px;
 	width: 100%;
 	opacity: 1;
 	mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 50%, transparent 75%);
@@ -885,12 +884,13 @@
 
 .main-page-content-box.game .main-page-content-box-content .mainPage-content-box.game {
 	position: relative;
-	width: 250px;
-	height: 350px;
+	width: 300px;
+	height: 400px;
 
 	margin: 20px;
 	cursor: pointer;
 	transition: 0.5s ease-in-out;
+	border: 1px #fff solid;
 }
 
 .main-page-content-box.game .main-page-content-box-content .imgBx {
@@ -904,10 +904,122 @@
 }
 
 .main-page-content-box.game .main-page-content-box-content .mainPage-content-box.game:hover {
-	transform: scale(1.8);
+	transform: scale(1.6);
 	transition: 0.5s ease-in-out;
 	z-index: 30;
 }
+
+/** book 영역 */
+.main-page-content-box.book .main-page-content-box-book-title {
+	padding-left: 100px;
+	width: 100%;
+	height: 100px;
+	color: #000;
+	font-size: 50px;
+	font-weight: bold;
+	line-height: 100px;
+	z-index: 4;
+  }
+
+.main-page-content-box.book {
+	position: relative;
+
+	background-color: #fff;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	overflow: hidden;
+}
+
+.main-page-content-box.book .main-page-content-box-content {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main-page-content-box.book .main-page-content-box-content .list {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book {
+	position: relative;
+	width: 300px;
+	height: 400px;
+
+
+	transition: all 0.3s ease;
+
+	box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.08);
+
+	cursor: pointer;
+}
+
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book .imgBx {
+	width: 100%;
+	height: 100%;
+}
+
+.main-page-content-box.book .main-page-content-box-content .list .mainPage-content-box.book .imgBx img {
+	width: 100%;
+	height: 100%;
+}
+
+
+#book {
+	width: 300px;
+	height: 400px;
+}
+
+#pageSection {
+position: relative;
+width: 300px;
+height: 400px;
+margin-left: 250px;
+perspective: 1000px;
+}
+
+.page {
+position: absolute;
+top: 0;
+left: 0;
+background-color: #f5dec1;
+box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), -2px 0 2px rgba(0, 0, 0, 0.4);
+width: 100%;
+height: 100%;
+}
+
+.page img {
+	width: 300px;
+	height: 400px;
+}
+
+#page1 {
+z-index: 1;
+transform-origin: top center;
+transition-duration: 1s;
+transition-timing-function: ease-in;
+}
+
+#page1:hover {
+transform: rotateX(180deg);
+opacity: 0.4;
+}
+
+#page2 {
+z-index: 0;
+}
+
+
 
 
 
