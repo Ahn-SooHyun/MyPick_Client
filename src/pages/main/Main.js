@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './style.css'; // 기존 style.css 경로에 맞게 수정해주세요.
 import mainTopVideo from '../../assets/img/mainTopVideo.mp4';
 import musicPlayIcon from '../../assets/icon/play.png';
+import 게임컨텐츠배경 from '../../assets/img/back/packman.mp4';
 
 import MILLION from '../../assets/img/music/300MILLION.jpg';
 import DNA from '../../assets/img/music/dna.jpg';
@@ -488,7 +489,7 @@ export default function Main() {
               <div className="main-page-content-box-title">게임</div>
               <div className="main-page-content-box-content">
                 <video className="bg-video__content" autoPlay muted loop>
-                  <source src="./back/packman.mp4" type="video/mp4" />
+                  <source src={게임컨텐츠배경} type="video/mp4" />
                 </video>
 
                 {/* prev button */}
