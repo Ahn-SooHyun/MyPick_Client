@@ -20,9 +20,15 @@
   	--tr-X: calc(var(--btn-w) - var(--dot-w));
 }
 
-html {
-	font-size: 62.5%;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
+
+
+
 
 @font-face {
     font-family: 'SBAggroB';
@@ -41,6 +47,10 @@ html {
 
 .test-border-green {
 	border: 3px solid #0f0;
+}
+
+.test-border-transparent {
+	border: 3px solid transparent;
 }
 
 .main-content .back-area {
@@ -169,14 +179,6 @@ html {
 	z-index: 1;
 } */
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-
-
 
 /** new - 상단 배너 영역 **/
 .main-top-video {
@@ -203,6 +205,7 @@ html {
 
 	width: 100vw;
 	height: 100vh;
+	background-color: transparent;
 }
 
 .main-top-video section .main-top-banner-text {
