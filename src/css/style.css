@@ -37,6 +37,56 @@
     font-style: normal;
 }
 
+/** 명조 */
+@font-face {
+    font-family: 'Gyeonggi_Batang_Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'hana';
+    src: url('./font/Hana2-CM.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'hana';
+	src: url('./font/Hana2-Bold.ttf') format('ttf');
+	font-weight: 400;
+	font-style: bold;
+}
+
+@font-face {
+	font-family: 'hana';
+	src: url('./font/Hana2-Heavy.ttf') format('ttf');
+	font-weight: 400;
+	font-style: heavy;
+}
+
+@font-face {
+	font-family: 'hana';
+	src: url('./font/Hana2-Light.ttf') format('ttf');
+	font-weight: 400;
+	font-style: light;
+}
+
+@font-face {
+	font-family: 'hana';
+	src: url('./font/Hana2-Medium.ttf') format('ttf');
+	font-weight: 400;
+	font-style: medium;
+}
+
+@font-face {
+	font-family: 'hana';
+	src: url('./font/Hana2-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-style: regular;
+}
+
 .test-border-blue {
 	border: 3px solid #00f;
 }
@@ -178,6 +228,10 @@
 	background-color: #000;
 	z-index: 1;
 } */
+
+.main-container {
+	font-family: 'hana', serif;
+}
 
 
 /** new - 상단 배너 영역 **/
@@ -346,12 +400,15 @@
 	justify-content: start;
 	width: 100%;
 	height: 100px;
-	background-color: red;
+	background-color: var(--red-color);
 	color: #fff;
 	font-size: 50px;
 	font-weight: bold;
 	text-align: center;
 	line-height: 100px;
+
+	font-family: 'hana', serif;
+	font-style: heavy;
 }
 
 /* 높이가 600px 필요한데, 100% 조차 적용이 안되는거 같아.*/
@@ -977,6 +1034,7 @@
 
 /** book 영역 */
 .main-page-content-box.book .main-page-content-box-book-title {
+	font-family: 'Gyeonggi_Batang_Regular';
 	padding-left: 100px;
 	width: 100%;
 	height: 100px;
