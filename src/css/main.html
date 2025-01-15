@@ -209,6 +209,9 @@
                     <div class="main-page-content-box game">
                         <div class="main-page-content-box-title">게임</div>
                         <div class="main-page-content-box-content">
+                            <video class="bg-video__content" autoplay muted loop>
+                                <source src="./back/packman.mp4" type="video/mp4" />
+                            </video>
 
                             <!-- prev button -->
                             <div class="main-list-button">
@@ -223,18 +226,14 @@
                                     <div class="imgBx">
                                         <img src="./img/music/300MILLION.jpg">
                                     </div>
-                                    <div class="content">
-                                        <div class="title">GAME NAME</div>
-                                    </div>
+
                                 </div>
 
                                 <div class="mainPage-content-box game action">
                                     <div class="imgBx">
                                         <img src="./img/music/300MILLION.jpg">
                                     </div>
-                                    <div class="content">
-                                        <div class="title">GAME NAME</div>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -681,9 +680,7 @@
                         <div class="imgBx">
                             <img src="${item.img}">
                         </div>
-                        <div class="content">
-                            <div class="title">${item.title}</div>
-                        </div>
+
                     </div>
                 `;
                 gameContentList.innerHTML += html;
@@ -691,7 +688,6 @@
 
         }
 
-        
         /** 게임 mouse 확인하기 - 마우스 오버 시, 클래스 추가 */
         function gameOverOpen(e) {
             e.classList.add('action');
@@ -702,6 +698,29 @@
         function gameOverClose(e) {
             e.classList.remove('action');
         }
+
+
+        
+        const gameBackGroundImgList = [
+            {img: './img/gameback/mario.gif', sec: 1000},
+            {img: './img/gameback/muda.gif', sec: 1000},
+            {img: './img/gameback/oramuda.gif', sec: 1000},
+            {img: './img/gameback/starcraft.gif', sec: 1000}
+        ];
+
+        function gameBackImgRandom() {
+            let randomIndex = Math.floor(Math.random() * gameBackGroundImgList.length);
+            let randomImg = gameBackGroundImgList[randomIndex];
+            let target = document.querySelector('.main-page-content-box.game');
+            target.style.backgroundImage = `url(${randomImg.img})`;
+
+            setTimeout(() => {
+                gameBackImgRandom();
+            }, randomImg.sec);
+        }
+
+        //gameBackImgRandom();
+
     </script>
 	
 </body>
