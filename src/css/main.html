@@ -21,11 +21,16 @@
             </video>
 
             <section class="test-border-green">
-                <div class="main-top-banner-text" data-text="첫 번째 섹션의 자동 타이핑 텍스트입니다.">TEST456</div>
+                <div class="main-top-banner-text">TEST456</div>
             </section>
 
-            <section class="first-action test-border-green">
-                <div class="main-top-banner-text" data-text="두 번째 섹션의 자동 타이핑 텍스트입니다.">TEST456</div>
+            <section class="first-action test-border-blue">
+
+                <div class="main-top-banner-text section-second">
+                    <span class="first-text">사용자의 취향을 읽고, 광고 없이 다채로운 미디어를 추천합니다.</span></br>
+                    <span class="second-text">"오직 당신을 위한, 맞춤형 추천 플랫폼" </span> <span class="second-title">MyPick</span>
+                </div>
+                <div class="main-top-banner-text" data-text="두 번째 섹션의 자동 타이핑 텍스트입니다."></div>
             </section>
 
             <section class="first-action test-border-green">
@@ -37,44 +42,59 @@
         
         <script>
 
+
+
+
+
             /** 상단 배너 시작 */
 
             // 모든 타이핑할 요소를 가져옴
             const typewriterSections = document.querySelectorAll(".main-top-video section");
 
-             // Intersection Observer 콜백 함수
-    const onIntersect = (entries, observer) => {
-      entries.forEach(entry => {
-        // 요소가 일정 비율 이상 화면에 노출되면
-        if (entry.isIntersecting) {
-          // 해당 섹션의 타이핑을 시작
-          startTyping(entry.target);
-          // 한 번만 실행하기 위해(중복 실행 방지) 관찰 중지
-          observer.unobserve(entry.target);
-        }
-      });
-    };
 
-    // Intersection Observer 옵션 (threshold는 요소가 50% 보였을 때 트리거)
-    const options = {
-      threshold: 0.7
-    };
+             // 화면에서 벗어날 때도 감지하기 위한 콜백 함수
+            const onScroll = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 화면에 들어왔을 때
+                        entry.target.classList.add('action');
+                    } else {
+                        // 화면에서 벗어났을 때
+                        entry.target.classList.remove('action');
+                    }
+                });
+            };
 
-    // Observer 생성
-    const observer = new IntersectionObserver(onIntersect, options);
+            // 스크롤 감지를 위한 새로운 Observer 생성
+            const scrollObserver = new IntersectionObserver(onScroll, {
+                threshold: 0.5,
+                rootMargin: '0px'
+            });
 
-    // 각 섹션을 observe
-    typewriterSections.forEach(section => {
-      observer.observe(section);
-    });
+            // 각 섹션에 대해 스크롤 Observer 적용
+            typewriterSections.forEach(section => {
+                scrollObserver.observe(section);
+            });
 
-    // 실제 타이핑 함수
-    function startTyping(element) {
-        // 실제로 텍스트를 출력할 div에 typewriter 클래스를 추가 (커서 애니메이션 등)
-        element.classList.add('action');
 
-        }
 
+            // 각 섹션을 observe
+            typewriterSections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // 실제 타이핑 함수
+            function startTyping(element) {
+                console.log("startTyping");
+                // 실제로 텍스트를 출력할 div에 typewriter 클래스를 추가 (커서 애니메이션 등)
+                element.classList.add('action');
+            }
+
+            function endTyping(element) {
+                console.log("endTyping");
+                console.log(element);
+                element.classList.remove('action');
+            }
         </script>
 
 		<div class="main-content">
