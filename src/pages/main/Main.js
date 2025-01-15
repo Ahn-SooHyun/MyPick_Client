@@ -1,6 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css'; // 기존 style.css 경로에 맞게 수정해주세요.
 import mainTopVideo from '../../assets/img/mainTopVideo.mp4';
+import musicPlayIcon from '../../assets/icon/play.png';
+
+import MILLION from '../../assets/img/music/300MILLION.jpg';
+import DNA from '../../assets/img/music/dna.jpg';
+import 그래도돼 from '../../assets/img/music/그래도돼.jpg';
+import 답을줘 from '../../assets/img/music/답을줘.jpg';
+import 레블하트 from '../../assets/img/music/레블하트.jpg';
+
+import 발로란트 from '../../assets/img/game/발로란트.png';
+import 리그오브레전드 from '../../assets/img/game/리그오브레전드.jpg';
+import 메이플스토리 from '../../assets/img/game/메이플스토리.jpg';
+import 슈퍼마리오 from '../../assets/img/game/슈퍼마리오.jpeg';
+import 배틀그라운드 from '../../assets/img/game/배틀그라운드.jpeg';
+
+
+
+import 기록이라는세계 from '../../assets/img/book/기록이라는세계.jpg';
+import 머큐리테일 from '../../assets/img/book/머큐리테일.jpg';
+import 바다를말하는하얀고래 from '../../assets/img/book/바다를말하는하얀고래.jpg';
+import 사소한불행 from '../../assets/img/book/사소한불행.jpg';
+import 어떤어른 from '../../assets/img/book/어떤어른.jpg';
+
 import 반도 from '../../assets/img/movie/반도.jpg';
 import 테넷 from '../../assets/img/movie/테넷.jpg';
 import 여름이끝날무렵 from '../../assets/img/movie/여름이끝날무렵.jpg';
@@ -112,29 +134,29 @@ export default function Main() {
   // ------------------------------------------------------------
   // - 음악 리스트
   const musicMenuList = [
-    { title: '300MILLION', img: './img/music/300MILLION.jpg' },
-    { title: 'DNA', img: './img/music/dna.jpg' },
-    { title: '그래도돼', img: './img/music/그래도돼.jpg' },
-    { title: '답을 줘', img: './img/music/답을줘.jpg' },
-    { title: '레블하트', img: './img/music/레블하트.jpg' },
+    { title: '300MILLION', img: MILLION },
+    { title: 'DNA', img: DNA },
+    { title: '그래도돼', img: 그래도돼 },
+    { title: '답을 줘', img: 답을줘 },
+    { title: '레블하트', img: 레블하트 },
   ];
 
   // - 게임 리스트
   const gameMenuList = [
-    { title: '발로란트', img: './img/game/val.png' },
-    { title: 'League of Legends', img: './img/game/lol.jpg' },
-    { title: 'Batle Ground', img: './img/game/batleground.jpeg' },
-    { title: '슈퍼 마리오', img: './img/game/supermario.jpeg' },
-    { title: '메이플스토리', img: './img/game/maple.jpg' },
+    { title: '발로란트', img: 발로란트 },
+    { title: 'League of Legends', img: 리그오브레전드 },
+    { title: 'Batle Ground', img: 배틀그라운드 },
+    { title: '슈퍼 마리오', img: 슈퍼마리오 },
+    { title: '메이플스토리', img: 메이플스토리 },
   ];
 
   // - 도서 리스트
   const bookMenuList = [
-    { title: '기록이라는세계', img: './img/book/기록이라는세계.jpg' },
-    { title: '머큐리테일', img: './img/book/머큐리테일.jpg' },
-    { title: '바다를말하는하얀고래', img: './img/book/바다를말하는하얀고래.jpg' },
-    { title: '사소한불행', img: './img/book/사소한불행.jpg' },
-    { title: '어떤어른', img: './img/book/어떤어른.jpg' },
+    { title: '기록이라는세계', img: 기록이라는세계 },
+    { title: '머큐리테일', img: 머큐리테일 },
+    { title: '바다를말하는하얀고래', img: 바다를말하는하얀고래 },
+    { title: '사소한불행', img: 사소한불행 },
+    { title: '어떤어른', img: 어떤어른 },
   ];
 
   // - 영화 리스트
@@ -451,7 +473,7 @@ export default function Main() {
                           <div className="title">{music.title}</div>
                         </div>
                         <div className="img-area">
-                          <img src="./icon/play.png" alt="재생 아이콘" />
+                          <img src={musicPlayIcon} alt="재생 아이콘" />
                         </div>
                       </div>
                     </div>
