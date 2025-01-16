@@ -5,6 +5,7 @@ import 메인큐브 from '../../assets/img/back/cube.mp4';
 import musicPlayIcon from '../../assets/icon/play.png';
 import 게임컨텐츠배경 from '../../assets/img/back/packman.mp4';
 
+
 import MILLION from '../../assets/img/music/300MILLION.jpg';
 import DNA from '../../assets/img/music/dna.jpg';
 import 그래도돼 from '../../assets/img/music/그래도돼.jpg';
