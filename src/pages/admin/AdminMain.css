@@ -1,0 +1,345 @@
+:root {
+    --admin-background-color: #000;
+    --admin--nav-color: #fff;
+    --admin-nav-hover-color: #000;
+
+    --nav-menu-open-width: 400px;
+    --nav-menu-close-width: 100px;
+}
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.admin-main-container {
+
+    font-family: 'TheJamsil5Bold';
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--admin-background-color);
+}
+
+.admin-main-container .admin-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100vh;
+
+    background-color: var(--admin--nav-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+
+    overflow: hidden;
+    cursor: pointer;
+
+    transition: width 0.3s ease-in-out;
+}
+
+/** 메뉴 열기 */
+.admin-nav.menu-open {
+    width: var(--nav-menu-open-width);
+    transition: width 0.3s ease-in-out;
+}
+
+.admin-nav .admin-nav-title {
+    margin: 10px 0px;
+    width: 100%;
+    height: 100px;
+
+    background-image: url('../../assets/img/logo-small.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.admin-nav.menu-open .admin-nav-title {
+    margin: 10px 0px;
+    width: 100%;
+    height: 100px;
+
+
+    background-image: url('../../assets/img/mypick-logo.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 20px;
+}
+
+
+.admin-nav .admin-nav-menu {
+    position: relative;
+    width: var(--nav-menu-open-width);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.admin-nav-menu .admin-nav-menu-item {
+
+    width: var(--nav-menu-open-width);
+    height: 100px;
+
+    padding: 5px 0px 5px 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+
+.admin-nav .admin-nav-menu-item .admin-nav-menu-item-title {
+    width: 75px;
+    height: 55px;
+    padding: 5px;
+    margin-left: 20px;
+
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.admin-nav .admin-nav-menu-item .admin-nav-menu-item-title img {
+    width: 50px;
+    height: 40px;
+}
+
+
+/* 첫 번째 칸 */
+.admin-nav .admin-nav-menu-item:nth-child(1) .admin-nav-menu-item-title {
+    background-image: url('../../assets/icon/home-black.png');
+}
+
+/* 두 번째 칸 */
+.admin-nav .admin-nav-menu-item:nth-child(2) .admin-nav-menu-item-title {
+    background-image: url('../../assets/icon/user-black.png');
+}
+
+/** 세 번재 칸*/
+.admin-nav .admin-nav-menu-item:nth-child(3) .admin-nav-menu-item-title {
+    background-image: url('../../assets/icon/notice.png');
+}
+
+
+
+/** 활성화 */
+/** menu-item-click: click , menu-item-active: hover */
+
+.admin-nav .admin-nav-menu-item:nth-child(1).menu-item-click .admin-nav-menu-item-title,
+.admin-nav .admin-nav-menu-item:nth-child(1).menu-item-active .admin-nav-menu-item-title {
+    z-index: 2;
+    background-image: url('../../assets/icon/home-white.png');
+}
+
+.admin-nav .admin-nav-menu-item:nth-child(2).menu-item-click .admin-nav-menu-item-title,
+.admin-nav .admin-nav-menu-item:nth-child(2).menu-item-active .admin-nav-menu-item-title {
+    z-index: 2;
+    background-image: url('../../assets/icon/user-white.png');
+}
+
+.admin-nav .admin-nav-menu-item:nth-child(3).menu-item-click .admin-nav-menu-item-title,
+.admin-nav .admin-nav-menu-item:nth-child(3).menu-item-active .admin-nav-menu-item-title {
+    z-index: 2;
+    background-image: url('../../assets/icon/notice-white.png');
+}
+
+
+.admin-nav .admin-nav-menu-item .admin-nav-menu-item-content {
+    margin-left: 20px;
+    width: 100%;
+    height: 100%;
+    color: var(--admin-nav-hover-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.admin-nav .menu-item-click .admin-nav-menu-item-content,
+.admin-nav .menu-item-active .admin-nav-menu-item-content {
+    z-index: 1;
+    position: relative;
+    color: var(--admin--nav-color);
+    background-color: var(--admin-nav-hover-color);
+}
+
+
+
+/** hovver 활성화*/
+.admin-nav .menu-item-click .admin-nav-menu-item-content::after,
+.admin-nav .menu-item-active .admin-nav-menu-item-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -55px; /* before의 원과 content 사이, 작아질수록 좌측으로 */
+    width: 55px;
+    height: 100%;
+    background-color: var(--admin-nav-hover-color);
+}
+
+/** hovver 적용*/
+.admin-nav .menu-item-click .admin-nav-menu-item-content::before,
+.admin-nav .menu-item-active .admin-nav-menu-item-content::before {
+    content: '';
+    width: 90px;
+    height: 90px;
+    background-color: var(--admin-nav-hover-color);
+    position: absolute;
+    top: 0;
+    left: -105px;
+    border-radius: 50%;
+}
+
+/** nav - 하단 메뉴 */
+.admin-nav .admin-bottom-menu {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile .admin-profile-img {
+    width: var(--nav-menu-close-width);
+    height: var(--nav-menu-close-width);
+}
+.admin-nav.menu-open .admin-bottom-menu .admin-profile .admin-profile-img {
+    width: 300px;
+    height: 300px;
+
+    display: flex;
+    justify-content: row;
+    align-items: center;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile .admin-profile-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile .admin-profile-name {
+    margin-top: 20px;
+    width: 100%;
+    height: 10px;
+    text-align: center;
+}
+
+.admin-nav.menu-open .admin-bottom-menu .admin-profile .admin-profile-name span {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/** 로그아웃, 설정 */
+.admin-nav .admin-bottom-menu .admin-btn {
+    width: var(--nav-menu-close-width);
+}
+.admin-nav.menu-open .admin-bottom-menu .admin-btn {
+    width: 250px;
+}
+.admin-bottom-menu .admin-btn {
+    position: relative;
+    margin-bottom: 20px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.admin-nav .admin-bottom-menu .admin-btn:hover {
+    background-color: var(--admin-nav-hover-color);
+    border-radius: 50%;
+}
+.admin-nav .admin-bottom-menu .admin-btn:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px; /* before의 원과 content 사이, 작아질수록 좌측으로 */
+    width: 70px;
+    height: 100%;
+    background-color: var(--admin-nav-hover-color);
+}
+.admin-nav.menu-open .admin-bottom-menu .admin-btn:hover {
+    background-color: var(--admin-nav-hover-color);
+    border-radius: 40px;
+}
+
+
+.admin-nav .admin-bottom-menu .admin-btn .icon {
+    width: 50px;
+    height: 56px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.admin-nav .admin-bottom-menu .admin-setting .icon {
+    background-image: url('../../assets/icon/setting-black.png');
+    z-index: 2;
+}
+
+.admin-nav .admin-bottom-menu .admin-setting:hover .icon {
+    background-image: url('../../assets/icon/setting-white.png');
+    z-index: 2;
+}
+
+.admin-nav .admin-bottom-menu .admin-logout .icon {
+    background-image: url('../../assets/icon/off-black.png');
+    z-index: 2;
+}
+
+.admin-nav .admin-bottom-menu .admin-logout:hover .icon {
+    background-image: url('../../assets/icon/off-white.png');
+    z-index: 2;
+}
+
+.admin-nav.menu-open .admin-bottom-menu .admin-btn:hover .text {
+    color: var(--admin--nav-color);
+}
+
+.admin-nav .admin-bottom-menu .admin-btn .text {
+    display: none;
+}
+
+.admin-nav.menu-open .admin-bottom-menu .admin-btn .text {
+    display: block;
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: 600;
+}

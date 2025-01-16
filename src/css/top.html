@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>스크롤 시 자동 타이핑 예제</title>
+  <style>
+    /* 페이지 레이아웃 예시 */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 200vh; /* 스크롤 테스트를 위해 크게 지정 */
+      background: linear-gradient(#efefef, #ccc);
+    }
+
+    section {
+      width: 80%;
+      margin: 100px auto;
+      padding: 50px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      font-size: 1.2rem;
+    }
+
+    /* 타이핑 효과를 줄 부분에 적용할 스타일 */
+    .typewriter {
+      font-family: monospace;
+      white-space: pre;   /* 공백과 줄바꿈을 그대로 표현 */
+      border-right: 2px solid black; 
+      animation: blink-caret 0.7s steps(1) infinite;
+      min-height: 2em;    /* 비어있을 때 레이아웃이 튀지 않도록 높이 확보 */
+    }
+    
+    @keyframes blink-caret {
+      50% {
+        border-color: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 상단 영역 -->
+<viedo class="inline-video" data-prioritized-video playsinline="true" loop autoplay src="./img/mainTopVideo.mp4"></viedo>
+
+<video class="bg-video__content" autoplay muted loop>
+    <source src="./img/mainTopVideo.mp4" type="video/mp4" />
+</video>
+
+
+
+
+  <!-- 첫 번째 섹션 -->
+  <section>
+    <h2>첫 번째 섹션</h2>
+    <div class="typewriter-section" data-text="첫 번째 섹션의 자동 타이핑 텍스트입니다."></div>
+  </section>
+
+  <!-- 두 번째 섹션 -->
+  <section>
+    <h2>두 번째 섹션</h2>
+    <div class="typewriter-section" data-text="두 번째 섹션이 화면에 나타났을 때 텍스트가 자동으로 쳐집니다!"></div>
+  </section>
+
+  <!-- 세 번째 섹션 -->
+  <section>
+    <h2>세 번째 섹션</h2>
+    <div class="typewriter-section" data-text="세 번째 섹션의 텍스트입니다. 스크롤에 의해 타이핑됩니다."></div>
+  </section>
+
+  <script>
+    // 모든 타이핑할 요소를 가져옴
+    const typewriterSections = document.querySelectorAll('.typewriter-section');
+
+    // Intersection Observer 콜백 함수
+    const onIntersect = (entries, observer) => {
+      entries.forEach(entry => {
+        // 요소가 일정 비율 이상 화면에 노출되면
+        if (entry.isIntersecting) {
+          // 해당 섹션의 타이핑을 시작
+          startTyping(entry.target);
+          // 한 번만 실행하기 위해(중복 실행 방지) 관찰 중지
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    // Intersection Observer 옵션 (threshold는 요소가 50% 보였을 때 트리거)
+    const options = {
+      threshold: 0.1
+    };
+
+    // Observer 생성
+    const observer = new IntersectionObserver(onIntersect, options);
+
+    // 각 섹션을 observe
+    typewriterSections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // 실제 타이핑 함수
+    function startTyping(element) {
+      // 실제로 텍스트를 출력할 div에 typewriter 클래스를 추가 (커서 애니메이션 등)
+      element.classList.add('typewriter');
+      const text = element.getAttribute('data-text');
+      let index = 0;
+
+      function typeChar() {
+        if (index < text.length) {
+          element.textContent += text.charAt(index);
+          index++;
+          // 글자마다 일정 시간(여기서는 100ms) 간격으로 호출
+          setTimeout(typeChar, 100);
+        }
+      }
+
+      // 타이핑 시작
+      typeChar();
+    }
+  </script>
+
+</body>
+</html>
