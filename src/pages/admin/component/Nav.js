@@ -20,7 +20,15 @@ export default function Nav() {
 
     return (
             
-            <div className={`admin-nav ${menuOpen? 'menu-open' : ''}`}> {/* 네비게이션 컨테이너 */}
+            <div className={`admin-nav ${menuOpen? 'menu-open' : ''}`}
+            onClick={() => {
+              if(!menuOpen) {
+                setMenuOpen(!menuOpen)};
+
+              }
+
+            }
+            > {/* 네비게이션 컨테이너 */}
 
                 {/* Navvigation Title 부분 */}
                 <div className="admin-nav-title"></div>
