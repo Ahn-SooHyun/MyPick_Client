@@ -16,25 +16,25 @@ export default function AdminManager() {
                 <div className="status-box">
                     <div className="status-first">
                         <div className="icon"></div>
-                        <div className="content">User</div>
+                        <div className="content">Revenue</div>
                     </div>
-                    <div className="count">1211</div>
+                    <div className="count">$152.01</div>
                 </div>
 
                 <div className="status-box">
                     <div className="status-first">
                         <div className="icon"></div>
-                        <div className="content">User</div>
+                        <div className="content">Amount used</div>
                     </div>
-                    <div className="count">1211</div>
+                    <div className="count">33.2%</div>
                 </div>
 
                 <div className="status-box">
                     <div className="status-first">
                         <div className="icon"></div>
-                        <div className="content">User</div>
+                        <div className="content">Contents</div>
                     </div>
-                    <div className="count">1211</div>
+                    <div className="count">526</div>
                 </div>
                 
             </div>
