@@ -136,16 +136,21 @@
 
 
 /** 활성화 */
+/** menu-item-click: click , menu-item-active: hover */
+
+.admin-nav .admin-nav-menu-item:nth-child(1).menu-item-click .admin-nav-menu-item-title,
 .admin-nav .admin-nav-menu-item:nth-child(1).menu-item-active .admin-nav-menu-item-title {
     z-index: 2;
     background-image: url('../../assets/icon/home-white.png');
 }
 
+.admin-nav .admin-nav-menu-item:nth-child(2).menu-item-click .admin-nav-menu-item-title,
 .admin-nav .admin-nav-menu-item:nth-child(2).menu-item-active .admin-nav-menu-item-title {
     z-index: 2;
     background-image: url('../../assets/icon/user-white.png');
 }
 
+.admin-nav .admin-nav-menu-item:nth-child(3).menu-item-click .admin-nav-menu-item-title,
 .admin-nav .admin-nav-menu-item:nth-child(3).menu-item-active .admin-nav-menu-item-title {
     z-index: 2;
     background-image: url('../../assets/icon/notice-white.png');
@@ -166,6 +171,7 @@
     font-weight: 600;
 }
 
+.admin-nav .menu-item-click .admin-nav-menu-item-content,
 .admin-nav .menu-item-active .admin-nav-menu-item-content {
     z-index: 1;
     position: relative;
@@ -176,6 +182,7 @@
 
 
 /** hovver 활성화*/
+.admin-nav .menu-item-click .admin-nav-menu-item-content::after,
 .admin-nav .menu-item-active .admin-nav-menu-item-content::after {
     content: '';
     position: absolute;
@@ -187,6 +194,7 @@
 }
 
 /** hovver 적용*/
+.admin-nav .menu-item-click .admin-nav-menu-item-content::before,
 .admin-nav .menu-item-active .admin-nav-menu-item-content::before {
     content: '';
     width: 90px;

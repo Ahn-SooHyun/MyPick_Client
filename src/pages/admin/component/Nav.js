@@ -6,8 +6,9 @@ export default function Nav() {
 
     const menuList = ['Home', 'User', 'Notice'];
 
-    const [menuOpen, setMenuOpen] = useState(false);            //nav 메뉴 열기 상태 ( false : 닫힘, true : 열림)
-    const [navMenuHover, setNavHoverMenu] = useState('home');
+    const [menuOpen, setMenuOpen] = useState(true);            //nav 메뉴 열기 상태 ( false : 닫힘, true : 열림)
+    const [navMenuHover, setNavHoverMenu] = useState('home');   //mouse 올리기
+    const [navMenuClick, setNavMenuClick] = useState('home');   //Click
 
     useEffect(() => {
         console.log(navMenuHover);
@@ -29,10 +30,13 @@ export default function Nav() {
                 <div className="admin-nav-menu">
 
                     {menuList.map((menu, index) => (
-                        <div className={`admin-nav-menu-item ${navMenuHover == menu? 'menu-item-active' : ''}`}
+                        <div className={`admin-nav-menu-item
+                            ${navMenuHover == menu? 'menu-item-active' : ''}
+                            ${navMenuClick == menu? 'menu-item-click' : ''}
+                            }`}
                             onMouseOver={() => setNavHoverMenu(menu)}
                             onMouseOut={() => setNavHoverMenu('')}
-                        >
+                            onClick={() => setNavMenuClick(menu)}>
                             <div className="admin-nav-menu-item-title"></div>
                             <div className="admin-nav-menu-item-content">{menu}</div>
                         </div>
