@@ -13,9 +13,30 @@ export default function AdminManager() {
                     <div className="count">1211</div>
                 </div>
 
-                <div className="status-box"></div>
-                <div className="status-box"></div>
-                <div className="status-box"></div>
+                <div className="status-box">
+                    <div className="status-first">
+                        <div className="icon"></div>
+                        <div className="content">User</div>
+                    </div>
+                    <div className="count">1211</div>
+                </div>
+
+                <div className="status-box">
+                    <div className="status-first">
+                        <div className="icon"></div>
+                        <div className="content">User</div>
+                    </div>
+                    <div className="count">1211</div>
+                </div>
+
+                <div className="status-box">
+                    <div className="status-first">
+                        <div className="icon"></div>
+                        <div className="content">User</div>
+                    </div>
+                    <div className="count">1211</div>
+                </div>
+                
             </div>
             <div className="dashboard-second">
 
