@@ -49,6 +49,7 @@
 .admin-nav.menu-open {
     width: var(--nav-menu-open-width);
     transition: width 0.3s ease-in-out;
+    z-index: 50;
 }
 
 .admin-nav .admin-nav-title {
