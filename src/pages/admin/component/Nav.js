@@ -6,6 +6,7 @@ export default function Nav() {
 
     const menuList = ['Home', 'User', 'Notice'];
 
+    const [menuOpen, setMenuOpen] = useState(false);            //nav 메뉴 열기 상태 ( false : 닫힘, true : 열림)
     const [navMenuHover, setNavHoverMenu] = useState('home');
 
     useEffect(() => {
@@ -18,12 +19,10 @@ export default function Nav() {
 
     return (
             
-            <div className="admin-nav test-border-red"> {/* 네비게이션 컨테이너 */}
+            <div className={`admin-nav ${menuOpen? 'menu-open' : ''}`}> {/* 네비게이션 컨테이너 */}
 
                 {/* Navvigation Title 부분 */}
-                <div className="admin-nav-title">
-                    <img src={MainLogo} alt="Logo" />
-                </div>
+                <div className="admin-nav-title"></div>
 
                 {/* 네비게이션 메뉴 부분 */}
                 

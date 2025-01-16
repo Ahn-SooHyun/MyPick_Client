@@ -2,6 +2,9 @@
     --admin-background-color: #000;
     --admin--nav-color: #fff;
     --admin-nav-hover-color: #000;
+
+    --nav-menu-open-width: 400px;
+    --nav-menu-close-width: 100px;
 }
 
 @font-face {
@@ -26,7 +29,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
+    width: 120px;
     height: 100vh;
 
     background-color: var(--admin--nav-color);
@@ -34,37 +37,56 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
+    align-items: start;
+
+    overflow: hidden;
+}
+
+/** 메뉴 열기 */
+.admin-nav.menu-open {
+    width: var(--nav-menu-open-width);
 }
 
 .admin-nav .admin-nav-title {
+    margin: 10px 0px;
     width: 100%;
     height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    background-image: url('../../assets/img/logo-small.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.admin-nav.menu-open .admin-nav-title {
+    margin: 10px 0px;
+    width: 100%;
+    height: 100px;
+
+
+    background-image: url('../../assets/img/mypick-logo.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
 
     margin-bottom: 20px;
 }
 
-.admin-nav .admin-nav-title img {
-    width: 100%;
-    height: 100%;
-}
 
 .admin-nav .admin-nav-menu {
-    width: 100%;
+    position: relative;
+    width: var(--nav-menu-open-width);
     height: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
+    align-items: start;
 }
 
 .admin-nav-menu .admin-nav-menu-item {
 
-    width: 100%;
+    width: var(--nav-menu-open-width);
     height: 100px;
 
     padding: 5px 0px 5px 20px;
@@ -79,9 +101,10 @@
 
 
 .admin-nav .admin-nav-menu-item .admin-nav-menu-item-title {
-    width: 50px;
-    height: 40px;
+    width: 75px;
+    height: 50px;
     padding: 5px;
+    margin-left: 20px;
 
     
     background-size: cover;
@@ -130,7 +153,7 @@
 
 
 .admin-nav .admin-nav-menu-item .admin-nav-menu-item-content {
-    margin-left: 30px;
+    margin-left: 20px;
     width: 100%;
     height: 100%;
     color: var(--admin-nav-hover-color);
@@ -144,6 +167,7 @@
 }
 
 .admin-nav .menu-item-active .admin-nav-menu-item-content {
+    z-index: 1;
     position: relative;
     color: var(--admin--nav-color);
     background-color: var(--admin-nav-hover-color);
@@ -156,8 +180,8 @@
     content: '';
     position: absolute;
     top: 0;
-    left: -40px; /* before의 원과 content 사이 */
-    width: 40px;
+    left: -55px; /* before의 원과 content 사이, 작아질수록 좌측으로 */
+    width: 55px;
     height: 100%;
     background-color: var(--admin-nav-hover-color);
 }
@@ -170,7 +194,7 @@
     background-color: var(--admin-nav-hover-color);
     position: absolute;
     top: 0;
-    left: -90px;
+    left: -105px;
     border-radius: 50%;
 }
 
