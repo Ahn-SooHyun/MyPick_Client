@@ -1,0 +1,33 @@
+.user-chat {
+    padding: 20px;
+  }
+  
+  .user-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-list th, .user-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .user-list th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .chat-records ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .chat-records li {
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  

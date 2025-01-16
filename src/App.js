@@ -2,23 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import ChatPage from './pages/ChatPage';
-
-import SignupPage from './pages/SignupPage';
-
 import LoginPage from './pages/LoginPage';
-
-
 import NoticeList from './pages/NoticeList';
 import NoticeDetail from './pages/NoticeDetail';
-
 import AdminPage from './pages/Admin/AdminPage';
 import AdminUsers from './pages/Admin/AdminUsers';
 import AdminNotices from './pages/Admin/AdminNotices';
-import AdminSettings from './pages/Admin/AdminSettings';
-
-import logo from './logo.svg';
-import './App.css';
-
+import AdminChat from './pages/Admin/AdminChat';
 
 function App() {
   return (
@@ -26,24 +16,18 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/chat" element={<ChatPage />} />
-      
-        <Route path="/signup" element={<SignupPage />} />
-
         <Route path="/Login" element={<LoginPage />} />
+        <Route path="/notice" element={<NoticeList />} />
+        <Route path="/notice/:noticeId" element={<NoticeDetail />} />
 
-        <Route path="/notice" element={<NoticeList/>} />
-        <Route path="/notice/:noticeId" element={<NoticeDetail/>} />
-
-        <Route path="/adminPage" element={<AdminPage />} />
+        {/* /admin 경로로 변경 */}
+        <Route path="/admin" element={<AdminPage />} /> {/* 변경 */}
         <Route path="/admin/AdminUsers" element={<AdminUsers />} />
         <Route path="/admin/AdminNotices" element={<AdminNotices />} />
-        <Route path="/admin/AdminSettings" element={<AdminSettings />} />
-
+        <Route path="/admin/AdminChat" element={<AdminChat />} />
       </Routes>
     </Router>
   );
-  
 }
-
 
 export default App;

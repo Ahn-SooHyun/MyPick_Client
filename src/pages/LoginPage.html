@@ -1,127 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+<a href="https://front.codes/" class="logo" target="_blank">
+    <img src="https://assets.codepen.io/1462889/fcy.png" alt="Logo">
+</a>
 
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-        .login-container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-container .login_area {
-            width: 400px;
-            padding: 20px;
-            border: 2px solid #000;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .login-container .login_area h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-
-        .login-container .login_area .input-group {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .login-container .login_area .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .login-container .login_area .input-group label {
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            font-size: 14px;
-            color: #999;
-            transition: 0.3s ease;
-        }
-
-        .login-container .login_area .input-group input:focus + label,
-        .login-container .login_area .input-group input:not(:placeholder-shown) + label {
-            top: -10px;
-            left: 5px;
-            font-size: 12px;
-            color: #166cea;
-            background: #fff;
-            padding: 0 5px;
-        }
-
-        .login-container .login_area .btn {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #166cea;  
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .login-container .login_area .btn:hover {
-            background-color: #0d5bb5;
-        }
-
-        .login-container .login_area .options {
-            margin-top: 20px;
-        }
-
-        .login-container .login_area .options a {
-            text-decoration: none;
-            font-size: 14px;
-            color: #166cea;
-            margin: 0 10px;
-            cursor: pointer;
-        }
-
-        .login-container .login_area .options a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <div class="login-container">
-            <div class="login_area">
-                <h2>로그인</h2>
-                <form id="loginForm" onsubmit="return false;">
-                    <div class="input-group">
-                        <input type="text" id="userId" name="userId" required autocomplete="off" placeholder=" ">
-                        <label for="userId">아이디</label>
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center full-height">
+            <div class="col-12 text-center py-5">
+                <div class="section pb-5 pt-5 text-center">
+                    <h6 class="mb-0 pb-3">
+                        <span>Log In</span>
+                        <span>Sign Up</span>
+                    </h6>
+                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                    <label for="reg-log"></label>
+                    <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                            <!-- Login Form -->
+                            <div class="card-front">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-4 pb-3">Log In</h4>
+                                        <div class="form-group">
+                                            <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <a href="#" class="btn mt-4">Submit</a>
+                                        <p class="mb-0 mt-4 text-center">
+                                            <a href="#0" class="link">Forgot your password?</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Sign Up Form -->
+                            <div class="card-back">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-4 pb-3">Sign Up</h4>
+                                        <div class="form-group">
+                                            <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+                                            <i class="input-icon uil uil-user"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <a href="#" class="btn mt-4">Submit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <input type="password" id="password" name="password" required placeholder=" ">
-                        <label for="password">비밀번호</label>
-                    </div>
-                    <button type="submit" class="btn">로그인</button>
-                </form>
-                <div class="options">
-                    <a href="#" id="findId">아이디 찾기</a>
-                    <a href="#" id="findPassword">비밀번호 찾기</a>
                 </div>
             </div>
         </div>
-    </main>
-</body>
-</html>
+    </div>
+</div>
