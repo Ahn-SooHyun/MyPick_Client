@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #262626;
+        }
+
+        .box {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .box span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transform: rotateY(calc(var(--i) * 45deg)) translateZ(240px);
+            --webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0002);
+        }
+
+        .box span::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body style="height: 200vh">
+    <div class="box">
+        <span style="--i:1"></span>
+        <span style="--i:2"></span>
+        <span style="--i:3"></span>
+        <span style="--i:4"></span>
+        <span style="--i:5"></span>
+        <span style="--i:6"></span>
+        <span style="--i:7"></span>
+        <span style="--i:8"></span>
+    </div>
+
+<script>
+    //스크롤 이벤트
+    // 스크롤 이벤트는 스크롤 위치를 기준으로 회전 각도를 계산하는 것이 중요합니다.
+    // 스크롤 위치를 0~1 사이 값으로 정규화하고 -30 ~ 30도 사이의 회전각으로 변환합니다.
+
+
+    //스크롤을 위 아래로 움직일 때마다 발생되는 이벤트 생성
+
+    // 스크롤 이벤트 리스너 생성
+
+    window.addEventListener('scroll', (e) => {
+        const box = document.querySelector('.box');
+        // 마우스 x좌표를 기준으로 회전 각도 계산
+        // window.innerWidth로 나누어 0~1 사이 값으로 정규화
+        // 현재 스크롤 위치를 기준으로 회전 각도 계산
+
+        // 마우스 움직임은 무시하고 스크롤 위치만 사용
+        console.log(window.scrollY);
+        let scrollRotation = window.scrollY * 0.5; // 스크롤 속도 조절을 위해 0.5를 곱함
+        box.style.transform = `perspective(1000px) rotateY(${scrollRotation}deg)`;
+    });
+
+</script>
+</body>
+</html>
