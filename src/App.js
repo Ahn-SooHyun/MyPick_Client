@@ -9,6 +9,8 @@ import NoticeList from './pages/NoticeList';
 import NoticeDetail from './pages/NoticeDetail';
 import Main from './pages/main/Main';
 
+import AdminMain from './pages/admin/AdminMain';
+
 // (추가) MyPage import
 import MyPage from './pages/MyPage';
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/notice" element={<NoticeList />} />
           <Route path="/notice/:noticeId" element={<NoticeDetail />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/admin" element={<AdminMain />} /> 
 
           {/* (추가) MyPage 라우트 */}
           <Route path="/mypage" element={<MyPage />} />

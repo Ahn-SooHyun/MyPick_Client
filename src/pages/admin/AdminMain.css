@@ -1,0 +1,176 @@
+:root {
+    --admin-background-color: #000;
+    --admin--nav-color: #fff;
+    --admin-nav-hover-color: #000;
+}
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.admin-main-container {
+
+    font-family: 'TheJamsil5Bold';
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--admin-background-color);
+}
+
+.admin-main-container .admin-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+
+    background-color: var(--admin--nav-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.admin-nav .admin-nav-title {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.admin-nav .admin-nav-title img {
+    width: 100%;
+    height: 100%;
+}
+
+.admin-nav .admin-nav-menu {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.admin-nav-menu .admin-nav-menu-item {
+
+    width: 100%;
+    height: 100px;
+
+    padding: 5px 0px 5px 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+
+.admin-nav .admin-nav-menu-item .admin-nav-menu-item-title {
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.admin-nav .admin-nav-menu-item .admin-nav-menu-item-title img {
+    width: 50px;
+    height: 40px;
+}
+
+
+/* 첫 번째 칸 */
+.admin-nav .admin-nav-menu-item:nth-child(1) .admin-nav-menu-item-title {
+    background-image: url('../../assets/icon/home-black.png');
+}
+
+/* 두 번째 칸 */
+.admin-nav .admin-nav-menu-item:nth-child(2) .admin-nav-menu-item-title {
+    background-image: url('../../assets/icon/user-black.png');
+}
+
+/** 세 번재 칸*/
+.admin-nav .admin-nav-menu-item:nth-child(3) .admin-nav-menu-item-title {
+    background-image: url('../../assets/icon/notice.png');
+}
+
+
+
+/** 활성화 */
+.admin-nav .admin-nav-menu-item:nth-child(1).menu-item-active .admin-nav-menu-item-title {
+    z-index: 2;
+    background-image: url('../../assets/icon/home-white.png');
+}
+
+.admin-nav .admin-nav-menu-item:nth-child(2).menu-item-active .admin-nav-menu-item-title {
+    z-index: 2;
+    background-image: url('../../assets/icon/user-white.png');
+}
+
+.admin-nav .admin-nav-menu-item:nth-child(3).menu-item-active .admin-nav-menu-item-title {
+    z-index: 2;
+    background-image: url('../../assets/icon/notice-white.png');
+}
+
+
+.admin-nav .admin-nav-menu-item .admin-nav-menu-item-content {
+    margin-left: 30px;
+    width: 100%;
+    height: 100%;
+    color: var(--admin-nav-hover-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.admin-nav .menu-item-active .admin-nav-menu-item-content {
+    position: relative;
+    color: var(--admin--nav-color);
+    background-color: var(--admin-nav-hover-color);
+}
+
+
+
+/** hovver 활성화*/
+.admin-nav .menu-item-active .admin-nav-menu-item-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40px; /* before의 원과 content 사이 */
+    width: 40px;
+    height: 100%;
+    background-color: var(--admin-nav-hover-color);
+}
+
+/** hovver 적용*/
+.admin-nav .menu-item-active .admin-nav-menu-item-content::before {
+    content: '';
+    width: 90px;
+    height: 90px;
+    background-color: var(--admin-nav-hover-color);
+    position: absolute;
+    top: 0;
+    left: -90px;
+    border-radius: 50%;
+}
+
