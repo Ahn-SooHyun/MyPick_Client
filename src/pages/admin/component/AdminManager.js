@@ -1,4 +1,5 @@
 import './AdminManager.css';
+import ApexCharts from 'apexcharts';
 
 export default function AdminManager() {
     return (
