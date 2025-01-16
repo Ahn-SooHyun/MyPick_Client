@@ -210,3 +210,136 @@
     border-radius: 50%;
 }
 
+/** nav - 하단 메뉴 */
+.admin-nav .admin-bottom-menu {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile .admin-profile-img {
+    width: var(--nav-menu-close-width);
+    height: var(--nav-menu-close-width);
+}
+.admin-nav.menu-open .admin-bottom-menu .admin-profile .admin-profile-img {
+    width: 300px;
+    height: 300px;
+
+    display: flex;
+    justify-content: row;
+    align-items: center;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile .admin-profile-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.admin-nav .admin-bottom-menu .admin-profile .admin-profile-name {
+    margin-top: 20px;
+    width: 100%;
+    height: 10px;
+    text-align: center;
+}
+
+.admin-nav.menu-open .admin-bottom-menu .admin-profile .admin-profile-name span {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/** 로그아웃, 설정 */
+.admin-nav .admin-bottom-menu .admin-btn {
+    width: var(--nav-menu-close-width);
+}
+.admin-nav.menu-open .admin-bottom-menu .admin-btn {
+    width: 250px;
+}
+.admin-bottom-menu .admin-btn {
+    position: relative;
+    margin-bottom: 20px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.admin-nav .admin-bottom-menu .admin-btn:hover {
+    background-color: var(--admin-nav-hover-color);
+    border-radius: 50%;
+}
+.admin-nav .admin-bottom-menu .admin-btn:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px; /* before의 원과 content 사이, 작아질수록 좌측으로 */
+    width: 70px;
+    height: 100%;
+    background-color: var(--admin-nav-hover-color);
+}
+.admin-nav.menu-open .admin-bottom-menu .admin-btn:hover {
+    background-color: var(--admin-nav-hover-color);
+    border-radius: 40px;
+}
+
+
+.admin-nav .admin-bottom-menu .admin-btn .icon {
+    width: 50px;
+    height: 56px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.admin-nav .admin-bottom-menu .admin-setting .icon {
+    background-image: url('../../assets/icon/setting-black.png');
+    z-index: 2;
+}
+
+.admin-nav .admin-bottom-menu .admin-setting:hover .icon {
+    background-image: url('../../assets/icon/setting-white.png');
+    z-index: 2;
+}
+
+.admin-nav .admin-bottom-menu .admin-logout .icon {
+    background-image: url('../../assets/icon/off-black.png');
+    z-index: 2;
+}
+
+.admin-nav .admin-bottom-menu .admin-logout:hover .icon {
+    background-image: url('../../assets/icon/off-white.png');
+    z-index: 2;
+}
+
+.admin-nav.menu-open .admin-bottom-menu .admin-btn:hover .text {
+    color: var(--admin--nav-color);
+}
+
+.admin-nav .admin-bottom-menu .admin-btn .text {
+    display: none;
+}
+
+.admin-nav.menu-open .admin-bottom-menu .admin-btn .text {
+    display: block;
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: 600;
+}
