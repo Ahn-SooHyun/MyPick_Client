@@ -6,7 +6,7 @@ import {faFlag, faUser, faMugSaucer, faDoorOpen, faEnvelope, faArrowRightFromBra
 
 export default function Nav({setSelected}) {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [isClick, setIsClick] = useState('dashboard');
 
     useEffect(() => {

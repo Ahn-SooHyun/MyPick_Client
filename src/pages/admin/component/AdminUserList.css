@@ -1,0 +1,47 @@
+.admin-user-list-container {
+    position: relative;
+    margin-left: calc(var(--sidebar-width-open) + 15px);
+    width: calc(100vw - var(--sidebar-width-open) - 20px);
+    height: 100%;
+}
+
+.admin-user-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-user-list-container table thead {
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.admin-user-list-container table tbody {
+    color: #fff;
+    text-align: center;
+}
+
+.admin-user-list-container table tbody tr {
+    position: relative;
+    height: 5rem;
+    font-size: 1.4rem;
+
+    z-index: 2;
+    cursor: pointer;
+}
+
+.admin-user-list-container table tbody tr td  {
+    position: relative;
+    z-index: 2;
+}
+
+.admin-user-list-container table tbody tr.admin::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    width: 95%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: rgba(243, 13, 13, 0.3);
+    z-index: 1;
+}
