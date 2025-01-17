@@ -127,6 +127,43 @@
 }
 
 
+/** 페이지네이션 */
+.admin-user-list-container .pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-user-list-container .pagination-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: #0a142b;
+    border-radius: 20px;
+}
+
+.admin-user-list-container .pagination-button.active {
+    background-color: #0a142b;
+    color: #fff;
+}
+
+.admin-user-list-container .pagination-button:hover {
+    background-color: #0a142b;
+    color: #fff;
+}
+
+
+/** 사용자 상세 정보 active */
+.admin-user-list-container table tbody tr td.active {
+    background-color: #0953ff;
+    color: #fff;
+}
+
+
+
+
 
 
 
