@@ -315,3 +315,7 @@
 .sidebar .nav-close .item:hover svg {
     background-color: var(--sidebar-hover);
 }
+
+.sidebar .menu .item.active {
+    color: var(--red-color);
+}

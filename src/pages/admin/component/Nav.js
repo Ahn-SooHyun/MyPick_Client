@@ -7,6 +7,7 @@ import {faFlag, faUser, faMugSaucer, faDoorOpen, faEnvelope, faArrowRightFromBra
 export default function Nav() {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [isClick, setIsClick] = useState('dashboard');
 
 
     return (
@@ -19,9 +20,15 @@ export default function Nav() {
 
             {/** menu 설정 */}
             <div className="menu">
-                <div className="item"><FontAwesomeIcon icon={faFlag} /><span>Dashboard</span></div>
-                <div className="item"><FontAwesomeIcon icon={faUser} /><span>Users</span></div>
-                <div className="item"><FontAwesomeIcon icon={faMugSaucer} /><span>Notice</span></div>
+                <div className="item active"
+                    onClick={() => setIsClick('dashboard')}
+                ><FontAwesomeIcon icon={faFlag} /><span>Dashboard</span></div>
+                <div className="item"
+                    onClick={() => setIsClick('users')}
+                ><FontAwesomeIcon icon={faUser} /><span>Users</span></div>
+                <div className="item"
+                    onClick={() => setIsClick('notice')}
+                ><FontAwesomeIcon icon={faMugSaucer} /><span>Notice</span></div>
                 
             </div>
 
