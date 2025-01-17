@@ -18,6 +18,7 @@
 .admin-user-list-container table tbody {
     color: #fff;
     text-align: center;
+    vertical-align: middle;
 }
 
 .admin-user-list-container table tbody tr {
@@ -34,14 +35,22 @@
     z-index: 2;
 }
 
-.admin-user-list-container table tbody tr.admin::after {
-    content: '';
+
+
+.admin-user-list-container table tbody tr td:nth-child(4) > div {
     position: absolute;
-    top: 30px;
-    left: 40px;
-    width: 95%;
-    height: 20px;
-    border-radius: 10px;
-    background-color: rgba(243, 13, 13, 0.3);
-    z-index: 1;
+    top: 35px;
+    left: 70px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
+
+.admin-user-list-container table tbody tr td:nth-child(4) .active-status {
+    background-color: #00ff00;
+}
+
+.admin-user-list-container table tbody tr td:nth-child(4) .stop-status {
+    background-color: #f30d0d;
+}
+
