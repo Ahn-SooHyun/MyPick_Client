@@ -13,6 +13,10 @@ export default function Nav() {
         <div className={`sidebar ${isOpen ? 'open' : 'close'}`}
         >
 
+            <div className="logo">
+                <div className="img"></div>
+            </div>
+
             {/** menu 설정 */}
             <div className="menu">
                 <div className="item"><FontAwesomeIcon icon={faFlag} /><span>Dashboard</span></div>
@@ -24,7 +28,7 @@ export default function Nav() {
             <div className="nav-close">
                 <div className="item"
                     onClick={() => setIsOpen(!isOpen)}  
-                ><FontAwesomeIcon icon={faFlag} /><span>Close</span></div>
+                ><FontAwesomeIcon icon={faDoorOpen} /><span>Close</span></div>
             </div>
 
 
