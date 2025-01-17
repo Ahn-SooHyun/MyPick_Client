@@ -93,6 +93,7 @@ function UserDeatail({ info }) {
 
     const [stopStatus, setStopStatus] = useState(info.status === '' || info.status === null ? false : true );
 
+
     return (
         <div className="user-detail-container">
             <div className="info">
@@ -134,7 +135,9 @@ function UserDeatail({ info }) {
                         {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
                         {/** null은 체크 안 되게 */}
 
-                        <input type="checkbox" checked={stopStatus} onChange={() => setStopStatus(!stopStatus)}/>
+                        <input type="checkbox" checked={stopStatus} onChange={() => {setStopStatus(!stopStatus); }}
+
+                        />
                             <text>Off</text>
                             <text>On</text>
                             <div class="angle"></div>
