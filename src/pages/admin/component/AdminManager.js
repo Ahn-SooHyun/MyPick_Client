@@ -1,6 +1,6 @@
 import './AdminManager.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faChartLine } from "@fortawesome/free-solid-svg-icons";
+import {faChartLine } from "@fortawesome/free-solid-svg-icons";
 
 export default function AdminManager() {
   

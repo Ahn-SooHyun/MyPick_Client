@@ -5,8 +5,8 @@
 /** 관리자페이지 기본 설정 */
 .dashboard-default {
     position: relative;
-    margin-left: calc(var(--nav-menu-close-width) + 15px);
-    width: calc(100vw - var(--nav-menu-close-width) - 20px);
+    margin-left: calc(var(--sidebar-width-close) + 15px);
+    width: calc(100vw - var(--sidebar-width-close) - 20px);
     height: 100%;
     border: 3px solid red;
 }

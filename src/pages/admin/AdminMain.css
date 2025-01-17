@@ -1,7 +1,7 @@
 :root {
     --admin-background-color: #191919;
     --admin--nav-color: #fff;
-    --admin-nav-hover-color: #000;
+    --admin-nav-hover-color: #191919;
 
     --nav-menu-open-width: 400px;
     --nav-menu-close-width: 100px;
