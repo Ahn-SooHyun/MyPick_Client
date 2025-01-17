@@ -4,7 +4,8 @@
     --sidebar-width-close: 100px;
 
     --admin-nav-color: #fff;
-    --admin-nav-hover-color: #191919;
+    --admin-nav-hover-color: ##1a202e;
+    --admin-nav-hover-color-2: #191919;
 }
 
 .sidebar {
@@ -27,6 +28,10 @@
 .sidebar.close {
     width: var(--sidebar-width-close);
 }
+
+
+/** */
+
 
 .sidebar .menu {
     display: flex;
@@ -151,6 +156,44 @@
 .sidebar .menu .item:hover span {
     color: var(--admin-nav-color);
 }
+
+
+/** nav-close*/
+.sidebar .nav-close {
+    text-align: center;
+}
+
+.sidebar .nav-close .item {
+    padding: 15px;
+    font-size: 1.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+}
+
+.sidebar .nav-close .item svg {
+    border-radius: 50%;
+    background-color: var(--admin-background-color);
+    color: var(--admin-nav-color);
+
+    padding: 20px;
+    margin-right: 15px;
+
+    font-size: 2.5rem;
+}
+
+.sidebar.close .nav-close .item span {
+    display: none;
+}
+.sidebar.open .nav-close .item span {
+    display: block;
+    color: var(--admin-background-color);
+}
+
+
 
 
 /** 사용자 정보 부분  */
