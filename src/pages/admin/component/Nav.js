@@ -36,7 +36,12 @@ export default function Nav() {
                     
                 </div>
 
-                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                
+            </div>
+            <div className="sidebar-option">
+                <div><FontAwesomeIcon icon={faArrowRightFromBracket} />
+                <span>Log Out</span>
+                </div>
             </div>
         </div>
             

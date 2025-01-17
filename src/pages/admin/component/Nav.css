@@ -44,7 +44,8 @@
     border-radius: 50%;
 }
 
-.sidebar .sidebar-user img {
+.sidebar.open .sidebar-user img {
+    transition: 1s ease-in-out;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -91,12 +92,58 @@
     text-align: center;
 }
 
-.sidebar .sidebar-user span {
+.sidebar.open .sidebar-user span {
     font-size: 1.3rem;
     font-weight: 400;
     text-align: center;
+
+    opacity: 1;
+    transition: 1s ease-in-out;
+    transition-delay: 0.5s;
 }
 
-.sidebar.close .sidebar-user .info {
-    display: none;
+.sidebar.open .sidebar-user .info user {
+    opacity: 1;
+    transition: 1s ease-in-out;
+    transition-delay: 0.5s;
+
 }
+.sidebar.close .sidebar-user .info user,
+.sidebar.close .sidebar-user .info span {
+    opacity: 0;
+    font-size: .1rem;
+}
+
+.sidebar.close .sidebar-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .sidebar-option > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .sidebar-option svg {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sidebar.close .sidebar-option span {
+    opacity: 0;
+    font-size: .1rem;
+}
+
+.sidebar.open .sidebar-option span {
+    margin-left: 15px;
+    opacity: 1;
+    transition: 1s ease-in-out;
+    transition-delay: 0.5s;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
