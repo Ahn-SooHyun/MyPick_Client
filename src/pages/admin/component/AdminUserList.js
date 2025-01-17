@@ -17,9 +17,21 @@ export default function AdminUserList() {
 
                 <select className="search-select">
                     <option value="all">전체</option>
-                    <option value="user">닉네임</option>
-                    <option value="admin">아이디</option>
-                    <option value="status">이름</option>
+                    <option value="user">사용자</option>
+                    <option value="admin">관리자</option>
+                </select>
+
+                <select className="search-select">
+                    <option value="all">전체</option>
+                    <option value="active">활동 중</option>
+                    <option value="stop">정지</option>
+                </select>
+
+                <select className="search-select">
+                    <option value="all">전체</option>
+                    <option value="nick">닉네임</option>
+                    <option value="id">아이디</option>
+                    <option value="name">이름</option>
                 </select>
 
                 <input type="text" className="search-input" placeholder="검색" />
