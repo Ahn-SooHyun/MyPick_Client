@@ -35,8 +35,21 @@
     z-index: 2;
 }
 
+/** 관리자 상태 구분*/
+.admin-user-list-container table tbody tr.admin::after {
+    content: '';
+    position: absolute;
+    top: 31px;
+    left: 40px;
+    width: 95%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: rgba(243, 13, 13, 0.3);
+    z-index: 1;
+}
 
 
+/** 활동 상태 구분 */
 .admin-user-list-container table tbody tr td:nth-child(4) > div {
     position: absolute;
     top: 35px;
@@ -53,4 +66,3 @@
 .admin-user-list-container table tbody tr td:nth-child(4) .stop-status {
     background-color: #f30d0d;
 }
-
