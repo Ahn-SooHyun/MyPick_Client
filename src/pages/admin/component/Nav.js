@@ -1,13 +1,18 @@
 import './Nav.css';
 import 캐릭터 from '../../../assets/img/broccoli.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFlag, faUser, faMugSaucer, faDoorOpen, faEnvelope, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
-export default function Nav() {
+export default function Nav({selected, setSelected}) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isClick, setIsClick] = useState('dashboard');
+
+    useEffect(() => {
+        setSelected(isClick);
+    }, [isClick]);
+
 
 
     return (
