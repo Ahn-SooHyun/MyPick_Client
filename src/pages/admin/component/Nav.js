@@ -20,13 +20,13 @@ export default function Nav() {
 
             {/** menu 설정 */}
             <div className="menu">
-                <div className="item active"
+                <div className={`item ${isClick === 'dashboard' ? 'active' : ''}`}
                     onClick={() => setIsClick('dashboard')}
                 ><FontAwesomeIcon icon={faFlag} /><span>Dashboard</span></div>
-                <div className="item"
+                <div className={`item ${isClick === 'users' ? 'active' : ''}`}
                     onClick={() => setIsClick('users')}
                 ><FontAwesomeIcon icon={faUser} /><span>Users</span></div>
-                <div className="item"
+                <div className={`item ${isClick === 'notice' ? 'active' : ''}`}
                     onClick={() => setIsClick('notice')}
                 ><FontAwesomeIcon icon={faMugSaucer} /><span>Notice</span></div>
                 
@@ -62,7 +62,7 @@ export default function Nav() {
             {/** 로그아웃 버튼 부분 */}
             <div className="sidebar-option">
                 <div><FontAwesomeIcon icon={faArrowRightFromBracket} />
-                <span>Log Out</span>
+                <span>LOG OUT</span>
                 </div>
             </div>
         </div>
