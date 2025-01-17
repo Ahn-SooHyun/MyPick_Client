@@ -49,6 +49,21 @@ export default function AdminManager() {
             ))
           }
 
+          {/** 두번째 row */}
+          <div class="status-card">
+            <div class="box">
+              <div class="percent">
+                <svg>
+                    <circle cx="70" cy="70" r="70"></circle>
+                    <circle cx="70" cy="70" r="70"></circle>
+                </svg>
+                <div class="number">
+                  <h2>90<span>%</span></h2>
+                </div>
+              </div>
+              <h2 class="text">사용량</h2>
+            </div>
+          </div>
 
 
          
