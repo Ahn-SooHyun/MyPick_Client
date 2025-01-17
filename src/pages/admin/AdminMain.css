@@ -13,6 +13,12 @@
     --admin-nav-hover-color: ##1a202e;
     --admin-nav-hover-color-2: #191919;
     --sidebar-hover: #BE3144;
+    --title-color: #BE3144;
+    --main-color-1: #FF4948;
+    --main-color-2: #FF4E77;
+    --main-color-3: #FF834F;
+    --main-color-4: #4D4D4D;
+
 
     --card-background-color: linear-gradient(0deg, #1b1b1b, #222, #1b1b1b);
 }
