@@ -227,3 +227,126 @@
     color: #fff;
     margin-right: 10%;
 }
+
+
+
+
+
+/** 정지 상태  */
+.user-detail-container > .stop {
+    margin-top: 30px;
+    margin-left: 20px;
+    padding:5px 10px 5px 15px;
+    height: 50px;
+
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.user-detail-container > .stop .title {
+    margin-right: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    color: #fff;
+}
+
+.user-detail-container > .stop > .stop-action {
+    display: flex;
+    align-items: center;
+}
+
+.user-detail-container > .stop > div > svg {
+    margin-right: 10px;
+}
+
+/** 정지 상태 체크 */
+.user-detail-container > .stop > div > label {
+    position: relative;
+    width: 120px;
+    height: 60px;
+    background: #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2),
+    inset 0 2px 2px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transform: skewX(330deg);
+    cursor: pointer;
+}
+
+.user-detail-container > .stop > div >label input {
+    position: absolute;
+    appearance: none;
+}
+
+.user-detail-container > .stop > div > label .angle {
+    position: absolute;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #0f0;
+    transform: skewX(30deg) scale(0.6) translateX(-16px);
+    filter: drop-shadow(0 0 16px #0f0) drop-shadow(0 0 30px #0f0);
+    transition: 0.5s;
+}
+
+.user-detail-container > .stop > div > label input:checked ~ .angle {
+    border-bottom: 60px solid #f00;
+    transform: skewX(30deg) scale(0.6) translateX(100px) rotate(180deg);
+    filter: drop-shadow(0 0 16px #f00) drop-shadow(0 0 30px #f00);
+}
+
+.user-detail-container > .stop > div > label text {
+    padding: 10px;
+    color: #fff;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+.user-detail-container > .stop > div > label text:nth-child(2) {
+    transform: skewX(30deg) scale(1);
+    color: #f00;
+    filter: drop-shadow(0 0 16px #f00) drop-shadow(0 0 30px #f00);
+}
+
+.user-detail-container > .stop > div > label input:checked ~ .angle:nth-child(2) {
+    transform: skewX(30deg) scale(1);
+}
+
+.user-detail-container > .stop > div > label text:nth-child(3) {
+    color: #0f0;
+    transform: skewX(30deg) scale(1);
+    filter: drop-shadow(0 0 16px #0f0) drop-shadow(0 0 30px #0f0);
+}
+
+.user-detail-container > .stop > div > label input:checked ~ .angle:nth-child(3) {
+    transform: skewX(30deg) scale(0);
+}
+
+.user-detail-container > .stop > .stop-action > span {
+    margin-left: 50px;
+    font-size: 1.2rem;
+    color: var(--sub-color-2);
+}
+
+.user-detail-container > .stop > .stop-action > .span-stop {
+    color: #f00;
+}
+
+.user-detail-container > .stop > .stop-action > .span-active {
+    color: #0f0;
+}
+
+
+
+
+
+
+
+

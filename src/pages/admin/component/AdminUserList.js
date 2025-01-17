@@ -1,5 +1,5 @@
 import './AdminUserList.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faIdBadge, faSignature, faUser, faComment, faStop } from "@fortawesome/free-solid-svg-icons";
 
@@ -77,8 +77,9 @@ export default function AdminUserList() {
                 {
                     id: 'hayaruby7909',
                     name: '명희승',
-                    status: 'user',
+                    step: 'user',
                     step: '관리자',
+                    status: '' /** 날짜 정보*/
                 }
             } />
         </div>
@@ -88,7 +89,9 @@ export default function AdminUserList() {
 
 function UserDeatail({ info }) {
 
-    const [status, setStatus] = useState('inffo');
+    const [status, setStatus] = useState('info');
+
+    const [stopStatus, setStopStatus] = useState(info.status === '' || info.status === null ? false : true );
 
     return (
         <div className="user-detail-container">
@@ -97,9 +100,9 @@ function UserDeatail({ info }) {
                 {/** 닉네임 위치 */}
                 <div className="nickName">
                     {info.id}
-                    <div className={`step ${info.status === 'admin' ? 'admin' : 'user'}`}>
+                    <div className={`step ${info.step === 'admin' ? 'admin' : 'user'}`}>
                         <div></div>
-                        <span>{info.status === 'admin' ? '관리자' : '사용자'}</span>
+                        <span>{info.step === 'admin' ? '관리자' : '사용자'}</span>
                     </div>
                 </div>
             </div>
@@ -120,7 +123,28 @@ function UserDeatail({ info }) {
                 <small><FontAwesomeIcon icon={faSignature} />NAME</small>
                 <h2>{info.name}</h2>
             </div>
-            <FontAwesomeIcon icon={faStop} />
+            <div className="stop">
+                <div className="title">
+                <FontAwesomeIcon icon={faStop} /><span>상태</span>
+                </div>
+                <div className="stop-action">
+                    <label>
+
+                        {/*** 활동 중  false -/ 정지 true */}
+                        {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
+                        {/** null은 체크 안 되게 */}
+
+                        <input type="checkbox" checked={stopStatus} onChange={() => setStopStatus(!stopStatus)}/>
+                            <text>Off</text>
+                            <text>On</text>
+                            <div class="angle"></div>
+                    </label>
+                
+                    {/*** stopStatus의 값에 따라서 값 표시*/}
+                    <span className={stopStatus ? 'span-stop' : 'span-active'}>{stopStatus ? '정지' : '활동'}</span>
+                </div>
+            </div>
+            
 
     
         </div>
