@@ -1,6 +1,8 @@
 import './Nav.css';
 import 캐릭터 from '../../../assets/img/broccoli.png';
 import { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faUser, faEnvelope, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
 
@@ -15,12 +17,26 @@ export default function Nav() {
                 onClick={() => setIsOpen(!isOpen)}
             />
 
+
+            {/** 사용자 정보 부분 */}
             <div className="sidebar-user">
                 <img src={캐릭터} alt="캐릭터" />
-                <div>
-                <h3>broccoli Piu</h3>
-                <span>mollangpiu@gmail.com</span>
+                <div className="sidebar-user-info">
+                    {/** 사용자 정보 부분 */}
+                    <div className="icon">
+                        <div><FontAwesomeIcon icon={faUser} /></div>
+                        <div><FontAwesomeIcon icon={faEnvelope} /></div>
+                        
+                    </div>
+                    <div className="info">
+                        <user>broccoli Piu</user>
+                        <span>mollangpiu@gmail.com</span>
+                    </div>
+                        
+                    
                 </div>
+
+                <FontAwesomeIcon icon={faArrowRightFromBracket} />
             </div>
         </div>
             
