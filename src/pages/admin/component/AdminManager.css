@@ -1,3 +1,6 @@
+:root {
+    --card-background-color: linear-gradient(0deg, #1b1b1b, #222, #1b1b1b);
+}
 
 /** 관리자페이지 기본 설정 */
 .dashboard-default {
@@ -8,6 +11,9 @@
     border: 3px solid red;
 }
 
+.admin-manager-container {
+    padding: 5rem;
+}
 
 /** 카드 관리 */
 .admin-manager-container .cards {
@@ -17,7 +23,7 @@
 }
 
 .admin-manager-container .card-single {
-    background: var(--white);
+    background: var(--card-background-color);
     padding: 1rem;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
     border-radius: 2px;
@@ -29,16 +35,22 @@
     align-items: center;
 }
 
+/** 카드 title */
 .card-single .card-flex .card-head span {
     display: block;
     text-transform: uppercase;
-    color: #555;
+    color: #dddddd;
     font-size: .9rem;
+}
+
+/** 카드 conent */
+.card-single .card-flex .card-head small {
+    color: #fff;
 }
 
 .card-info h2 {
     font-size: 2.2rem;
-    color: #333;
+    color: #daaeae;
 }
 
 .card-chart svg {
@@ -46,15 +58,28 @@
 }
 
 
+/** 두번째 row */
+.second-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    display: flex;
+    
+}
+
+
 /** 차트 관리 */
 .admin-manager-container .status-card {
     position: relative;
+
+    margin-bottom: 2rem;
     width: 250px;
     background: linear-gradient(0deg, #1b1b1b, #222, #1b1b1b);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 33vh;
     border-radius: 4px;
     text-align: center;
     overflow: hidden;
@@ -80,7 +105,7 @@
     border-radius: 50%;
     box-shadow: inset 0 0 50px #000;
     background: #222;
-    z-index: 1000;
+    z-index: 5;
 }
 
 .status-card .percent .number {
@@ -136,7 +161,7 @@
     position: relative;
     width: 150px;
     height: 150px;
-    z-index: 1000;
+    z-index: 5;
 }
 
 .admin-manager-container .status-card svg circle {
@@ -154,7 +179,64 @@
     stroke-dashoffset: 440;
 }
 
-.admin-manager-container .status-card svg circle:nth-child(2) {
+.admin-manager-container .status-card:nth-child(1) svg circle:nth-child(2) {
     stroke-dashoffset: calc(440 - (440 *  90) / 100);
     stroke: #00ff43;
+}
+
+.admin-manager-container .status-card:nth-child(2) svg circle:nth-child(2) {
+    stroke-dashoffset: calc(440 - (440 *  90) / 100);
+    stroke: #4800ff;
+}
+
+.second-row .board {
+    width: 65vw;
+    height: 100%;
+}
+
+.second-row .board table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.second-row .board table thead {
+    font-size: 1.8rem;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.second-row .board table thead th {
+    padding-bottom: 10px;
+}
+
+
+.second-row .board table tbody tr{
+    color: #fff;
+    text-align: center;
+}
+
+.second-row .board table tbody td{
+    padding-top: 15px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+.board .status {
+    position: absolute;
+    top: 20px;
+    left: 20%;
+    display: inline-block;
+    margin-right: 10px;
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.status.completed {
+    background: #00ff43;
+}
+
+.status.inactive {
+    background: #ff0000;
 }

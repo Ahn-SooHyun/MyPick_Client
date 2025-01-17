@@ -1,5 +1,5 @@
 :root {
-    --admin-background-color: #000;
+    --admin-background-color: #191919;
     --admin--nav-color: #fff;
     --admin-nav-hover-color: #000;
 
@@ -22,7 +22,7 @@
 
     width: 100vw;
     height: 100vh;
-    /* background-color: var(--admin-background-color); */
+    background-color: var(--admin-background-color);
 }
 
 .admin-main-container .admin-nav {

@@ -29,11 +29,11 @@ export default function AdminManager() {
 
           {
             cardList.map((card, index) => (
-              <div class="card-single">
-                <div class="card-flex">
-                  <div class="card-info">
+              <div className="card-single">
+                <div className="card-flex">
+                  <div className="card-info">
                   {/** 카드 Title */}
-                    <div class="card-head">
+                    <div className="card-head">
                       <span>{card.title}</span>
                       <small>{card.comment}</small>
                     </div>
@@ -41,33 +41,95 @@ export default function AdminManager() {
                     <h2>{card.count}</h2>
                   </div>
 
-                  <div class="card-chart">
+                  <div className="card-chart">
                   <FontAwesomeIcon icon={faChartLine} />
                   </div>
                 </div>
               </div>
             ))
           }
+          </div>
 
           {/** 두번째 row */}
-          <div class="status-card">
-            <div class="box">
-              <div class="percent">
-                <svg>
-                    <circle cx="70" cy="70" r="70"></circle>
-                    <circle cx="70" cy="70" r="70"></circle>
-                </svg>
-                <div class="number">
-                  <h2>90<span>%</span></h2>
+          <div className="second-row">
+
+
+            <div className="status-area">
+
+              <div className="status-card">
+                <div className="box">
+                  <div className="percent">
+                    <svg>
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle cx="70" cy="70" r="70"></circle>
+                    </svg>
+                    <div className="number">
+                      <h2>90<span>%</span></h2>
+                    </div>
+                  </div>
+                  <h2 className="text">사용량</h2>
                 </div>
               </div>
-              <h2 class="text">사용량</h2>
+
+              <div className="status-card">
+                <div className="box">
+                  <div className="percent">
+                    <svg>
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle cx="70" cy="70" r="70"></circle>
+                    </svg>
+                    <div className="number">
+                      <h2>90<span>%</span></h2>
+                    </div>
+                  </div>
+                  <h2 className="text">사용량</h2>
+                </div>
+              </div>
+              
+            </div>
+
+
+            <div className="board">
+              <table>
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Title</td>
+                    <td><div class="status completed"></div>Completed</td>
+                    <td>2025-01-01</td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Title</td>
+                    <td><div class="status completed"></div>completed</td>
+                    <td>2025-01-01</td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Title</td>
+                    <td><div class="status inactive"></div>Inactive</td>
+                    <td>2025-01-01</td>
+                    <td>100</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-
+          
 
          
-          </div>
-        </div>
+      </div>
     )
 }
