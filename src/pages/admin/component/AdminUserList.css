@@ -170,7 +170,7 @@
 .info .card-status > small {
     margin-right: 10px;
     font-size: 1.2rem;
-    color: #715cbb;
+    color: var(--)
 }
 
 .info .card-status > small > svg {

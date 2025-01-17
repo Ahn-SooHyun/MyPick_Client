@@ -5,6 +5,16 @@
 
     --nav-menu-open-width: 400px;
     --nav-menu-close-width: 100px;
+
+    --sidebar-width-open: 400px;
+    --sidebar-width-close: 100px;
+
+    --admin-nav-color: #fff;
+    --admin-nav-hover-color: ##1a202e;
+    --admin-nav-hover-color-2: #191919;
+    --sidebar-hover: #BE3144;
+
+    --card-background-color: linear-gradient(0deg, #1b1b1b, #222, #1b1b1b);
 }
 
 @font-face {

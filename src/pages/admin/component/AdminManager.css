@@ -1,7 +1,3 @@
-:root {
-    --card-background-color: linear-gradient(0deg, #1b1b1b, #222, #1b1b1b);
-}
-
 /** 관리자페이지 기본 설정 */
 .dashboard-default {
     position: relative;
