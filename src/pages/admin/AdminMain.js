@@ -18,7 +18,7 @@ export default function AdminMain() {
         <div>
             {/* 전체 컨테이너 */}
             <div className="admin-main-container">
-                <Nav selected={selected} setSelected={setSelected} />
+                <Nav setSelected={setSelected} />
                 {selected === 'dashboard' && <AdminManager />}
                 {selected === 'users' && <AdminUserList />}
             </div>
