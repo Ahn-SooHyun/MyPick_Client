@@ -86,12 +86,16 @@
 
 /** 종료 Button */
 .exit {
+    padding: 12px;
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
+    width: 90px;
+    background-color: red;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .user-detail-container > .info {
@@ -431,8 +435,44 @@
 
 
 
+/** 아래 영역, 버튼 */
+.user-detail-container > .end button:nth-child(1){
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.user-detail-container > .end button:nth-child(2){
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.user-detail-container > .end button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+
+    cursor: pointer;
+}
+
+.user-detail-container > .end .delete {
+    background-color: var(--main-color-1);
+}
+
+.user-detail-container > .end .delete:hover {
+    background-color: red;
+}
 
 
+.user-detail-container > .end .save {
+    background-color: var(--sub-color-3);
+}
+
+.user-detail-container > .end .save:hover {
+    background-color: slateblue;
+}
 
 
 

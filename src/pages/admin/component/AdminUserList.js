@@ -1,7 +1,7 @@
 import './AdminUserList.css';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie } from "@fortawesome/free-solid-svg-icons";
+import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie, faDeleteLeft, faFloppyDisk, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function AdminUserList() {
@@ -98,7 +98,9 @@ function UserDeatail({ info }) {
     return (
         <div className="user-detail-container">
             <div className="info">
-                <div className="exit"></div>
+                <div className="exit">
+                <FontAwesomeIcon icon={faXmark} />닫기
+                </div>
                 {/** 닉네임 위치 */}
                 <div className="nickName">
                     {info.id}
@@ -172,6 +174,17 @@ function UserDeatail({ info }) {
                     {/*** stopStatus의 값에 따라서 값 표시*/}
                     <span className={`result ${adminStatus ?  'status-admin' : 'status-user'}`}>{adminStatus ? '관리자' : '사용자'}</span>
                 </div>
+            </div>
+
+            <div className="end">
+                <button className="delete" ><FontAwesomeIcon icon={faDeleteLeft}
+                style={{
+                    marginRight: '20px'
+                }}/>삭제</button>
+                <button className="save"><FontAwesomeIcon icon={faFloppyDisk}
+                style={{
+                    marginRight: '20px'
+                }}/>저장</button>
             </div>
     
         </div>
