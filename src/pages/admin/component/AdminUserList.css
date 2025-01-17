@@ -80,7 +80,8 @@
     height: 80%;
     z-index: 10;
 
-    background-color: #ff0000;
+    background-color: #0a142b;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 /** 종료 Button */
@@ -104,7 +105,7 @@
     margin-left: 10px;
     width: 100%;
     padding: 10px;
-    color: #000;
+    color: #ffffff;
     font-size: 2.8rem;
 
     display: flex;
@@ -161,23 +162,23 @@
     border-radius: 10px;
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: end;
 
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-
-.card-status > div {
-    text-align: center;
-}
-
-.card-status > div > small {
+.info .card-status > small {
+    margin-right: 10px;
     font-size: 1.2rem;
-    color: #fff;
+    color: #715cbb;
 }
 
-.card-status > div > h2 {
+.info .card-status > small > svg {
+    margin-right: 10px;
+}
+
+.info .card-status > h2 {
     font-size: 1.8rem;
     color: #fff;
+    margin-right: 10%;
 }
