@@ -74,11 +74,110 @@
 /** User Deatail **/
 .user-detail-container {
     position: absolute;
-    top: 100px;
+    top: 80px;
     left: 300px;
     width: 80%;
     height: 80%;
     z-index: 10;
 
+    background-color: #ff0000;
+}
+
+/** 종료 Button */
+.exit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
     background-color: #fff;
+}
+
+.user-detail-container .info {
+    width: 100%;
+    height: 150px;
+
+}
+
+.user-detail-container .info .nickName {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100%;
+    padding: 10px;
+    color: #000;
+    font-size: 2.8rem;
+
+    display: flex;
+    align-items: center;
+
+    text-align: center;
+    overflow: hidden;
+}
+
+/** 관리자 상태 구분 */
+.user-detail-container .info .nickName .step {
+    margin-left: 30px;
+    padding: 6px 15px;
+    color: #fff;
+    font-size: 1.1rem;
+    color: #000;
+
+    border-radius: 20px;
+    
+}
+
+.user-detail-container .info .nickName .step.admin {
+    background-color: rgb(255, 116, 116);
+}
+
+.user-detail-container .info .nickName .step.user {
+    background-color: rgb(116, 255, 116);
+}
+
+.user-detail-container .info .nickName .step > div {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+
+.user-detail-container .info .nickName .step.admin > div {
+    background-color: red;
+}
+
+.user-detail-container .info .nickName .step.user > div {
+    background-color: green;
+}
+
+
+/** 사용자 정보 */
+.card-status {
+    width: 80%;
+    margin: 20px;
+    padding: 10px 35px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+.card-status > div {
+    text-align: center;
+}
+
+.card-status > div > small {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.card-status > div > h2 {
+    font-size: 1.8rem;
+    color: #fff;
 }

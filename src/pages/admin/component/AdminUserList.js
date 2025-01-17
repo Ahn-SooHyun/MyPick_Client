@@ -69,16 +69,50 @@ export default function AdminUserList() {
                 </tbody>
             </table>
 
-            <UserDeatail />
+            <UserDeatail info={
+                {
+                    id: 'hayaruby7909',
+                    name: '명희승',
+                    status: 'user',
+                    step: '관리자',
+                }
+            } />
         </div>
     );
 }
 
 
-function UserDeatail() {
+function UserDeatail({ info }) {
     return (
         <div className="user-detail-container">
-            <h1>User Detail</h1>
+            <div className="info">
+                <div className="exit"></div>
+                {/** 닉네임 위치 */}
+                <div className="nickName">
+                    {info.id}
+                    <div className={`step ${info.status === 'admin' ? 'admin' : 'user'}`}>
+                        <div></div>
+                        <span>{info.status === 'admin' ? '관리자' : '사용자'}</span>
+                    </div>
+                </div>
+                <div className="card-status">
+                    <div className="first">
+                        <small>ID</small>
+                        <h2>{info.id}</h2>
+                    </div>
+                    <div className="second">
+                        <small>NAME</small>
+                        <h2>명희승</h2>
+                    </div>
+                    <div className="fourth">
+                        <small>status</small>
+                        <h2>활동</h2>
+                    </div>
+                </div>
+            </div>
+
+
+    
         </div>
     );
 }
