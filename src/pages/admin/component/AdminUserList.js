@@ -1,7 +1,7 @@
 import './AdminUserList.css';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faIdBadge, faSignature, faUser, faComment, faStop } from "@fortawesome/free-solid-svg-icons";
+import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function AdminUserList() {
@@ -77,8 +77,8 @@ export default function AdminUserList() {
                 {
                     id: 'hayaruby7909',
                     name: '명희승',
-                    step: 'user',
-                    step: '관리자',
+                    step: 'admin',
+                    step: 'admin',
                     status: '' /** 날짜 정보*/
                 }
             } />
@@ -92,6 +92,7 @@ function UserDeatail({ info }) {
     const [status, setStatus] = useState('info');
 
     const [stopStatus, setStopStatus] = useState(info.status === '' || info.status === null ? false : true );
+    const [adminStatus, setAdminStatus] = useState(info.step === 'admin' ? true : false);
 
 
     return (
@@ -101,9 +102,9 @@ function UserDeatail({ info }) {
                 {/** 닉네임 위치 */}
                 <div className="nickName">
                     {info.id}
-                    <div className={`step ${info.step === 'admin' ? 'admin' : 'user'}`}>
+                    <div className={`step ${adminStatus ? 'admin' : 'user'}`}>
                         <div></div>
-                        <span>{info.step === 'admin' ? '관리자' : '사용자'}</span>
+                        <span>{adminStatus ? '관리자' : '사용자'}</span>
                     </div>
                 </div>
             </div>
@@ -124,7 +125,7 @@ function UserDeatail({ info }) {
                 <small><FontAwesomeIcon icon={faSignature} />NAME</small>
                 <h2>{info.name}</h2>
             </div>
-            <div className="option">
+            <div className="option stop">
                 <div className="title">
                 <FontAwesomeIcon icon={faStop} /><span>상태</span>
                 </div>
@@ -144,14 +145,14 @@ function UserDeatail({ info }) {
                     </label>
                 
                     {/*** stopStatus의 값에 따라서 값 표시*/}
-                    <span className={stopStatus ? 'span-stop' : 'span-active'}>{stopStatus ? '정지' : '활동'}</span>
+                    <span className={stopStatus ? 'status-active' : 'status-stop'}>{stopStatus ? '정지' : '활동'}</span>
                 </div>
             </div>
             
 
-            <div className="option">
+            <div className="option admin">
                 <div className="title">
-                <FontAwesomeIcon icon={faStop} /><span>상태</span>
+                <FontAwesomeIcon icon={faUserTie} /><span>관리자</span>
                 </div>
                 <div className="option-action">
                     <label>
@@ -160,16 +161,16 @@ function UserDeatail({ info }) {
                         {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
                         {/** null은 체크 안 되게 */}
 
-                        <input type="checkbox" checked={stopStatus} onChange={() => {setStopStatus(!stopStatus); }}
+                        <input type="checkbox" checked={!adminStatus} onChange={() => {setAdminStatus(!adminStatus); }}
 
                         />
-                            <text>Off</text>
-                            <text>On</text>
+                            <text>user</text>
+                            <text>admin</text>
                             <div class="angle"></div>
                     </label>
                 
                     {/*** stopStatus의 값에 따라서 값 표시*/}
-                    <span className={stopStatus ? 'span-stop' : 'span-active'}>{stopStatus ? '정지' : '활동'}</span>
+                    <span className={`result ${adminStatus ?  'status-admin' : 'status-user'}`}>{adminStatus ? '관리자' : '사용자'}</span>
                 </div>
             </div>
     
