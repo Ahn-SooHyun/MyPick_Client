@@ -5,6 +5,9 @@ import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie, faDeleteLe
 
 
 export default function AdminUserList() {
+
+    const [userInfo, setUserInfo] = useState(null);
+
     return (
         <div className="admin-user-list-container">
             <h1>User List</h1>
@@ -20,49 +23,49 @@ export default function AdminUserList() {
                 </thead>
 
                 <tbody>
-                    <tr className="user">
+                    <tr className="user" onClick={() => { setUserInfo({id: 'broccoli', name: '브로 콜리', step: 'user', status: ''})}}>
                         <td>broccoli</td>
                         <td>broccoli123</td>
                         <td>브로 콜리</td>
                         <td><div className="active-status"></div>활동</td>
                         <td>2025-01-01</td>
                     </tr>
-                    <tr className="admin">
+                    <tr className="admin" onClick={() => { setUserInfo({id: 'admin', name: '관리자', step: 'admin', status: ''})}}>
                         <td>Admin</td>
                         <td>admin123</td>
                         <td>관리자</td>
                         <td><div className="active-status"></div>활동</td>
                         <td>2025-01-01</td>
                     </tr>
-                    <tr className="user">
+                    <tr className="user" onClick={() => { setUserInfo({id: 'carrot', name: '당근이', step: 'user', status: '2025-01-01'})}}>
                         <td>carrot</td>
                         <td>carrot456</td>
                         <td>당근이</td>
                         <td><div className="stop-status"></div>정지</td>
                         <td>2025-01-02</td>
                     </tr>
-                    <tr className="user">
+                    <tr className="user" onClick={() => { setUserInfo({id: 'potato', name: '감자킹', step: 'user', status: ''})}}>
                         <td>potato</td>
                         <td>potato789</td>
                         <td>감자킹</td>
                         <td><div className="active-status"></div>활동</td>
                         <td>2025-01-03</td>
                     </tr>
-                    <tr className="user">
+                    <tr className="user" onClick={() => { setUserInfo({id: 'cucumber', name: '오이짱', step: 'user', status: ''})}}>
                         <td>cucumber</td>
                         <td>cucumber321</td>
                         <td>오이짱</td>
                         <td><div className="active-status"></div>활동</td>
                         <td>2025-01-04</td>
                     </tr>
-                    <tr className="user">
+                    <tr className="user" onClick={() => { setUserInfo({id: 'tomato', name: '토마토맨', step: 'user', status: ''})}}>
                         <td>tomato</td>
                         <td>tomato654</td>
                         <td>토마토맨</td>
                         <td><div className="active-status"></div>활동</td>
                         <td>2025-01-05</td>
                     </tr>
-                    <tr className="user">
+                    <tr className="user" onClick={() => { setUserInfo({id: 'lettuce', name: '상추씨', step: 'user', status: ''})}}>
                         <td>lettuce</td>
                         <td>lettuce987</td>
                         <td>상추씨</td>
@@ -73,21 +76,16 @@ export default function AdminUserList() {
                 </tbody>
             </table>
 
-            <UserDeatail info={
-                {
-                    id: 'hayaruby7909',
-                    name: '명희승',
-                    step: 'admin',
-                    step: 'admin',
-                    status: '' /** 날짜 정보*/
-                }
-            } />
+            {userInfo && <UserDeatail info={userInfo}
+                handleClose={() => setUserInfo('')}
+            />}
+
         </div>
     );
 }
 
 
-function UserDeatail({ info }) {
+function UserDeatail({ info, handleClose }) {
 
     const [status, setStatus] = useState('info');
 
@@ -98,7 +96,9 @@ function UserDeatail({ info }) {
     return (
         <div className="user-detail-container">
             <div className="info">
-                <div className="exit">
+                <div className="exit"
+                    onClick={handleClose}
+                >
                 <FontAwesomeIcon icon={faXmark} />닫기
                 </div>
                 {/** 닉네임 위치 */}
