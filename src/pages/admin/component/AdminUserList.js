@@ -1,7 +1,7 @@
 import './AdminUserList.css';
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faIdBadge, faSignature, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
+import {faIdBadge, faSignature, faUser, faComment, faStop } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function AdminUserList() {
@@ -118,9 +118,9 @@ function UserDeatail({ info }) {
                 <small><FontAwesomeIcon icon={faIdBadge} />ID</small>
                 <h2>{info.id}</h2>
                 <small><FontAwesomeIcon icon={faSignature} />NAME</small>
-                <h2>명희승</h2>
+                <h2>{info.name}</h2>
             </div>
-
+            <FontAwesomeIcon icon={faStop} />
 
     
         </div>
