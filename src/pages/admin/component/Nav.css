@@ -2,6 +2,9 @@
 :root {
     --sidebar-width-open: 400px;
     --sidebar-width-close: 100px;
+
+    --admin-nav-color: #fff;
+    --admin-nav-hover-color: #191919;
 }
 
 .sidebar {
@@ -10,7 +13,7 @@
     left: 0;
 
     height: 100vh;
-    background: var(--admin--nav-color);
+    background: var(--admin-nav-color);
 
     z-index: 10;
     overflow: hidden;
@@ -53,13 +56,12 @@
     justify-content: start;
     align-items: center;
 
-    transition: 1s ease-in-out;
-    transition-delay: 0.5s;
     cursor: pointer;
 }
 
 /** menu Item*/
 .sidebar.close .menu > div {
+    position: relative;
     margin-top: 20px;
     margin-left: 25px;
 
@@ -67,8 +69,6 @@
     /* align-items: center;
     justify-content: center; */
 
-    transition: 1s ease-in-out;
-    transition-delay: 0.2s;
 
     cursor: pointer;
 }
@@ -78,7 +78,8 @@
     font-size: 1.8rem;
 
     transition: 1s ease-in-out;
-    transition-delay: 0.5s;
+    /* transition-delay: 0.5s; */
+    z-index: 4;
 }
 
 .sidebar.close .menu .item span {
@@ -86,11 +87,69 @@
     font-size: .1rem;
     transition: 1s ease-in-out;
     transition-delay: 0.2s;
+
+    pointer-events: none;
 }
 
 .sidebar .menu .item svg {
     margin-right: 30px;
     font-size: 1.8rem;
+
+    z-index: 4;
+}
+
+.sidebar.close .menu .item:hover::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--admin-nav-hover-color);
+    z-index: 1;
+}
+.sidebar.close .menu .item:hover::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--admin-nav-hover-color);
+    z-index: 1;
+}
+
+.sidebar.open .menu .item:hover::before {
+    content : '';
+    position: absolute;
+    left: -20px;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--admin-nav-hover-color);
+
+    z-index: 1;
+}
+.sidebar.open .menu .item:hover::after {
+    position: absolute;
+    right: -90px;
+    content: '';
+    height: 44px;
+    width: 100px;
+    background-color: var(--admin-nav-hover-color);
+}
+
+.sidebar .menu .item:hover {
+    background-color: var(--admin-background-color);
+    
+    color: var(--admin-nav-color);
+}
+
+.sidebar .menu .item:hover span {
+    color: var(--admin-nav-color);
 }
 
 
