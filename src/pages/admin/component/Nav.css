@@ -25,6 +25,76 @@
     width: var(--sidebar-width-close);
 }
 
+.sidebar .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    margin-bottom: 15rem;
+}
+
+.sidebar.open .menu {
+    align-items: end;
+}
+
+.sidebar.close .menu {
+    align-items: center;
+}
+
+/** menu Item*/
+.sidebar.open .menu > div {
+    position: relative;
+
+    margin-top: 20px;
+    margin-right: 90px;
+    width: 50%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    transition: 1s ease-in-out;
+    transition-delay: 0.5s;
+    cursor: pointer;
+}
+
+/** menu Item*/
+.sidebar.close .menu > div {
+    margin-top: 20px;
+    margin-left: 25px;
+
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+
+    transition: 1s ease-in-out;
+    transition-delay: 0.2s;
+
+    cursor: pointer;
+}
+
+.sidebar.open .menu .item span {
+    opacity: 1;
+    font-size: 1.8rem;
+
+    transition: 1s ease-in-out;
+    transition-delay: 0.5s;
+}
+
+.sidebar.close .menu .item span {
+    opacity: 0;
+    font-size: .1rem;
+    transition: 1s ease-in-out;
+    transition-delay: 0.2s;
+}
+
+.sidebar .menu .item svg {
+    margin-right: 30px;
+    font-size: 1.8rem;
+}
+
+
+/** 사용자 정보 부분  */
 .sidebar .sidebar-user {
     display: flex;
     flex-direction: column;

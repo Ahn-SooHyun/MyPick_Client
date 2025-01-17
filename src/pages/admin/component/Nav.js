@@ -2,7 +2,7 @@ import './Nav.css';
 import 캐릭터 from '../../../assets/img/broccoli.png';
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faUser, faEnvelope, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import {faFlag, faUser, faMugSaucer, faEnvelope, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
 
@@ -16,6 +16,14 @@ export default function Nav() {
             <input type="button" value="메뉴 열기"
                 onClick={() => setIsOpen(!isOpen)}
             />
+
+            {/** menu 설정 */}
+            <div className="menu">
+                <div className="item"><FontAwesomeIcon icon={faFlag} /><span>Dashboard</span></div>
+                <div className="item"><FontAwesomeIcon icon={faUser} /><span>Users</span></div>
+                <div className="item"><FontAwesomeIcon icon={faMugSaucer} /><span>Notice</span></div>
+                
+            </div>
 
 
             {/** 사용자 정보 부분 */}
@@ -38,6 +46,7 @@ export default function Nav() {
 
                 
             </div>
+            {/** 로그아웃 버튼 부분 */}
             <div className="sidebar-option">
                 <div><FontAwesomeIcon icon={faArrowRightFromBracket} />
                 <span>Log Out</span>
