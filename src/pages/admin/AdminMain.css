@@ -22,7 +22,7 @@
 
     width: 100vw;
     height: 100vh;
-    background-color: var(--admin-background-color);
+    /* background-color: var(--admin-background-color); */
 }
 
 .admin-main-container .admin-nav {

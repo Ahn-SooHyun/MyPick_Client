@@ -1,75 +1,58 @@
 import './AdminManager.css';
-import ApexCharts from 'apexcharts';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faChartLine } from "@fortawesome/free-solid-svg-icons";
 
 export default function AdminManager() {
+  
+    const cardList = [{
+      title: 'Users',
+      comment: 'Number of Users',
+      count: '100',
+      icon: faChartLine,
+    }, {
+      title: 'Users',
+      comment: 'Number of Users',
+      count: '100',
+      icon: faChartLine,
+    },
+    {
+      title: 'Users',
+      comment: 'Number of Users',
+      count: '100',
+      icon: faChartLine,
+    }
+  ];
+
     return (
         <div className="dashboard-default admin-manager-container">
-            <div className="dashboard-first">
+          <div class="cards">
 
-                <div className="status-box">
-                    <div className="status-first">
-                        <div className="icon"></div>
-                        <div className="content">User</div>
+          {
+            cardList.map((card, index) => (
+              <div class="card-single">
+                <div class="card-flex">
+                  <div class="card-info">
+                  {/** 카드 Title */}
+                    <div class="card-head">
+                      <span>{card.title}</span>
+                      <small>{card.comment}</small>
                     </div>
-                    <div className="count">1211</div>
-                </div>
+                    {/** 차트 카운트 */}
+                    <h2>{card.count}</h2>
+                  </div>
 
-                <div className="status-box">
-                    <div className="status-first">
-                        <div className="icon"></div>
-                        <div className="content">Revenue</div>
-                    </div>
-                    <div className="count">$152.01</div>
+                  <div class="card-chart">
+                  <FontAwesomeIcon icon={faChartLine} />
+                  </div>
                 </div>
+              </div>
+            ))
+          }
 
-                <div className="status-box">
-                    <div className="status-first">
-                        <div className="icon"></div>
-                        <div className="content">Amount used</div>
-                    </div>
-                    <div className="count">33.2%</div>
-                </div>
 
-                <div className="status-box">
-                    <div className="status-first">
-                        <div className="icon"></div>
-                        <div className="content">Contents</div>
-                    </div>
-                    <div className="count">526</div>
-                </div>
-                
-            </div>
-            <div className="dashboard-second">
 
-                <div className="graf-box"></div>
-                <div className="graf-box"></div>
-
-            </div>
-            <div className="dashboard-third">
-                <div className="row-box">
-                    <div className="col1"><div className="icon"></div>사용자 이름</div>
-                    <div className="col2">상태1</div>
-                    <div className="col3">상태2</div>
-                    <div className="col4">상태3</div>
-                    <div className="col5">상태4</div>
-                </div>
-
-                <div className="row-box">
-                    <div className="col1"><div className="icon"></div>사용자 이름</div>
-                    <div className="col2">상태1</div>
-                    <div className="col3">상태2</div>
-                    <div className="col4">상태3</div>
-                    <div className="col5">상태4</div>
-                </div>
-
-                <div className="row-box">
-                    <div className="col1"><div className="icon"></div>사용자 이름</div>
-                    <div className="col2">상태1</div>
-                    <div className="col3">상태2</div>
-                    <div className="col4">상태3</div>
-                    <div className="col5">상태4</div>
-                </div>
-            </div>
+         
+          </div>
         </div>
     )
 }
