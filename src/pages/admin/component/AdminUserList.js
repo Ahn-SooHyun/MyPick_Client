@@ -1,6 +1,7 @@
 import './AdminUserList.css';
+import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faIdBadge, faSignature } from "@fortawesome/free-solid-svg-icons";
+import {faIdBadge, faSignature, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function AdminUserList() {
@@ -86,6 +87,9 @@ export default function AdminUserList() {
 
 
 function UserDeatail({ info }) {
+
+    const [status, setStatus] = useState('inffo');
+
     return (
         <div className="user-detail-container">
             <div className="info">
@@ -98,13 +102,23 @@ function UserDeatail({ info }) {
                         <span>{info.status === 'admin' ? '관리자' : '사용자'}</span>
                     </div>
                 </div>
-                <div className="card-status">
-                    <small><FontAwesomeIcon icon={faIdBadge} />ID</small>
-                    <h2>{info.id}</h2>
-                    <small><FontAwesomeIcon icon={faSignature} />NAME</small>
-                    <h2>명희승</h2>
-                   
-                </div>
+            </div>
+            <div className="status-container">
+                <div
+                className={`info ${status === 'info' ? 'active' : ''}`}
+                onClick={() => setStatus('info')}
+                ><FontAwesomeIcon icon={faUser} />사용자 정보</div>
+                <div
+                className={`chat ${status === 'chat' ? 'active' : ''}`}
+                onClick={() => setStatus('chat')}
+                ><FontAwesomeIcon icon={faComment} />채팅 기록</div>
+
+            </div>
+            <div className="card-status">
+                <small><FontAwesomeIcon icon={faIdBadge} />ID</small>
+                <h2>{info.id}</h2>
+                <small><FontAwesomeIcon icon={faSignature} />NAME</small>
+                <h2>명희승</h2>
             </div>
 
 
