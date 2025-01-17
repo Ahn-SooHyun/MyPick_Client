@@ -124,11 +124,11 @@ function UserDeatail({ info }) {
                 <small><FontAwesomeIcon icon={faSignature} />NAME</small>
                 <h2>{info.name}</h2>
             </div>
-            <div className="stop">
+            <div className="option">
                 <div className="title">
                 <FontAwesomeIcon icon={faStop} /><span>상태</span>
                 </div>
-                <div className="stop-action">
+                <div className="option-action">
                     <label>
 
                         {/*** 활동 중  false -/ 정지 true */}
@@ -149,6 +149,29 @@ function UserDeatail({ info }) {
             </div>
             
 
+            <div className="option">
+                <div className="title">
+                <FontAwesomeIcon icon={faStop} /><span>상태</span>
+                </div>
+                <div className="option-action">
+                    <label>
+
+                        {/*** 활동 중  false -/ 정지 true */}
+                        {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
+                        {/** null은 체크 안 되게 */}
+
+                        <input type="checkbox" checked={stopStatus} onChange={() => {setStopStatus(!stopStatus); }}
+
+                        />
+                            <text>Off</text>
+                            <text>On</text>
+                            <div class="angle"></div>
+                    </label>
+                
+                    {/*** stopStatus의 값에 따라서 값 표시*/}
+                    <span className={stopStatus ? 'span-stop' : 'span-active'}>{stopStatus ? '정지' : '활동'}</span>
+                </div>
+            </div>
     
         </div>
     );
