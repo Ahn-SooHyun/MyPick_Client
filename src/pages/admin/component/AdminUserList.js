@@ -68,6 +68,17 @@ export default function AdminUserList() {
 
                 </tbody>
             </table>
+
+            <UserDeatail />
+        </div>
+    );
+}
+
+
+function UserDeatail() {
+    return (
+        <div className="user-detail-container">
+            <h1>User Detail</h1>
         </div>
     );
 }
