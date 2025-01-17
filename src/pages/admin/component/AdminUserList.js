@@ -1,7 +1,7 @@
 import './AdminUserList.css';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie, faDeleteLeft, faFloppyDisk, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie, faDeleteLeft, faFloppyDisk, faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function AdminUserList() {
@@ -10,76 +10,96 @@ export default function AdminUserList() {
 
     return (
         <div className="admin-user-list-container">
+
             <h1>User List</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>닉네임</th>
-                        <th>ID</th>
-                        <th>이름</th>
-                        <th>활동 상태</th>
-                        <th>마지막 기록</th>
-                    </tr>
-                </thead>
 
-                <tbody>
-                    <tr className="user" onClick={() => { setUserInfo({id: 'broccoli', name: '브로 콜리', step: 'user', status: ''})}}>
-                        <td>broccoli</td>
-                        <td>broccoli123</td>
-                        <td>브로 콜리</td>
-                        <td><div className="active-status"></div>활동</td>
-                        <td>2025-01-01</td>
-                    </tr>
-                    <tr className="admin" onClick={() => { setUserInfo({id: 'admin', name: '관리자', step: 'admin', status: ''})}}>
-                        <td>Admin</td>
-                        <td>admin123</td>
-                        <td>관리자</td>
-                        <td><div className="active-status"></div>활동</td>
-                        <td>2025-01-01</td>
-                    </tr>
-                    <tr className="user" onClick={() => { setUserInfo({id: 'carrot', name: '당근이', step: 'user', status: '2025-01-01'})}}>
-                        <td>carrot</td>
-                        <td>carrot456</td>
-                        <td>당근이</td>
-                        <td><div className="stop-status"></div>정지</td>
-                        <td>2025-01-02</td>
-                    </tr>
-                    <tr className="user" onClick={() => { setUserInfo({id: 'potato', name: '감자킹', step: 'user', status: ''})}}>
-                        <td>potato</td>
-                        <td>potato789</td>
-                        <td>감자킹</td>
-                        <td><div className="active-status"></div>활동</td>
-                        <td>2025-01-03</td>
-                    </tr>
-                    <tr className="user" onClick={() => { setUserInfo({id: 'cucumber', name: '오이짱', step: 'user', status: ''})}}>
-                        <td>cucumber</td>
-                        <td>cucumber321</td>
-                        <td>오이짱</td>
-                        <td><div className="active-status"></div>활동</td>
-                        <td>2025-01-04</td>
-                    </tr>
-                    <tr className="user" onClick={() => { setUserInfo({id: 'tomato', name: '토마토맨', step: 'user', status: ''})}}>
-                        <td>tomato</td>
-                        <td>tomato654</td>
-                        <td>토마토맨</td>
-                        <td><div className="active-status"></div>활동</td>
-                        <td>2025-01-05</td>
-                    </tr>
-                    <tr className="user" onClick={() => { setUserInfo({id: 'lettuce', name: '상추씨', step: 'user', status: ''})}}>
-                        <td>lettuce</td>
-                        <td>lettuce987</td>
-                        <td>상추씨</td>
-                        <td><div className="active-status"></div>활동</td>
-                        <td>2025-01-06</td>
-                    </tr>
+            <div className="search">
 
-                </tbody>
-            </table>
+                <select className="search-select">
+                    <option value="all">전체</option>
+                    <option value="user">닉네임</option>
+                    <option value="admin">아이디</option>
+                    <option value="status">이름</option>
+                </select>
 
-            {userInfo && <UserDeatail info={userInfo}
-                handleClose={() => setUserInfo('')}
-            />}
+                <input type="text" className="search-input" placeholder="검색" />
 
+                <button className="search-button">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    <span>검색</span>
+                </button>
+
+            </div>
+            <div className="list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>닉네임</th>
+                            <th>ID</th>
+                            <th>이름</th>
+                            <th>활동 상태</th>
+                            <th>마지막 기록</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr className="user" onClick={() => { setUserInfo({id: 'broccoli', name: '브로 콜리', step: 'user', status: ''})}}>
+                            <td>broccoli</td>
+                            <td>broccoli123</td>
+                            <td>브로 콜리</td>
+                            <td><div className="active-status"></div>활동</td>
+                            <td>2025-01-01</td>
+                        </tr>
+                        <tr className="admin" onClick={() => { setUserInfo({id: 'admin', name: '관리자', step: 'admin', status: ''})}}>
+                            <td>Admin</td>
+                            <td>admin123</td>
+                            <td>관리자</td>
+                            <td><div className="active-status"></div>활동</td>
+                            <td>2025-01-01</td>
+                        </tr>
+                        <tr className="user" onClick={() => { setUserInfo({id: 'carrot', name: '당근이', step: 'user', status: '2025-01-01'})}}>
+                            <td>carrot</td>
+                            <td>carrot456</td>
+                            <td>당근이</td>
+                            <td><div className="stop-status"></div>정지</td>
+                            <td>2025-01-02</td>
+                        </tr>
+                        <tr className="user" onClick={() => { setUserInfo({id: 'potato', name: '감자킹', step: 'user', status: ''})}}>
+                            <td>potato</td>
+                            <td>potato789</td>
+                            <td>감자킹</td>
+                            <td><div className="active-status"></div>활동</td>
+                            <td>2025-01-03</td>
+                        </tr>
+                        <tr className="user" onClick={() => { setUserInfo({id: 'cucumber', name: '오이짱', step: 'user', status: ''})}}>
+                            <td>cucumber</td>
+                            <td>cucumber321</td>
+                            <td>오이짱</td>
+                            <td><div className="active-status"></div>활동</td>
+                            <td>2025-01-04</td>
+                        </tr>
+                        <tr className="user" onClick={() => { setUserInfo({id: 'tomato', name: '토마토맨', step: 'user', status: ''})}}>
+                            <td>tomato</td>
+                            <td>tomato654</td>
+                            <td>토마토맨</td>
+                            <td><div className="active-status"></div>활동</td>
+                            <td>2025-01-05</td>
+                        </tr>
+                        <tr className="user" onClick={() => { setUserInfo({id: 'lettuce', name: '상추씨', step: 'user', status: ''})}}>
+                            <td>lettuce</td>
+                            <td>lettuce987</td>
+                            <td>상추씨</td>
+                            <td><div className="active-status"></div>활동</td>
+                            <td>2025-01-06</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                {userInfo && <UserDeatail info={userInfo}
+                    handleClose={() => setUserInfo('')}
+                />}
+            </div>
         </div>
     );
 }
