@@ -176,13 +176,14 @@ function UserDeatail({ info, handleClose }) {
     
     // info가 변경될 때만 step도 업데이트되도록 useEffect 내에서 처리
     useEffect(() => {
-        if (info && info.step !== userInfo?.step) {
-            setUserInfo(prevInfo => ({
-                ...prevInfo,
-                step: info.step
-            }));
-        }
+
+        setUserInfo(info);
     }, [info]);
+
+
+    useEffect(() => {
+        console.log('step', userInfo.step);
+    }, [userInfo]);
 
 
 
