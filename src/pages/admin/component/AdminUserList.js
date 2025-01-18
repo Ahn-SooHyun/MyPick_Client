@@ -131,12 +131,12 @@ export default function AdminUserList() {
 function UserDeatail({ info, handleClose }) {
 
 
-    const [userInfo, setUserInfo] = useState(info);
+    const [userInfo, setUserInfo] = useState(info); // 사용자 정보 랜더링 위해 사용
 
     const [status, setStatus] = useState('info'); // 사용자 정보 / 채팅기록 전환
 
     const [stopStatus, setStopStatus] = useState(userInfo.status === '' || userInfo.status === null ? false : true );
-    const [adminStatus, setAdminStatus] = useState(userInfo.step === 'admin' ? true : false);
+    const [adminStatus, setAdminStatus] = useState(userInfo.step === 'admin' ? false : true);
 
     const [chatOpen, setChatOpen] = useState(null);    //채팅방 클릭 유무
 
@@ -174,8 +174,7 @@ function UserDeatail({ info, handleClose }) {
         },
     ]);
     
-    
-    // info가 변경될 때마다 step도 업데이트되도록 useEffect 내에서 처리
+    // info가 변경될 때만 step도 업데이트되도록 useEffect 내에서 처리
     useEffect(() => {
         if (info && info.step !== userInfo?.step) {
             setUserInfo(prevInfo => ({
@@ -183,7 +182,7 @@ function UserDeatail({ info, handleClose }) {
                 step: info.step
             }));
         }
-    }, [info, userInfo]);
+    }, [info]);
 
 
 
@@ -262,16 +261,26 @@ function UserDeatail({ info, handleClose }) {
                             {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
                             {/** null은 체크 안 되게 */}
 
-                            <input type="checkbox" checked={userInfo.step === 'admin' ? false : true} onChange={() => {setAdminStatus(!adminStatus); }}
-
+                            <input
+                                type="checkbox"
+                                checked={userInfo.step === 'user'}
+                                onChange={(e) => {
+                                    const newStep = e.target.checked ? 'user' : 'admin';
+                                    setUserInfo(prevInfo => ({
+                                        ...prevInfo,
+                                        step: newStep
+                                    }));
+                                }}
                             />
                                 <text>user</text>
                                 <text>admin</text>
-                                <div class="angle"></div>
+                                <div className="angle"></div>
                         </label>
                     
                         {/*** stopStatus의 값에 따라서 값 표시*/}
-                        <span className={`result ${userInfo.step === 'admin' ?  'status-admin' : 'status-user'}`}>{userInfo.step === 'admin' ? '관리자' : '사용자'}</span>
+                        <span className={`result ${userInfo.step === 'admin' ? 'status-admin' : 'status-user'}`}>
+                            {userInfo.step === 'admin' ? '관리자' : '사용자'}
+                        </span>
                     </div>
                 </div>
             </div>
