@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import './AdminNotice.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 // 모달 컴포넌트
 function Modal({ isOpen, onClose, onAdd }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+
+    const handleClose = () => {
+        setTitle('');
+        setContent('');
+        onClose();
+    };
+
+
 
     const handleAdd = () => {
         if (title && content) {
@@ -21,6 +31,9 @@ function Modal({ isOpen, onClose, onAdd }) {
         <div className="admin-notice-modal">
             <div className="admin-notice-modal-content">
                 <h2>공지사항 추가</h2>
+                <div className="exit" onClick={onClose}>
+                    <FontAwesomeIcon icon={faXmark} />닫기
+                </div>
                 <input
                     type="text"
                     placeholder="제목"
@@ -32,9 +45,10 @@ function Modal({ isOpen, onClose, onAdd }) {
                     placeholder="내용"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                    className="notice-content"
                 />
-                <button onClick={handleAdd}>추가</button>
-                <button onClick={onClose}>취소</button>
+                <button className="add-button" onClick={handleAdd}>추가</button>
+                <button className="cancel-button" onClick={onClose}>취소</button>
             </div>
         </div>
     );
@@ -76,20 +90,38 @@ function AdminNoticeBoard() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button>검색</button>
+                    <button className="search-button">검색</button>
                 </div>
-                <button onClick={() => setIsModalOpen(true)}>공지사항 추가</button>
+                <button className="add-button"
+                onClick={() => setIsModalOpen(true)}>공지사항 추가</button>
             </div>
 
             {/** 공지사항 목록 */}
             <ul>
+
                 {notices.filter(notice => notice.title.toLowerCase().includes(searchTerm.toLowerCase())).map(notice => (
-                    <li key={notice.id} className="notice-item">
+                    <li key={notice.id} className="notice-item"
+                    onClick={() => toggleNotice(notice.id)}
+                    >
                         <h2
-                            onClick={() => toggleNotice(notice.id)}
                             className={`notice-header ${openNoticeId === notice.id ? 'active' : ''}`}
                         >
-                            {notice.title}
+                            <div className="notice-header-content">
+                                <span>
+                                    {notice.title}
+                                </span>
+                                <button 
+                                    className="delete-button"
+                                    onClick={() => {
+                                        setNotices(notices.filter(n => n.id !== notice.id));
+                                        if (openNoticeId === notice.id) {
+                                            setOpenNoticeId(null);
+                                        }
+                                    }}
+                                >
+                                    삭제
+                                </button>
+                            </div>
                         </h2>
                         {openNoticeId === notice.id && (
                             <p className="notice-content">
@@ -98,6 +130,7 @@ function AdminNoticeBoard() {
                         )}
                     </li>
                 ))}
+
             </ul>
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={addNotice} />
         </div>

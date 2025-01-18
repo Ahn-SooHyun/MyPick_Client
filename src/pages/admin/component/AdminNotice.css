@@ -5,31 +5,56 @@
     height: 100%;
 }
 
-.notice-title {
+.admin-notice-list-container .notice-title {
     color: #ecf0f1;
     font-size: 28px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.controls {
+.admin-notice-list-container .controls {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.left-controls {
+.admin-notice-list-container .left-controls {
     display: flex;
     align-items: center;
 }
 
-.left-controls input {
+/** 검색 입력창 */
+.admin-notice-list-container  .left-controls input:nth-child(1) {
+    width: 400px;
     margin-right: 10px;
     padding: 5px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
-button {
+/** 검색 버튼 */
+.admin-notice-list-container .left-controls button.search-button {
+    width: 100px;
+    margin-right: 10px;
     padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: #38393a;
+    color: #ecf0f1;
+    cursor: pointer;
+}
+
+/** 공지사항 추가 버튼 */
+.admin-notice-list-container .controls button.add-button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: #e74c3c;
+    color: #ecf0f1;
+    cursor: pointer;
 }
 
 .admin-notice-list-container ul {
@@ -55,8 +80,34 @@ button {
     border-radius: 5px;
 }
 
+.admin-notice-list-container li.notice-item .notice-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-notice-list-container li.notice-item .notice-header-content span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ecf0f1;
+    
+    cursor: pointer;
+}
+
+.admin-notice-list-container li.notice-item .notice-header-content button {
+    background-color: #e74c3c;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-right: 10px;
+    color: #ecf0f1;
+    cursor: pointer;
+}
+
+
 .admin-notice-list-container li.notice-item .notice-header.active {
-    background-color: #bdc3c7;
+    background-color: #38393a;
 }
 
 .admin-notice-list-container li.notice-item .notice-content {
@@ -69,32 +120,121 @@ button {
     min-height: 200px;
 }
 
+
+/** 공지사항 추가 모달 */
 .admin-notice-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.admin-notice-modal-content {
+.admin-notice-modal h2 {
+    color: #38393a;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.admin-notice-modal .admin-notice-modal-content {
+    position: relative;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    width: 400px;
+    width: 500px;
+    height: 740px;
 }
 
-.admin-notice-modal-content input {
+.admin-notice-modal .admin-notice-modal-content input {
     margin-bottom: 10px;
     width: 100%;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 5px;
+
+    font-size: 1.5rem;
+
+    
+    padding-top: 10px;
 }
 
-.admin-notice-modal-content button {
+.admin-notice-modal .admin-notice-modal-content .notice-content {
+    padding-top: 10px;
+    height: 500px;
+}
+
+/* placholder가  위에 적용되도록 */
+.admin-notice-modal .admin-notice-modal-content input::placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
+/** 공지사항 내용 입력창 위에서부터 적용 되도록 */
+.admin-notice-modal .admin-notice-modal-content .notice-content {
+    padding-top: 10px;
+}
+
+
+/** 추가는  빨간색 취소는 회색*/
+.admin-notice-modal .admin-notice-modal-content button {
     margin-right: 10px;
     padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-notice-modal .admin-notice-modal-content button.add-button {
+    margin-left: 10px;
+    background-color: #e74c3c;
+    color: #ecf0f1;
+}
+
+.admin-notice-modal .admin-notice-modal-content button.add-button:hover {
+    background-color: #c0392b;
+}
+
+.admin-notice-modal .admin-notice-modal-content button.cancel-button {
+    background-color: #38393a;
+    color: #ecf0f1;
+    margin-left: 10px;
+    text-align: right;
+}
+
+.admin-notice-modal .admin-notice-modal-content button.cancel-button:hover {
+    background-color: #2c3e50;
+}
+
+.admin-notice-modal .admin-notice-modal-content .exit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    color: #ecf0f1;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #38393a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
 }
