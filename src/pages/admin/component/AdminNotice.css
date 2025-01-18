@@ -1,0 +1,6 @@
+.admin-notice-list-container {
+    position: relative;
+    margin-left: calc(var(--sidebar-width-open) + 15px);
+    width: calc(100vw - var(--sidebar-width-open) - 180px);
+    height: 100%;
+}
