@@ -136,6 +136,39 @@ function UserDeatail({ info, handleClose }) {
     const [adminStatus, setAdminStatus] = useState(info.step === 'admin' ? true : false);
 
 
+    const [chatList, setChatList] = useState([
+        {
+            id: 1,
+            title: '채팅 방 1',
+            lastChat: '2025-01-18',
+        },
+        {
+            id: 2,
+            title: '채팅 방 2',
+            lastChat: '2025-01-17',
+        },
+        {
+            id: 3,
+            title: '채팅 방 3',
+            lastChat: '2025-01-13',
+        },
+        {
+            id: 4,
+            title: '채팅 방 4',
+            lastChat: '2025-01-04',
+        },
+        {
+            id: 5,
+            title: '채팅 방 5',
+            lastChat: '2025-01-05',
+        },
+        {
+            id: 6,
+            title: '채팅 방 6',
+            lastChat: '2025-01-06',
+        },
+    ]);
+
     return (
         <div className="user-detail-container">
             <div className="info">
@@ -222,46 +255,49 @@ function UserDeatail({ info, handleClose }) {
                 </div>
             </div>
 
-            <div className={`${status === 'chat' ? 'status-chat-on' : 'status-chat-off'}`}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
+            <div className={`${status === 'chat' ? 'status-chat-on' : 'status-chat-off'}`} >
                 <div className="chat-container">
-                    <div className="chat-item">
-                        <div>
-                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-0"> 오늘</span>
+
+                    {chatList.map((item, index) => (
+                        <div className="chat-item" key={index} data-index={item.id}>
+                            <div>
+
+                                <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span className={(() => {
+                                    const today = new Date();
+                                    const lastChat = new Date(item.lastChat);
+                                    const diffDays = Math.floor((today - lastChat) / (1000 * 60 * 60 * 24));
+                                    
+                                    switch(diffDays) {
+                                        case 0:
+                                            return 'now';
+                                        case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+                                            return 'day-'+diffDays;
+                                        default:
+                                            return 'old';
+                                    }
+                                })()}>
+
+                                {(() => {
+                                    const today = new Date();
+                                    const lastChat = new Date(item.lastChat);
+                                    const diffDays = Math.floor((today - lastChat) / (1000 * 60 * 60 * 24));
+                                    
+                                    switch(diffDays) {
+                                        case 0:
+                                            return 'now';
+                                        case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+                                            return 'day-'+diffDays;
+                                        default:
+                                            return 'old';
+                                    }
+                                })()}
+                                </span>
                         </div>
                         <div>
-                            <span>채팅 방 1</span>
+                            <span>{item.title}</span>
                         </div>
                     </div>
-                    <div className="chat-item">
-                        <div>
-                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-1"> day-1 </span>
-                        </div>
-                        <div>
-                            <span>채팅 방 2</span>
-                        </div>
-                    </div>
-                    <div className="chat-item">
-                        <div>
-                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-2"> day-2</span>
-                        </div>
-                        <div>
-                            <span>채팅 방 3</span>
-                        </div>
-                    </div>
-                    <div className="chat-item">
-                        <div>
-                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-3"> day-3</span>
-                        </div>
-                        <div>
-                            <span>채팅 방 4</span>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
             </div>

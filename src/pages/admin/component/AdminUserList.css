@@ -339,6 +339,12 @@
     display: none;
 }
 
+.user-detail-container .status-chat-on {
+    display: 'flex';
+    justify-content: 'center';
+    align-items: 'center';
+}
+
 .user-detail-container .status-chat-off {
     display: none;
 }
@@ -606,6 +612,8 @@
     height: 12%;
 
     display: flex;
+
+    cursor: pointer;
 }
 
 .chat-container .chat-item:nth-child(2n-1) {
