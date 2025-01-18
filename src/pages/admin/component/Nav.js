@@ -1,74 +1,71 @@
-import '../AdminMain.css';
-import MainLogo from '../../../assets/img/mypick-logo.png';
-import Hamsic from '../../../assets/img2/joinImg.jpg';
-import { useState, useEffect } from 'react';
+import './Nav.css';
+import 캐릭터 from '../../../assets/img/broccoli.png';
+import { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faFlag, faUser, faMugSaucer, faDoorOpen, faEnvelope, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
 
-    const menuList = ['Home', 'User', 'Notice'];
+    const [isOpen, setIsOpen] = useState(false);
+    const [isClick, setIsClick] = useState('dashboard');
 
-    const [menuOpen, setMenuOpen] = useState(false);            //nav 메뉴 열기 상태 ( false : 닫힘, true : 열림)
-    const [navMenuHover, setNavHoverMenu] = useState('home');   //mouse 올리기
-    const [navMenuClick, setNavMenuClick] = useState('home');   //Click
-
-    useEffect(() => {
-        console.log(navMenuHover);
-    }, [navMenuHover]);
-
-    function testcon() {
-        console.log('1234');
-    }
 
     return (
-            
-            <div className={`admin-nav ${menuOpen? 'menu-open' : ''}`}
-            onMouseOver={() => setMenuOpen(true)}
-            onMouseOut={() => setMenuOpen(false)}> {/* 네비게이션 컨테이너 */}
+        <div className={`sidebar ${isOpen ? 'open' : 'close'}`}
+        >
 
-                {/* Navvigation Title 부분 */}
-                <div className="admin-nav-title"></div>
+            <div className="logo">
+                <div className="img"></div>
+            </div>
 
-                {/* 네비게이션 메뉴 부분 */}
+            {/** menu 설정 */}
+            <div className="menu">
+                <div className={`item ${isClick === 'dashboard' ? 'active' : ''}`}
+                    onClick={() => setIsClick('dashboard')}
+                ><FontAwesomeIcon icon={faFlag} /><span>Dashboard</span></div>
+                <div className={`item ${isClick === 'users' ? 'active' : ''}`}
+                    onClick={() => setIsClick('users')}
+                ><FontAwesomeIcon icon={faUser} /><span>Users</span></div>
+                <div className={`item ${isClick === 'notice' ? 'active' : ''}`}
+                    onClick={() => setIsClick('notice')}
+                ><FontAwesomeIcon icon={faMugSaucer} /><span>Notice</span></div>
                 
-                <div className="admin-nav-menu">
+            </div>
 
-                    {menuList.map((menu, index) => (
-                        <div className={`admin-nav-menu-item
-                            ${navMenuHover == menu? 'menu-item-active' : ''}
-                            ${navMenuClick == menu? 'menu-item-click' : ''}
-                            }`}
-                            onMouseOver={() => setNavHoverMenu(menu)}
-                            onMouseOut={() => setNavHoverMenu('')}
-                            onClick={() => setNavMenuClick(menu)}>
-                            <div className="admin-nav-menu-item-title"></div>
-                            <div className="admin-nav-menu-item-content">{menu}</div>
-                        </div>
-                    ))}
+            <div className="nav-close">
+                <div className="item"
+                    onClick={() => setIsOpen(!isOpen)}  
+                ><FontAwesomeIcon icon={faDoorOpen} /><span>Close</span></div>
+            </div>
 
+
+            {/** 사용자 정보 부분 */}
+            <div className="sidebar-user">
+                <img src={캐릭터} alt="캐릭터" />
+                <div className="sidebar-user-info">
+                    {/** 사용자 정보 부분 */}
+                    <div className="icon">
+                        <div><FontAwesomeIcon icon={faUser} /></div>
+                        <div><FontAwesomeIcon icon={faEnvelope} /></div>
+                        
+                    </div>
+                    <div className="info">
+                        <user>broccoli Piu</user>
+                        <span>mollangpiu@gmail.com</span>
+                    </div>
+                        
+                    
                 </div>
 
-                <div className="admin-bottom-menu">
-                    <div className="admin-profile">
-                        {/** 프로파일 영역 */}
-                        <div className="admin-profile-img">
-                            <img src={Hamsic} alt="admin-profile-img" />
-                        </div>
-                        <div className="admin-profile-name">
-                            <span>MollangPiu</span>
-                        </div>
-                    </div>
-
-                    {/** 설정 버튼 */}
-                    <div className="admin-btn admin-setting">
-                        <div className="icon"></div>
-                        <div className="text">Setting</div>
-                    </div>
-                    {/* 로그아웃 버튼 */}
-                    <div className="admin-btn  admin-logout">
-                        <div className="icon"></div>
-                        <div className="text">Logout</div>
-                    </div>
+                
+            </div>
+            {/** 로그아웃 버튼 부분 */}
+            <div className="sidebar-option">
+                <div><FontAwesomeIcon icon={faArrowRightFromBracket} />
+                <span>LOG OUT</span>
                 </div>
             </div>
+        </div>
+            
     );
 }
