@@ -54,6 +54,14 @@ function Modal({ isOpen, onClose, onAdd }) {
     );
 }
 
+
+
+
+
+
+
+
+
 // 공지사항 컴포넌트
 function AdminNoticeBoard() {
     const [notices, setNotices] = useState([
