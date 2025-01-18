@@ -130,7 +130,7 @@ export default function AdminUserList() {
 
 function UserDeatail({ info, handleClose }) {
 
-    const [status, setStatus] = useState('info');
+    const [status, setStatus] = useState('info'); // 사용자 정보 / 채팅기록 전환
 
     const [stopStatus, setStopStatus] = useState(info.status === '' || info.status === null ? false : true );
     const [adminStatus, setAdminStatus] = useState(info.step === 'admin' ? true : false);
@@ -170,52 +170,55 @@ function UserDeatail({ info, handleClose }) {
                 <small><FontAwesomeIcon icon={faSignature} />NAME</small>
                 <h2>{info.name}</h2>
             </div>
-            <div className="option stop">
-                <div className="title">
-                <FontAwesomeIcon icon={faStop} /><span>상태</span>
+
+            <div>
+                <div className="option stop">
+                    <div className="title">
+                    <FontAwesomeIcon icon={faStop} /><span>상태</span>
+                    </div>
+                    <div className="option-action">
+                        <label>
+
+                            {/*** 활동 중  false -/ 정지 true */}
+                            {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
+                            {/** null은 체크 안 되게 */}
+
+                            <input type="checkbox" checked={stopStatus} onChange={() => {setStopStatus(!stopStatus); }}
+
+                            />
+                                <text>Off</text>
+                                <text>On</text>
+                                <div class="angle"></div>
+                        </label>
+                    
+                        {/*** stopStatus의 값에 따라서 값 표시*/}
+                        <span className={stopStatus ? 'status-active' : 'status-stop'}>{stopStatus ? '정지' : '활동'}</span>
+                    </div>
                 </div>
-                <div className="option-action">
-                    <label>
-
-                        {/*** 활동 중  false -/ 정지 true */}
-                        {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
-                        {/** null은 체크 안 되게 */}
-
-                        <input type="checkbox" checked={stopStatus} onChange={() => {setStopStatus(!stopStatus); }}
-
-                        />
-                            <text>Off</text>
-                            <text>On</text>
-                            <div class="angle"></div>
-                    </label>
                 
-                    {/*** stopStatus의 값에 따라서 값 표시*/}
-                    <span className={stopStatus ? 'status-active' : 'status-stop'}>{stopStatus ? '정지' : '활동'}</span>
-                </div>
-            </div>
-            
 
-            <div className="option admin">
-                <div className="title">
-                <FontAwesomeIcon icon={faUserTie} /><span>관리자</span>
-                </div>
-                <div className="option-action">
-                    <label>
+                <div className="option admin">
+                    <div className="title">
+                    <FontAwesomeIcon icon={faUserTie} /><span>관리자</span>
+                    </div>
+                    <div className="option-action">
+                        <label>
 
-                        {/*** 활동 중  false -/ 정지 true */}
-                        {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
-                        {/** null은 체크 안 되게 */}
+                            {/*** 활동 중  false -/ 정지 true */}
+                            {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
+                            {/** null은 체크 안 되게 */}
 
-                        <input type="checkbox" checked={!adminStatus} onChange={() => {setAdminStatus(!adminStatus); }}
+                            <input type="checkbox" checked={!adminStatus} onChange={() => {setAdminStatus(!adminStatus); }}
 
-                        />
-                            <text>user</text>
-                            <text>admin</text>
-                            <div class="angle"></div>
-                    </label>
-                
-                    {/*** stopStatus의 값에 따라서 값 표시*/}
-                    <span className={`result ${adminStatus ?  'status-admin' : 'status-user'}`}>{adminStatus ? '관리자' : '사용자'}</span>
+                            />
+                                <text>user</text>
+                                <text>admin</text>
+                                <div class="angle"></div>
+                        </label>
+                    
+                        {/*** stopStatus의 값에 따라서 값 표시*/}
+                        <span className={`result ${adminStatus ?  'status-admin' : 'status-user'}`}>{adminStatus ? '관리자' : '사용자'}</span>
+                    </div>
                 </div>
             </div>
 
