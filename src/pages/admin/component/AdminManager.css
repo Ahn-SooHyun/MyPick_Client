@@ -1,14 +1,9 @@
-:root {
-    --card-background-color: linear-gradient(0deg, #1b1b1b, #222, #1b1b1b);
-}
-
 /** 관리자페이지 기본 설정 */
 .dashboard-default {
     position: relative;
     margin-left: calc(var(--sidebar-width-close) + 15px);
     width: calc(100vw - var(--sidebar-width-close) - 20px);
     height: 100%;
-    border: 3px solid red;
 }
 
 .admin-manager-container {

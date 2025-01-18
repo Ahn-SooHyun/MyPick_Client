@@ -1,14 +1,3 @@
-
-:root {
-    --sidebar-width-open: 400px;
-    --sidebar-width-close: 100px;
-
-    --admin-nav-color: #fff;
-    --admin-nav-hover-color: ##1a202e;
-    --admin-nav-hover-color-2: #191919;
-    --sidebar-hover: #BE3144;
-}
-
 .sidebar {
     position: absolute;
     top: 0;
