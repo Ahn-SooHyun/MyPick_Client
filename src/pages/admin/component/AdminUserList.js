@@ -135,6 +135,8 @@ function UserDeatail({ info, handleClose }) {
     const [stopStatus, setStopStatus] = useState(info.status === '' || info.status === null ? false : true );
     const [adminStatus, setAdminStatus] = useState(info.step === 'admin' ? true : false);
 
+    const [chatOpen, setChatOpen] = useState(false);
+
 
     const [chatList, setChatList] = useState([
         {
@@ -261,7 +263,8 @@ function UserDeatail({ info, handleClose }) {
                 <div className="chat-container">
 
                     {chatList.map((item, index) => (
-                        <div className="chat-item" key={index} data-index={item.id}>
+                        <div className="chat-item" key={index} data-index={item.id}
+                        onClick={() => {setChatOpen(true);}}>
                             <div>
 
                                 <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span className={(() => {
@@ -314,13 +317,13 @@ function UserDeatail({ info, handleClose }) {
             </div>
 
             
-            <ChatContainer />
+            {chatOpen && <ChatContainer eventClose={() => setChatOpen(false)}/>}
     
         </div>
     );
 }
 
-function ChatContainer({info}) {
+function ChatContainer({info, eventClose}) {
 
     /***info 안에는 chatList idx, chatList가 열은 userId가 들어 있음.  */
     const [target, setTarget] = useState({'userId': 'a1', 'chatIdx': 1});
@@ -371,6 +374,19 @@ function ChatContainer({info}) {
 
     return (
         <div className="chat-content-container">
+            <div className="close-btn" 
+                onClick={() => eventClose(false)} 
+                style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    cursor: 'pointer',
+                    color: '#fff',
+                    fontSize: '24px',
+                    zIndex: 10
+                }}>
+                ×
+            </div>
             {chatContentList.map((item, index) => (
                 
                 <div className={`chat-content-item ${item.userId === target.userId ? 'eq' : 'ne'}`} key={index}>
