@@ -689,64 +689,48 @@
 .chat-content-item {
     margin: 30px;
     display: flex;
-    margin-bottom: 10px;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
 }
 
 .chat-content-item.eq {
-    flex-direction: row-reverse;
+    align-items: flex-end; /* Align to the right for 'eq' */
 }
 
 .chat-content-item.ne {
-    justify-content: flex-start;
+    align-items: flex-start; /* Align to the left for 'ne' */
 }
 
 .chat-content-item-user {
-    display: none; /* 사용자 ID는 숨김 */
+    font-size: 1.2em;
+    color: #007bff;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .chat-content-item-content {
-    max-width: 70%;
+    background-color: #f0f0f0;
     padding: 10px;
-    border-radius: 15px;
-    position: relative;
-    font-size: 20px;
-    line-height: 1.4;
+    border-radius: 10px;
+    max-width: 60%;
+    font-size: 1.1em;
 }
 
 .chat-content-item.eq .chat-content-item-content {
-    background-color: #DCF8C6; /* 사용자 메시지 색상 */
-    color: #000;
-    border-bottom-right-radius: 0;
+    background-color: #007bff;
+    color: white;
 }
 
 .chat-content-item.ne .chat-content-item-content {
-    background-color: #FFF;
-    color: #000;
-    border-bottom-left-radius: 0;
-    border: 1px solid #ddd;
+    background-color: #e0e0e0;
+    color: #333;
 }
 
-.chat-content-item-content::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-}
-
-.chat-content-item.eq .chat-content-item-content::after {
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent #DCF8C6;
-    right: -10px;
-    top: 10px;
-}
-
-.chat-content-item.ne .chat-content-item-content::after {
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #FFF transparent transparent;
-    left: -10px;
-    top: 10px;
+.chat-content-item-time {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
 }
 
 .suspension-buttons {
@@ -787,4 +771,17 @@
     color: #555;
     width: 100%; /* Ensure it takes full width */
     text-align: left; /* Align text to the left */
+}
+
+.close-btn {
+    position: absolute; /* Position relative to the chat-content-container */
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    z-index: 1000; /* Ensure it is above other elements */
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add background for visibility */
+    padding: 5px; /* Optional: Add padding for better click area */
+    border-radius: 50%; /* Optional: Make it circular */
 }

@@ -1,5 +1,5 @@
 import './AdminUserList.css';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie, faDeleteLeft, faFloppyDisk, faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
@@ -394,7 +394,7 @@ function UserDeatail({ info, handleClose }) {
     );
 }
 
-function ChatContainer({info, eventClose}) {
+function ChatContainer({ info, eventClose }) {
 
     /***info 안에는 chatList idx, chatList가 열은 userId가 들어 있음.  */
     const [target, setTarget] = useState({'userId': 'a1', 'chatIdx': 1});
@@ -443,41 +443,35 @@ function ChatContainer({info, eventClose}) {
         },
     ];
 
+    const chatEndRef = useRef(null);
+
+    useEffect(() => {
+        if (chatEndRef.current) {
+            chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [chatContentList]); // Dependency array to trigger on chat content change
+
     return (
-        <div className="chat-content-container">
-            <div className="close-btn" 
-                onClick={() => eventClose()} 
-                style={{
-                    position: 'absolute',
-                    top: '10px',
-                    right: '10px',
-                    cursor: 'pointer',
-                    color: '#fff',
-                    fontSize: '24px',
-                    zIndex: 10
-                }}>
+        <div className="chat-content-container" >
+            <div className="close-btn" onClick={eventClose}>
                 ×
             </div>
             {chatContentList.map((item, index) => (
-                
                 <div className={`chat-content-item ${item.userId === target.userId ? 'eq' : 'ne'}`} key={index}>
-                    <div className="chat-content-item-user">{item.userIdx}</div>
+                    <div className="chat-content-item-user">
+                        <strong>ID: {item.userId}</strong>
+                    </div>
                     <div className="chat-content-item-content">{item.content}</div>
-                    <div className="chat-content-item-time" style={{
-                        fontSize: '12px',
-                        color: '#999',
-                        marginTop: '5px',
-                        marginLeft: '10px',
-                        margin: '0 20px'
-                    }}>
-                    {new Date().toLocaleTimeString('ko-KR', {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: true
-                    })}
+                    <div className="chat-content-item-time">
+                        {new Date().toLocaleTimeString('ko-KR', {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: true
+                        })}
                     </div>
                 </div>
             ))}
+            <div ref={chatEndRef} />
         </div>
     );
 }
