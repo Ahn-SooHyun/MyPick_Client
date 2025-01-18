@@ -130,10 +130,18 @@ export default function AdminUserList() {
 
 function UserDeatail({ info, handleClose }) {
 
+
+    const [userInfo, setUserInfo] = useState(info);
+
+    useEffect(() => {
+        console.log("반응");
+        setUserInfo(info);
+    }, [info]);
+
     const [status, setStatus] = useState('info'); // 사용자 정보 / 채팅기록 전환
 
-    const [stopStatus, setStopStatus] = useState(info.status === '' || info.status === null ? false : true );
-    const [adminStatus, setAdminStatus] = useState(info.step === 'admin' ? true : false);
+    const [stopStatus, setStopStatus] = useState(userInfo.status === '' || userInfo.status === null ? false : true );
+    const [adminStatus, setAdminStatus] = useState(userInfo.step === 'admin' ? true : false);
 
     const [chatOpen, setChatOpen] = useState(null);    //채팅방 클릭 유무
 
@@ -177,13 +185,16 @@ function UserDeatail({ info, handleClose }) {
         <div className="user-detail-container">
             <div className="info">
                 <div className="exit"
-                    onClick={handleClose}
+                    onClick={() => {
+                        setChatOpen(null);
+                        handleClose();
+                    }}
                 >
                 <FontAwesomeIcon icon={faXmark} />닫기
                 </div>
                 {/** 닉네임 위치 */}
                 <div className="nickName">
-                    {info.id}
+                    {userInfo.id}
                     <div className={`step ${adminStatus ? 'admin' : 'user'}`}>
                         <div></div>
                         <span>{adminStatus ? '관리자' : '사용자'}</span>
@@ -193,19 +204,19 @@ function UserDeatail({ info, handleClose }) {
             <div className="status-container">
                 <div
                 className={`info ${status === 'info' ? 'active' : ''}`}
-                onClick={() => setStatus('info')}
+                onClick={() => {setStatus('info'); setChatOpen(null);}}
                 ><FontAwesomeIcon icon={faUser} />사용자 정보</div>
                 <div
                 className={`chat ${status === 'chat' ? 'active' : ''}`}
-                onClick={() => setStatus('chat')}
+                onClick={() => {setStatus('chat'); setChatOpen(null);}}
                 ><FontAwesomeIcon icon={faComment} />채팅 기록</div>
 
             </div>
             <div className="card-status">
                 <small><FontAwesomeIcon icon={faIdBadge} />ID</small>
-                <h2>{info.id}</h2>
+                <h2>{userInfo.id}</h2>
                 <small><FontAwesomeIcon icon={faSignature} />NAME</small>
-                <h2>{info.name}</h2>
+                <h2>{userInfo.name}</h2>
             </div>
 
             <div className={`${status === 'info' ? 'status-info-on' : 'status-info-off'}`}>
