@@ -1,5 +1,5 @@
 import './AdminUserList.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie, faDeleteLeft, faFloppyDisk, faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
@@ -133,11 +133,6 @@ function UserDeatail({ info, handleClose }) {
 
     const [userInfo, setUserInfo] = useState(info);
 
-    useEffect(() => {
-        console.log("반응");
-        setUserInfo(info);
-    }, [info]);
-
     const [status, setStatus] = useState('info'); // 사용자 정보 / 채팅기록 전환
 
     const [stopStatus, setStopStatus] = useState(userInfo.status === '' || userInfo.status === null ? false : true );
@@ -180,6 +175,17 @@ function UserDeatail({ info, handleClose }) {
     ]);
     
     
+    // info가 변경될 때마다 step도 업데이트되도록 useEffect 내에서 처리
+    useEffect(() => {
+        if (info && info.step !== userInfo?.step) {
+            setUserInfo(prevInfo => ({
+                ...prevInfo,
+                step: info.step
+            }));
+        }
+    }, [info, userInfo]);
+
+
 
     return (
         <div className="user-detail-container">
@@ -195,9 +201,9 @@ function UserDeatail({ info, handleClose }) {
                 {/** 닉네임 위치 */}
                 <div className="nickName">
                     {userInfo.id}
-                    <div className={`step ${adminStatus ? 'admin' : 'user'}`}>
+                    <div className={`step ${userInfo.step === 'admin' ? 'admin' : 'user'}`}>
                         <div></div>
-                        <span>{adminStatus ? '관리자' : '사용자'}</span>
+                        <span>{userInfo.step === 'admin' ? '관리자' : '사용자'}</span>
                     </div>
                 </div>
             </div>
@@ -256,7 +262,7 @@ function UserDeatail({ info, handleClose }) {
                             {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
                             {/** null은 체크 안 되게 */}
 
-                            <input type="checkbox" checked={!adminStatus} onChange={() => {setAdminStatus(!adminStatus); }}
+                            <input type="checkbox" checked={userInfo.step === 'admin' ? false : true} onChange={() => {setAdminStatus(!adminStatus); }}
 
                             />
                                 <text>user</text>
@@ -265,7 +271,7 @@ function UserDeatail({ info, handleClose }) {
                         </label>
                     
                         {/*** stopStatus의 값에 따라서 값 표시*/}
-                        <span className={`result ${adminStatus ?  'status-admin' : 'status-user'}`}>{adminStatus ? '관리자' : '사용자'}</span>
+                        <span className={`result ${userInfo.step === 'admin' ?  'status-admin' : 'status-user'}`}>{userInfo.step === 'admin' ? '관리자' : '사용자'}</span>
                     </div>
                 </div>
             </div>
