@@ -55,7 +55,8 @@
   font-weight: bold;
   pointer-events: none;
   text-align: center;
-  /* -webkit-text-stroke-width: 2px;
+  font-family: 'jua';
+  /* -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #333; */
 }
 
