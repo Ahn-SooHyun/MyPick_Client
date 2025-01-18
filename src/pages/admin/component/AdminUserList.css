@@ -609,7 +609,7 @@
 .chat-container .chat-item {
     padding-top: 10px;
     padding-left: 20px;
-    width: 100%;
+    width: 80%;
     height: 12%;
 
     display: flex;
