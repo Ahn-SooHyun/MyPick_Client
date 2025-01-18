@@ -135,7 +135,11 @@ function UserDeatail({ info, handleClose }) {
 
     const [status, setStatus] = useState('info'); // 사용자 정보 / 채팅기록 전환
 
-    const [stopStatus, setStopStatus] = useState(userInfo.status === '' || userInfo.status === null ? false : true );
+    const [stopStatus, setStopStatus] = useState(userInfo.status !== '' && userInfo.status !== null);
+    const [suspensionDate, setSuspensionDate] = useState(userInfo.status || '');
+    const initialSuspensionDate = userInfo.status || ''; // Store the initial suspension date
+    const [addedDays, setAddedDays] = useState(0); // Track the total days added
+
     const [adminStatus, setAdminStatus] = useState(userInfo.step === 'admin' ? false : true);
 
     const [chatOpen, setChatOpen] = useState(null);    //채팅방 클릭 유무
@@ -186,6 +190,20 @@ function UserDeatail({ info, handleClose }) {
     }, [userInfo]);
 
 
+    const calculateSuspensionDate = (days) => {
+        const date = suspensionDate ? new Date(suspensionDate) : new Date();
+        date.setDate(date.getDate() + days);
+        return date.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+    };
+
+    const handleAddDays = (days) => {
+        setSuspensionDate(calculateSuspensionDate(days));
+        setAddedDays(prev => prev + days); // Correctly update addedDays
+    };
+
+    const formatAddedDays = (days) => {
+        return `${days}일`; // Display total days directly
+    };
 
     return (
         <div className="user-detail-container">
@@ -228,28 +246,54 @@ function UserDeatail({ info, handleClose }) {
             <div className={`${status === 'info' ? 'status-info-on' : 'status-info-off'}`}>
                 <div className="option stop">
                     <div className="title">
-                    <FontAwesomeIcon icon={faStop} /><span>상태</span>
+                        <FontAwesomeIcon icon={faStop} /><span>상태</span>
                     </div>
                     <div className="option-action">
                         <label>
-
-                            {/*** 활동 중  false -/ 정지 true */}
-                            {/** info.status가 값이 ''가 아니면 checked 속성 추가 */}
-                            {/** null은 체크 안 되게 */}
-
-                            <input type="checkbox" checked={stopStatus} onChange={() => {setStopStatus(!stopStatus); }}
-
+                            <input
+                                type="checkbox"
+                                checked={stopStatus}
+                                onChange={() => {
+                                    setStopStatus(!stopStatus);
+                                    if (!stopStatus) {
+                                        handleAddDays(1); // Default to 1 day
+                                    } else {
+                                        setSuspensionDate('');
+                                        setAddedDays(0);
+                                    }
+                                }}
                             />
-                                <text>Off</text>
-                                <text>On</text>
-                                <div class="angle"></div>
+                            <text>Off</text>
+                            <text>On</text>
+                            <div className="angle"></div>
                         </label>
-                    
-                        {/*** stopStatus의 값에 따라서 값 표시*/}
-                        <span className={stopStatus ? 'status-active' : 'status-stop'}>{stopStatus ? '정지' : '활동'}</span>
+                        <span className={stopStatus ? 'status-active' : 'status-stop'}>
+                            {stopStatus ? `정지 (해제 날짜: ${suspensionDate})` : '활동'}
+                        </span>
                     </div>
                 </div>
-                
+
+                {stopStatus && (
+                    <div className="suspension-buttons">
+                        <button onClick={() => handleAddDays(1)}>1일</button>
+                        <button onClick={() => handleAddDays(3)}>3일</button>
+                        <button onClick={() => handleAddDays(5)}>5일</button>
+                        <button onClick={() => handleAddDays(7)}>7일</button>
+                        <button onClick={() => handleAddDays(30)}>한달</button>
+                        <button onClick={() => handleAddDays(365)}>1년</button>
+                        <button onClick={() => handleAddDays(999 * 365)}>999년</button>
+                        <button onClick={() => {
+                            setSuspensionDate(initialSuspensionDate);
+                            setAddedDays(0);
+                        }}>초기화</button>
+                    </div>
+                )}
+
+                {stopStatus && addedDays > 0 && (
+                    <div className="added-days">
+                        {`추가된 기간: ${formatAddedDays(addedDays)}`}
+                    </div>
+                )}
 
                 <div className="option admin">
                     <div className="title">
