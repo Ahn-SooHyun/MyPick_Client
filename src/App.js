@@ -10,7 +10,6 @@ import NoticeDetail from './pages/NoticeDetail';
 import Main from './pages/main/Main';
 
 import AdminMain from './pages/admin/AdminMain';
-
 // (추가) MyPage import
 import MyPage from './pages/MyPage';
 
