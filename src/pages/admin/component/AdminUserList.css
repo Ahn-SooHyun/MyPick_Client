@@ -609,11 +609,11 @@
 }
 
 .chat-container .chat-item:nth-child(2n-1) {
-    background-color: rgba(108, 55, 255, 0.8);
+    background-color: rgba(32, 45, 74, 0.6)
 }
 
 .chat-container .chat-item:nth-child(2n) {
-    background-color: rgba(10, 20, 43, 0.2);
+    background-color: rgba(20, 30, 56, 0.8);
 }
 
 
