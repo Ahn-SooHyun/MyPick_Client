@@ -171,7 +171,7 @@ function UserDeatail({ info, handleClose }) {
                 <h2>{info.name}</h2>
             </div>
 
-            <div>
+            <div className={`${status === 'info' ? 'status-info-on' : 'status-info-off'}`}>
                 <div className="option stop">
                     <div className="title">
                     <FontAwesomeIcon icon={faStop} /><span>상태</span>
@@ -220,6 +220,50 @@ function UserDeatail({ info, handleClose }) {
                         <span className={`result ${adminStatus ?  'status-admin' : 'status-user'}`}>{adminStatus ? '관리자' : '사용자'}</span>
                     </div>
                 </div>
+            </div>
+
+            <div className={`${status === 'chat' ? 'status-chat-on' : 'status-chat-off'}`}
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
+                <div className="chat-container">
+                    <div className="chat-item">
+                        <div>
+                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-0"> 오늘</span>
+                        </div>
+                        <div>
+                            <span>채팅 방 1</span>
+                        </div>
+                    </div>
+                    <div className="chat-item">
+                        <div>
+                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-1"> day-1 </span>
+                        </div>
+                        <div>
+                            <span>채팅 방 2</span>
+                        </div>
+                    </div>
+                    <div className="chat-item">
+                        <div>
+                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-2"> day-2</span>
+                        </div>
+                        <div>
+                            <span>채팅 방 3</span>
+                        </div>
+                    </div>
+                    <div className="chat-item">
+                        <div>
+                            <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span class="day-3"> day-3</span>
+                        </div>
+                        <div>
+                            <span>채팅 방 4</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div className="end">
