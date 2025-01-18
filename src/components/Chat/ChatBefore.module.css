@@ -1,40 +1,58 @@
 /* ChatBefore.module.css */
+
+/* (1) 배경: 어두운 회색톤 */
 .container {
-    height: 100vh;               /* 화면 전체 높이 고정 */
-    display: flex;               /* Flex 컨테이너 */
-    flex-direction: column;
-    justify-content: center;     /* 수직 중앙 정렬 */
-    align-items: center;         /* 수평 중앙 정렬 */
-    box-sizing: border-box;
-    overflow: hidden;            /* 스크롤 없음(넘쳐도 숨김) */
-  
-    /* 상하단 여백처럼 보이게 하려면 padding 활용 (내용 많으면 일부가 잘릴 수 있음) */
-    padding: 20px 0;
-    margin: 0;                   /* margin 초기화 */
-    background-color: #f0f2f5;   /* 예시로 밝은 배경 */
-  }
-  
-  .card {
-    width: 100%;
-    max-width: 600px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .exampleArea {
-    margin: 20px 0;
-    text-align: left;
-  }
-  
-  .inputArea {
-    display: flex;
-    gap: 8px;
-    margin-top: 20px;
-  }
-  
-  .input {
-    flex: 1;
-  }
-  
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3C3C3C; /* 어두운 회색 */
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0;
+  color: #fff; 
+  padding: 20px 0;
+}
+
+/* (2) 카드: 배경 흰색 & 회색 텍스트 */
+.card {
+  width: 100%;
+  max-width: 600px;
+  background: #f7f7f7; /* 밝은 회색(거의 흰색) */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  color: #333;
+  border-radius: 8px;
+}
+
+.exampleArea {
+  margin: 20px 0;
+  text-align: left;
+}
+
+/* (3) 입력 영역, 버튼: 주황(#FFA500) 포인트 */
+.inputArea {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.startBtn {
+  background-color: #FF4948;  /* 주황 포인트 */
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.startBtn:hover {
+  background-color: #FF4948; /* 마우스 호버 시 빨강 */
+  color: #fff;
+}

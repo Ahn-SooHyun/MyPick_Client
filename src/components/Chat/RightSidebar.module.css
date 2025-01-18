@@ -1,37 +1,69 @@
 /* RightSidebar.module.css */
 
+/* 어두운 색상 배경 */
 .sideContainer {
-  width: 200px;      /* 사이드바 폭 */
-  height: 100vh;     
+  width: 300px;
+  height: 100vh;
+  background-color: #4D4D4D;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #eeeeee; /* ChatMain(#f9f9f9)보다 조금 어두운 회색 */
-}
-
-.container {
-  flex: 1;
-  margin: 0;
-  padding: 0;
-}
-
-/* 버튼/문구 래퍼 */
-.buttonWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;          
-  padding: 8px;      
+  padding: 16px;
   box-sizing: border-box;
-  height: 100%;
-}
-/* 중간 */
-.middleArea {
-  margin-top: 8px;
+  color: #fff;
 }
 
-/* 하단 */
-.bottomArea {
-  margin-top: auto;  /* 아래로 밀어 붙이기 */
+/* "ID 님, 반갑습니다!" */
+.userGreet {
+  margin-bottom: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* 로그인/로그아웃 버튼 영역 */
+.loginArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* (3) 모든 버튼 빨간색, hover 시 흰색 */
+.topButton,
+.midButton,
+.bottomButton,
+.spotifyLoginBtn,
+.playBtn {
+  background-color: #FF4948; /* 기본 빨간색 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 마우스 올리면 흰색 배경 + 빨간 글씨 or 원하는 스타일 */
+.topButton:hover,
+.midButton:hover,
+.bottomButton:hover,
+.spotifyLoginBtn:hover,
+.playBtn:hover {
+  background-color: #fff;
+  color: #FF4948;
+}
+
+.spotifyArea {
+  margin-top: auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spotifyStatus {
+  font-weight: bold;
+}
+
+.spotifyCard {
+  background: #fff;
+  color: #333;
+  border-radius: 6px;
+  margin-top: 8px;
 }
