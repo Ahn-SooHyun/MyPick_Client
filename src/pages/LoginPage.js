@@ -3,6 +3,7 @@ import './LoginPage.module.css';
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import api from '../axiosSetting.js';
 import './MinWow.css';
 
 function MinWow() {
@@ -24,13 +25,16 @@ function MinWow() {
         const storedToken = localStorage.getItem("tocken");
 
         if (storedId && storedToken) {
-            setId(storedId);
+            setId(storedId);       
             // 로그인된 상태로 처리, 자동으로 로그인하기 위해 로그인 API 호출
-            axios.post("http://192.168.20.23:8081/api/login/autoLogin", { id: storedId, pw: "" })
+            api.post("/login/autoLogin", { token: storedToken })
                 .then(response => {
+                    console.log(response.data.code);
                     if (response.data.code === "200") {
                         alert("자동 로그인 성공!");
                     } else {
+                        console.log(storedToken);
+                        console.log(storedId);
                         alert("자동 로그인 실패.");
                     }
                 })
@@ -52,19 +56,37 @@ function MinWow() {
         e.preventDefault();
         setIsSubmitting(true);  // 제출 중임을 표시
         try {
-            const response = await axios.post("http://192.168.20.23:8081/api/login/login", { id, pw });
-            console.log(response)
+            console.log(id);
+            console.log(pw);
+
+            let obj = new Object();
+            obj.id = id;
+            obj.pw = pw;
+            console.log('dataJson, ', obj);
+
+            // {
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //     },
+            //   }
+            const response = await api.post(
+                "/login/login",
+                JSON.stringify(obj)
+              );
             if (response.data.code === "200") {
-                document.cookie = `CT_AT=${response.data.data.ct_AT}; path=/; secure`;
+                
+                document.cookie = `CT_AT=${response.data.data.ct_at}; path=/;`;
                 const date = new Date();
                 date.setDate(date.getDate() + 30);
-                document.cookie = `tocken=${response.data.data.tocken}; path=/; expires=${date.toUTCString()}; secure`;
+                document.cookie = `token=${response.data.data.token}; path=/; expires=${date.toUTCString()};`;
 
                 // 로그인 성공 시 사용자 정보를 localStorage에 저장
                 localStorage.setItem("userId", id);  // 아이디 저장
-                localStorage.setItem("tocken", response.data.data.tocken);  // 토큰 저장
+                localStorage.setItem("tocken", response.data.data.token);  // 토큰 저장
+                
 
                 alert("로그인 성공!");
+
                 setId("");
                 setPw("");
             } else {
@@ -82,7 +104,7 @@ function MinWow() {
         e.preventDefault();
         setIsSubmitting(true);  // 제출 중임을 표시
         try {
-            const response = await axios.post('http://192.168.20.23:8081/api/register/register', {
+            const response = await api.post('/register/register', {
                 id: id,
                 pw: pw,
                 name: name,
@@ -112,7 +134,7 @@ function MinWow() {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-            const response = await axios.post('http://192.168.20.23:8081/api/login/findId', {
+            const response = await api.post('/login/findId', {
                 name: name,
                 birth: birth,
             });
@@ -134,7 +156,7 @@ function MinWow() {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-            const response = await axios.post('http://192.168.20.23:8081/api/login/findPassword', {
+            const response = await api.post('/login/findPassword', {
                 id: id,
                 name: name,
                 birth: birth,
@@ -157,7 +179,7 @@ function MinWow() {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-            const response = await axios.post('http://192.168.20.23:8081/api/login/changePassword', {
+            const response = await api.post('/login/changePassword', {
                 id: id,
                 code: code,
                 newPw: newPw,

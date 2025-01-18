@@ -5,6 +5,7 @@ import { ConfigProvider } from 'antd';
 import MainPage from './pages/MainPage';
 import ChatPage from './pages/ChatPage';
 import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
 import NoticeList from './pages/NoticeList';
 import NoticeDetail from './pages/NoticeDetail';
 import Main from './pages/main/Main';
@@ -36,6 +37,8 @@ function App() {
           <Route path="/admin" element={<AdminMain />} /> 
 
           {/* (추가) MyPage 라우트 */}
+
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Router>

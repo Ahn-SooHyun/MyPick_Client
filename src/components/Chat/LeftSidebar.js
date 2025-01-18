@@ -1,25 +1,34 @@
 // LeftSidebar.js
-import React, { useState } from 'react';
-import styles from './LeftSidebar.module.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { DeleteTwoTone } from '@ant-design/icons';
+import styles from './LeftSidebar.module.css';
 
-const initialChatRooms = [
-  { id: 1, title: '첫 번째 채팅방' },
-  { id: 2, title: '두 번째 채팅방' },
-  { id: 3, title: '세 번째 채팅방' },
-];
-
-function LeftSidebar() {
-  const [chatRooms, setChatRooms] = useState(initialChatRooms);
+function LeftSidebar({ selectedRoomIdx, onSelectRoom }) {
+  const [chatRooms, setChatRooms] = useState([]);
   const [showConfirm, setShowConfirm] = useState(false);
   const [targetRoom, setTargetRoom] = useState(null);
 
-  // 새 채팅
-  const handleNewChat = () => {
-    const newId = Date.now();
-    const newTitle = `새 채팅방 ${chatRooms.length + 1}`;
-    const newRoom = { id: newId, title: newTitle };
-    setChatRooms([...chatRooms, newRoom]);
+  // 컴포넌트 마운트 시 roomList 조회
+  useEffect(() => {
+    fetchRoomList();
+  }, []);
+
+  // roomList 조회
+  const fetchRoomList = async () => {
+    try {
+      const ctAt = localStorage.getItem('CT_AT');
+      if (!ctAt) return;
+
+      const url = `http://192.168.20.23:8081/api/chat/room/roomList?CT_AT=${ctAt}`;
+      const res = await axios.get(url);
+      if (res.data.code === '200') {
+        // 최신순 리스트
+        setChatRooms(res.data.data);
+      }
+    } catch (error) {
+      console.error('roomList 조회 오류:', error);
+    }
   };
 
   // 삭제 아이콘 클릭
@@ -28,17 +37,27 @@ function LeftSidebar() {
     setShowConfirm(true);
   };
 
-  // "네" 클릭 → 삭제
-  const handleConfirmYes = () => {
-    if (targetRoom) {
-      const updated = chatRooms.filter((r) => r.id !== targetRoom.id);
-      setChatRooms(updated);
+  // 최종 확인 → roomDelete
+  const handleConfirmYes = async () => {
+    if (!targetRoom) return;
+    try {
+      const ctAt = localStorage.getItem('CT_AT');
+      const url = `http://192.168.20.23:8081/api/chat/room/roomDelete?CT_AT=${ctAt}&chatIDX=${targetRoom.chat_idx}`;
+      const res = await axios.get(url);
+      if (res.data.code === '200') {
+        alert(`Room Number ${targetRoom.chat_idx} deleted`);
+        fetchRoomList();  // 다시 목록 갱신
+      } else {
+        alert('방 삭제 실패:' + res.data.message);
+      }
+    } catch (error) {
+      console.error('roomDelete 오류:', error);
     }
+
     setShowConfirm(false);
     setTargetRoom(null);
   };
 
-  // "아니오"
   const handleConfirmNo = () => {
     setShowConfirm(false);
     setTargetRoom(null);
@@ -46,23 +65,26 @@ function LeftSidebar() {
 
   return (
     <div className={styles.container}>
-      {/* 새 채팅 버튼 */}
-      <div className={styles.newChat}>
-        <button className={styles.newChatBtn} onClick={handleNewChat}>
-          새 채팅
-        </button>
-      </div>
-
-      <hr className={styles.divider} />
-
+      <h3>채팅 방 목록</h3>
       <ul className={styles.chatList}>
         {chatRooms.map((room) => (
-          <li key={room.id} className={styles.chatItem}>
-            <span className={styles.chatTitle}>{room.title}</span>
+          <li
+            key={room.chat_idx}
+            className={styles.chatItem}
+            onClick={() => onSelectRoom(room.chat_idx)}
+            style={{
+              backgroundColor:
+                selectedRoomIdx === room.chat_idx ? '#ccc' : 'transparent'
+            }}
+          >
+            <span>{room.summary || 'New Chat'}</span>
             <DeleteTwoTone
               twoToneColor="#FF4948"
               style={{ fontSize: 20, cursor: 'pointer', marginLeft: '8px' }}
-              onClick={() => handleTrashClick(room)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleTrashClick(room);
+              }}
             />
           </li>
         ))}
@@ -72,7 +94,7 @@ function LeftSidebar() {
         <div className={styles.modalOverlay}>
           <div className={styles.modalBox}>
             <p>
-              "<strong>{targetRoom?.title}</strong>"
+              방 #{targetRoom?.chat_idx}("<strong>{targetRoom?.summary}</strong>")
               <br />
               삭제 하시겠습니까?
             </p>
