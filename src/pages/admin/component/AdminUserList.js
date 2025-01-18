@@ -452,22 +452,21 @@ function ChatContainer({ info, eventClose }) {
     }, [chatContentList]); // Dependency array to trigger on chat content change
 
     return (
-        <div className="chat-content-container" >
+        <div className="chat-content-container">
             <div className="close-btn" onClick={eventClose}>
-                ×
+                <FontAwesomeIcon icon={faXmark} />
             </div>
             {chatContentList.map((item, index) => (
                 <div className={`chat-content-item ${item.userId === target.userId ? 'eq' : 'ne'}`} key={index}>
-                    <div className="chat-content-item-user">
-                        <strong>ID: {item.userId}</strong>
-                    </div>
-                    <div className="chat-content-item-content">{item.content}</div>
-                    <div className="chat-content-item-time">
-                        {new Date().toLocaleTimeString('ko-KR', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            hour12: true
-                        })}
+                    <div className={`chat-bubble ${item.userId === target.userId ? 'my-bubble' : 'other-bubble'}`}>
+                        <div className="chat-content-item-content">{item.content}</div>
+                        <div className="chat-content-item-time">
+                            {new Date().toLocaleTimeString('ko-KR', {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: true
+                            })}
+                        </div>
                     </div>
                 </div>
             ))}

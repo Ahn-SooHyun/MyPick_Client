@@ -666,71 +666,106 @@
     color: #fff;
 }
 
-/** 채팅 영역 */
+
+
+
+/** 채팅 자세히 보기, 영역 */
 .chat-content-container {
-    position: absolute;
-    top: 0;
-    left: 450px;
-    width: 50%;
-    height: 100%;
-    background-color: #1a2942;
-
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    top: -800px;
+    left: 150px;
     padding: 10px;
-    max-width:50%;
-    margin: 0 auto;
-    max-height: 100%; /* 최대 높이 설정 */
-    overflow-y: auto;  /* Y축 스크롤 활성화 */
-    border: 1px solid #ddd; /* 경계선 추가 (선택 사항) */
-    border-radius: 8px; /* 모서리 둥글게 (선택 사항) */
-}
-
-.chat-content-container .chat-content-item {
-    margin: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
-
-.chat-content-container .chat-content-item.eq {
-    align-items: flex-end; /* Align to the right for 'eq' */
-}
-
-.chat-content-container .chat-content-item.ne {
-    align-items: flex-start; /* Align to the left for 'ne' */
-}
-
-.chat-content-container .chat-content-item .chat-content-item-user {
-    font-size: 1.2em;
-    color: #007bff;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.chat-content-container .chat-content-item .chat-content-item-user.chat-content-item-content {
-    background-color: #f0f0f0;
-    padding: 10px;
+    background-color: #f5f5f5;
     border-radius: 10px;
-    max-width: 60%;
-    font-size: 1.1em;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 40%;
+    height: 85%;
+    overflow-y: auto;
 }
 
-.chat-content-container .chat-content-item.eq .chat-content-item-content {
-    background-color: #007bff;
-    color: white;
+/** 채팅 자세히 보기, 닫기 버튼 */
+.chat-content-container .close-btn {
+    position: sticky; /* Position relative to the chat-content-container */
+    float: right;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    font-size: 24px;
+    z-index: 1000; /* Ensure it is above other elements */
+    background-color: rgba(0, 0, 0, 0.8); /* Optional: Add background for visibility */
+    padding: 5px; /* Optional: Add padding for better click area */
+    border-radius: 50%; /* Optional: Make it circular */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.chat-content-container .chat-content-item.ne .chat-content-item-content {
-    background-color: #e0e0e0;
-    color: #333;
+.chat-content-item {
+    display: flex;
+    margin-bottom: 10px;
 }
 
-.chat-content-container .chat-content-item-time {
-    font-size: 12px;
-    color: #999;
-    margin-top: 5px;
+.my-bubble {
+    background-color: #d1f7c4; /* 사용자의 메시지에 대한 연한 녹색 */
+    align-self: flex-end;
+    border-radius: 15px 15px 0 15px;
+    padding: 10px;
+    max-width: 70%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-left: auto; /* 오른쪽 정렬 */
+}
+
+.other-bubble {
+    background-color: #ffffff; /* 다른 사용자의 메시지에 대한 연한 색 */
+    align-self: flex-start;
+    border-radius: 15px 15px 15px 0;
+    padding: 10px;
+    max-width: 70%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-right: auto; /* 왼쪽 정렬 */
+}
+
+.chat-content-item-content {
+    margin-bottom: 5px;
+}
+
+.chat-content-item-time {
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+}
+
+.chat-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+}
+
+.my-bubble::after {
+    right: -10px; /* 삼각형을 오른쪽으로 이동 */
+    border-top-color: #d1f7c4;
+    border-bottom: 0;
+    border-right: 0;
+    margin-top: -5px;
+    transform: rotate(180deg);
+}
+
+.other-bubble::after {
+    left: -7px; /* 삼각형을 왼쪽으로 이동 */
+    border-top-color: #ffffff;
+    border-bottom: 0;
+    border-left: 0;
+    margin-top: -5px;
+    transform: rotate(180deg);
 }
 
 
@@ -775,15 +810,53 @@
     text-align: left; /* Align text to the left */
 }
 
-.user-detail-container .close-btn {
-    position: absolute; /* Position relative to the chat-content-container */
-    top: 10px;
-    left: 10px;
+
+
+.chat-list-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chat-list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
-    color: #fff;
-    font-size: 24px;
-    z-index: 1000; /* Ensure it is above other elements */
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add background for visibility */
-    padding: 5px; /* Optional: Add padding for better click area */
-    border-radius: 50%; /* Optional: Make it circular */
+    transition: background-color 0.3s;
+}
+
+.chat-list-item:hover {
+    background-color: #f9f9f9;
+}
+
+.chat-list-item-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-list-item-content {
+    flex-grow: 1;
+}
+
+.chat-list-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.chat-list-item-snippet {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.chat-list-item-time {
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
 }
