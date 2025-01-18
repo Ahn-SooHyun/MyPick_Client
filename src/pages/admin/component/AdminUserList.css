@@ -340,6 +340,7 @@
 }
 
 .user-detail-container .status-chat-on {
+    position: relative;
     display: 'flex';
     justify-content: 'center';
     align-items: 'center';
@@ -663,4 +664,87 @@
 
     font-size: 1.6rem;
     color: #fff;
+}
+
+/** 채팅 영역 */
+.chat-content-container {
+    position: absolute;
+    top: 0;
+    left: 450px;
+    width: 50%;
+    height: 100%;
+    background-color: #1a2942;
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-width:50%;
+    margin: 0 auto;
+    max-height: 100%; /* 최대 높이 설정 */
+    overflow-y: auto;  /* Y축 스크롤 활성화 */
+    border: 1px solid #ddd; /* 경계선 추가 (선택 사항) */
+    border-radius: 8px; /* 모서리 둥글게 (선택 사항) */
+}
+
+.chat-content-item {
+    margin: 30px;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: flex-end;
+}
+
+.chat-content-item.eq {
+    flex-direction: row-reverse;
+}
+
+.chat-content-item.ne {
+    justify-content: flex-start;
+}
+
+.chat-content-item-user {
+    display: none; /* 사용자 ID는 숨김 */
+}
+
+.chat-content-item-content {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.chat-content-item.eq .chat-content-item-content {
+    background-color: #DCF8C6; /* 사용자 메시지 색상 */
+    color: #000;
+    border-bottom-right-radius: 0;
+}
+
+.chat-content-item.ne .chat-content-item-content {
+    background-color: #FFF;
+    color: #000;
+    border-bottom-left-radius: 0;
+    border: 1px solid #ddd;
+}
+
+.chat-content-item-content::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.chat-content-item.eq .chat-content-item-content::after {
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #DCF8C6;
+    right: -10px;
+    top: 10px;
+}
+
+.chat-content-item.ne .chat-content-item-content::after {
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #FFF transparent transparent;
+    left: -10px;
+    top: 10px;
 }

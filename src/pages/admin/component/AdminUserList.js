@@ -168,6 +168,8 @@ function UserDeatail({ info, handleClose }) {
             lastChat: '2025-01-06',
         },
     ]);
+    
+    
 
     return (
         <div className="user-detail-container">
@@ -268,9 +270,7 @@ function UserDeatail({ info, handleClose }) {
                                     const diffDays = Math.floor((today - lastChat) / (1000 * 60 * 60 * 24));
                                     
                                     switch(diffDays) {
-                                        case 0:
-                                            return 'now';
-                                        case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+                                        case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7:
                                             return 'day-'+diffDays;
                                         default:
                                             return 'old';
@@ -291,7 +291,7 @@ function UserDeatail({ info, handleClose }) {
                                             return 'old';
                                     }
                                 })()}
-                                </span>
+                            </span>
                         </div>
                         <div>
                             <span>{item.title}</span>
@@ -312,7 +312,85 @@ function UserDeatail({ info, handleClose }) {
                     marginRight: '20px'
                 }}/>저장</button>
             </div>
+
+            
+            <ChatContainer />
     
+        </div>
+    );
+}
+
+function ChatContainer({info}) {
+
+    /***info 안에는 chatList idx, chatList가 열은 userId가 들어 있음.  */
+    const [target, setTarget] = useState({'userId': 'a1', 'chatIdx': 1});
+
+    //** 채팅 내용 리스트 */
+    const chatContentList = [
+        {
+            userId: 'a1',
+            content: '안녕하세요! 오늘 날씨가 정말 좋네요. 이런 날씨에는 산책을 가거나 야외 활동을 하기에 딱 좋은 것 같아요. 여러분은 오늘 어떤 계획이 있으신가요?',
+        },
+        {
+            userId: 'a2',
+            content: '맞아요, 저도 오늘 아침에 일어나서 창문을 열어보니 햇살이 너무 따뜻하고 기분이 좋더라고요. 그래서 아침 운동을 좀 했어요. 그리고 나서 커피 한 잔 마시면서 책을 읽고 있었어요.',
+        },
+        {
+            userId: 'a2',
+            content: '혹시 주말에 같이 등산 가실 분 계신가요? 요즘 날씨가 좋아서 등산하기에 딱 좋은 것 같아요. 산 정상에서 보는 경치가 정말 멋질 것 같아요.',
+        },
+        {
+            userId: 'a1',
+            content: '등산 좋죠! 저도 등산을 좋아해서 자주 가는데, 이번 주말에 시간이 되면 같이 가고 싶어요. 어느 산을 가실 계획인가요?',
+        },
+        {
+            userId: 'a1',
+            content: '그리고 등산 후에는 근처 맛집에서 맛있는 음식도 먹으면 좋을 것 같아요. 등산 후에 먹는 음식은 정말 꿀맛이잖아요!',
+        },
+        {
+            userId: 'a2',
+            content: '저는 북한산을 생각하고 있었어요. 북한산은 경치도 좋고, 등산로도 잘 되어 있어서 초보자도 쉽게 갈 수 있거든요. 그리고 근처에 맛집도 많아서 등산 후에 맛있는 음식도 먹을 수 있을 것 같아요.',
+        },
+        {
+            userId: 'a1',
+            content: '좋아요! 그럼 이번 주말에 북한산으로 가는 걸로 할까요? 시간은 어떻게 되세요? 아침 일찍 출발하는 게 좋을 것 같아요.',
+        },
+        {
+            userId: 'a2',
+            content: '네, 아침 일찍 출발하는 게 좋을 것 같아요. 그럼 토요일 아침 7시에 출발하는 걸로 할까요? 그 시간에 출발하면 사람도 많지 않고, 여유롭게 등산할 수 있을 것 같아요.',
+        },
+        {
+            userId: 'a1',
+            content: '좋습니다! 그럼 토요일 아침 7시에 만나요. 준비물은 각자 챙기고, 물과 간단한 간식 정도만 준비하면 될 것 같아요. 그럼 주말에 뵙겠습니다!',
+        },
+        {
+            userId: 'a2',
+            content: '네, 준비물은 각자 챙기고, 물과 간단한 간식 정도만 준비하면 될 것 같아요. 그럼 주말에 뵙겠습니다!',
+        },
+    ];
+
+    return (
+        <div className="chat-content-container">
+            {chatContentList.map((item, index) => (
+                
+                <div className={`chat-content-item ${item.userId === target.userId ? 'eq' : 'ne'}`} key={index}>
+                    <div className="chat-content-item-user">{item.userIdx}</div>
+                    <div className="chat-content-item-content">{item.content}</div>
+                    <div className="chat-content-item-time" style={{
+                        fontSize: '12px',
+                        color: '#999',
+                        marginTop: '5px',
+                        marginLeft: '10px',
+                        margin: '0 20px'
+                    }}>
+                    {new Date().toLocaleTimeString('ko-KR', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    })}
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }
