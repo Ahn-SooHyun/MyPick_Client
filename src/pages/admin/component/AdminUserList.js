@@ -135,7 +135,7 @@ function UserDeatail({ info, handleClose }) {
     const [stopStatus, setStopStatus] = useState(info.status === '' || info.status === null ? false : true );
     const [adminStatus, setAdminStatus] = useState(info.step === 'admin' ? true : false);
 
-    const [chatOpen, setChatOpen] = useState(false);
+    const [chatOpen, setChatOpen] = useState(null);    //채팅방 클릭 유무
 
 
     const [chatList, setChatList] = useState([
@@ -264,7 +264,7 @@ function UserDeatail({ info, handleClose }) {
 
                     {chatList.map((item, index) => (
                         <div className="chat-item" key={index} data-index={item.id}
-                        onClick={() => {setChatOpen(true);}}>
+                        onClick={() => {setChatOpen(item.id);}}>
                             <div>
 
                                 <span><FontAwesomeIcon icon={faComment} />마지막 채팅기록: </span><span className={(() => {
@@ -317,7 +317,7 @@ function UserDeatail({ info, handleClose }) {
             </div>
 
             
-            {chatOpen && <ChatContainer eventClose={() => setChatOpen(false)}/>}
+            {chatOpen && <ChatContainer eventClose={() => setChatOpen(null)}/>}
     
         </div>
     );
@@ -375,7 +375,7 @@ function ChatContainer({info, eventClose}) {
     return (
         <div className="chat-content-container">
             <div className="close-btn" 
-                onClick={() => eventClose(false)} 
+                onClick={() => eventClose()} 
                 style={{
                     position: 'absolute',
                     top: '10px',
