@@ -35,12 +35,12 @@
     background:
       linear-gradient(
         to right,
-        #ffffff 50%,
+        #F9F9F9 50%,
         rgba(255,255,255,0) 75%,
         rgba(255,255,255,0) 100%
       ),
       var(--slide-bg);
-    background-size: 100% 100%, 50% auto;
+    background-size: 100% 100%, 60% 100%;
     background-position: left top, right center;
     background-repeat: no-repeat, no-repeat;
   }
@@ -258,7 +258,7 @@
   justify-content: center;
 }
 
-/*** 프로필 변경 팝업 영역 비밀번호 입력 영역 ***/
+/*** 프로필 변경, 팝업 영역 비밀번호 입력 영역 ***/
 .mypage-popup.update .mypage-popup-content .profile-id-input {
   font-size: .8rem;
 }
