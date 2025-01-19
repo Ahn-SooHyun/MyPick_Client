@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './MyPageContainer.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -195,13 +195,14 @@ function MyPageContainer() {
 
   const [isMyprofile, setIsMyprofile] = useState('info');
 
-  // 슬라이드 전환
-  const showNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-  const showPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  // 5초마다 slide 전환 되도록 설정
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
 
   // “프로필 변경” 버튼을 누르면 => 파일 입력창 열기
   const handleProfileChange = () => {
@@ -302,13 +303,6 @@ function MyPageContainer() {
         </div>
       </div>
 
-      {/* (3) Prev / Next 버튼 */}
-      <button className="btn prev" onClick={showPrevSlide}>
-        Prev
-      </button>
-      <button className="btn next" onClick={showNextSlide}>
-        Next
-      </button>
     </div>
   );
 }
