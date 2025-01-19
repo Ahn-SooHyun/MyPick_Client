@@ -5,15 +5,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
 
 
-function MyPageSubMenu() {
+function MyPageSubMenu({handleMypageSubMenu}) {
     return (
         <div className="mypage-sub-menu"
         >
-            <span>나의 프로필</span> |
-            <span>비밀번호 변경</span> |
-            <span>프로필 변경</span>
+            <span onClick={() => handleMypageSubMenu('info')}>나의 프로필</span> |
+            <span onClick={() => handleMypageSubMenu('password')}>비밀번호 변경</span> |
+            <span onClick={() => handleMypageSubMenu('profile')}>프로필 변경</span>
         </div>
     )
+}
+
+function MyPasswordContainer({myPageSubMenu}) {
+  return (
+    <div className={`mypage-password-container ${myPageSubMenu === 'password' ? 'front' : 'left'}`}>
+      <h2>비밀번호 변경</h2>
+      <input type="password" placeholder="기존 비밀번호" />
+      <input type="password" placeholder="새 비밀번호" />
+      <input type="password" placeholder="새 비밀번호 확인" />
+      <button>비밀번호 변경</button>
+    </div>
+  );
 }
 
 
@@ -34,6 +46,9 @@ function MyPageContainer() {
   // (2) 파일 입력창에 접근하기 위한 ref
   const fileInputRef = useRef(null);
 
+
+  const [isMyprofile, setIsMyprofile] = useState('info');
+
   // 슬라이드 전환
   const showNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -48,6 +63,10 @@ function MyPageContainer() {
       fileInputRef.current.click(); // 숨겨둔 input[type=file]를 클릭
     }
   };
+
+  const handleMypageSubMenu = (menu) => {
+    setIsMyprofile(menu);
+  }
 
   // 파일이 실제로 선택됐을 때 처리
   {/** axios 연결 부분 */}
@@ -82,9 +101,16 @@ function MyPageContainer() {
       {/* (2) 왼쪽 프로필 영역 */}
       <div className="mypage-info">
 
-        <MyPageSubMenu />
+        {/*** 서브 메뉴 영역 ***/}
+        <MyPageSubMenu  handleMypageSubMenu={handleMypageSubMenu}/>
 
-        <div className="profile-section">
+
+        {/*** 비밀번호 변경 영역 ***/}
+        <MyPasswordContainer myPageSubMenu={isMyprofile}/>
+
+
+        {/*** 프로필 영역 ***/} 
+        <div className={`profile-section ${isMyprofile === 'info' ? 'front' : 'left'}`}>
           {/* 프로필 이미지 + 변경 버튼을 같은 부모 안에 둠 */}
           <div
             className="profile-img"
