@@ -62,6 +62,10 @@ function MyPasswordContainer({myPageSubMenu}) {
   const [newPassword, setNewPassword] = useState('');
   const [newPasswordCheck, setNewPasswordCheck] = useState('');
 
+  const oldPasswordRef = useRef(null);
+  const newPasswordRef = useRef(null);
+  const newPasswordCheckRef = useRef(null);
+
   const [isPopup, setIsPopup] = useState(false);
 
   //팝업창 생성
@@ -69,15 +73,9 @@ function MyPasswordContainer({myPageSubMenu}) {
     setIsPopup(true);
   }
 
-  //팝업창 닫기
-  const handlePopupClose = () => {
-    setIsPopup(false);
-  }
 
   const handlePasswordChange = (event) => {
     const { className, value } = event.target;
-
-    console.log('check', className);
 
     //inupt 했을 때, 색 변경
     if (className === 'old-password') {
@@ -123,9 +121,13 @@ function MyPasswordContainer({myPageSubMenu}) {
   }
 
   const handlePasswordSubmit = () => {
-    console.log('비밀번호 변경');
+
 
     //비밀번호 변경 성공
+    oldPasswordRef.current.value = '';
+    newPasswordRef.current.value = '';
+    newPasswordCheckRef.current.value = '';
+
     setOldPassword('');
     setNewPassword('');
     setNewPasswordCheck('');
@@ -142,7 +144,10 @@ function MyPasswordContainer({myPageSubMenu}) {
 
 
       <label className="mypage-password-label first">기존 비밀번호</label>
-      <input type="password" placeholder="기존 비밀번호" className="old-password" onInput={handlePasswordChange}/>
+      <input type="password" placeholder="기존 비밀번호"
+      className="old-password"
+      ref={oldPasswordRef}
+      onInput={handlePasswordChange}/>
       
       
       <label className="mypage-password-label second"
@@ -151,6 +156,7 @@ function MyPasswordContainer({myPageSubMenu}) {
       <input type="password"
       placeholder="새 비밀번호"
       className="new-password"
+      ref={newPasswordRef}
       style={{display: oldPassword.length > 8 ? 'block' : 'none' }}
       onInput={handlePasswordChange}/>
       
@@ -161,6 +167,7 @@ function MyPasswordContainer({myPageSubMenu}) {
       <input type="password"
       placeholder="새 비밀번호 확인"
       className="new-password-check"
+      ref={newPasswordCheckRef}
       style={{display: oldPassword.length > 8 ? 'block' : 'none' }}
       onInput={handlePasswordChange}/>
 
