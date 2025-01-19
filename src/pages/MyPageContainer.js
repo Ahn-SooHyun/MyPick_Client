@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './MyPageContainer.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignature, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
+import { faSignature, faUser, faIdCard, faCakeCandles } from "@fortawesome/free-solid-svg-icons";
 
 
 function MyPageSubMenu({handleMypageSubMenu}) {
@@ -184,6 +184,18 @@ function MyPasswordContainer({myPageSubMenu}) {
 
 
 function MyPageContainer() {
+
+
+  /** axio로 DB에서 받아온 데이터는 여기에!*/
+  const [userInfo, setUserInfo] = useState({
+    id: 'boroColi id',
+    name: 'Brocoli Name',
+    nickName: 'Brocoli NickName',
+    birth: '2001-03-10'
+  });
+
+
+
   // 슬라이드로 사용할 이미지 경로 배열
   const slides = [
     './img/game/슈퍼마리오.jpeg',
@@ -200,6 +212,7 @@ function MyPageContainer() {
   const fileInputRef = useRef(null);
 
 
+  // (3) 프로필 영역 선택 ( nav )
   const [isMyprofile, setIsMyprofile] = useState('info');
 
   // 5초마다 slide 전환 되도록 설정
@@ -293,7 +306,7 @@ function MyPageContainer() {
             style={{marginRight: '40px',
                 color: '#333'
             }}/> ID</span>
-            <span className="profile-id">user1234</span>
+            <span className="profile-id">{userInfo.id}</span>
           </div>
           <div className="profile-item">
             <span className="profile-text">
@@ -301,16 +314,29 @@ function MyPageContainer() {
             style={{marginRight: '10px',
                 color: '#333'
             }}/>Name</span>
-            <span className="profile-id">Mario</span>
+            <span className="profile-id">{userInfo.name}</span>
           </div>
+
           <div className="profile-item">
-            <span className="profile-id">
-            <FontAwesomeIcon icon={faComment}
-            style={{marginRight: '20px',
+            <span className="profile-text">
+            <FontAwesomeIcon icon={faIdCard}
+            style={{marginRight: '10px',
                 color: '#333'
-            }}/> 게임 좋아하는 유저</span>
+            }}/>NickName</span>
+            <span className="profile-id">{userInfo.nickName}</span>
+          </div>
+
+          <div className="profile-item">
+            <span className="profile-text">
+            <FontAwesomeIcon icon={faCakeCandles}
+            style={{marginRight: '10px',
+                color: '#333'
+            }}/>Birth</span>
+            <span className="profile-id">{userInfo.birth}</span>
           </div>
         </div>
+
+        
       </div>
 
     </div>

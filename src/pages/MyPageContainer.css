@@ -131,7 +131,7 @@
   
   /* 라벨(오른쪽 정렬) */
   .mypage-container .profile-text {
-    width: 120px;      
+    width: 150px;      
     text-align: right;
     vertical-align: bottom;
     font-size: 1.1rem;
@@ -143,6 +143,7 @@
   
   /* 실제 값(왼쪽 정렬) */
   .mypage-container .profile-id {
+    width: 200px;
     font-size: 1.5rem;
     color: #333;
     font-weight: bold;
