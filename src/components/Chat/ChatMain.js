@@ -1,50 +1,97 @@
-// ChatMain.js
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../axiosSetting';
 import styles from './ChatMain.module.css';
 import { Card, Row, Col, Typography, Space } from 'antd';
 import { HeartTwoTone, MessageTwoTone, FolderOpenTwoTone } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
+import { selectMessageList, selectRoomIdx } from '../../@modules/chatRoom';
 
 const { Title, Paragraph } = Typography;
 
-function ChatMain({ currentRoomIdx, onUpdateRoomTitle }) {
+function getCookieValue(name) {
+  const cookieStr = document.cookie || '';
+  const cookies = cookieStr.split(';').map(c => c.trim());
+  for (let c of cookies) {
+    if (c.startsWith(`${name}=`)) {
+      return c.substring(name.length + 1);
+    }
+  }
+  return '';
+}
+
+function ChatMain() {
+  // (A) Redux에서 현재 방 번호와 메시지 리스트 가져오기
+  const currentRoomIdx = useSelector(selectRoomIdx);
+  const messageListT = useSelector(selectMessageList);
+
+  // (B) 실제 렌더링할 메시지
   const [messages, setMessages] = useState([]);
   const [inputVal, setInputVal] = useState('');
 
-  // 채팅 전송 (슬래시 없는 일반 메시지)
+  // (C) Redux messageList가 바뀔 때마다 변환
+  useEffect(() => {
+    if (messageListT.length > 0) {
+      // 예: [{ question, answer, summary, list, ... }, ...]
+      const converted = messageListT.flatMap((item) => {
+        const userObj = {
+          user: 'User',
+          text: item.question || '(질문 없음)',
+        };
+        const aiObj = {
+          user: 'AI',
+          type: 'Recommendation',
+          data: {
+            answer: item.answer || '',
+            summary: item.summary || '',
+            list: item.list || [],
+          },
+        };
+        return [userObj, aiObj];
+      });
+      setMessages(converted);
+    } else {
+      setMessages([]);
+    }
+  }, [messageListT]);
+
+  // (D) 메시지 전송
   const handleSend = () => {
     const trimmed = inputVal.trim();
     if (!trimmed) return;
 
-    // 사용자 메시지 화면 표시
-    setMessages(prev => [...prev, { user: 'User', text: trimmed }]);
-
-    // 백엔드 message API 호출
+    // 사용자 메시지
+    setMessages((prev) => [...prev, { user: 'User', text: trimmed }]);
     sendChatMessage(trimmed);
-
     setInputVal('');
   };
 
-  // message API: GET /api/chat/message/message?prompt=...&CT_AT=...&chatIDX=...
+  // (E) 서버 GET 요청
   const sendChatMessage = async (prompt) => {
     try {
-      const ctAt = localStorage.getItem('CT_AT');
-      const encPrompt = encodeURIComponent(prompt);
-      const url = `http://192.168.20.23:8081/api/chat/message/message?prompt=${encPrompt}&CT_AT=${ctAt}&chatIDX=${currentRoomIdx}`;
+      const CT_AT = getCookieValue('CT_AT');
+      if (!CT_AT) {
+        alert('로그인이 필요합니다. (쿠키에 CT_AT 없음)');
+        return;
+      }
 
-      const res = await axios.get(url);
+      const res = await api.get('/chat/message/message', {
+        params: {
+          prompt,
+          CT_AT: CT_AT,
+          chatIDX: currentRoomIdx,
+        },
+      });
+
       if (res.data.code === '200') {
-        // AI 응답
-        const { answer, summary, list } = res.data.data;
-
-        // 화면 표시
-        setMessages(prev => [
+        const { answer, summary, list } = res.data.data || {};
+        setMessages((prev) => [
           ...prev,
-          { user: 'AI', type: 'Recommendation', data: { answer, summary, list } }
+          {
+            user: 'AI',
+            type: 'Recommendation',
+            data: { answer, summary, list },
+          },
         ]);
-
-        // 요약(summary) → LeftSidebar 방 제목 업데이트
-        onUpdateRoomTitle?.(currentRoomIdx, summary || 'New Chat');
       } else {
         alert('채팅 실패:' + res.data.message);
       }
@@ -54,7 +101,7 @@ function ChatMain({ currentRoomIdx, onUpdateRoomTitle }) {
     }
   };
 
-  // 메시지 렌더링
+  // (F) 메시지 렌더링
   const renderMessage = (msg, idx) => {
     if (msg.user === 'AI' && msg.type === 'Recommendation') {
       return (
@@ -79,7 +126,6 @@ function ChatMain({ currentRoomIdx, onUpdateRoomTitle }) {
       <div className={styles.chatWindow}>
         {messages.map((msg, idx) => renderMessage(msg, idx))}
       </div>
-
       <div className={styles.inputArea}>
         <input
           className={styles.input}
@@ -117,8 +163,12 @@ function RecommendationCard({ data }) {
             <HeartTwoTone twoToneColor="#ff7875" style={{ fontSize: 24 }} />
           </Col>
           <Col flex="auto">
-            <Title level={4} style={{ margin: 0 }}>요약</Title>
-            <Paragraph style={{ marginTop: 8, marginBottom: 0 }}>{summary}</Paragraph>
+            <Title level={4} style={{ margin: 0 }}>
+              요약
+            </Title>
+            <Paragraph style={{ marginTop: 8, marginBottom: 0 }}>
+              {summary}
+            </Paragraph>
           </Col>
         </Row>
       </Card>
@@ -130,8 +180,12 @@ function RecommendationCard({ data }) {
             <MessageTwoTone twoToneColor="#13c2c2" style={{ fontSize: 24 }} />
           </Col>
           <Col flex="auto">
-            <Title level={4} style={{ margin: 0 }}>답변</Title>
-            <Paragraph style={{ marginTop: 8, marginBottom: 0 }}>{answer}</Paragraph>
+            <Title level={4} style={{ margin: 0 }}>
+              답변
+            </Title>
+            <Paragraph style={{ marginTop: 8, marginBottom: 0 }}>
+              {answer}
+            </Paragraph>
           </Col>
         </Row>
       </Card>
@@ -144,7 +198,9 @@ function RecommendationCard({ data }) {
               <FolderOpenTwoTone twoToneColor="#52c41a" style={{ fontSize: 24 }} />
             </Col>
             <Col flex="auto">
-              <Title level={4} style={{ margin: 0 }}>추천 목록</Title>
+              <Title level={4} style={{ margin: 0 }}>
+                추천 목록
+              </Title>
               <Space direction="vertical" style={{ marginTop: 8 }}>
                 {list.map((item, idx) => (
                   <Paragraph key={idx} style={{ margin: 0 }}>

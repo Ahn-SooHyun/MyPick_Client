@@ -1,11 +1,13 @@
 /* LeftSidebar.module.css */
 .container {
   height: 100vh;
+  /* width: 800px; */
   overflow-y: auto;
   background-color: #4D4D4D;
   padding: 16px;
   color: #fff;
   box-sizing: border-box;
+  width: 20%;
 }
 
 .newChat {

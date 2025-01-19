@@ -2,8 +2,9 @@
 .container {
   display: flex;
   flex-direction: row;
-  height: 100vh; /* 화면 전체 높이 */
+  height: 100vh;
   box-sizing: border-box;
+  justify-content: space-between;
 }
 
 /* 왼쪽, 오른쪽 사이드바는 ChatPage에서 배치,
@@ -12,12 +13,16 @@
   flex: 0 0 200px;
   border-right: 1px solid #ccc;
   box-sizing: border-box;
-  height: 100%; /* 사이드바 높이 100% */
+  height: 100%;
+  width: 20%;
+  /* 사이드바 높이 100% */
 }
 
 .chatMain {
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100%; /* 중앙 영역도 100% */
+  height: 100%;
+  width: 80%;
+  /* 중앙 영역도 100% */
 }

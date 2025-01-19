@@ -5,6 +5,7 @@ import RightSidebar from '../components/Chat/RightSidebar';
 import ChatBefore from '../components/Chat/ChatBefore';
 import ChatMain from '../components/Chat/ChatMain';
 import styles from './ChatPage.module.css';
+import ChatContainer from '../components/Chat/ChatContainer';
 
 function ChatPage() {
   const [isChatStarted, setIsChatStarted] = useState(false);
@@ -19,21 +20,22 @@ function ChatPage() {
 
   return (
     <div className={styles.container}>
-      {/* 왼쪽 사이드바 */}
+      <ChatContainer />
+      {/* 왼쪽 사이드바
       <div className={styles.sidebar}>
         <LeftSidebar />
       </div>
 
       {/* 중앙 메인 영역 */}
-      <div className={styles.chatMain}>
+      {/* <div className={styles.chatMain}>
         {isChatStarted ? (
           // (1) 채팅 시작 후 -> ChatMain
           <ChatMain initialMessage={initialMessage} />
         ) : (
           // (2) 채팅 시작 전 -> ChatBefore
           <ChatBefore onStartChat={handleStartChat} />
-        )}
-      </div>
+        )} */}
+      {/* </div> */}
 
       {/* 오른쪽 사이드바 */}
       <div className={styles.sidebar}>

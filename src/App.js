@@ -15,6 +15,8 @@ import AdminMain from './pages/admin/AdminMain';
 // (추가) MyPage import
 import MyPage from './pages/MyPage';
 
+import Chatmain from './components/Chat/ChatMain';
+
 import './App.css';
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
           <Route path="/notice/:noticeId" element={<NoticeDetail />} />
           <Route path="/main" element={<Main />} />
           <Route path="/admin" element={<AdminMain />} /> 
+
+          <Route path="/chatmain" element={<Chatmain />} />
 
           {/* (추가) MyPage 라우트 */}
 

@@ -1,30 +1,37 @@
-// ChatContainer.js
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import ChatBefore from './ChatBefore';
 import ChatMain from './ChatMain';
+import LeftSidebar from './LeftSidebar';
+import { selectRoomIdx } from '../../@modules/chatRoom';
 
 function ChatContainer() {
-  const [initialMessage, setInitialMessage] = useState('');
-  const [isChatStarted, setIsChatStarted] = useState(false);
+  // (A) Redux에서 현재 방 번호(roomIdx) 가져오기
+  const roomIdx = useSelector(selectRoomIdx);
 
-  // ChatBefore → ChatContainer
-  const handleStartChat = (message) => {
-    setInitialMessage(message); // ChatBefore에서 받은 메시지 저장
-    setIsChatStarted(true);     // 채팅 시작 여부
-  };
+  useEffect(() => {
+    console.log("container", roomIdx);
+  }, [roomIdx])
+
+  useEffect(() => {
+    console.log("here");
+    
+  }, [])
+  
+
 
   return (
-    <>
-      {
-        !isChatStarted ? (
-          // 아직 채팅이 시작되지 않았으면 ChatBefore
-          <ChatBefore onStartChat={handleStartChat} />
-        ) : (
-          // 채팅이 시작되면 ChatMain (initialMessage props 전달)
-          <ChatMain initialMessage={initialMessage} />
-        )
-      }
-    </>
+    <div style={{ display: 'flex', height: '100vh', width:'100vw' }}>
+      {/* 왼쪽 사이드바 (방 목록) */}
+      <LeftSidebar />
+
+      {/* (B) roomIdx가 null이면 -> ChatBefore, 아니면 -> ChatMain */}
+      {roomIdx === null ? (
+        <ChatBefore />
+      ) : (
+        <ChatMain />
+      )}
+    </div>
   );
 }
 
