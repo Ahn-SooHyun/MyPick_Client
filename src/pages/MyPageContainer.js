@@ -275,8 +275,10 @@ function MyPageContainer() {
         {/*** 비밀번호 변경 영역 ***/}
         <MyPasswordContainer myPageSubMenu={isMyprofile}/>
 
+
+
         {/*** 프로필 업데이트 영역 ***/}
-        <MyProfileUpdate profileUrl={profileUrl} fileInputRef={fileInputRef} handleProfileChange={handleProfileChange} handleFileChange={handleFileChange} isMyprofile={isMyprofile}/>
+        <MyProfileUpdate profileUrl={profileUrl} fileInputRef={fileInputRef} userInfo={userInfo} isMyprofile={isMyprofile}/>
 
 
         {/*** 프로필 영역 ***/} 
@@ -347,7 +349,7 @@ export default MyPageContainer;
 
 
 {/*** 프로필 업데이트 영역 ***/}
-function MyProfileUpdate({profileUrl, fileInputRef, handleProfileChange, handleFileChange, isMyprofile}) {
+function MyProfileUpdate({profileUrl, userInfo, isMyprofile}) {
   return (
     <div className={`profile-section ${isMyprofile === 'update' ? 'front' : 'left'}`}>
     {/* 프로필 이미지 + 변경 버튼을 같은 부모 안에 둠 */}
@@ -357,14 +359,6 @@ function MyProfileUpdate({profileUrl, fileInputRef, handleProfileChange, handleF
     >
     </div>
 
-    {/* 실제로 파일을 선택하는 input (화면에는 숨김) */}
-    <input
-      type="file"
-      accept="image/*"
-      ref={fileInputRef}
-      style={{ display: 'none' }}
-      onChange={handleFileChange}
-    />
     {/* 아이콘 + 라벨(오른쪽 정렬) + 값(왼쪽 정렬) */}
     <div className="profile-item">
       <span className="profile-text">
