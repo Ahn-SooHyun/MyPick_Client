@@ -51,7 +51,7 @@
       var(--slide-bg);
   
     /* 그라디언트: 전체, 이미지: 50% (혹은 40% 등) */
-    background-size: 100% 100%, 50% auto;
+    background-size: 100% 100%, 55% 100%;
     /* 그라디언트는 왼쪽 위 배치, 이미지는 오른쪽 중앙에 배치 */
     background-position: left top, right center;
     background-repeat: no-repeat, no-repeat;
