@@ -19,7 +19,6 @@ function MyPageSubMenu({handleMypageSubMenu}) {
 function MyPasswordContainer({myPageSubMenu}) {
   return (
     <div className={`mypage-password-container ${myPageSubMenu === 'password' ? 'front' : 'left'}`}>
-      <h2>비밀번호 변경</h2>
       <input type="password" placeholder="기존 비밀번호" />
       <input type="password" placeholder="새 비밀번호" />
       <input type="password" placeholder="새 비밀번호 확인" />
