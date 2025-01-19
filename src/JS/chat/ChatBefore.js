@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Input, Card, Typography } from 'antd';
-import styles from './ChatBefore.module.css';
-import api from '../../axiosSetting';
-import { getCookieValue } from '../../utils/cookie';
+import styles from '../../css/chat/ChatBefore.module.css';
+import api from '../../util/api/axiosSetting';
+import { getCookieValue } from '../../util/cookie/cookie';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectMessageList, selectRoomIdx, changeRoomIdx } from '../../@modules/chatRoom';
+import { selectMessageList, selectRoomIdx, changeRoomIdx } from '../../util/@modules/chatRoom';
 
 const { Title, Paragraph, Text } = Typography;
 

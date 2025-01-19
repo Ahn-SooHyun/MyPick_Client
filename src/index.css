@@ -103,3 +103,7 @@ body {
   background: #fff;
   color: #333;
 }
+
+a {
+  text-decoration-line: none;
+}

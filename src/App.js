@@ -29,7 +29,7 @@ import NoticeList from "./JS/notice/NoticeList";
 
 //=======================================
 //Chat
-
+import ChatPage from "./JS/chat/ChatPage";
 
 import "./App.css";
 
@@ -56,6 +56,7 @@ function App() {
           <Route path="/noticeDetail/:noticeId" element={<NoticeDetail />} />
           <Route path="/noticeList" element={<NoticeList />} />
 
+          <Route path="/chat" element={<ChatPage />} />
           {/* (추가) MyPage 라우트 */}
         </Routes>
       </Router>
