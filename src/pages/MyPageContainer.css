@@ -143,3 +143,24 @@
     text-align: left;
   }
   
+
+  /** sub menu*/
+    .mypage-sub-menu {
+      position: absolute;
+      top: 95px;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .mypage-sub-menu span {
+      font-size: 1.5rem;
+      margin: 0 10px;
+    }
+
+    .mypage-sub-menu span:hover {
+      color: var(--main-color-2);
+    }
+

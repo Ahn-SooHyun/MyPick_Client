@@ -2,7 +2,21 @@ import React, { useState, useRef } from 'react';
 import './MyPageContainer.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faIdBadge, faSignature, faUser, faComment, faStop, faUserTie, faDeleteLeft, faFloppyDisk, faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faSignature, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
+
+
+function MyPageSubMenu() {
+    return (
+        <div className="mypage-sub-menu"
+        >
+            <span>나의 프로필</span> |
+            <span>비밀번호 변경</span> |
+            <span>프로필 변경</span>
+        </div>
+    )
+}
+
+
 
 function MyPageContainer() {
   // 슬라이드로 사용할 이미지 경로 배열
@@ -55,6 +69,7 @@ function MyPageContainer() {
 
   return (
     <div className="mypage-container">
+        
       {/* (1) 오른쪽 슬라이드 페이드 */}
       {slides.map((slideUrl, index) => (
         <div
@@ -66,6 +81,9 @@ function MyPageContainer() {
 
       {/* (2) 왼쪽 프로필 영역 */}
       <div className="mypage-info">
+
+        <MyPageSubMenu />
+
         <div className="profile-section">
           {/* 프로필 이미지 + 변경 버튼을 같은 부모 안에 둠 */}
           <div
