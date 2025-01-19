@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Simple Fade Slider</title>
+  <style>
+* {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%; 
+  height: 100%;
+  background: #333;
+}
+
+/* 슬라이더 컨테이너 */
+.mypage-container {
+  position: relative;
+  width: 100vw;   /* 원하는 너비 */
+  height: 100vh;  /* 원하는 높이 */
+  overflow: hidden;
+}
+
+/* 각 슬라이드 */
+.mypage-container .slide {
+  /* 위치를 겹쳐 놓고, 현재 슬라이드만 보이게 제어 */
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* 페이드 전환 효과를 위해 opacity */
+  opacity: 0; 
+  transition: opacity 0.8s ease;
+  z-index: 0;
+
+  /* 
+    다중 배경(multiple background):
+    1) 윗 레이어(맨 앞): linear-gradient(흰색→투명)
+       - 크기: 컨테이너 전체 (100% 100%)
+       - 위치: 왼쪽 위 (0,0)
+    2) 아랫 레이어(맨 뒤): 실제 이미지(var(--slide-bg))
+       - 크기: 가로 40%, 세로 자동(비율 유지) => background-size: 40% auto;
+       - 위치: 오른쪽 가운데 => background-position: right center;
+  */
+  background:
+    /* 첫 번째: 그라디언트 (왼쪽 절반 흰색, 50~75% 점차 투명, 75%~100% 완전 투명) */
+    linear-gradient(
+      to right,
+      #ffffff 50%,
+      rgba(255,255,255,0) 75%,
+      rgba(255,255,255,0) 100%
+    ),
+    /* 두 번째: 이미지 */
+    var(--slide-bg);
+
+  /* size, position, repeat를 각각 설정할 때는 쉼표로 구분 */
+  background-size: 100% 100%, 50% 100%;           /* 그라디언트는 전체 100%, 이미지는 40% */
+  background-position: left top, right center;    /* 그라디언트는 좌측 상단, 이미지는 우측 중앙 */
+  background-repeat: no-repeat, no-repeat;        
+}
+
+/* 활성 슬라이드: 보이게 (opacity:1, z-index:1) */
+.mypage-container .slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Prev / Next 버튼 스타일 */
+.mypage-container .btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+.mypage-container .prev { left: 20px; }
+.mypage-container .next { right: 20px; }
+
+  </style>
+</head>
+<body>
+
+  <div class="mypage-container">
+    <!-- 각 슬라이드별로 원하는 이미지 경로를 지정하세요 -->
+    <div class="slide" style="--slide-bg: url('./img/game/supermario.jpeg');"></div>
+    <div class="slide" style="--slide-bg: url('./img/game/lol.jpg');"></div>
+    <div class="slide" style="--slide-bg: url('./img/game/maple.jpg');"></div>
+    <div class="slide" style="--slide-bg: url('./img/game/val.png');"></div>
+
+    <div class="mypage-info">
+      <div class="profile-img"></div>
+      <div class="profile-id"></div>
+      <div class="profile-name"></div>
+    </div>
+
+    <button class="btn next">Next</button>
+  </div>
+
+  <script>
+
+// 모든 슬라이드를 가져오기
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let currentSlide = 0; // 현재 슬라이드 인덱스
+
+// 초기 첫 슬라이드 활성화
+slides[currentSlide].classList.add('active');
+
+// 다음 슬라이드
+function showNextSlide() {
+  // 현재 슬라이드 숨기기
+  slides[currentSlide].classList.remove('active');
+  
+  // 인덱스 증가 (마지막 슬라이드에서 다음이면 첫 슬라이드로)
+  currentSlide = (currentSlide + 1) % slides.length;
+  
+  // 새 슬라이드 보이기
+  slides[currentSlide].classList.add('active');
+}
+
+// 이전 슬라이드
+function showPrevSlide() {
+  slides[currentSlide].classList.remove('active');
+  
+  // 인덱스 감소 (첫 슬라이드에서 이전이면 마지막 슬라이드로)
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  
+  slides[currentSlide].classList.add('active');
+}
+
+// 버튼 이벤트 등록
+nextBtn.addEventListener('click', showNextSlide);
+prevBtn.addEventListener('click', showPrevSlide);
+
+</script>
+
+</body>
+</html>

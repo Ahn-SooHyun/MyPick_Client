@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './LeftSidebarModule.css';
+import styles from './LeftSidebar.module.css';
 
 function LeftSidebar() {
   return (

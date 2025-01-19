@@ -1,0 +1,862 @@
+.admin-user-list-container {
+    position: relative;
+    margin-left: calc(var(--sidebar-width-open) + 15px);
+    width: calc(100vw - var(--sidebar-width-open) - 180px);
+    height: 100%;
+}
+
+
+/*** 검색 영역 ***/
+.admin-user-list-container .search {
+    margin-top: 40px;
+    margin-left: 10%;
+    margin-bottom: 70px;
+    width: 100%;
+    height: 50px;
+}
+
+
+/**slect의 화살표를 좌측으로 조금 밀기 */
+
+.admin-user-list-container .search-select {
+    margin-left: 20px;
+    padding: 15px 35px 15px 15px;
+
+    font-size: 1.2rem;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #0a142b url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") no-repeat right 10px center;
+    background-size: 20px;
+
+    border-radius: 20px;
+    color: #fff;
+    background-color: #0a142b;
+}
+
+
+/** 검색 입력창 */
+.admin-user-list-container .search-input {
+    margin-left: 20px;
+    padding: 15px 35px 15px 15px;
+    width: 50%;
+    height: 50px;
+
+    border-radius: 20px;
+    background-color: #0a142b;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+
+/** 검색 버튼 */
+.admin-user-list-container .search-button {
+    margin-left: 20px;
+    width: 140px;
+    height: 50px;
+
+    border-radius: 20px;
+    background-color: #0a142b;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+
+
+.admin-user-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-user-list-container table thead {
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.admin-user-list-container table tbody {
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.admin-user-list-container table tbody tr {
+    position: relative;
+    height: 5rem;
+    font-size: 1.4rem;
+
+    z-index: 2;
+    cursor: pointer;
+}
+
+.admin-user-list-container table tbody tr td  {
+    position: relative;
+    z-index: 2;
+}
+
+/** 관리자 상태 구분*/
+.admin-user-list-container table tbody tr.admin::after {
+    content: '';
+    position: absolute;
+    top: 31px;
+    left: 40px;
+    width: 95%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: rgba(243, 13, 13, 0.3);
+    z-index: 1;
+}
+
+
+/** 활동 상태 구분 */
+.admin-user-list-container table tbody tr td:nth-child(4) > div {
+    position: absolute;
+    top: 35px;
+    left: 70px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.admin-user-list-container table tbody tr td:nth-child(4) .active-status {
+    background-color: #00ff00;
+}
+
+.admin-user-list-container table tbody tr td:nth-child(4) .stop-status {
+    background-color: #f30d0d;
+}
+
+
+/** 페이지네이션 */
+.admin-user-list-container .pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-user-list-container .pagination-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: #0a142b;
+    border-radius: 20px;
+}
+
+.admin-user-list-container .pagination-button.active {
+    background-color: #0a142b;
+    color: #fff;
+}
+
+.admin-user-list-container .pagination-button:hover {
+    background-color: #0a142b;
+    color: #fff;
+}
+
+
+/** 사용자 상세 정보 active */
+.admin-user-list-container table tbody tr td.active {
+    background-color: #0953ff;
+    color: #fff;
+}
+
+
+
+
+
+
+
+/** User Deatail **/
+.user-detail-container {
+    position: absolute;
+    top: 80px;
+    left: 300px;
+    width: 80%;
+    height: 80%;
+    z-index: 10;
+
+    background-color: #0a142b;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/** 종료 Button */
+.exit {
+    padding: 12px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 90px;
+    background-color: red;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.user-detail-container > .info {
+    width: 100%;
+    height: 90px;
+
+}
+
+.user-detail-container .info .nickName {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100%;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 2.8rem;
+
+    display: flex;
+    align-items: center;
+
+    text-align: center;
+    overflow: hidden;
+}
+
+/** 관리자 상태 구분 */
+.user-detail-container .info .nickName .step {
+    margin-left: 30px;
+    padding: 6px 15px;
+    color: #fff;
+    font-size: 1.1rem;
+    color: #000;
+
+    border-radius: 20px;
+    
+}
+
+.user-detail-container .info .nickName .step.admin {
+    background-color: rgb(255, 116, 116);
+}
+
+.user-detail-container .info .nickName .step.user {
+    background-color: #74ff74;
+}
+
+.user-detail-container .info .nickName .step > div {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+
+.user-detail-container .info .nickName .step.admin > div {
+    background-color: red;
+}
+
+.user-detail-container .info .nickName .step.user > div {
+    background-color: green;
+}
+
+
+
+/** 상세보기 선택 */
+.user-detail-container .status-container {
+    display: flex;
+    justify-content: start;
+}
+
+.user-detail-container > .status-container > div {
+    margin: 10px 30px 10px 30px;
+    padding:5px 10px 5px 15px;
+    height: 50px;
+    background-color: #fff;
+
+    font-size: 1.7rem;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+.user-detail-container > .status-container > div > svg {
+    margin-right: 10px;
+}
+
+.user-detail-container .status-container > div > div {
+    width: 100px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.user-detail-container .status-container > .info.active,
+.user-detail-container .status-container > .info:hover {
+    color: #fff;
+    background-color: var(--main-color-1);
+}
+
+.user-detail-container .status-container > .chat.active,
+.user-detail-container .status-container > .chat:hover {
+    color: #000;
+    background-color: var(--sub-color-1);
+}
+
+
+
+
+
+/** 사용자 정보 */
+.user-detail-container .card-status {
+    width: 80%;
+    margin: 20px;
+    padding: 10px 35px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: end;
+
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.user-detail-container .card-status > small {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: var(--main-color-2);
+}
+
+.user-detail-container .card-status > small > svg {
+    margin-right: 10px;
+}
+
+.user-detail-container .card-status > h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-right: 10%;
+}
+
+
+/** 상태 관리 **/
+.user-detail-container .status-info-on {
+    display: block;
+
+}
+
+.user-detail-container .status-info-off {
+    display: none;
+}
+
+.user-detail-container .status-chat-on {
+    position: relative;
+    display: 'flex';
+    justify-content: 'center';
+    align-items: 'center';
+}
+
+.user-detail-container .status-chat-off {
+    display: none;
+}
+
+
+
+/** 정지 상태  */
+.user-detail-container .option {
+    margin-top: 30px;
+    margin-left: 20px;
+    padding:5px 10px 5px 15px;
+    width: 600px;
+    height: 50px;
+
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.user-detail-container .option .title {
+    margin-right: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    color: #fff;
+}
+
+.user-detail-container .option > .option-action {
+    display: flex;
+    align-items: center;
+}
+
+.user-detail-container .option .title > svg {
+    margin-right: 20px;
+}
+
+/** 정지 상태 체크 */
+.user-detail-container .option.stop > div > label {
+    position: relative;
+    width: 120px;
+    height: 60px;
+    /* background: #222; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2),
+    inset 0 2px 2px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transform: skewX(330deg);
+    cursor: pointer;
+}
+
+.user-detail-container .option.stop > div >label input {
+    position: absolute;
+    appearance: none;
+}
+
+.user-detail-container .option.stop > div > label .angle {
+    position: absolute;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #0f0;
+    transform: skewX(30deg) scale(0.6) translateX(-16px);
+    filter: drop-shadow(0 0 16px #0f0) drop-shadow(0 0 30px #0f0);
+    transition: 0.5s;
+}
+
+.user-detail-container .option.stop > div > label input:checked ~ .angle {
+    border-bottom: 60px solid #f00;
+    transform: skewX(30deg) scale(0.6) translateX(100px) rotate(180deg);
+    filter: drop-shadow(0 0 16px #f00) drop-shadow(0 0 30px #f00);
+}
+
+.user-detail-container .option.stop > div > label text {
+    padding: 10px;
+    color: #fff;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+.user-detail-container .option.stop > div > label text:nth-child(2) {
+    transform: skewX(30deg) scale(0.8);
+    color: #f00;
+    filter: drop-shadow(0 0 16px #f00) drop-shadow(0 0 30px #f00);
+}
+
+.user-detail-container .option.stop > div > label input:checked ~ .angle:nth-child(2) {
+    transform: skewX(30deg) scale(1);
+}
+
+.user-detail-container .option.stop > div > label text:nth-child(3) {
+    color: #0f0;
+    transform: skewX(30deg) scale(0.8);
+    filter: drop-shadow(0 0 16px #0f0) drop-shadow(0 0 30px #0f0);
+}
+
+.user-detail-container .option.stop > div > label input:checked ~ .angle:nth-child(3) {
+    transform: skewX(30deg) scale(0);
+}
+
+.user-detail-container .option.stop > .option-action > span {
+    margin-left: 50px;
+    font-size: 1.2rem;
+    color: var(--sub-color-2);
+}
+
+.user-detail-container .option.stop > .option-action > .status-active {
+    color: #f00;
+}
+
+.user-detail-container .option.stop > .option-action > .status-stop {
+    color: #0f0;
+}
+
+
+/** 관리자 상태 체크 */
+.user-detail-container .option.admin > div > label {
+    position: relative;
+    width: 120px;
+    height: 60px;
+    /* background: #222; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2),
+    inset 0 2px 2px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transform: skewX(330deg);
+    cursor: pointer;
+}
+
+.user-detail-container .option.admin > div > label input {
+    position: absolute;
+    appearance: none;
+}
+
+.user-detail-container .option.admin > div > label .angle {
+    position: absolute;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #f00;
+    transform: skewX(30deg) scale(0.6) translateX(-16px);
+    filter: drop-shadow(0 0 16px #f00) drop-shadow(0 0 30px #f00);
+    transition: 0.5s;
+}
+
+.user-detail-container .option.admin > div > label input:checked ~ .angle {
+    border-bottom: 60px solid #0f0;
+    transform: skewX(30deg) scale(0.6) translateX(100px) rotate(180deg);
+    filter: drop-shadow(0 0 16px #0f0) drop-shadow(0 0 30px #0f0);
+}
+
+.user-detail-container .option.admin > div > label text {
+    padding: 10px;
+    color: #fff;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+.user-detail-container .option.admin > div > label text:nth-child(2) {
+    transform: skewX(30deg) scale(0.8);
+    color: #0f0;
+    filter: drop-shadow(0 0 16px #f00) drop-shadow(0 0 30px #0f0);
+}
+
+.user-detail-container .option.admin > div > label input:checked ~ .angle:nth-child(2) {
+    transform: skewX(30deg) scale(1);
+}
+
+.user-detail-container .option.admin > div > label text:nth-child(3) {
+    color: #f00;
+    transform: skewX(30deg) scale(0.8);
+    filter: drop-shadow(0 0 16px #0f0) drop-shadow(0 0 30px #f00);
+}
+
+.user-detail-container .option.admin > div > label input:checked ~ .angle:nth-child(3) {
+    transform: skewX(30deg) scale(0);
+}
+
+.user-detail-container .option.admin > .option-action > span {
+    margin-left: 50px;
+    font-size: 1.2rem;
+    color: var(--sub-color-2);
+}
+
+.user-detail-container .option.admin > .option-action > .status-admin {
+    color: #f00;
+}
+
+.user-detail-container .option.admin > .option-action > .status-user {
+    color: #0f0;
+}
+
+.user-detail-container .option.admin > .option-action > .result {
+    margin-left: 50px;
+    font-size: 1.6rem;
+}
+
+
+
+
+/** 아래 영역, 버튼 */
+.user-detail-container > .end button:nth-child(1){
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.user-detail-container > .end button:nth-child(2){
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.user-detail-container > .end button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+
+    cursor: pointer;
+}
+
+.user-detail-container > .end .delete {
+    background-color: var(--main-color-1);
+}
+
+.user-detail-container > .end .delete:hover {
+    background-color: red;
+}
+
+
+.user-detail-container > .end .save {
+    background-color: var(--sub-color-3);
+}
+
+.user-detail-container > .end .save:hover {
+    background-color: slateblue;
+}
+
+
+
+/** 채팅 영역 */
+.user-detail-container .chat-container {
+    position: relative;
+    margin: 30px;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.chat-container .chat-item {
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 80%;
+    height: 12%;
+
+    display: flex;
+
+    cursor: pointer;
+}
+
+.chat-container .chat-item:nth-child(2n-1) {
+    background-color: rgba(32, 45, 74, 0.6)
+}
+
+.chat-container .chat-item:nth-child(2n) {
+    background-color: rgba(20, 30, 56, 0.8);
+}
+
+
+.chat-container .chat-item .day-0 {
+    color: var(--main-color-1);
+}
+
+.chat-container .chat-item .day-1 {
+    color: var(--main-color-2);
+}
+
+.chat-item .day-2,
+.chat-item .day-3,
+.chat-item .day-4,
+.chat-item .day-5,
+.chat-item .day-6,
+.chat-item .day-7 {
+    color: var(--sub-color-1);
+}
+
+.chat-item .old {
+    color: #ccc;
+}
+
+.chat-container .chat-item > div:nth-child(1) {
+    width: 250px;
+    color: #fff;
+}
+
+.chat-container .chat-item > div:nth-child(1) > span > svg{
+    margin-right: 10px;
+}
+
+.chat-container .chat-item > div:nth-child(2) {
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+
+
+
+/** 채팅 자세히 보기, 영역 */
+.chat-content-container {
+    position: relative;
+    top: -800px;
+    left: 150px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 40%;
+    height: 85%;
+    overflow-y: auto;
+}
+
+/** 채팅 자세히 보기, 닫기 버튼 */
+.chat-content-container .close-btn {
+    position: sticky; /* Position relative to the chat-content-container */
+    float: right;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    font-size: 24px;
+    z-index: 1000; /* Ensure it is above other elements */
+    background-color: rgba(0, 0, 0, 0.8); /* Optional: Add background for visibility */
+    padding: 5px; /* Optional: Add padding for better click area */
+    border-radius: 50%; /* Optional: Make it circular */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-content-item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.my-bubble {
+    background-color: #d1f7c4; /* 사용자의 메시지에 대한 연한 녹색 */
+    align-self: flex-end;
+    border-radius: 15px 15px 0 15px;
+    padding: 10px;
+    max-width: 70%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-left: auto; /* 오른쪽 정렬 */
+}
+
+.other-bubble {
+    background-color: #ffffff; /* 다른 사용자의 메시지에 대한 연한 색 */
+    align-self: flex-start;
+    border-radius: 15px 15px 15px 0;
+    padding: 10px;
+    max-width: 70%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-right: auto; /* 왼쪽 정렬 */
+}
+
+.chat-content-item-content {
+    margin-bottom: 5px;
+}
+
+.chat-content-item-time {
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+}
+
+.chat-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+}
+
+.my-bubble::after {
+    right: -10px; /* 삼각형을 오른쪽으로 이동 */
+    border-top-color: #d1f7c4;
+    border-bottom: 0;
+    border-right: 0;
+    margin-top: -5px;
+    transform: rotate(180deg);
+}
+
+.other-bubble::after {
+    left: -7px; /* 삼각형을 왼쪽으로 이동 */
+    border-top-color: #ffffff;
+    border-bottom: 0;
+    border-left: 0;
+    margin-top: -5px;
+    transform: rotate(180deg);
+}
+
+
+/** 휴면 기간 추가 */
+.user-detail-container .suspension-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.user-detail-container .suspension-buttons button {
+    background-color: #007bff; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Padding for size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    font-size: 0.9em; /* Font size */
+}
+
+.user-detail-container .suspension-buttons button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.user-detail-container .suspension-buttons button:active {
+    background-color: #004494; /* Even darker shade on click */
+}
+
+.user-detail-container .suspension-buttons button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Custom focus outline */
+}
+
+.user-detail-container .added-days {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    width: 100%; /* Ensure it takes full width */
+    text-align: left; /* Align text to the left */
+}
+
+
+
+.chat-list-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chat-list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-list-item:hover {
+    background-color: #f9f9f9;
+}
+
+.chat-list-item-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-list-item-content {
+    flex-grow: 1;
+}
+
+.chat-list-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.chat-list-item-snippet {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.chat-list-item-time {
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+}
