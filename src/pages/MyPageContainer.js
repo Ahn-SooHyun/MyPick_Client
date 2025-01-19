@@ -11,7 +11,7 @@ function MyPageSubMenu({handleMypageSubMenu}) {
         >
             <span onClick={() => handleMypageSubMenu('info')}>나의 프로필</span> |
             <span onClick={() => handleMypageSubMenu('password')}>비밀번호 변경</span> |
-            <span onClick={() => handleMypageSubMenu('profile')}>프로필 변경</span>
+            <span onClick={() => handleMypageSubMenu('update')}>프로필 변경</span>
         </div>
     )
 }
@@ -151,7 +151,7 @@ function MyPasswordContainer({myPageSubMenu}) {
       
       
       <label className="mypage-password-label second"
-      style={{display: oldPassword.length > 8 ? 'block' : 'none' }}
+      style={{display: oldPassword.length >= 8 ? 'block' : 'none' }}
       >새 비밀번호</label>
       <input type="password"
       placeholder="새 비밀번호"
@@ -162,20 +162,20 @@ function MyPasswordContainer({myPageSubMenu}) {
       
       
       <label className="mypage-password-label third"
-      style={{display: oldPassword.length > 8 ? 'block' : 'none' }}
+      style={{display: oldPassword.length >= 8 ? 'block' : 'none' }}
       >새 비밀번호 확인</label>
       <input type="password"
       placeholder="새 비밀번호 확인"
       className="new-password-check"
       ref={newPasswordCheckRef}
-      style={{display: oldPassword.length > 8 ? 'block' : 'none' }}
+      style={{display: oldPassword.length >= 8 ? 'block' : 'none' }}
       onInput={handlePasswordChange}/>
 
       {/* 비밀번호 변경 버튼 */}
       <button
       className="mypage-password-btn"
       onClick={handlePasswordSubmit}
-      style={{display: oldPassword.length > 8 ? 'block' : 'none' }}
+      style={{display: oldPassword.length >= 8 ? 'block' : 'none' }}
       >비밀번호 변경</button>
     </div>
   );
@@ -262,6 +262,9 @@ function MyPageContainer() {
         {/*** 비밀번호 변경 영역 ***/}
         <MyPasswordContainer myPageSubMenu={isMyprofile}/>
 
+        {/*** 프로필 업데이트 영역 ***/}
+        <MyProfileUpdate profileUrl={profileUrl} fileInputRef={fileInputRef} handleProfileChange={handleProfileChange} handleFileChange={handleFileChange} isMyprofile={isMyprofile}/>
+
 
         {/*** 프로필 영역 ***/} 
         <div className={`profile-section ${isMyprofile === 'info' ? 'front' : 'left'}`}>
@@ -315,3 +318,56 @@ function MyPageContainer() {
 }
 
 export default MyPageContainer;
+
+
+{/*** 프로필 업데이트 영역 ***/}
+function MyProfileUpdate({profileUrl, fileInputRef, handleProfileChange, handleFileChange, isMyprofile}) {
+  return (
+    <div className={`profile-section ${isMyprofile === 'update' ? 'front' : 'left'}`}>
+    {/* 프로필 이미지 + 변경 버튼을 같은 부모 안에 둠 */}
+    <div
+      className="profile-img"
+      style={{ backgroundImage: `url(${profileUrl})` }}
+    >
+    </div>
+
+    {/* 실제로 파일을 선택하는 input (화면에는 숨김) */}
+    <input
+      type="file"
+      accept="image/*"
+      ref={fileInputRef}
+      style={{ display: 'none' }}
+      onChange={handleFileChange}
+    />
+    {/* 아이콘 + 라벨(오른쪽 정렬) + 값(왼쪽 정렬) */}
+    <div className="profile-item">
+      <span className="profile-text">
+      <FontAwesomeIcon icon={faUser}
+      style={{marginRight: '40px',
+          color: '#333'
+      }}/> ID</span>
+      <span className="profile-id">
+
+        <input type="text" placeholder="ID" className="profile-id-input"/>
+      </span>
+    </div>
+    <div className="profile-item">
+      <span className="profile-text">
+      <FontAwesomeIcon icon={faSignature}
+      style={{marginRight: '10px',
+          color: '#333'
+      }}/>Name</span>
+      <span className="profile-id">
+        <input type="text" placeholder="Name" className="profile-id-input"/>
+      </span>
+    </div>
+    <div className="profile-item">
+      <span className="profile-id">
+      <FontAwesomeIcon icon={faComment}
+      style={{marginRight: '20px',
+          color: '#333'
+      }}/> 게임 좋아하는 유저</span>
+    </div>
+  </div>
+  );
+}
