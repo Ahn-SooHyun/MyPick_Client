@@ -89,7 +89,7 @@ function MyPageContainer() {
           <div className="profile-item">
             <span className="profile-text">
             <FontAwesomeIcon icon={faUser}
-            style={{marginRight: '60px',
+            style={{marginRight: '40px',
                 color: '#333'
             }}/> ID</span>
             <span className="profile-id">user1234</span>
@@ -97,7 +97,7 @@ function MyPageContainer() {
           <div className="profile-item">
             <span className="profile-text">
             <FontAwesomeIcon icon={faSignature}
-            style={{marginRight: '20px',
+            style={{marginRight: '10px',
                 color: '#333'
             }}/>Name</span>
             <span className="profile-id">Mario</span>
