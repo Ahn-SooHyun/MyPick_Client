@@ -20,21 +20,14 @@
     display: flex; /* 왼쪽(프로필) + 오른쪽(슬라이드) */
   }
   
-  /* ========================== */
-  /* (1) 오른쪽 슬라이드 영역  */
-  /* ========================== */
+  /* 오른쪽 슬라이드 */
   .mypage-container .slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  
-    /* 페이드 전환 */
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
     opacity: 0;
     transition: opacity 0.8s ease;
     z-index: 0;
-  
     background:
       linear-gradient(
         to right,
@@ -43,7 +36,6 @@
         rgba(255,255,255,0) 100%
       ),
       var(--slide-bg);
-  
     background-size: 100% 100%, 50% auto;
     background-position: left top, right center;
     background-repeat: no-repeat, no-repeat;
@@ -69,9 +61,7 @@
   .mypage-container .prev { left: 20px; }
   .mypage-container .next { right: 20px; }
   
-  /* ========================== */
-  /* (2) 왼쪽 프로필 정보 영역 */
-  /* ========================== */
+  /* 왼쪽 프로필 영역 */
   .mypage-container .mypage-info {
     position: relative;
     width: 50%;
@@ -80,56 +70,53 @@
     z-index: 8;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 세로 중앙 */
-    align-items: center;     /* 가로 중앙 */
+    justify-content: center;
+    align-items: center;
   }
   
-  /* 프로필 섹션(프로필 이미지 + items) */
   .mypage-container .profile-section {
     width: 80%;
     max-width: 350px;
   }
   
-  /* 프로필 이미지 */
+  /* 프로필 이미지 (원형) */
   .mypage-container .profile-img {
     width: 250px;
     height: 250px;
-    margin: 0 auto 20px; 
+    margin: 0 auto 70px; 
     border-radius: 50%;
     background: #ccc;
-    /* 실제 프로필 이미지:
-       background-image: url('./img/profile.jpg');
-       background-size: cover;
-       background-position: center;
-    */
+    background-size: cover;
+    background-position: center;
+    position: relative; 
   }
   
-  /* (New) 프로필 변경 버튼 */
+  /* 프로필 변경 버튼 (원형 내부 우측 하단) */
   .mypage-container .profile-edit-btn {
-    display: block;
-    margin: 0 auto 40px; /* 가운데 정렬 + 아래쪽 여백 */
-    padding: 8px 16px;
-    font-size: 14px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #666;
     color: #fff;
-    background-color: #666;
     border: none;
+    padding: 6px 10px;
     border-radius: 4px;
     cursor: pointer;
-    text-align: center;
+    font-size: 0.85rem;
   }
   .mypage-container .profile-edit-btn:hover {
-    background-color: #999;
+    background: #999;
   }
   
-  /* 한 줄: [아이콘 or 라벨] [값] */
+  /* 프로필 item: 라벨 + 값 */
   .mypage-container .profile-item {
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     margin-bottom: 16px;
   }
   
-  /* 아이콘 */
+  /* (옵션) 아이콘 */
   .mypage-container .profile-icon {
     font-size: 1.5rem;
     color: #666;
@@ -139,11 +126,13 @@
   /* 라벨(오른쪽 정렬) */
   .mypage-container .profile-text {
     width: 120px;      
-    text-align: right; 
-    font-size: 1.5rem;
+    text-align: right;
+    vertical-align: bottom;
+    font-size: 1.1rem;
     color: #333;
     font-weight: bold;
     margin-right: 16px; 
+    color: var(--main-color-2)
   }
   
   /* 실제 값(왼쪽 정렬) */
