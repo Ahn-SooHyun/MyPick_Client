@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature, faUser, faIdCard, faCakeCandles } from "@fortawesome/free-solid-svg-icons";
 
 
-function MyPageSubMenu({handleMypageSubMenu}) {
+function MyPageSubMenu({userInfo, handleMypageSubMenu}) {
 
     const [selectorNav, setSelectorNav] = useState('info');
 
@@ -42,7 +42,11 @@ function MyPageSubMenu({handleMypageSubMenu}) {
               }}
             onClick={() => handleSelectorNav('update')}>프로필 변경</span><br/>
             {/** 관리자 이동 버튼 */}
-            <span>관리자 이동</span>
+            {userInfo.step && <span
+              style={{
+                color: 'red'
+              }}
+            >관리자 이동</span>}
         </div>
     )
 }
@@ -222,7 +226,8 @@ function MyPageContainer() {
     id: 'boroColi id',
     name: 'Brocoli Name',
     nickName: 'Brocoli NickName',
-    birth: '2001-03-10'
+    birth: '2001-03-10',
+    step: true,
   });
 
 
@@ -300,7 +305,7 @@ function MyPageContainer() {
       <div className="mypage-info">
 
         {/*** 서브 메뉴 영역 ***/}
-        <MyPageSubMenu  handleMypageSubMenu={handleMypageSubMenu}/>
+        <MyPageSubMenu userInfo={userInfo}  handleMypageSubMenu={handleMypageSubMenu}/>
 
 
         {/*** 비밀번호 변경 영역 ***/}
