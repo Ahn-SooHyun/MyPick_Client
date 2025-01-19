@@ -1,0 +1,109 @@
+/* 공통 초기화 */
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+  }
+  html, body {
+    width: 100%; 
+    height: 100%;
+    background: #333;
+  }
+  
+  /* 슬라이더 컨테이너 */
+  .mypage-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* 각 슬라이드 */
+  .mypage-container .slide {
+    /* 위치를 겹쳐 놓고, 현재 슬라이드만 보이게 제어 */
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    /* 페이드 전환 효과 */
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    z-index: 0;
+  
+    /* 
+      다중 배경(multiple background):
+      1) 윗 레이어(맨 앞): linear-gradient(흰색→투명)
+         - 크기: 100% 100%
+         - 위치: left top
+      2) 아랫 레이어(맨 뒤): 실제 이미지 var(--slide-bg)
+         - 여기서 가로만 50% 등으로 축소 가능
+         - 위치: 오른쪽 가운데
+    */
+    background:
+      linear-gradient(
+        to right,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0) 75%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      var(--slide-bg);
+  
+    /* 그라디언트: 전체, 이미지: 50% (혹은 40% 등) */
+    background-size: 100% 100%, 50% auto;
+    /* 그라디언트는 왼쪽 위 배치, 이미지는 오른쪽 중앙에 배치 */
+    background-position: left top, right center;
+    background-repeat: no-repeat, no-repeat;
+  }
+  
+  /* 활성 슬라이드 */
+  .mypage-container .slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  /* 프로필 정보 섹션 */
+  .mypage-container .mypage-info {
+    /* 원하는 스타일대로 */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #000;
+    /* 예시: 배경 반투명, 패딩 등 */
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .mypage-container .profile-img {
+    width: 80px;
+    height: 80px;
+    background: #ccc; /* 예시: 프로필 이미지 자리 */
+    margin-bottom: 8px;
+  }
+  .mypage-container .profile-id,
+  .mypage-container .profile-name {
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+  
+  /* Prev / Next 버튼 */
+  .mypage-container .btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+  }
+  .mypage-container .prev {
+    left: 20px;
+  }
+  .mypage-container .next {
+    right: 20px;
+  }
+  

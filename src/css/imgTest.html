@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fade Image Example</title>
+  <style>
+    .fade-image {
+  /* 화면에 꽉 차게 쓰고 싶다면 100vw, 100vh */
+  /* 원하는 크기만큼 높이를 지정해도 됨(ex: 500px) */
+  width: 100vw;
+  height: 100vh;
+
+  /* 
+    --fade-image-url: 커스텀 프로퍼티
+    HTML에서 inline style로 이미지만 손쉽게 교체 가능
+  */
+  background: 
+    /* 왼쪽 ~ 50%: 흰색, 50% ~ 75%: 점차 투명, 75%~100%: 완전 투명 */
+    linear-gradient(
+      to right,
+      #ffffff 50%,
+      rgba(255, 255, 255, 0) 75%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    var(--fade-image-url); /* 여기서 이미지가 페이드 효과 뒤에 배치됨 */
+    
+  background-size: cover;       /* 이미지가 영역에 맞게 전체 표시 */
+  background-position: center;  /* 중앙 정렬 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+}
+
+  </style>
+</head>
+<body>
+  <!-- 이미지가 페이드되는 영역 -->
+  <div class="fade-image" style="--fade-image-url: url('./img/main1.gif')"></div>
+  
+  <!-- 다른 컨텐츠 -->
+  <p>이 영역 아래로 다른 컨텐츠...</p>
+</body>
+</html>
