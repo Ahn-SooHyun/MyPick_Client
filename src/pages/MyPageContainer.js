@@ -85,7 +85,7 @@ function MyPasswordContainer({myPageSubMenu}) {
          console.log('value', value);
         event.target.style.borderBottom = '3px solid red';
       }
-      else if (value.length > 8) {
+      else if (value.length >= 8) {
         event.target.style.borderBottom = '3px solid #08ec17';
       }
       else {
@@ -98,7 +98,7 @@ function MyPasswordContainer({myPageSubMenu}) {
       if (value.length < 8) {
         event.target.style.borderBottom = '3px solid red';
       }
-      else if (value.length > 8) {
+      else if (value.length >= 8) {
         event.target.style.borderBottom = '3px solid #08ec17';
       }
       else {
@@ -110,7 +110,7 @@ function MyPasswordContainer({myPageSubMenu}) {
       if (value.length < 8) {
         event.target.style.borderBottom = '3px solid red';
       }
-      else if (value.length > 8) {
+      else if (value.length >= 8) {
         event.target.style.borderBottom = '3px solid #08ec17';
       }
       else {
@@ -157,7 +157,7 @@ function MyPasswordContainer({myPageSubMenu}) {
       placeholder="새 비밀번호"
       className="new-password"
       ref={newPasswordRef}
-      style={{display: oldPassword.length > 8 ? 'block' : 'none' }}
+      style={{display: oldPassword.length >= 8 ? 'block' : 'none' }}
       onInput={handlePasswordChange}/>
       
       
@@ -361,13 +361,9 @@ function MyProfileUpdate({profileUrl, fileInputRef, handleProfileChange, handleF
         <input type="text" placeholder="Name" className="profile-id-input"/>
       </span>
     </div>
-    <div className="profile-item">
-      <span className="profile-id">
-      <FontAwesomeIcon icon={faComment}
-      style={{marginRight: '20px',
-          color: '#333'
-      }}/> 게임 좋아하는 유저</span>
-    </div>
+
+    <button
+      className="mypage-profile-update-btn">비밀번호 변경</button>
   </div>
   );
 }

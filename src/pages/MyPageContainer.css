@@ -208,7 +208,9 @@
 
 
 /*** 비밀번호 변경 버튼 ***/
-.mypage-container .mypage-password-container .mypage-password-btn {
+.mypage-container .mypage-password-container .mypage-password-btn,
+.mypage-container .mypage-profile-update-btn
+ {
   margin-top: 40px;
   width: 100%;
   padding: 10px;
