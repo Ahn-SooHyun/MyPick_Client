@@ -6,12 +6,43 @@ import { faSignature, faUser, faIdCard, faCakeCandles } from "@fortawesome/free-
 
 
 function MyPageSubMenu({handleMypageSubMenu}) {
+
+    const [selectorNav, setSelectorNav] = useState('info');
+
+    const handleSelectorNav = (menu) => {
+      setSelectorNav(menu);
+      handleMypageSubMenu(menu);
+    }
+
     return (
         <div className="mypage-sub-menu"
         >
-            <span onClick={() => handleMypageSubMenu('info')}>나의 프로필</span> |
-            <span onClick={() => handleMypageSubMenu('password')}>비밀번호 변경</span> |
-            <span onClick={() => handleMypageSubMenu('update')}>프로필 변경</span>
+            <span
+              style={
+                selectorNav === 'info' ? {
+                  color: 'brown'
+                } : {
+                  color: '#333'
+              }}
+            onClick={() => handleSelectorNav('info')}>나의 프로필</span> |
+            <span
+              style={
+                selectorNav === 'password' ? {
+                  color: 'brown'
+                } : {
+                  color: '#333'
+              }}
+            onClick={() => handleSelectorNav('password')}>비밀번호 변경</span> |
+            <span
+              style={
+                selectorNav === 'update' ? {
+                  color: 'brown'
+                } : {
+                  color: '#333'
+              }}
+            onClick={() => handleSelectorNav('update')}>프로필 변경</span><br/>
+            {/** 관리자 이동 버튼 */}
+            <span>관리자 이동</span>
         </div>
     )
 }
