@@ -17,10 +17,10 @@ function MyPageSubMenu({handleMypageSubMenu}) {
 }
 
 
-/*** 팝업 창 */
+/*** 비밀번호 팝업 창 */
 function MyPopup({isPopup, handlePopupClose}) {
   return (
-    <div className="mypage-popup" style={{display: isPopup ? 'block' : 'none',
+    <div className="mypage-popup pw" style={{display: isPopup ? 'block' : 'none',
       position: 'fixed',
       top: '0px',
       left: '0px',
@@ -350,6 +350,13 @@ export default MyPageContainer;
 
 {/*** 프로필 업데이트 영역 ***/}
 function MyProfileUpdate({profileUrl, userInfo, isMyprofile}) {
+
+  const [isPopup, setIsPopup] = useState(false);
+
+  const handlePopup = () => {
+    setIsPopup(false);
+  }
+
   return (
     <div className={`profile-section ${isMyprofile === 'update' ? 'front' : 'left'}`}>
     {/* 프로필 이미지 + 변경 버튼을 같은 부모 안에 둠 */}
@@ -382,7 +389,55 @@ function MyProfileUpdate({profileUrl, userInfo, isMyprofile}) {
           </div>
 
     <button
-      className="mypage-profile-update-btn">비밀번호 변경</button>
+      className="mypage-profile-update-btn"
+      onClick={() => setIsPopup(true)}
+      >비밀번호 변경</button>
+      <MyUpdatePopup isPopup={isPopup} handlePopupClose={() => setIsPopup(false)}/>
   </div>
   );
+
+  
+}
+
+
+/*** 프로필 변경, 팝업 창 */
+function MyUpdatePopup({isPopup, handlePopupClose}) {
+  return (
+    <div className="mypage-popup update" style={{display: isPopup ? 'block' : 'none',
+      position: 'fixed',
+      top: '0px',
+      left: '0px',
+      transform: 'scale(1.8)',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      padding: '20px',
+      borderRadius: '10px',
+      zIndex: '1000',
+      cursor: 'pointer'
+     }}
+      onClick={handlePopupClose}
+     >
+
+      <div className="mypage-popup-content"
+      style={{
+        display: isPopup ? 'block' : 'none',
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        padding: '20px',
+        borderRadius: '10px',
+        fontSize: '16px',
+        zIndex: '1000'
+      }}
+      >
+        <input type="password" placeholder="비밀번호 확인" className="profile-id-input"/>
+        <button className="mypage-profile-update-btn"
+        onClick={handlePopupClose}
+        >비밀번호 변경</button>
+      </div>
+    </div>
+  )
 }

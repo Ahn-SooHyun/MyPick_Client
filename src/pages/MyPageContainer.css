@@ -210,17 +210,33 @@
 
 /*** 비밀번호 변경 버튼 ***/
 .mypage-container .mypage-password-container .mypage-password-btn,
-.mypage-container .mypage-profile-update-btn
+.mypage-container .mypage-popup .mypage-profile-update-btn,
+.mypage-container .profile-section .mypage-profile-update-btn
  {
-  margin-top: 40px;
+  
   width: 100%;
   padding: 10px;
   border: none;
   border-radius: 4px;
   background-color: var(--main-color-2);
   color: #fff;
-  font-size: 1.5rem;
   cursor: pointer;
+}
+
+
+
+.mypage-container .profile-section .mypage-profile-update-btn {
+  font-size: 1.5rem;
+}
+
+
+  .mypage-container .mypage-popup.pw .mypage-profile-update-btn {
+  margin-top: 40px;
+  font-size: 1.5rem;
+}
+
+.mypage-container .mypage-popup.update .mypage-profile-update-btn {
+  font-size: .8rem;
 }
 
 .mypage-container .profile-id-input {
@@ -232,7 +248,7 @@
   outline: none;
   border-radius: 4px;
 
-  font-size: 1.5rem;
+  
   background-color: transparent;
 
 
@@ -240,4 +256,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.mypage-container .profile-section .profile-id-input {
+  font-size: 1.3rem;
+}
+
+.mypage-popup-content.update .profile-id-input{
+  width: 350px;
+  font-size: .8rem;
+}
+
+.mypage-popup-content.pw .profile-id-input {
+  
+  font-size: 1.5rem;
 }
