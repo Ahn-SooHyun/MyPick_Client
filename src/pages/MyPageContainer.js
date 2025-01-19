@@ -227,6 +227,7 @@ function MyPageContainer() {
     name: 'Brocoli Name',
     nickName: 'Brocoli NickName',
     birth: '2001-03-10',
+    profileUrl: './img/back/jojo1.png',
     step: true,
   });
 
@@ -234,15 +235,15 @@ function MyPageContainer() {
 
   // 슬라이드로 사용할 이미지 경로 배열
   const slides = [
-    './img/game/슈퍼마리오.jpeg',
-    './img/game/발로란트.png',
-    './img/game/메이플스토리.jpg',
-    './img/game/리그오브레전드.jpg'
+    './img/back/jojo1.png',
+    './img/back/jojo2.jpg',
+    './img/back/jojo3.jpeg',
+    './img/back/jojo4.jpeg'
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // (1) 기본 프로필 이미지 경로 (초기값)
-  const [profileUrl, setProfileUrl] = useState('./img/profile-default.jpg');
+  const [profileUrl, setProfileUrl] = useState(userInfo.profileUrl);
 
   // (2) 파일 입력창에 접근하기 위한 ref
   const fileInputRef = useRef(null);
