@@ -156,7 +156,6 @@
       position: absolute;
       top: 95px;
       width: 100%;
-      z-index: 1000;
       text-align: center;
       cursor: pointer;
     }
