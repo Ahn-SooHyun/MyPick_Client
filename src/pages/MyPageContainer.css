@@ -8,83 +8,49 @@
     width: 100%; 
     height: 100%;
     background: #333;
+    font-family: sans-serif;
   }
   
-  /* 슬라이더 컨테이너 */
+  /* 전체 컨테이너 */
   .mypage-container {
     position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    display: flex; /* 왼쪽(프로필) + 오른쪽(슬라이드) */
   }
   
-  /* 각 슬라이드 */
+  /* ========================== */
+  /* (1) 오른쪽 슬라이드 영역  */
+  /* ========================== */
   .mypage-container .slide {
-    /* 위치를 겹쳐 놓고, 현재 슬라이드만 보이게 제어 */
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   
-    /* 페이드 전환 효과 */
+    /* 페이드 전환 */
     opacity: 0;
     transition: opacity 0.8s ease;
     z-index: 0;
   
-    /* 
-      다중 배경(multiple background):
-      1) 윗 레이어(맨 앞): linear-gradient(흰색→투명)
-         - 크기: 100% 100%
-         - 위치: left top
-      2) 아랫 레이어(맨 뒤): 실제 이미지 var(--slide-bg)
-         - 여기서 가로만 50% 등으로 축소 가능
-         - 위치: 오른쪽 가운데
-    */
     background:
       linear-gradient(
         to right,
         #ffffff 50%,
-        rgba(255, 255, 255, 0) 75%,
-        rgba(255, 255, 255, 0) 100%
+        rgba(255,255,255,0) 75%,
+        rgba(255,255,255,0) 100%
       ),
       var(--slide-bg);
   
-    /* 그라디언트: 전체, 이미지: 50% (혹은 40% 등) */
-    background-size: 100% 100%, 55% 100%;
-    /* 그라디언트는 왼쪽 위 배치, 이미지는 오른쪽 중앙에 배치 */
+    background-size: 100% 100%, 50% auto;
     background-position: left top, right center;
     background-repeat: no-repeat, no-repeat;
   }
-  
-  /* 활성 슬라이드 */
   .mypage-container .slide.active {
     opacity: 1;
     z-index: 1;
-  }
-  
-  /* 프로필 정보 섹션 */
-  .mypage-container .mypage-info {
-    /* 원하는 스타일대로 */
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: #000;
-    /* 예시: 배경 반투명, 패딩 등 */
-    background: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    border-radius: 8px;
-  }
-  .mypage-container .profile-img {
-    width: 80px;
-    height: 80px;
-    background: #ccc; /* 예시: 프로필 이미지 자리 */
-    margin-bottom: 8px;
-  }
-  .mypage-container .profile-id,
-  .mypage-container .profile-name {
-    margin-bottom: 4px;
-    font-weight: bold;
   }
   
   /* Prev / Next 버튼 */
@@ -95,15 +61,80 @@
     padding: 10px 15px;
     font-size: 16px;
     color: #fff;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0,0,0,0.4);
     border: none;
     cursor: pointer;
     z-index: 999;
   }
-  .mypage-container .prev {
-    left: 20px;
+  .mypage-container .prev { left: 20px; }
+  .mypage-container .next { right: 20px; }
+  
+  /* ========================== */
+  /* (2) 왼쪽 프로필 정보 영역 */
+  /* ========================== */
+  .mypage-container .mypage-info {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: #f9f9f9;
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 */
+    align-items: center;     /* 가로 중앙 */
   }
-  .mypage-container .next {
-    right: 20px;
+  
+  /* 프로필 섹션(프로필 이미지 + items) */
+  .mypage-container .profile-section {
+    width: 80%;
+    max-width: 350px;
+    /* text-align: center;  // 라벨 정렬 위해 제거 or 주석 */
+  }
+  
+  /* 프로필 이미지 */
+  .mypage-container .profile-img {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 80px; 
+    border-radius: 50%;
+    background: #ccc;
+    /* 실제 프로필 이미지:
+       background-image: url('./img/profile.jpg');
+       background-size: cover;
+       background-position: center;
+    */
+  }
+  
+  /* 한 줄: [아이콘] [라벨] [값] */
+  .mypage-container .profile-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    margin-bottom: 16px;
+  }
+  
+  /* 아이콘 */
+  .mypage-container .profile-icon {
+    font-size: 1.5rem;
+    color: #666;
+    margin-right: 10px; 
+  }
+  
+  /* 라벨(오른쪽 정렬) */
+  .mypage-container .profile-text {
+    width: 120px;            /* 고정 폭 */
+    text-align: right;      /* 라벨 내용이 오른쪽에 붙도록 */
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+    margin-right: 16px;     /* 라벨 뒤쪽 간격 */
+  }
+  
+  /* 실제 값(왼쪽 정렬) */
+  .mypage-container .profile-id {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
   }
   

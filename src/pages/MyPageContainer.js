@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './MyPageContainer.css'; // CSS는 별도 파일로 분리
+import './MyPageContainer.css';
 
 function MyPageContainer() {
   // 슬라이드로 사용할 이미지 경로를 배열에 정의
@@ -10,48 +10,53 @@ function MyPageContainer() {
     './img/game/리그오브레전드.jpg'
   ];
 
-  // 현재 보여줄 슬라이드 인덱스
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // 다음 슬라이드
   const showNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
-
-  // 이전 슬라이드
   const showPrevSlide = () => {
-    // (prev - 1 + 길이) % 길이 => 음수 인덱스 보정
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
     <div className="mypage-container">
-
-      {/* 슬라이드를 동적으로 생성 */}
+      {/* 오른쪽 슬라이드 페이드 */}
       {slides.map((slideUrl, index) => (
         <div
           key={index}
           className={`slide ${index === currentSlide ? 'active' : ''}`}
-          // CSS 커스텀 프로퍼티를 사용하여 이미지 경로만 교체
           style={{ '--slide-bg': `url('${slideUrl}')` }}
         />
       ))}
 
-      {/* 프로필 정보 (디자인에 맞춰 자유롭게 구성) */}
+      {/* 왼쪽 프로필 영역 */}
       <div className="mypage-info">
-        1234
-        <div className="profile-img"></div>
-        <div className="profile-id"></div>
-        <div className="profile-name"></div>
+        <div className="profile-section">
+          {/* 프로필 이미지 */}
+          <div className="profile-img"></div>
+
+          {/* 아이콘 + 라벨(오른쪽 정렬) + 값(왼쪽 정렬) */}
+          <div className="profile-item">
+            {/* <span className="profile-icon"></span> */}
+            <span className="profile-text">&#128100; ID</span>
+            <span className="profile-id">user1234</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-text">&#128101; Name</span>
+            <span className="profile-id">Mario</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-icon">&#8505;</span>
+            <span className="profile-text">Desc</span>
+            <span className="profile-id">게임 좋아하는 유저</span>
+          </div>
+        </div>
       </div>
 
       {/* Prev / Next 버튼 */}
-      <button className="btn prev" onClick={showPrevSlide}>
-        Prev
-      </button>
-      <button className="btn next" onClick={showNextSlide}>
-        Next
-      </button>
+      <button className="btn prev" onClick={showPrevSlide}>Prev</button>
+      <button className="btn next" onClick={showNextSlide}>Next</button>
     </div>
   );
 }
