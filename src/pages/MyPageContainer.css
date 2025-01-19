@@ -88,14 +88,13 @@
   .mypage-container .profile-section {
     width: 80%;
     max-width: 350px;
-    /* text-align: center;  // 라벨 정렬 위해 제거 or 주석 */
   }
   
   /* 프로필 이미지 */
   .mypage-container .profile-img {
     width: 250px;
     height: 250px;
-    margin: 0 auto 80px; 
+    margin: 0 auto 20px; 
     border-radius: 50%;
     background: #ccc;
     /* 실제 프로필 이미지:
@@ -105,11 +104,28 @@
     */
   }
   
-  /* 한 줄: [아이콘] [라벨] [값] */
+  /* (New) 프로필 변경 버튼 */
+  .mypage-container .profile-edit-btn {
+    display: block;
+    margin: 0 auto 40px; /* 가운데 정렬 + 아래쪽 여백 */
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #666;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .mypage-container .profile-edit-btn:hover {
+    background-color: #999;
+  }
+  
+  /* 한 줄: [아이콘 or 라벨] [값] */
   .mypage-container .profile-item {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* 왼쪽 정렬 */
+    justify-content: flex-start; 
     margin-bottom: 16px;
   }
   
@@ -122,12 +138,12 @@
   
   /* 라벨(오른쪽 정렬) */
   .mypage-container .profile-text {
-    width: 120px;            /* 고정 폭 */
-    text-align: right;      /* 라벨 내용이 오른쪽에 붙도록 */
+    width: 120px;      
+    text-align: right; 
     font-size: 1.5rem;
     color: #333;
     font-weight: bold;
-    margin-right: 16px;     /* 라벨 뒤쪽 간격 */
+    margin-right: 16px; 
   }
   
   /* 실제 값(왼쪽 정렬) */
