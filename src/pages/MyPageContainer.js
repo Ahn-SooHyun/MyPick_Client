@@ -2,25 +2,60 @@ import React, { useState, useRef, useEffect } from 'react';
 import './MyPageContainer.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignature, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
+import { faSignature, faUser, faIdCard, faCakeCandles } from "@fortawesome/free-solid-svg-icons";
 
 
-function MyPageSubMenu({handleMypageSubMenu}) {
+function MyPageSubMenu({userInfo, handleMypageSubMenu}) {
+
+    const [selectorNav, setSelectorNav] = useState('info');
+
+    const handleSelectorNav = (menu) => {
+      setSelectorNav(menu);
+      handleMypageSubMenu(menu);
+    }
+
     return (
         <div className="mypage-sub-menu"
         >
-            <span onClick={() => handleMypageSubMenu('info')}>나의 프로필</span> |
-            <span onClick={() => handleMypageSubMenu('password')}>비밀번호 변경</span> |
-            <span onClick={() => handleMypageSubMenu('update')}>프로필 변경</span>
+            <span
+              style={
+                selectorNav === 'info' ? {
+                  color: 'brown'
+                } : {
+                  color: '#333'
+              }}
+            onClick={() => handleSelectorNav('info')}>나의 프로필</span> |
+            <span
+              style={
+                selectorNav === 'password' ? {
+                  color: 'brown'
+                } : {
+                  color: '#333'
+              }}
+            onClick={() => handleSelectorNav('password')}>비밀번호 변경</span> |
+            <span
+              style={
+                selectorNav === 'update' ? {
+                  color: 'brown'
+                } : {
+                  color: '#333'
+              }}
+            onClick={() => handleSelectorNav('update')}>프로필 변경</span><br/>
+            {/** 관리자 이동 버튼 */}
+            {userInfo.step && <span
+              style={{
+                color: 'red'
+              }}
+            >관리자 이동</span>}
         </div>
     )
 }
 
 
-/*** 팝업 창 */
+/*** 비밀번호 팝업 창 */
 function MyPopup({isPopup, handlePopupClose}) {
   return (
-    <div className="mypage-popup" style={{display: isPopup ? 'block' : 'none',
+    <div className="mypage-popup pw" style={{display: isPopup ? 'block' : 'none',
       position: 'fixed',
       top: '0px',
       left: '0px',
@@ -184,22 +219,37 @@ function MyPasswordContainer({myPageSubMenu}) {
 
 
 function MyPageContainer() {
+
+
+  /** axio로 DB에서 받아온 데이터는 여기에!*/
+  const [userInfo, setUserInfo] = useState({
+    id: 'boroColi id',
+    name: 'Brocoli Name',
+    nickName: 'Brocoli NickName',
+    birth: '2001-03-10',
+    profileUrl: './img/back/jojo1.png',
+    step: true,
+  });
+
+
+
   // 슬라이드로 사용할 이미지 경로 배열
   const slides = [
-    './img/game/슈퍼마리오.jpeg',
-    './img/game/발로란트.png',
-    './img/game/메이플스토리.jpg',
-    './img/game/리그오브레전드.jpg'
+    './img/back/jojo1.png',
+    './img/back/jojo2.jpg',
+    './img/back/jojo3.jpeg',
+    './img/back/jojo4.jpeg'
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // (1) 기본 프로필 이미지 경로 (초기값)
-  const [profileUrl, setProfileUrl] = useState('./img/profile-default.jpg');
+  const [profileUrl, setProfileUrl] = useState(userInfo.profileUrl);
 
   // (2) 파일 입력창에 접근하기 위한 ref
   const fileInputRef = useRef(null);
 
 
+  // (3) 프로필 영역 선택 ( nav )
   const [isMyprofile, setIsMyprofile] = useState('info');
 
   // 5초마다 slide 전환 되도록 설정
@@ -256,14 +306,16 @@ function MyPageContainer() {
       <div className="mypage-info">
 
         {/*** 서브 메뉴 영역 ***/}
-        <MyPageSubMenu  handleMypageSubMenu={handleMypageSubMenu}/>
+        <MyPageSubMenu userInfo={userInfo}  handleMypageSubMenu={handleMypageSubMenu}/>
 
 
         {/*** 비밀번호 변경 영역 ***/}
         <MyPasswordContainer myPageSubMenu={isMyprofile}/>
 
+
+
         {/*** 프로필 업데이트 영역 ***/}
-        <MyProfileUpdate profileUrl={profileUrl} fileInputRef={fileInputRef} handleProfileChange={handleProfileChange} handleFileChange={handleFileChange} isMyprofile={isMyprofile}/>
+        <MyProfileUpdate profileUrl={profileUrl} fileInputRef={fileInputRef} userInfo={userInfo} isMyprofile={isMyprofile}/>
 
 
         {/*** 프로필 영역 ***/} 
@@ -293,7 +345,7 @@ function MyPageContainer() {
             style={{marginRight: '40px',
                 color: '#333'
             }}/> ID</span>
-            <span className="profile-id">user1234</span>
+            <span className="profile-id">{userInfo.id}</span>
           </div>
           <div className="profile-item">
             <span className="profile-text">
@@ -301,16 +353,29 @@ function MyPageContainer() {
             style={{marginRight: '10px',
                 color: '#333'
             }}/>Name</span>
-            <span className="profile-id">Mario</span>
+            <span className="profile-id">{userInfo.name}</span>
           </div>
+
           <div className="profile-item">
-            <span className="profile-id">
-            <FontAwesomeIcon icon={faComment}
-            style={{marginRight: '20px',
+            <span className="profile-text">
+            <FontAwesomeIcon icon={faIdCard}
+            style={{marginRight: '10px',
                 color: '#333'
-            }}/> 게임 좋아하는 유저</span>
+            }}/>NickName</span>
+            <span className="profile-id">{userInfo.nickName}</span>
+          </div>
+
+          <div className="profile-item">
+            <span className="profile-text">
+            <FontAwesomeIcon icon={faCakeCandles}
+            style={{marginRight: '10px',
+                color: '#333'
+            }}/>Birth</span>
+            <span className="profile-id">{userInfo.birth}</span>
           </div>
         </div>
+
+        
       </div>
 
     </div>
@@ -321,7 +386,14 @@ export default MyPageContainer;
 
 
 {/*** 프로필 업데이트 영역 ***/}
-function MyProfileUpdate({profileUrl, fileInputRef, handleProfileChange, handleFileChange, isMyprofile}) {
+function MyProfileUpdate({profileUrl, userInfo, isMyprofile}) {
+
+  const [isPopup, setIsPopup] = useState(false);
+
+  const handlePopup = () => {
+    setIsPopup(false);
+  }
+
   return (
     <div className={`profile-section ${isMyprofile === 'update' ? 'front' : 'left'}`}>
     {/* 프로필 이미지 + 변경 버튼을 같은 부모 안에 둠 */}
@@ -331,14 +403,6 @@ function MyProfileUpdate({profileUrl, fileInputRef, handleProfileChange, handleF
     >
     </div>
 
-    {/* 실제로 파일을 선택하는 input (화면에는 숨김) */}
-    <input
-      type="file"
-      accept="image/*"
-      ref={fileInputRef}
-      style={{ display: 'none' }}
-      onChange={handleFileChange}
-    />
     {/* 아이콘 + 라벨(오른쪽 정렬) + 값(왼쪽 정렬) */}
     <div className="profile-item">
       <span className="profile-text">
@@ -346,24 +410,83 @@ function MyProfileUpdate({profileUrl, fileInputRef, handleProfileChange, handleF
       style={{marginRight: '40px',
           color: '#333'
       }}/> ID</span>
-      <span className="profile-id">
 
-        <input type="text" placeholder="ID" className="profile-id-input"/>
-      </span>
+
+        <input type="text" placeholder="ID" className="profile-id-input" value={userInfo.id}/>
     </div>
+
     <div className="profile-item">
-      <span className="profile-text">
-      <FontAwesomeIcon icon={faSignature}
-      style={{marginRight: '10px',
-          color: '#333'
-      }}/>Name</span>
-      <span className="profile-id">
-        <input type="text" placeholder="Name" className="profile-id-input"/>
-      </span>
-    </div>
+            <span className="profile-text">
+            <FontAwesomeIcon icon={faIdCard}
+            style={{marginRight: '10px',
+                color: '#333'
+            }}/>NickName</span>
+            <input type="text" placeholder="NickName" className="profile-id-input" value={userInfo.nickName}/>
+
+          </div>
 
     <button
-      className="mypage-profile-update-btn">비밀번호 변경</button>
+      className="mypage-profile-update-btn"
+      onClick={() => setIsPopup(true)}
+      >비밀번호 변경</button>
+      <MyUpdatePopup isPopup={isPopup} handlePopupClose={() => setIsPopup(false)}/>
   </div>
   );
+
+  
+}
+
+
+/*** 프로필 변경, 팝업 창 */
+function MyUpdatePopup({isPopup, handlePopupClose}) {
+
+  const passwordRef = useRef(null);
+
+  /*** Update Submit */
+  const profileUpdateSubmit = () => {
+
+    console.log("profile Update 처리 구간");
+    passwordRef.current.value = '';
+
+    handlePopupClose();
+  }
+
+  return (
+    <div className="mypage-popup update" style={{display: isPopup ? 'block' : 'none',
+      position: 'fixed',
+      top: '0px',
+      left: '0px',
+      transform: 'scale(1.8)',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      padding: '20px',
+      borderRadius: '10px',
+      zIndex: '1000',
+      cursor: 'pointer'
+     }}
+      
+     >
+
+      <div className="mypage-popup-content"
+      style={{
+        display: isPopup ? 'block' : 'none',
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        padding: '20px',
+        borderRadius: '10px',
+        fontSize: '16px',
+        zIndex: '1000'
+      }}
+      >
+        <input type="password" placeholder="비밀번호 확인" ref={passwordRef} className="profile-id-input"/>
+        <button className="mypage-profile-update-btn"
+          onClick={profileUpdateSubmit}
+        >비밀번호 변경</button>
+      </div>
+    </div>
+  )
 }
