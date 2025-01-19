@@ -366,21 +366,20 @@ function MyProfileUpdate({profileUrl, userInfo, isMyprofile}) {
       style={{marginRight: '40px',
           color: '#333'
       }}/> ID</span>
-      <span className="profile-id">
 
-        <input type="text" placeholder="ID" className="profile-id-input"/>
-      </span>
+
+        <input type="text" placeholder="ID" className="profile-id-input" value={userInfo.id}/>
     </div>
+
     <div className="profile-item">
-      <span className="profile-text">
-      <FontAwesomeIcon icon={faSignature}
-      style={{marginRight: '10px',
-          color: '#333'
-      }}/>Name</span>
-      <span className="profile-id">
-        <input type="text" placeholder="Name" className="profile-id-input"/>
-      </span>
-    </div>
+            <span className="profile-text">
+            <FontAwesomeIcon icon={faIdCard}
+            style={{marginRight: '10px',
+                color: '#333'
+            }}/>NickName</span>
+            <input type="text" placeholder="NickName" className="profile-id-input" value={userInfo.nickName}/>
+
+          </div>
 
     <button
       className="mypage-profile-update-btn">비밀번호 변경</button>
