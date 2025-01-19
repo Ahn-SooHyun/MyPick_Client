@@ -37,7 +37,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
 
           {/* (추가) MyPage 라우트 */}
-          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/mypage2" element={<MyPageContainer />} />
         </Routes>
       </Router>
     </ConfigProvider>
