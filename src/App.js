@@ -10,12 +10,13 @@ import Main from "./JS/main/Main";
 //================================================
 //Admin
 import AdminMain from "./JS/admin/AdminMain";
+import MainPage from './JS/main/Main';
+
+import MyPageContainer from './pages/MyPageContainer';
 
 //=======================================
 //login
 import Login from "./JS/login/LoginPage";
-//SignUp
-import MinWow from "./JS/signUp/SignupPage";
 
 //=======================================
 //MyPage
@@ -44,12 +45,17 @@ function App() {
     >
       <Router>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/notice" element={<NoticeList />} />
+          <Route path="/notice/:noticeId" element={<NoticeDetail />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/admin" element={<AdminMain />} />
+          <Route path="/mypage" element={<MyPage />} />
 
           <Route path="/admin" element={<AdminMain />} />
 
           <Route path="/Login" element={<Login />} />
-          <Route path="/signUp" element={<MinWow />} />
 
           <Route path="/myPage" element={<MyPage />} />
 
@@ -58,6 +64,7 @@ function App() {
 
           <Route path="/chat" element={<ChatPage />} />
           {/* (추가) MyPage 라우트 */}
+          <Route path="/mypage2" element={<MyPageContainer />} />
         </Routes>
       </Router>
     </ConfigProvider>

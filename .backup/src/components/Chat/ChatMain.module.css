@@ -1,0 +1,59 @@
+/* ChatMain.module.css */
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;  /* 스크롤 없음, 내용 넘치면 숨김 */
+  margin: 0;
+  padding: 20px 0;   /* 상하 여백 */
+  background-color: #f9f9f9; /* 예시 */
+}
+
+/* 채팅창 자체는 중앙에 배치하는 등 */
+.chatWindow {
+  flex: 1;
+  padding: 20px;
+  overflow: auto; /* 만약 메시지가 많아지면 이 영역만 별도 스크롤 허용 (선택) */
+  background: #fff;
+  margin: 0 20px; /* 좌우 여백 */
+  border-radius: 4px;
+}
+
+/* 메시지들 */
+.userMessage {
+  margin-bottom: 10px;
+  margin-left: 20%;
+  background: #fff9c4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.aiMessage {
+  margin-bottom: 10px;
+  margin-right: 20%;
+  background: #e0f7fa;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* 입력 영역 */
+.inputArea {
+  display: flex;
+  gap: 8px;
+  margin: 0 20px;   /* 좌우 맞춤 */
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
