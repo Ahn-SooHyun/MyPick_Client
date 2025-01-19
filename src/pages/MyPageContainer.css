@@ -258,15 +258,26 @@
   justify-content: center;
 }
 
+/*** 프로필 변경 팝업 영역 비밀번호 입력 영역 ***/
+.mypage-popup.update .mypage-popup-content .profile-id-input {
+  font-size: .8rem;
+}
+
+
+/*** 프로필 영역 비밀번호 입력 영역 ***/
 .mypage-container .profile-section .profile-id-input {
   font-size: 1.3rem;
 }
 
+
+/*** 팝업 영역 비밀번호 입력 영역 ***/
 .mypage-popup-content.update .profile-id-input{
   width: 350px;
   font-size: .8rem;
 }
 
+
+/*** 팝업 영역 비밀번호 입력 영역 ***/
 .mypage-popup-content.pw .profile-id-input {
   
   font-size: 1.5rem;

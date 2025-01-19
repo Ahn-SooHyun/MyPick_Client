@@ -402,6 +402,18 @@ function MyProfileUpdate({profileUrl, userInfo, isMyprofile}) {
 
 /*** 프로필 변경, 팝업 창 */
 function MyUpdatePopup({isPopup, handlePopupClose}) {
+
+  const passwordRef = useRef(null);
+
+  /*** Update Submit */
+  const profileUpdateSubmit = () => {
+
+    console.log("profile Update 처리 구간");
+    passwordRef.current.value = '';
+
+    handlePopupClose();
+  }
+
   return (
     <div className="mypage-popup update" style={{display: isPopup ? 'block' : 'none',
       position: 'fixed',
@@ -416,7 +428,7 @@ function MyUpdatePopup({isPopup, handlePopupClose}) {
       zIndex: '1000',
       cursor: 'pointer'
      }}
-      onClick={handlePopupClose}
+      
      >
 
       <div className="mypage-popup-content"
@@ -433,9 +445,9 @@ function MyUpdatePopup({isPopup, handlePopupClose}) {
         zIndex: '1000'
       }}
       >
-        <input type="password" placeholder="비밀번호 확인" className="profile-id-input"/>
+        <input type="password" placeholder="비밀번호 확인" ref={passwordRef} className="profile-id-input"/>
         <button className="mypage-profile-update-btn"
-        onClick={handlePopupClose}
+          onClick={profileUpdateSubmit}
         >비밀번호 변경</button>
       </div>
     </div>
