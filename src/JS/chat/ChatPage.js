@@ -1,11 +1,11 @@
 // ChatPage.js
 import React, { useState } from 'react';
-import LeftSidebar from '../components/Chat/LeftSidebar';
-import RightSidebar from '../components/Chat/RightSidebar';
-import ChatBefore from '../components/Chat/ChatBefore';
-import ChatMain from '../components/Chat/ChatMain';
-import styles from './ChatPage.module.css';
-import ChatContainer from '../components/Chat/ChatContainer';
+import LeftSidebar from './LeftSidebar';
+import RightSidebar from './RightSidebar';
+import ChatBefore from './ChatBefore';
+import ChatMain from './ChatMain';
+import styles from '../../css/chat/ChatPage.module.css';
+import ChatContainer from './ChatContainer';
 
 function ChatPage() {
   const [isChatStarted, setIsChatStarted] = useState(false);

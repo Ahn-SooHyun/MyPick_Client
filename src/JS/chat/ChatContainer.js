@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ChatBefore from './ChatBefore';
 import ChatMain from './ChatMain';
 import LeftSidebar from './LeftSidebar';
-import { selectRoomIdx } from '../../@modules/chatRoom';
+import { selectRoomIdx } from '../../util/@modules/chatRoom';
 
 function ChatContainer() {
   // (A) Redux에서 현재 방 번호(roomIdx) 가져오기

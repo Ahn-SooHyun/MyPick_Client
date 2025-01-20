@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { DeleteTwoTone } from '@ant-design/icons';
-import styles from './LeftSidebar.module.css';
-import api from '../../axiosSetting';
-import { getCookieValue } from '../../utils/cookie.js';
-import { getChatMessageList } from '../../api/chatApi.js';
+import styles from '../../css/chat/LeftSidebar.module.css';
+import api from '../../util/api/axiosSetting';
+import { getCookieValue } from '../../util/cookie/cookie';
+import { getChatMessageList } from '../../util/api/chatApi.js';
 import { useDispatch } from 'react-redux';
-import { changeMessageList, changeRoomIdx } from '../../@modules/chatRoom.js';
+import { changeMessageList, changeRoomIdx } from '../../util/@modules/chatRoom';
 
 function LeftSidebar() {
   const dispatch = useDispatch();

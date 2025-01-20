@@ -1,4 +1,4 @@
-import api from '../axiosSetting'
+import api from './axiosSetting'
 
 export const getChatRoom = (obj) => {
     return api.get('/chat/room/roomList', {

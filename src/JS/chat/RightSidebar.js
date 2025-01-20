@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Typography, Input, Card } from 'antd';
-import styles from './RightSidebar.module.css';
+import styles from '../../css/chat/RightSidebar.module.css';
 
 const { Title, Paragraph } = Typography;
 

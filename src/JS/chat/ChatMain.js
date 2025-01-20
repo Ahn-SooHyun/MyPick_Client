@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../axiosSetting';
-import styles from './ChatMain.module.css';
+import api from '../../util/api/axiosSetting';
+import styles from '../../css/chat/ChatMain.module.css';
 import { Card, Row, Col, Typography, Space } from 'antd';
 import { HeartTwoTone, MessageTwoTone, FolderOpenTwoTone } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
-import { selectMessageList, selectRoomIdx } from '../../@modules/chatRoom';
+import { selectMessageList, selectRoomIdx } from '../../util/@modules/chatRoom';
 
 const { Title, Paragraph } = Typography;
 

@@ -13,11 +13,8 @@
     "apexcharts": "^4.3.0",
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
-<<<<<<< HEAD
-=======
     "install": "^0.13.0",
     "npm": "^11.0.0",
->>>>>>> d765ada5c4042ee053fe026e0ccc9677f96536f6
     "package.json": "^2.0.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.7.0",
