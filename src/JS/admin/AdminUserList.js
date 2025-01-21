@@ -75,7 +75,7 @@ export default function AdminUserList() {
                             <td>carrot456</td>
                             <td>당근이</td>
                             <td><div className="stop-status"></div>정지</td>
-                            <td>2025-01-02</td>
+                            <td>2025-01-31</td>
                         </tr>
                         <tr className="user" onClick={() => { setUserInfo({id: 'potato', name: '감자킹', step: 'user', status: ''})}}>
                             <td className={`${userInfo?.id === 'potato' ? 'active' : ''}`} >potato</td>
